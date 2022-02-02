@@ -1,5 +1,6 @@
 const bcrypt = require("bcrypt");
 const connection = require("../database/db");
+
 // const secretSalt = process.env.SALT;
 // require("dotenv").config();
 
