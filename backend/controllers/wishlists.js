@@ -1,12 +1,12 @@
 const connection = require("../database/db");
 
+// This function creates new wishlists
 const CreateNewWishlist = (req, res) => {
-  const userId = req.params.id;
-  // const commenter_id = req.token.userId;
-  const { item } = req.body;
+ 
+  const { item_id,user_id } = req.body;
 
   const query = `INSERT INTO wishlists (item_id, user_id) VALUES (?,?)`;
-  const data = [item, userId];
+  const data = [item_id, user_id];
 
   connection.query(query, data, (err, results) => {
     if (err) {
@@ -16,10 +16,9 @@ const CreateNewWishlist = (req, res) => {
         err: err,
       });
     }
-    // result are the data returned by mysql server
     res.status(201).json({
       success: true,
-      massage: "The wishlist has been created success ",
+      massage: "The wishlist has been created successfully ",
       results: results,
     });
   });

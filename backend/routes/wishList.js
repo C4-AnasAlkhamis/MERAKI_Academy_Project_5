@@ -1,13 +1,13 @@
 /** @format */
 
 const express = require("express");
-const {CreateNewWishlist,GetWishlistById,deleteItemInWishlistById} = require("../controllers/whishlists");
+const {CreateNewWishlist,GetWishlistById,deleteItemInWishlistById} = require("../controllers/wishlists");
 
 const wishListRouter = express.Router();
 //dont press enter
 //write your code here
 
-wishListRouter.post("/:id", CreateNewWishlist);
+wishListRouter.post("/", CreateNewWishlist);
 wishListRouter.get("/", GetWishlistById);
 wishListRouter.delete("/:id", deleteItemInWishlistById);
 
