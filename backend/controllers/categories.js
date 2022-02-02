@@ -89,9 +89,43 @@ const deleteCategoryById = (req, res) => {
     });
   });
 };
+// =================================================== // done
+
+// This function update Category By Id
+const updateCategoryById = (req, res) => {
+  const id = req.params.id;
+  const { category } = req.body;
+
+  const query = `UPDATE categories SET category = IF(${
+    category != ""
+  }, ?, category) WHERE id = ?`;
+
+  const data = [category, id];
+  connection.query(query, data, (err, result) => {
+    if (err) {
+      return res.status(500).json({
+        success: false,
+        message: `Server Error`,
+      });
+    }
+    if (!result.affectedRows) {
+      return res.status(404).json({
+        success: false,
+        message: `The category: ${id} is not found`,
+      });
+    }
+
+    res.status(202).json({
+      success: true,
+      message: `category updated`,
+      article: result,
+    });
+  });
+};
 module.exports = {
   createNewCategory,
   getAllCategories,
   getCategoryById,
-  deleteCategoryById
+  deleteCategoryById,
+  updateCategoryById,
 };

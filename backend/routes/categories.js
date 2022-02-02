@@ -11,12 +11,14 @@ const {
   getAllCategories,
   getCategoryById,
   deleteCategoryById,
+  updateCategoryById,
 } = require("../controllers/categories");
 // =========================================== //
 categoriesRouter.post("/", createNewCategory);
 categoriesRouter.get("/", getAllCategories);
 categoriesRouter.get("/:id", getCategoryById);
 categoriesRouter.delete("/:id", deleteCategoryById);
+categoriesRouter.put("/:id", updateCategoryById);
 
 //write your code here
 module.exports = categoriesRouter;
