@@ -124,6 +124,7 @@ const deleteUserById = (req, res) => {
   });
 };
 
+
 module.exports = {
   createNewUser,
   getUserById,
