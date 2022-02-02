@@ -15,7 +15,7 @@ const {
 
 roleRouter.post("/", createNewRole);
 roleRouter.post("/permissions", createNewPermission);
-roleRouter.post("/rolePermission", createNewRole_permission);
+roleRouter.post("/rolepermission", createNewRole_permission);
 
 //write your code here
 module.exports = roleRouter;
