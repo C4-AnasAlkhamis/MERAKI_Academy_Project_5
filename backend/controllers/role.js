@@ -22,8 +22,29 @@ const createNewRole = (req, res) => {
     });
   });
 };
+//=================================================== // done
+// This function creates new Permission
+const createNewPermission = (req, res) => {
+  const { permission } = req.body;
+  const query = `INSERT INTO permissions (permission) VALUE (?)`;
+  const data = [permission];
 
+  connection.query(query, data, (err, role) => {
+    if (err) {
+      res.status(500).json({
+        success: false,
+        message: `Server Error`,
+        err: err,
+      });
+    }
+    res.status(201).json({
+      success: true,
+      message: `Success permission created`,
+      result: role,
+    });
+  });
+};
 module.exports = {
   createNewRole,
-
+  createNewPermission,
 };
