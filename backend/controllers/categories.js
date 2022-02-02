@@ -68,8 +68,30 @@ const getCategoryById = (req, res) => {
     });
   });
 };
+// =================================================== // done
+
+// This function delete Category By Id
+const deleteCategoryById = (req, res) => {
+  let id = req.params.id;
+  const query = `DELETE FROM categories WHERE id = ?`;
+  const data = [id];
+  connection.query(query, data, (err, result) => {
+    if (err) {
+      return res.status(500).json({
+        success: false,
+        message: `Server Error`,
+      });
+    }
+    res.status(200).json({
+      success: true,
+      message: `The category with ${id} deleted`,
+      result: result,
+    });
+  });
+};
 module.exports = {
   createNewCategory,
   getAllCategories,
   getCategoryById,
+  deleteCategoryById
 };
