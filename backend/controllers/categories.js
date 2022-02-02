@@ -22,7 +22,33 @@ const createNewCategory = (req, res) => {
     });
   });
 };
+// =================================================== // done
+
+// This function returns the categories
+const getAllCategories = (req, res) => {
+  const query = `SELECT * FROM categories`;
+  connection.query(query, (err, result) => {
+    if (err) {
+      return res.status(500).json({
+        success: false,
+        message: `Server Error`,
+      });
+    }
+    if (!result) {
+      return res.status(200).json({
+        success: false,
+        message: `No Categories Yet`,
+      });
+    }
+    res.status(200).json({
+      success: true,
+      message: `All the Categories`,
+      result: result,
+    });
+  });
+};
 
 module.exports = {
   createNewCategory,
+  getAllCategories,
 };
