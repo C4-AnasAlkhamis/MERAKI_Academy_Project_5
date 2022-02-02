@@ -8,7 +8,7 @@ const wishListRouter = express.Router();
 //write your code here
 
 wishListRouter.post("/", CreateNewWishlist);
-wishListRouter.get("/", GetWishlistById);
+wishListRouter.get("/:id", GetWishlistById);
 wishListRouter.delete("/:id", deleteItemInWishlistById);
 
 
