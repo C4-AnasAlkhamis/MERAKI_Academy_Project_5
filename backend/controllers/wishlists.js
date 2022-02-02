@@ -24,10 +24,11 @@ const CreateNewWishlist = (req, res) => {
   });
 };
 
+// This function get  wishlists by user id
 const GetWishlistById = (req, res) => {
-  const id = req.query.id;
+  const id = req.params.id;
 
-  const query = `SELECT item_id FROM wishlists WHERE user_id = ?`;
+  const query = `SELECT * FROM wishlists join items ON wishlists.item_id = items.id where wishlists.user_id =?`;
   const data = [id];
 
   connection.query(query, data, (err, results) => {
@@ -46,7 +47,7 @@ const GetWishlistById = (req, res) => {
     }
     res.status(200).json({
       success: true,
-      massage: `The wishlist for ${id}`,
+      massage: `The wishlist for user id : ${id}`,
       results: results,
     });
   });
