@@ -6,6 +6,7 @@ require("dotenv").config();
 const app = express();
 const db = require("./database/db");
 
+
 app.use(cors());
 
 app.use(express.json());
@@ -29,6 +30,7 @@ app.use("/login", loginRouter);
 app.use("/role", roleRouter);
 app.use("/user", userRouter);
 app.use("/wishlist", wishListRouter);
+
 
 app.listen(PORT, () => {
   console.log(`SERVER WORKING ON PORT: ${PORT}`);
