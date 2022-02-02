@@ -3,7 +3,7 @@
 -- {SELECT permissions.permission FROM roles join role_permission ON roles.id = role_permission.role join permissions on role_permission.permission = permissions.id
 -- where roles.id =2}
 
--- DROP DATABASE MERAKI_Academy_Project_5;
+DROP DATABASE MERAKI_Academy_Project_5;
 -- DROP DATABASE MERAKI_Academy_Project_5;
 
 CREATE DATABASE MERAKI_Academy_Project_5;
@@ -38,6 +38,7 @@ CREATE TABLE role_permission (
 -- ============================ // done
 CREATE TABLE users(
     id INT AUTO_INCREMENT NOT NULL,
+    user_name VARCHAR(100),
     email VARCHAR(100) UNIQUE,
     password VARCHAR(100),
     role_id INT,
@@ -45,6 +46,7 @@ CREATE TABLE users(
     is_deleted TINYINT DEFAULT 0,
     PRIMARY KEY (id)
 );
+-- user name VARCHAR(100),
 
 -- ============================ // done
 CREATE TABLE catagorys (
