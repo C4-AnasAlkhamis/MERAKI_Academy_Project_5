@@ -1,5 +1,6 @@
 const bcrypt = require("bcrypt");
 const connection = require("../database/db");
+
 // const secretSalt = process.env.SALT;
 // require("dotenv").config();
 
@@ -60,12 +61,12 @@ const getUserById = (req, res) => {
 
 // This function to update user by id.
 const updateUserById = (req, res) => {
-  const { userName, email, password } = req.body;
-  const id = req.params.id;
+  const { user_name, email, password ,role_id} = req.body;
+  const id = req.query.id;
 
-  const query = `UPDATE users SET userName=?, email=?, password=? WHERE id=?;`;
+  const query = `UPDATE users SET user_name=?, email=?, password=? , role_id = ? WHERE id=?;`;
 
-  const data = [userName, email, password, id];
+  const data = [user_name, email, password,role_id, id];
 
   connection.query(query, data, (err, results) => {
     if (err) {
@@ -122,6 +123,7 @@ const deleteUserById = (req, res) => {
     });
   });
 };
+
 
 module.exports = {
   createNewUser,
