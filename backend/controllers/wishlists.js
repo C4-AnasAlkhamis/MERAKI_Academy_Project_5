@@ -2,8 +2,7 @@ const connection = require("../database/db");
 
 // This function creates new wishlists
 const CreateNewWishlist = (req, res) => {
- 
-  const { item_id,user_id } = req.body;
+  const { item_id, user_id } = req.body;
 
   const query = `INSERT INTO wishlists (item_id, user_id) VALUES (?,?)`;
   const data = [item_id, user_id];
@@ -53,10 +52,12 @@ const GetWishlistById = (req, res) => {
   });
 };
 
+// This function delete item in wishlists by id
+
 const deleteItemInWishlistById = (req, res) => {
   const id = req.params.id;
 
-  const query = `UPDATE wishlists SET is_deleted=1 WHERE id=?;`;
+  const query = `DELETE FROM wishlists WHERE id = ?`;
 
   const data = [id];
 
@@ -68,17 +69,9 @@ const deleteItemInWishlistById = (req, res) => {
         err: err,
       });
     }
-    if (!results.changedRows) {
-      return res.status(404).json({
-        success: false,
-        massage: `The item: ${id} is not found`,
-        err: err,
-      });
-    }
-
     res.status(200).json({
       success: true,
-      massage: `Succeeded to delete item with id: ${id}`,
+      massage: `Succeeded to delete wishlist with id: ${id}`,
       results: results,
     });
   });
