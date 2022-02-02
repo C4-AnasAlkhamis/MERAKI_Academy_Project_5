@@ -47,8 +47,29 @@ const getAllCategories = (req, res) => {
     });
   });
 };
+// =================================================== // done
 
+// This function returns Category By Id
+const getCategoryById = (req, res) => {
+  let id = req.params.id;
+  const query = `SELECT * FROM categories WHERE id = ?`;
+  const data = [id];
+  connection.query(query, data, (err, result) => {
+    if (err) {
+      return res.status(500).json({
+        success: false,
+        message: `Server Error`,
+      });
+    }
+    res.status(200).json({
+      success: true,
+      message: `The cart ${id}`,
+      result: result,
+    });
+  });
+};
 module.exports = {
   createNewCategory,
   getAllCategories,
+  getCategoryById,
 };
