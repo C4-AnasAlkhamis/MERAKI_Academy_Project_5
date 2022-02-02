@@ -13,6 +13,10 @@ const {
   updateItemById,
 } = require("../controllers/items");
 
+//Post http://localhost:5000/item/
+//get http://localhost:5000/item/
+//delete http://localhost:5000/item/
+// http://localhost:5000/item/
 itemsRouter.post("/", createNewItem);
 itemsRouter.get("/", getAllItems);
 itemsRouter.delete("/:id", deleteItemById);
