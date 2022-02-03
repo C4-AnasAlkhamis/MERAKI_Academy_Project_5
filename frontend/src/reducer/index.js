@@ -1,11 +1,11 @@
 import { combineReducers, createStore } from "redux";
-import articlesReducer from "./article/index";
+import cartReducer from "./cart/index";
 import loginReducer from "./login/index";
 import commentsReducer from "./comment/index";
 import itemInfoReducer from "./itemInfo/index";
 
 const reducers = combineReducers({
-  articlesReducer,
+ cartReducer,
   loginReducer,
   commentsReducer,
   itemInfoReducer,

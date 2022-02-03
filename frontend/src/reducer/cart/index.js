@@ -1,10 +1,12 @@
 const initialState = {
-  articles: [],
+  cart: {
+    
+  },
 
 };
 // =======================  //
 
-const articlesReducer = (state = initialState, { type, payload }) => {
+const cartReducer = (state = initialState, { type, payload }) => {
   switch (type) {
     case "SET_ARTICLES":
       return { ...state, articles: payload };
@@ -32,7 +34,7 @@ const articlesReducer = (state = initialState, { type, payload }) => {
   }
 };
 
-export default articlesReducer;
+export default cartReducer;
 
 // =======================  //
 
