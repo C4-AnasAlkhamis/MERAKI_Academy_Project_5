@@ -89,7 +89,7 @@ const getItemById = (req, res) => {
     res.status(200).json({
       success: true,
       message: `Succeeded to get item with id ${id}`,
-      item: result,
+      result: result,
     });
   });
 };
@@ -123,7 +123,7 @@ const updateItemById = (req, res) => {
     res.status(201).json({
       success: true,
       massage: `the item updated`,
-      results: results,
+      result: results,
     });
   });
 };

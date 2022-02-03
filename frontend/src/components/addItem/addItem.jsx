@@ -1,88 +1,179 @@
-import "./register.css";
-import React, { useState } from "react";
-import axios from "axios";
+/** @format */
 
-const Register = () => {
+// /** @format */
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+
+import axios from "axios";
+import { useSelector, useDispatch } from "react-redux";
+import { addItem } from "../../reducer/item/index";
+
+//===============================================================
+
+const AddItem = () => {
+  const history = useNavigate();
+
+  const state = useSelector((state) => {
+    return {
+      token: state.loginReducer.token,
+      isLoggedIn: state.loginReducer.isLoggedIn,
+    };
+  });
+
+  const { token, isLoggedIn } = state;
+
+  const dispatch = useDispatch();
+
   const [title, setTitle] = useState("");
   const [descriptions, setDescriptions] = useState("");
   const [img, setImg] = useState("");
-  const [category_id, setCategory_id] = useState(false);
+  const [price, setPrice] = useState(0);
+  const [category_id, setCategory_id] = useState(0);
   const [message, setMessage] = useState("");
-  const [done, setDone] = useState(false);
-  const createUser = async (e) => {
+  const [status, setStatus] = useState(false);
+
+  //===============================================================
+
+  const createNewItem = async (e) => {
     e.preventDefault();
-    //   POST -> http://localhost:5000/user
-    if (repeatPassword === password) {
-      await axios
-        .post("http://localhost:5000/user", {
-          user_name: userName.toLowerCase(),
-          email: email.toLowerCase(),
-          password,
-        })
-        .then((result) => {
-          if (result) setMessage(result.data.message);
-          setUserName("");
-          setRepeatPassword("");
-          setEmail("");
-          setPassword("");
-          setDone(true);
-        })
-        .catch((err) => {
-          setMessage(err.response.data.message);
-        });
-    } else {
-      setMessage("The password should be the same in the repeat password");
+    try {
+      const item = {
+        title,
+        descriptions,
+        img,
+        price,
+        category_id,
+      };
+      const result = await axios.post("http://localhost:5000/item", item, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      if (result.data.success) {
+        setStatus(true);
+        dispatch(addItem({ title, descriptions, img, price, category_id }));
+        setMessage("The item has been created successfully");
+      }
+    } catch (error) {
+      if (!error.response.data.success) {
+        setStatus(false);
+        setMessage(error.response.data.message);
+      }
     }
   };
-  return (
-    <div className="register">
-      <form onSubmit={createUser}>
-        <input
-          onChange={(e) => {
-            setUserName(e.target.value);
-          }}
-          value={userName}
-          type="text"
-          placeholder="UserName"
-        />
 
+  //===============================================================
+
+  useEffect(() => {
+    if (!isLoggedIn) {
+      history("/homePage");
+    }
+  });
+
+  //===============================================================
+  return (
+    <>
+      <form onSubmit={createNewItem}>
+        <br />
         <input
-          onChange={(e) => {
-            setEmail(e.target.value);
-          }}
-          value={email}
-          type="email"
-          placeholder="Email"
-        />
-        <input
-          onChange={(e) => {
-            setPassword(e.target.value);
-          }}
-          value={password}
-          type="password"
-          placeholder="Password"
-        />
-        <input
-          onChange={(e) => {
-            setRepeatPassword(e.target.value);
-          }}
-          value={repeatPassword}
           type="text"
-          placeholder="LastName"
+          placeholder="item title here"
+          onChange={(e) => setTitle(e.target.value)}
         />
-        <button>Register</button>
-        <span
-          style={{
-            color: `${done ? "#24dc3a" : "#dc2424"}`,
-            textShadow: `1px 0 1px  ${done ? "#24dc3a" : "#dc2424"}`,
-          }}
-        >
-          {message}
-        </span>
+        <br />
+        <textarea
+          placeholder="item description here"
+          onChange={(e) => setDescriptions(e.target.value)}></textarea>
+        <br />
+        <input
+          type="text"
+          placeholder="item title here"
+          onChange={(e) => setImg(e.target.value)}
+        />
+        <br />
+        <input
+          type="text"
+          placeholder="item title here"
+          onChange={(e) => setTitle(e.target.value)}
+        />
+        <br />
+        <input
+          type="text"
+          placeholder="item title here"
+          onChange={(e) => setTitle(e.target.value)}
+        />
+        <br />
+        <button>Create New item</button>
       </form>
-    </div>
+      <br />
+      {status
+        ? message && <div className="SuccessMessage">{message}</div>
+        : message && <div className="ErrorMessage">{message}</div>}
+    </>
   );
 };
 
-export default Register;
-//
+export default AddItem;
+// import "./register.css";
+// import React, { useState } from "react";
+// import axios from "axios";
+
+// const AddItem = () => {
+//   const [title, setTitle] = useState("");
+//   const [descriptions, setDescriptions] = useState("");
+//   const [img, setImg] = useState("");
+//   const [price, setPrice] = useState(0);
+//   const [category_id, setCategory_id] = useState(0);
+//   const [message, setMessage] = useState("");
+//   const [done, setDone] = useState(false);
+//   const addItem = async (e) => {
+//     e.preventDefault();
+//     //   POST -> http://localhost:5000/user
+//     await axios
+//       .post("http://localhost:5000/item", {
+//         title,
+//         descriptions,
+//         img,
+//         price,
+//         category_id,
+//       })
+//       .then((result) => {
+//         if (result) setMessage(result.data.message);
+//         setTitle("");
+//         setDescriptions("");
+//         setImg("");
+//         setPrice(0);
+//         setCategory_id(0)
+//         setDone(true);
+//       })
+//       .catch((err) => {
+//         setMessage(err.response.data.message);
+//       });
+//   };
+//   return (
+//     <div className="addItem">
+//       <form onSubmit={addItem}>
+//         <input
+//           onChange={(e) => {
+//             setTitle(e.target.value);
+//           }}
+//           value={title}
+//           type="text"
+//           placeholder="Title"
+//         />
+
+//         <button>Add</button>
+//         <span
+//           style={{
+//             color: `${done ? "#24dc3a" : "#dc2424"}`,
+//             textShadow: `1px 0 1px  ${done ? "#24dc3a" : "#dc2424"}`,
+//           }}>
+//           {message}
+//         </span>
+//       </form>
+//     </div>
+//   );
+// };
+
+// export default AddItem;
+// //
