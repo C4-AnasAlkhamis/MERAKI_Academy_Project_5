@@ -3,9 +3,6 @@ import { Link } from "react-router-dom";
 import { logOut } from "../../reducer/login/index";
 import { useSelector, useDispatch } from "react-redux";
 
-
-        
-
 const NavBar = () => {
 
   const {isLoggedIn} = useSelector((state) => {
