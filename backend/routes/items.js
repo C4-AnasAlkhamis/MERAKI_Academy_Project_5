@@ -11,17 +11,20 @@ const {
   deleteItemById,
   getItemById,
   updateItemById,
+  getItemByCategory_id
 } = require("../controllers/items");
 
 //Post http://localhost:5000/item/
 //get http://localhost:5000/item/
 //delete http://localhost:5000/item/
-// http://localhost:5000/item/
+//get http://localhost:5000/item/id?id=
+//put http://localhost:5000/item/4
 itemsRouter.post("/", createNewItem);
 itemsRouter.get("/", getAllItems);
 itemsRouter.delete("/:id", deleteItemById);
 itemsRouter.get("/id", getItemById);
 itemsRouter.put("/:id", updateItemById);
+itemsRouter.get("/:category_id", getItemByCategory_id);
 
 //write your code here
 module.exports = itemsRouter;
