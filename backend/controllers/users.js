@@ -6,25 +6,25 @@ const connection = require("../database/db");
 
 // This function to sign up new user .
 const createNewUser = async (req, res) => {
-  const { user_name, email, password, role_id } = req.body;
+  const { user_name, email, password } = req.body;
 
   const hashingPass = await bcrypt.hash(password, 7);
 
-  const query = `INSERT INTO users (user_name, email, password, role_id) VALUES (?,?,?,?)`;
-  const data = [user_name, email, hashingPass, role_id];
+  const query = `INSERT INTO users (user_name, email, password, role_id) VALUES (?,?,?,1)`;
+  const data = [user_name, email, hashingPass];
 
   connection.query(query, data, (err, results) => {
     if (err) {
       return res.status(409).json({
         success: false,
-        massage: "The email already exists",
+        message: "The email already exists",
         err: err,
       });
     }
 
     res.status(200).json({
       success: true,
-      massage: "Success user Added",
+      message: "Success user Added",
       results: results,
     });
   });
@@ -61,12 +61,12 @@ const getUserById = (req, res) => {
 
 // This function to update user by id.
 const updateUserById = (req, res) => {
-  const { user_name, email, password ,role_id} = req.body;
+  const { user_name, email, password, role_id } = req.body;
   const id = req.query.id;
 
   const query = `UPDATE users SET user_name=?, email=?, password=? , role_id = ? WHERE id=?;`;
 
-  const data = [user_name, email, password,role_id, id];
+  const data = [user_name, email, password, role_id, id];
 
   connection.query(query, data, (err, results) => {
     if (err) {
@@ -123,7 +123,6 @@ const deleteUserById = (req, res) => {
     });
   });
 };
-
 
 module.exports = {
   createNewUser,
