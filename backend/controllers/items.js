@@ -4,10 +4,10 @@ const connection = require("../database/db");
 
 // This function create new item
 const createNewItem = (req, res) => {
-  const { image, title, description, category, price } = req.body;
+  const { title, descriptions, img, price, category_id } = req.body;
 
-  const query = `INSERT INTO items (img, title, description, category, price) VALUE (?,?,?,?,?)`;
-  const data = [image, title, description, category, price];
+  const query = `INSERT INTO items (img, title, descriptions, category_id, price) VALUE (?,?,?,?,?)`;
+  const data = [img, title, descriptions, category_id, price];
   connection.query(query, data, (err, result) => {
     if (err) {
       return res.status(500).json({
@@ -131,7 +131,7 @@ const updateItemById = (req, res) => {
 // // =================================================== // done
 // This function to get item by Category_id.
 const getItemByCategory_id = (req, res) => {
-  let  category_id  = req.query.id;
+  let category_id = req.query.id;
 
   const query = `select * FROM items WHERE category_id = ?`;
   const data = [category_id];
@@ -156,5 +156,5 @@ module.exports = {
   deleteItemById,
   getItemById,
   updateItemById,
-  getItemByCategory_id
+  getItemByCategory_id,
 };
