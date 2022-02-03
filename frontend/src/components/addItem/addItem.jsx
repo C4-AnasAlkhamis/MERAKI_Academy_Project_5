@@ -93,9 +93,21 @@ const AddItem = () => {
         <br />
         <input
           type="number"
-          placeholder="item category here"
-          onChange={(e) => setCategory_id(e.target.value)}
+          list="data"
+          placeholder="Category Type"
+          onClick={(e) => {
+            e.target.value = "";
+          }}
+          onChange={(e) => {
+            setCategory_id(e.target.id);
+          }}
         />
+        <datalist id="data">
+          {service}
+          <option id={1} value={"Hand Tools"} />
+          <option id={2} value={"Power Tools"} />
+          <option id={3} value={"Safety Work Waer"} />
+        </datalist>
         <br />
         <input
           type="file"
@@ -114,66 +126,3 @@ const AddItem = () => {
 };
 
 export default AddItem;
-// import "./register.css";
-// import React, { useState } from "react";
-// import axios from "axios";
-
-// const AddItem = () => {
-//   const [title, setTitle] = useState("");
-//   const [descriptions, setDescriptions] = useState("");
-//   const [img, setImg] = useState("");
-//   const [price, setPrice] = useState(0);
-//   const [category_id, setCategory_id] = useState(0);
-//   const [message, setMessage] = useState("");
-//   const [done, setDone] = useState(false);
-//   const addItem = async (e) => {
-//     e.preventDefault();
-//     //   POST -> http://localhost:5000/user
-//     await axios
-//       .post("http://localhost:5000/item", {
-//         title,
-//         descriptions,
-//         img,
-//         price,
-//         category_id,
-//       })
-//       .then((result) => {
-//         if (result) setMessage(result.data.message);
-//         setTitle("");
-//         setDescriptions("");
-//         setImg("");
-//         setPrice(0);
-//         setCategory_id(0)
-//         setDone(true);
-//       })
-//       .catch((err) => {
-//         setMessage(err.response.data.message);
-//       });
-//   };
-//   return (
-//     <div className="addItem">
-//       <form onSubmit={addItem}>
-//         <input
-//           onChange={(e) => {
-//             setTitle(e.target.value);
-//           }}
-//           value={title}
-//           type="text"
-//           placeholder="Title"
-//         />
-
-//         <button>Add</button>
-//         <span
-//           style={{
-//             color: `${done ? "#24dc3a" : "#dc2424"}`,
-//             textShadow: `1px 0 1px  ${done ? "#24dc3a" : "#dc2424"}`,
-//           }}>
-//           {message}
-//         </span>
-//       </form>
-//     </div>
-//   );
-// };
-
-// export default AddItem;
-// //
