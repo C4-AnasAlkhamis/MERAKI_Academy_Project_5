@@ -6,7 +6,7 @@ const connection = require("../database/db");
 const createNewItem = (req, res) => {
   const { image, title, description, category, price } = req.body;
 
-  const query = `INSERT INTO items (image, title, description, category, price) VALUE (?,?,?,?,?)`;
+  const query = `INSERT INTO items (img, title, description, category, price) VALUE (?,?,?,?,?)`;
   const data = [image, title, description, category, price];
   connection.query(query, data, (err, result) => {
     if (err) {
