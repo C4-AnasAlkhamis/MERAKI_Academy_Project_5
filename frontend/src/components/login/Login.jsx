@@ -21,10 +21,14 @@ const Login = () => {
         password,
       })
       .then((result) => {
-        navigate(`/home`);
-        localStorage.setItem("token", res.data.token);
-        dispatch(logIn(res.data.token));
-        setMessage("");
+        if (result) {
+          navigate(`/home`);
+          localStorage.setItem("token", res.data.token);
+          dispatch(logIn(res.data.token));
+          setMessage("");
+          setEmail("");
+          setPassword("");
+        }
       })
       .catch((err) => {
         setMessage("Error happened while Login, please try again");
@@ -60,4 +64,4 @@ const Login = () => {
   );
 };
 
-export default SignIn;
+export default Login;
