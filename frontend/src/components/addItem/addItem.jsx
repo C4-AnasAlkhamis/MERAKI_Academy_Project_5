@@ -86,23 +86,23 @@ const AddItem = () => {
           onChange={(e) => setDescriptions(e.target.value)}></textarea>
         <br />
         <input
-          type="text"
-          placeholder="item title here"
-          onChange={(e) => setImg(e.target.value)}
+          type="number"
+          placeholder="item price here"
+          onChange={(e) => setPrice(e.target.value)}
         />
         <br />
         <input
-          type="text"
-          placeholder="item title here"
-          onChange={(e) => setTitle(e.target.value)}
+          type="number"
+          placeholder="item category here"
+          onChange={(e) => setCategory_id(e.target.value)}
         />
         <br />
         <input
-          type="text"
-          placeholder="item title here"
-          onChange={(e) => setTitle(e.target.value)}
+          type="file"
+          onChange={(e) => {
+            setImg(e.target.value);
+          }}
         />
-        <br />
         <button>Create New item</button>
       </form>
       <br />
