@@ -21,7 +21,7 @@ itemsRouter.post("/", createNewItem);
 itemsRouter.get("/", getAllItems);
 itemsRouter.delete("/:id", deleteItemById);
 itemsRouter.get("/id", getItemById);
-itemsRouter.put("/", updateItemById);
+itemsRouter.put("/:id", updateItemById);
 
 //write your code here
 module.exports = itemsRouter;

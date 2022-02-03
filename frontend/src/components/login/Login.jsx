@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./login.css";
-import { logIn } from "../reducer/login/index";
+import { logIn } from "../../reducer/login/index";
 
 import { useDispatch } from "react-redux";
 // import LoginWG from "../LoginWG/LoginWG";
@@ -21,10 +21,14 @@ const Login = () => {
         password,
       })
       .then((result) => {
-        navigate(`/home`);
-        localStorage.setItem("token", res.data.token);
-        dispatch(logIn(res.data.token));
-        setMessage("");
+        if (result) {
+          navigate(`/home`);
+          localStorage.setItem("token", result.data.token);
+          dispatch(logIn(result.data.token));
+          setMessage("");
+          setEmail("");
+          setPassword("");
+        }
       })
       .catch((err) => {
         setMessage("Error happened while Login, please try again");
@@ -54,10 +58,9 @@ const Login = () => {
           <button>Login</button>
           <span>{message}</span>
         </form>
-        <LoginWG />
       </div>
     </>
   );
 };
 
-export default SignIn;
+export default Login;
