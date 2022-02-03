@@ -9,6 +9,7 @@ import NavBar from "./components/navBar/navBar";
 import Cart from "./components/cart/cart";
 import Wishlist from "./components/wishlist/wishlist";
 import AddItem from "./components/addItem/addItem";
+import HomePage from "./components/homePage/homePage";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/Cart" element={<Cart />} />
         <Route path="/Wishlist" element={<Wishlist />} />
         <Route path="/addItem" element={<AddItem />} />
+        <Route path="/homePage" element={<HomePage />} />
       </Routes>
     </div>
   );
