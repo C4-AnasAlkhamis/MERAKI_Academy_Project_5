@@ -51,8 +51,8 @@ const pushItem = async (req, res) => {
         img: x[i],
         title: y[i],
         price: z[i].substr(1, z[i].length - 1),
-        description: "asdsad",
-        category: 1,
+        description: "this is a Safety Work Wear",
+        category: 3,
       });
     }
     // await fs.writeFile("src.txt", `${[...el].join("\r\n")}`);
