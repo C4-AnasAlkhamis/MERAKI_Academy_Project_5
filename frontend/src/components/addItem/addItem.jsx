@@ -38,11 +38,11 @@ const AddItem = () => {
     e.preventDefault();
     try {
       const item = {
-        title,
-        descriptions,
-        img,
-        price,
-        category_id,
+        title:"sss",
+        descriptions:"ddd",
+        img:"aa",
+        price:3,
+        category_id:1,
       };
       const result = await axios.post("http://localhost:5000/item", item, {
         headers: {
@@ -92,18 +92,18 @@ const AddItem = () => {
         />
         <br />
         <input
-          type="number"
+          type="text"
           list="data"
           placeholder="Category Type"
           onClick={(e) => {
             e.target.value = "";
           }}
           onChange={(e) => {
+            console.log(e.target.id);
             setCategory_id(e.target.id);
           }}
         />
         <datalist id="data">
-          {service}
           <option id={1} value={"Hand Tools"} />
           <option id={2} value={"Power Tools"} />
           <option id={3} value={"Safety Work Waer"} />
