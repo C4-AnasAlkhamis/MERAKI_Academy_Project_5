@@ -128,10 +128,33 @@ const updateItemById = (req, res) => {
   });
 };
 
+// // =================================================== // done
+// This function to get item by Category_id.
+const getItemByCategory_id = (req, res) => {
+  let  category_id  = req.query.id;
+
+  const query = `select * FROM items WHERE category_id = ?`;
+  const data = [category_id];
+  connection.query(query, data, (err, result) => {
+    if (err) {
+      return res.status(500).json({
+        success: false,
+        message: ` No item with category_id ${id}`,
+      });
+    }
+    res.status(200).json({
+      success: true,
+      message: `Succeeded to get item with category_id ${id}`,
+      item: result,
+    });
+  });
+};
+
 module.exports = {
   createNewItem,
   getAllItems,
   deleteItemById,
   getItemById,
   updateItemById,
+  getItemByCategory_id
 };
