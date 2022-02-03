@@ -1,5 +1,9 @@
 const initialState = {
-  itemInfo: [],
+  itemInfo: {
+    img: "https://itslondon.s3.amazonaws.com/p/l/DEWDCH133NT.jpg",
+    title: "Milwaukee M18 FN16GA-0X FUEL Angled Nail Gun 16 Gauge with C...",
+    price: 300,
+  },
 };
 // =======================  //
 
@@ -7,25 +11,6 @@ const itemInfoReducer = (state = initialState, { type, payload }) => {
   switch (type) {
     case "SET_ITEMINFO":
       return { itemInfo: payload };
-    // case "ADD_ARTICLE":
-    //   return { ...state, articles: [...state.articles, payload] };
-    // case "UPDATE_ITEMINFO":
-    //   return {
-    //     ...state,
-    //     articles: state.articles.map((article) => {
-    //       if (article.id === payload.id) {
-    //         return payload;
-    //       }
-    //       return article;
-    //     }),
-    //   };
-    // case "DELETE_ARTICLE":
-    //   return {
-    //     ...state,
-    //     articles: state.articles.filter((article) => {
-    //       return article.id !== payload;
-    //     }),
-    //   };
     default:
       return state;
   }
@@ -45,9 +30,9 @@ export const setItemInfo = (ItemInfo) => {
 // };
 // // =======================  //
 
-export const updateItemInfo = (updatedItemInfo) => {
-  return { type: "UPDATE_ITEMINFO", payload: updatedItemInfo };
-};
+// export const updateItemInfo = (updatedItemInfo) => {
+//   return { type: "UPDATE_ITEMINFO", payload: updatedItemInfo };
+// };
 // =======================  //
 
 // export const deleteArticles = (id) => {

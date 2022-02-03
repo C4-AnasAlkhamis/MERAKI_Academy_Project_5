@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./login.css";
-import { logIn } from "../reducer/login/index";
+import { logIn } from "../../reducer/login/index";
 
 import { useDispatch } from "react-redux";
 // import LoginWG from "../LoginWG/LoginWG";
@@ -23,8 +23,8 @@ const Login = () => {
       .then((result) => {
         if (result) {
           navigate(`/home`);
-          localStorage.setItem("token", res.data.token);
-          dispatch(logIn(res.data.token));
+          localStorage.setItem("token", result.data.token);
+          dispatch(logIn(result.data.token));
           setMessage("");
           setEmail("");
           setPassword("");
@@ -58,7 +58,6 @@ const Login = () => {
           <button>Login</button>
           <span>{message}</span>
         </form>
-        <LoginWG />
       </div>
     </>
   );
