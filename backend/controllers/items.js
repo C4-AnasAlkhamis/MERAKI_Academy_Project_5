@@ -98,9 +98,9 @@ const getItemById = (req, res) => {
 // This function to update item by id.
 const updateItemById = (req, res) => {
   const { image, title, description, category, price } = req.body;
-  const { id } = req.query;
+  const id = req.params.id;
 
-  const query = `UPDATE items SET image=?, title=?, description=? , category = ? , price=? WHERE id=?;`;
+  const query = `UPDATE items SET img=?, title=?, descriptions=? , category_id = ? , price=? WHERE id=?;`;
 
   const data = [image, title, description, category, price, id];
 
