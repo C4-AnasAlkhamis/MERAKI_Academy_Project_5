@@ -17,7 +17,7 @@ import logo from "./image/logo.png";
 function App() {
   return (
     <div className="App">
-      <div>
+      <div className="logo">
           <img src={logo} />
         </div>
       <NavBar />

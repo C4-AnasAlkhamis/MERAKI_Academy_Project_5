@@ -6,8 +6,6 @@
   height: 100px;
   background-color: white;
   display: grid;
-  /* opacity: 10%; */
-
   position: relative;
   top: 2.5em;
   position: sticky;
@@ -15,21 +13,23 @@
 }
 .Link {
   background-color: rgb(242, 242, 242);
-  height: 50px;
+  height: 60px;
   align-items: center;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 .NavBar h2 {
   display: grid;
   grid-template-columns: repeat(7, 150px);
   text-align: right;
-  font-size: 20px;
+  font-size: 18px;
 }
 
 .NavBar a {
   color: black;
   padding: 5%;
-  margin-left: 100px;
-  width: 60px;
+  margin-top: 9px;
+  margin-left: 130px;
+  width: 85px;
   text-align: center;
 }
 
@@ -38,3 +38,4 @@
   background-color: rgb(4, 81, 140);
   border-radius: 5px;
 }
+

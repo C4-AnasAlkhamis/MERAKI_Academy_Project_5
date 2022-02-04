@@ -34,16 +34,16 @@ const NavBar = () => {
                   logOut();
                   localStorage.setItem("token", "");
                 }}>
-                logout
+                LOGOUT
               </Link>
             </>
           ) : (
             <>
               <Link to="/register" style={{ textDecoration: "none" }}>
-                Register{" "}
+                REGISTER{" "}
               </Link>
               <Link to="/login" style={{ textDecoration: "none" }}>
-                Login
+                LOGIN
               </Link>
             </>
           )}

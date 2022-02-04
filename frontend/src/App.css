@@ -38,3 +38,12 @@ input:focus {
   border-color: #40bb75;
   box-shadow: 0 0 8px 0 #40bb75;
 }
+
+.logo{
+  padding-top: 20px;
+  padding-bottom: 1px;
+  margin-bottom: 20px;
+  border-bottom:solid 1px  ;
+  text-align: center;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
