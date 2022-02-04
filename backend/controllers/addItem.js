@@ -26,7 +26,7 @@ const url3 = [
 ];
 
 const pushItem = async (req, res) => {
-  url3.forEach(async (url) => {
+  url1.forEach(async (url) => {
     // open browser
     const browser = await puppeteer.launch();
     // open page
@@ -52,7 +52,7 @@ const pushItem = async (req, res) => {
         title: y[i],
         price: z[i].substr(1, z[i].length - 1),
         description: "this is a Safety Work Wear",
-        category: 3,
+        category: 1,
       });
     }
     // await fs.writeFile("src.txt", `${[...el].join("\r\n")}`);
