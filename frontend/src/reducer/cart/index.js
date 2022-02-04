@@ -1,5 +1,6 @@
 const initialState = {
   carts: [],
+
 };
 
 const cartReducer = (state = initialState, { type, payload }) => {
@@ -9,6 +10,7 @@ const cartReducer = (state = initialState, { type, payload }) => {
 
     case "SET_CART":
       return { carts: [...payload] };
+
 
     case "DELETE_CART":
       return {
@@ -22,10 +24,8 @@ const cartReducer = (state = initialState, { type, payload }) => {
 };
 export default cartReducer;
 
-// export const addCart = (newCart) => {
-//   return { type: "ADD_CART", payload: newCart };
-// };
-//   ===========================
+
+
 export const setCart = (carts) => {
   return { type: "SET_CART", payload: carts };
 };
@@ -34,4 +34,3 @@ export const deleteCart = (id) => {
   return { type: "DELETE_CART", payload: id };
 };
 
-///////////////////////
