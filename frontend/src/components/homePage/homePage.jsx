@@ -68,64 +68,6 @@ const HomePage = () => {
   };
   //===============================================================
 
-  //   const handleUpdateClick = (article) => {
-  //     setUpdateBox(!updateBox);
-  //     setArticleId(article.id);
-  //     setTitle(article.title);
-  //     setDescription(article.description);
-  //     if (updateBox) updateArticle(article.id);
-  //   };
-
-  //===============================================================
-
-  //   const updateArticle = async (id) => {
-  //     try {
-  //       await axios.put(`http://localhost:5000/articles/${id}`, {
-  //         title,
-  //         description,
-  //       });
-  //       getAllArticles();
-  //       dispatch(updateArticleById({ title, description }));
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   };
-
-  //===============================================================
-
-  //   const deleteArticle = async (id) => {
-  //     try {
-  //       await axios.delete(`http://localhost:5000/articles/${id}`);
-  //       getAllArticles();
-  //       dispatch(deleteArticleById(id));
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   };
-
-  //===============================================================
-
-  //   const addComment = async (id) => {
-  //     try {
-  //       await axios.post(
-  //         `http://localhost:5000/articles/${id}/comments`,
-  //         {
-  //           comment,
-  //         },
-  //         {
-  //           headers: {
-  //             Authorization: `Bearer ${token}`,
-  //           },
-  //         }
-  //       );
-  //       getAllArticles();
-  //     } catch (error) {
-  //       console.log(error.response);
-  //     }
-  //   };
-
-  //===============================================================
-
   useEffect(() => {
     getAllCategories();
     getAllItems();
@@ -155,13 +97,8 @@ const HomePage = () => {
 
       <div className="items">
         {items.map((item, index) => {
-          // if(categoryId===item.category_id){
-        //   console.log("item", item.category_id);
-        //   console.log("category",categoryId,);
           return (
             <div className="item">
-              {categoryId === item.category_id ? (
-                <>
                   <div className="img_box">
                     <img src={item.img} alt={item.title} />
                   </div>
@@ -171,8 +108,6 @@ const HomePage = () => {
                     <span>$ {item.price}</span>
                     <span>{item.rate}</span>
                   </div>
-                </>
-               ) : null}
             </div>
           );
         })}
