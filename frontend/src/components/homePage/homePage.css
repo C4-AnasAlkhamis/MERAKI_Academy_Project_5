@@ -31,8 +31,6 @@
   width: 100%;
   display: grid;
   grid-template-columns: repeat(10, 200px);
-  position: relative;
-  top: 2.5em;
   position: sticky;
   top: 0;
 }
