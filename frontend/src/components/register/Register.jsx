@@ -44,7 +44,7 @@ const Register = () => {
   return (
     <div className="register">
       <div className="group">
-      <div className="logo">
+      <div className="regImg">
           <img src={logo} />
         </div>
       <form onSubmit={createUser}>
