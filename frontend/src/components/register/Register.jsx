@@ -1,8 +1,10 @@
 import "./register.css";
 import React, { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
+  const navigate = useNavigate();
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -12,7 +14,9 @@ const Register = () => {
   const createUser = async (e) => {
     e.preventDefault();
     //   POST -> http://localhost:5000/user
-    if (repeatPassword === password) {
+    if (!userName || !email || !password || !repeatPassword) {
+      setMessage("please fill in all inputs");
+    } else if (repeatPassword === password) {
       await axios
         .post("http://localhost:5000/user", {
           user_name: userName.toLowerCase(),
@@ -26,6 +30,7 @@ const Register = () => {
           setEmail("");
           setPassword("");
           setDone(true);
+          navigate("/login");
         })
         .catch((err) => {
           setMessage(err.response.data.message);
@@ -67,8 +72,8 @@ const Register = () => {
             setRepeatPassword(e.target.value);
           }}
           value={repeatPassword}
-          type="text"
-          placeholder="LastName"
+          type="Password"
+          placeholder="Repeat password"
         />
         <button>Register</button>
         <span

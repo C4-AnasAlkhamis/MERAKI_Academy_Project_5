@@ -4,9 +4,8 @@ import { logOut } from "../../reducer/login/index";
 import { useSelector, useDispatch } from "react-redux";
 
 const NavBar = () => {
-
-  const {isLoggedIn} = useSelector((state) => {
-    return { isLoggedIn: state.loginReducer.isLoggedIn};
+  const { isLoggedIn } = useSelector((state) => {
+    return { isLoggedIn: state.loginReducer.isLoggedIn };
   });
 
   return (
@@ -24,7 +23,14 @@ const NavBar = () => {
               I
             </Link>
 
-            <Link to="/homePage" className="logout" onClick={logOut}>
+            <Link
+              to="/homePage"
+              className="logout"
+              onClick={(e) => {
+                logOut();
+                localStorage.setItem("token", "");
+              }}
+            >
               logout
             </Link>
           </>
@@ -44,4 +50,3 @@ const NavBar = () => {
 };
 
 export default NavBar;
-

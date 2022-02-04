@@ -17,11 +17,10 @@ const createNewUser = async (req, res) => {
     if (err) {
       return res.status(409).json({
         success: false,
-        message: "The email already exists",
+        message: "server Error",
         err: err,
       });
     }
-
     res.status(200).json({
       success: true,
       message: "Success user Added",

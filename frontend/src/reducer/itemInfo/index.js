@@ -1,20 +1,14 @@
+/** @format */
+
 const initialState = {
-  itemInfo: {
-    image: "https://itslondon.s3.amazonaws.com/p/l/DEWDCH133NT.jpg",
-    title: "Milwaukee M18 FN16GA-0X FUEL Angled Nail Gun 16 Gauge with C...",
-    description:
-      "Milwaukee M18 FN16GA-0X FUEL Angled Nail Gun 16 Gauge with C...",
-    price: 300,
-    category: 1,
-    id: 2,
-  },
+  itemInfo: {},
 };
 // =======================  //
 
 const itemInfoReducer = (state = initialState, { type, payload }) => {
   switch (type) {
     case "SET_ITEMINFO":
-      return { itemInfo: payload };
+      return { itemInfo: payload["0"] };
     case "UPDATE_ITEMINFO":
       return { itemInfo: payload };
 

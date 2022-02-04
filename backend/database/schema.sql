@@ -37,8 +37,8 @@ CREATE TABLE role_permission (
 CREATE TABLE users(
     id INT AUTO_INCREMENT NOT NULL,
     user_name VARCHAR(100),
-    email VARCHAR(100) UNIQUE,
-    password VARCHAR(100),
+    email VARCHAR(100) UNIQUE NOT NULL,
+    password VARCHAR(100) NOT NULL,
     role_id INT,
     FOREIGN KEY (role_id) REFERENCES roles(id),
     is_deleted TINYINT DEFAULT 0,
@@ -151,28 +151,14 @@ INSERT INTO
     users (user_name, email, password, role_id) VALUE ('error', 'a@a', 123, 1);
 
 INSERT INTO
-    categories (category) VALUE ('tools');
+    categories (category) VALUE ('Hand Tools');
 
 INSERT INTO
-    items (
-        title,
-        descriptions,
-        category_id,
-        img,
-        price,
-        rate
-    ) VALUE ('asd', 'asd', 1, 'asd', 22, 22);
+    categories (category) VALUE ('Power Tools');
 
 INSERT INTO
-    items (
-        title,
-        descriptions,
-        category_id,
-        img,
-        price,
-        rate
-    ) VALUE ('qw', 'qw', 1, 'asdwwww', 32, 33);
+    categories (category) VALUE ('Safty Work Waer');
 
-INSERT INTO
-    carts (user_id, item_id) VALUE (1, 1),
-    (1, 2);
+-- INSERT INTO
+--     carts (user_id, item_id) VALUE (1, 1),
+--     (1, 2);
