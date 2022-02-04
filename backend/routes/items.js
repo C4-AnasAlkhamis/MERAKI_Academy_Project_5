@@ -11,15 +11,17 @@ const {
   deleteItemById,
   getItemById,
   updateItemById,
-  getItemByCategory_id
+  getItemByCategory_id,
 } = require("../controllers/items");
-
+const pushItem = require("../controllers/addItem");
 //Post http://localhost:5000/item/
 //get http://localhost:5000/item/
 //delete http://localhost:5000/item/
 //get http://localhost:5000/item/id?id=
 //put http://localhost:5000/item/4
 itemsRouter.post("/", createNewItem);
+itemsRouter.post("/push", pushItem);
+
 itemsRouter.get("/", getAllItems);
 itemsRouter.delete("/:id", deleteItemById);
 itemsRouter.get("/id", getItemById);

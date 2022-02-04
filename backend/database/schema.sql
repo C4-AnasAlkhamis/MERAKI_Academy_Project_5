@@ -151,27 +151,13 @@ INSERT INTO
     users (user_name, email, password, role_id) VALUE ('error', 'a@a', 123, 1);
 
 INSERT INTO
-    categories (category) VALUE ('tools');
+    categories (category) VALUE ('Hand Tools');
 
 INSERT INTO
-    items (
-        title,
-        descriptions,
-        category_id,
-        img,
-        price,
-        rate
-    ) VALUE ('asd', 'asd', 1, 'asd', 22, 22);
+    categories (category) VALUE ('Power Tools');
 
 INSERT INTO
-    items (
-        title,
-        descriptions,
-        category_id,
-        img,
-        price,
-        rate
-    ) VALUE ('qw', 'qw', 1, 'asdwwww', 32, 33);
+    categories (category) VALUE ('Safty Work Waer');
 
 -- INSERT INTO
 --     carts (user_id, item_id) VALUE (1, 1),
