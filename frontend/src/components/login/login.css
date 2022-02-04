@@ -1,4 +1,4 @@
-.login_box form {
+/* .login_box form {
   color: hsl(146, 62%, 26%);
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif, Times,
     serif;
@@ -23,4 +23,68 @@
   background-color: white;
   color: #0f6836;
   font-size: 15px;
+} */
+.login_box{
+  background-color: rgb(4, 81, 140);
+  display: flex;
+ justify-content: center;
+ padding-top: 3%;
+ 
+}
+.login_box form {
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif, Times,
+    serif;
+  background-color: white;
+  padding: 10% 0% 0% 0%;
+  text-align: center;
+  /* border-radius: 5px; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5vh;
+}
+.login_box form button {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  color: white;
+  border: none;
+  font-size: 19px;
+  width: 80%;
+  height: 50px;
+  background-color: rgb(4, 81, 140);
+  margin-bottom: 1px;
+  border-left: solid 5px rgb(255, 211, 51);
+}
+.login_box form button:hover {
+  cursor: pointer;
+  color: white;
+  background-color: rgb(39, 144, 189);
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px,
+  rgb(255, 211, 51) 0px 1px 1px -5px;
+}
+.login_box form input {
+  font-family: FontAwesome;
+  font-size: 1.25em;
+  width: 80%;
+  border: none;
+  background-color: white;
+  color: black;
+  border-bottom: solid 1px rgb(163, 159, 159);
+}
+.regImg{
+  margin: 0%;
+  padding: 0%;
+}
+.register img{
+  width: 100%;
+height: 100%;
+}
+
+.group{
+  width: 1000px;
+  display: grid;
+  grid-template-columns: repeat(2,4fr);
+  grid-template-rows: repeat(1,400px);
+  height: 65.7vh;
+  object-fit: contain;
+
 }
