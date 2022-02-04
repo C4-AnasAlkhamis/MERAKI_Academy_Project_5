@@ -124,11 +124,11 @@ const HomePage = () => {
           return (
             <div className="item">
               <div className="img_box">
+                <p>{item.title}</p>
                 {item.img ? <img src={item.img} alt={item.title} /> : null}
               </div>
               <div className="info_box">
-                <p>{item.title}</p>
-                <p>{item.descriptions}</p>
+                {/* <p>{item.descriptions}</p> */}
                 <span>$ {item.price}</span>
                 <span>{item.rate}</span>
               </div>
