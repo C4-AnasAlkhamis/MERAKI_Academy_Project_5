@@ -1,58 +1,41 @@
 const initialState = {
-  cart: {
-    
-  },
-
+  carts: [
+    {
+      image: "https://itslondon.s3.amazonaws.com/p/l/DEWDCH133NT.jpg",
+      title: "Milwaukee M18 FN16GA-0X FUEL Angled Nail Gun 16 Gauge with C...",
+      description:
+        "Milwaukee M18 FN16GA-0X FUEL Angled Nail Gun 16 Gauge with C...",
+      price: 300,
+      category: 1,
+      id: 2,
+    },
+  ],
 };
-// =======================  //
 
 const cartReducer = (state = initialState, { type, payload }) => {
   switch (type) {
-    case "SET_ARTICLES":
-      return { ...state, articles: payload };
-    case "ADD_ARTICLE":
-      return { ...state, articles: [...state.articles, payload] };
-    case "UPDATE_ARTICLE":
-      return {
-        ...state,
-        articles: state.articles.map((article) => {
-          if (article.id === payload.id) {
-            return payload;
-          }
-          return article;
-        }),
-      };
-    case "DELETE_ARTICLE":
-      return {
-        ...state,
-        articles: state.articles.filter((article) => {
-          return article.id !== payload;
-        }),
-      };
+    // case "ADD_CART":
+    //   return { ...state, carts: [...state.carts, payload] };
+
+    case "SET_CART":
+      return { carts: [...payload, payload] };
+
+    case "DELETE_CART":
+      return { carts: state.carts.filter((cart) => cart.id !== payload.id) };
     default:
       return state;
   }
 };
-
 export default cartReducer;
 
-// =======================  //
-
-export const setArticles = (articles) => {
-  return { type: "SET_ARTICLES", payload: articles };
+// export const addCart = (newCart) => {
+//   return { type: "ADD_CART", payload: newCart };
+// };
+//   ===========================
+export const setCart = (carts) => {
+  return { type: "SET_CART", payload: carts };
 };
-// =======================  //
 
-export const addArticle = (newArticle) => {
-  return { type: "ADD_ARTICLE", payload: newArticle };
-};
-// =======================  //
-
-export const updateArticles = (updatedArticle) => {
-  return { type: "UPDATE_ARTICLE", payload: updatedArticle };
-};
-// =======================  //
-
-export const deleteArticles = (id) => {
-  return { type: "DELETE_ARTICLE", payload: id };
+export const deleteCart = (cart) => {
+  return { type: "DELETE_CART", payload: cart };
 };

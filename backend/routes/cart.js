@@ -10,9 +10,11 @@ const {
   getCartById,
   deleteCartById,
 } = require("../controllers/cart");
+const authentication= require("../middleware/authentication");
+
 //   ========================================== //
 cartRouter.post("/", createNewCart);
-cartRouter.get("/:id", getCartById);
+cartRouter.get("/",authentication, getCartById);
 cartRouter.delete("/:id", deleteCartById);
 
 //write your code here
