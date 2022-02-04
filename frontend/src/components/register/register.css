@@ -1,13 +1,14 @@
+.register{
+  background-color: rgb(4, 81, 140);
+}
 .register form {
-  color: hsl(146, 62%, 26%);
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif, Times,
     serif;
   background-color: white;
   margin: auto;
-  padding: 5%;
+  padding: 2% 4% 0% 4%;
   border: solid 1px;
-  border-radius: 2%;
-  height: 400px;
+  border-radius: 5px;
   width: 300px;
   display: flex;
   flex-direction: column;
