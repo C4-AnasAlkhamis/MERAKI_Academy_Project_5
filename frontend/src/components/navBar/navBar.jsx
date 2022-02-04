@@ -9,7 +9,12 @@ import { useSelector, useDispatch } from "react-redux";
 import { GrUser } from "react-icons/gr";
 import { BiLogOut } from "react-icons/bi";
 import { BiLogIn } from "react-icons/bi";
-import { AiOutlineFundProjectionScreen } from "react-icons/ai";
+import {
+  AiOutlineFundProjectionScreen,
+  AiOutlineShoppingCart,
+  AiOutlineOrderedList,
+  AiOutlineUserAdd
+} from "react-icons/ai";
 //
 const NavBar = () => {
   const { isLoggedIn } = useSelector((state) => {
@@ -27,10 +32,10 @@ const NavBar = () => {
                   <AiOutlineFundProjectionScreen /> HOME
                 </Link>
                 <Link to="/cart" style={{ textDecoration: "none" }}>
-                  CART
+                  <AiOutlineShoppingCart /> CART
                 </Link>
                 <Link to="/wishlist" style={{ textDecoration: "none" }}>
-                  WISHLIST
+                  <AiOutlineOrderedList /> WISHLIST
                 </Link>
 
                 <Link
@@ -49,7 +54,7 @@ const NavBar = () => {
                   <AiOutlineFundProjectionScreen /> HOME
                 </Link>
                 <Link to="/register" style={{ textDecoration: "none" }}>
-                  <GrUser /> REGISTER{" "}
+                  <AiOutlineUserAdd /> REGISTER{" "}
                 </Link>
                 <Link to="/login" style={{ textDecoration: "none" }}>
                   <BiLogIn /> LOGIN
