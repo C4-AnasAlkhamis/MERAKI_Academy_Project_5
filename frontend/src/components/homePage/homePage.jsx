@@ -74,40 +74,41 @@ const HomePage = () => {
   }, []);
 
   //===============================================================
-
+  let categoriesMap = categories.map((category, indx) => {
+    return (
+      <>
+        <li
+          id={category.id}
+          onClick={(e) => {
+            setCategoryId(parseInt(e.target.id));
+          }}>
+          {category.category}
+        </li>
+      </>
+    );
+  });
+  let itemsMap = items.filter((item, index) => {
+    return item.category_id === categoryId;
+  });
   return (
     <div className="homePage">
       <div className="categories">
-        <ul>
-          {categories.map((category, indx) => {
-            return (
-              <>
-                <li
-                  id={category.id}
-                  onClick={(e) => {
-                    setCategoryId(e.target.id);
-                  }}>
-                  {category.category}
-                </li>
-              </>
-            );
-          })}
-        </ul>
+        <ul>{categoriesMap}</ul>
       </div>
 
       <div className="items">
-        {items.map((item, index) => {
+        {itemsMap.map((item, index) => {
           return (
             <div className="item">
-                  <div className="img_box">
-                    <img src={item.img} alt={item.title} />
-                  </div>
-                  <div className="info_box">
-                    <p>{item.title}</p>
-                    <p>{item.descriptions}</p>
-                    <span>$ {item.price}</span>
-                    <span>{item.rate}</span>
-                  </div>
+              <div className="img_box">
+                {item.img ? <img src={item.img} alt={item.title} /> : null}
+              </div>
+              <div className="info_box">
+                <p>{item.title}</p>
+                <p>{item.descriptions}</p>
+                <span>$ {item.price}</span>
+                <span>{item.rate}</span>
+              </div>
             </div>
           );
         })}
