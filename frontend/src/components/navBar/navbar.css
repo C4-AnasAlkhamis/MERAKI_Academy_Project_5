@@ -1,0 +1,17 @@
+
+.NavBar{
+    width: 100%;
+    height: 100px;
+    background-color: white;
+    display: grid;
+    /* opacity: 10%; */
+
+    position: relative;
+    top: 2.5em;
+    position: sticky;
+    top: 0;
+}
+
+.NavBar a{
+    padding-right: 70px;
+}
