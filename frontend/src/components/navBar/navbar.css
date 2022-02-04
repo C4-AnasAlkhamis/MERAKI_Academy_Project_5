@@ -9,10 +9,11 @@
   top: 0;
 }
 .Link {
-  background-color: rgb(242, 242, 242);
+  background-color: rgb(4, 81, 140);
   height: 60px;
   align-items: center;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border-bottom: solid 3px rgb(255, 211, 51);
 }
 .NavBar h2 {
   display: grid;
@@ -22,7 +23,8 @@
 }
 
 .NavBar a {
-  color: black;
+    color: white;
+
   padding: 5%;
   margin-top: 9px;
   margin-left: 130px;
@@ -35,4 +37,3 @@
   background-color: rgb(4, 81, 140);
   border-radius: 5px;
 }
-
