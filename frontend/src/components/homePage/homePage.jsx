@@ -11,6 +11,11 @@ import { setItemInfo } from "../../reducer/itemInfo/index";
 import { useNavigate } from "react-router-dom";
 
 //===============================================================
+import handTool from "../../image/header.png";
+import powerTool from "../../image/header.jpg";
+import safetyTool from "../../image/landing-banner-d (1).jpg";
+
+//===============================================================
 
 const HomePage = () => {
   // ---------------------------------------------
@@ -88,7 +93,7 @@ const HomePage = () => {
       .then((result) => {
         dispatch(setItemInfo({ ...result.data.result }));
         console.log(...result.data.result);
-        navigate("/more-info")
+        navigate("/more-info");
       })
       .catch((err) => {
         console.log(err);
@@ -113,23 +118,58 @@ const HomePage = () => {
   let itemsMap = items.filter((item, index) => {
     return item.category_id === categoryId;
   });
+
+  const headerImg = () => {
+    switch (categoryId) {
+      case 1:
+        return (
+          <>
+            <img src={handTool} />
+          </>
+        );
+
+      case 2:
+        return (
+          <>
+            <img src={powerTool} />
+          </>
+        );
+
+      case 3:
+        return (
+          <>
+            <img src={safetyTool} />
+          </>
+        );
+      default:
+        return;
+    }
+  };
+
   return (
     <div className="homePage">
       <div className="categories">
-        <ul>{categoriesMap}</ul>
+        <ul>
+          <li></li>
+          {categoriesMap}
+          <li>Tool Storage</li>
+          <li>Plumbing</li>
+        </ul>
       </div>
+      <div className="Hadar">{headerImg()}</div>
 
       <div className="items">
         {itemsMap.map((item, index) => {
           return (
             <div className="item">
+              <div className="title">
+                <p>{item.title}</p>
+              </div>
               <div className="img_box">
                 {item.img ? <img src={item.img} alt={item.title} /> : null}
               </div>
               <div className="info_box">
-                <p>{item.title}</p>
-                <p>{item.descriptions}</p>
-                <span>$ {item.price}</span>
+                <h1>{item.price} JOD</h1>
                 <span>{item.rate}</span>
               </div>
               <div className="btn">
@@ -138,7 +178,7 @@ const HomePage = () => {
                   onClick={(e) => {
                     getItemById(e.target.id);
                   }}>
-                  Item Details
+                  ITEM DETAILS
                 </button>
               </div>
             </div>
