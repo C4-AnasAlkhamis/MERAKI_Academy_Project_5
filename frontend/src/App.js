@@ -17,13 +17,10 @@ import logo from "./image/logo.png";
 function App() {
   return (
     <div className="App">
-<<<<<<< HEAD
-      
-=======
+
       <div className="logo">
           <img src={logo} />
         </div>
->>>>>>> cd486c44e3527e8f291e725a464b0721c8d393a5
       <NavBar />
 
       <Routes>
