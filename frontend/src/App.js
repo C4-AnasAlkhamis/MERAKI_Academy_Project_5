@@ -10,6 +10,7 @@ import Wishlist from "./components/wishlist/wishlist";
 function App() {
   return (
     <div className="App">
+      
       <NavBar />
 
       <Routes>

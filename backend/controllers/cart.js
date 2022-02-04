@@ -25,7 +25,10 @@ const createNewCart = (req, res) => {
 
 // This function returns Cart By Id
 const getCartById = (req, res) => {
-  const id = req.params.id;
+
+  console.log();
+  const id = req.token.user_id;
+
   const query = `SELECT * FROM carts join items ON carts.item_id = items.id where carts.user_id =?`;
   const data = [id];
   connection.query(query, data, (err, result) => {

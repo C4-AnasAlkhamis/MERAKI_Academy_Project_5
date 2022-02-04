@@ -173,6 +173,6 @@ INSERT INTO
         rate
     ) VALUE ('qw', 'qw', 1, 'asdwwww', 32, 33);
 
-INSERT INTO
-    carts (user_id, item_id) VALUE (1, 1),
-    (1, 2);
+-- INSERT INTO
+--     carts (user_id, item_id) VALUE (1, 1),
+--     (1, 2);
