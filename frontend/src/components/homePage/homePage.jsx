@@ -11,7 +11,7 @@ import { setItemInfo } from "../../reducer/itemInfo/index";
 import { useNavigate } from "react-router-dom";
 
 //===============================================================
-import handTool from '../../image/header.png';
+import handTool from "../../image/header.png";
 import powerTool from "../../image/header.jpg";
 import safetyTool from "../../image/landing-banner-d (1).jpg";
 
@@ -128,14 +128,14 @@ const HomePage = () => {
           </>
         );
 
-        case 2:
+      case 2:
         return (
           <>
             <img src={powerTool} />
           </>
         );
 
-        case 3:
+      case 3:
         return (
           <>
             <img src={safetyTool} />
@@ -149,7 +149,12 @@ const HomePage = () => {
   return (
     <div className="homePage">
       <div className="categories">
-        <ul>{categoriesMap}</ul>
+        <ul>
+          <li></li>
+          {categoriesMap}
+          <li>Tool Storage</li>
+          <li>Plumbing</li>
+        </ul>
       </div>
       <div className="Hadar">{headerImg()}</div>
 
