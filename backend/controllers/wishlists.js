@@ -24,10 +24,10 @@ const CreateNewWishlist = (req, res) => {
 };
 
 // This function get  wishlists by user id
-const GetWishlistById = (req, res) => {
-  const id = req.params.id;
+const getWishlistById = (req, res) => {
+  const id = req.token.userId;
 
-  const query = `SELECT * FROM wishlists join items ON wishlists.item_id = items.id where wishlists.user_id =?`;
+  const query = `SELECT *, wishlists.id As wishlist_id FROM wishlists join items ON wishlists.item_id = items.id where wishlists.user_id =?`;
   const data = [id];
 
   connection.query(query, data, (err, results) => {
@@ -55,7 +55,7 @@ const GetWishlistById = (req, res) => {
 // This function delete item in wishlists by id
 
 const deleteItemInWishlistById = (req, res) => {
-  const id = req.params.id;
+  const id = req.token.userId;
 
   const query = `DELETE FROM wishlists WHERE id = ?`;
 
@@ -79,6 +79,6 @@ const deleteItemInWishlistById = (req, res) => {
 
 module.exports = {
   CreateNewWishlist,
-  GetWishlistById,
+  getWishlistById,
   deleteItemInWishlistById,
 };

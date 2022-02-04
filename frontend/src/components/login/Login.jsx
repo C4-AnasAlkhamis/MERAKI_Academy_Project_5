@@ -37,7 +37,7 @@ const Login = () => {
 
   return (
     <>
-      <div className="signIn">
+      <div className="login_box">
         <form onSubmit={verifyUser}>
           <input
             onChange={(e) => {
