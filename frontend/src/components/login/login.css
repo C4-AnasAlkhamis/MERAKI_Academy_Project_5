@@ -29,15 +29,16 @@
   display: flex;
  justify-content: center;
  padding-top: 3%;
- 
+ height: 65.7vh;
+
 }
 .login_box form {
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif, Times,
     serif;
   background-color: white;
   padding: 10% 0% 0% 0%;
+  border-radius: 0px 5px 5px 0px;
   text-align: center;
-  /* border-radius: 5px; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -73,18 +74,21 @@
 .regImg1 {
   margin: 0%;
   padding: 0%;
+border-radius: 20px;
 }
 .image{
-  width: 300px;
-/* height: 100%; */
+  padding: 5%;
+  width: 80%;
+
 }
 
 .group1{
-  /* width: 1000px; */
+  width: 800px;
   display: grid;
-  grid-template-columns: repeat(2,4fr);
-  grid-template-rows: repeat(1,400px);
-  height: 65.7vh;
+  grid-template-columns: repeat(2,3fr);
+  grid-template-rows: repeat(1,300px);
+  height: 320px;
   object-fit: contain;
+background-color: white;
 
 } 
