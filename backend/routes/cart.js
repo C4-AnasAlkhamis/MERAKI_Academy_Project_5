@@ -12,7 +12,6 @@ const {
   getCartById,
   deleteCartById,
 } = require("../controllers/cart");
-const authentication= require("../middleware/authentication");
 
 //   ========================================== //
 cartRouter.post("/", createNewCart);
