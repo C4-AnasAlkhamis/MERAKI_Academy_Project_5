@@ -34,3 +34,8 @@ input:focus {
   border-color: #40bb75;
   box-shadow: 0 0 8px 0 #40bb75;
 }
+
+.flex_column {
+  display: flex;
+  flex-direction: column;
+}
