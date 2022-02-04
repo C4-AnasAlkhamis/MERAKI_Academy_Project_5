@@ -1,11 +1,12 @@
 .register{
   background-color: rgb(4, 81, 140);
+  display: flex;
+ justify-content: center;
 }
 .register form {
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif, Times,
     serif;
   background-color: white;
-  margin: auto;
   padding: 2% 4% 0% 4%;
   border: solid 1px;
   border-radius: 5px;
@@ -19,8 +20,11 @@
   background-color: white;
 }
 .register form input {
-  border: solid 1px;
+  font-family: FontAwesome;
+  font-size: 1.25em;
+  width: 19.5vw;
+  border: none;
   background-color: white;
-  color: #0f6836;
-  font-size: 15px;
+  color: black;
+  border-bottom: solid 1px rgb(163, 159, 159);
 }

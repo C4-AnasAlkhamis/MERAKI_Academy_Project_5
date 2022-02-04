@@ -3,9 +3,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-import {
-  AiOutlineUserAdd
-} from "react-icons/ai";
+import logo from "../../image/cones.jpg";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -45,8 +43,10 @@ const Register = () => {
   };
   return (
     <div className="register">
+      <div className="logo">
+          <img src={logo} />
+        </div>
       <form onSubmit={createUser}>
-      <div><AiOutlineUserAdd /> REGISTER</div>
         <input
           onChange={(e) => {
             setUserName(e.target.value);
