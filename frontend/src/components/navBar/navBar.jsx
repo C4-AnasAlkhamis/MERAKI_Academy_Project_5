@@ -13,14 +13,14 @@ const NavBar = () => {
       <div className="NavBar">
         {isLoggedIn ? (
           <>
+            <Link to="/homePage" style={{ textDecoration: "none" }}>
+              Home
+            </Link>
             <Link to="/cart" style={{ textDecoration: "none" }}>
               Cart
             </Link>
             <Link to="/wishlist" style={{ textDecoration: "none" }}>
               Wishlist
-            </Link>
-            <Link to="/more-info" style={{ textDecoration: "none" }}>
-              I
             </Link>
 
             <Link
