@@ -43,6 +43,7 @@ const Register = () => {
   };
   return (
     <div className="register">
+      <div className="group">
       <div className="logo">
           <img src={logo} />
         </div>
@@ -90,6 +91,7 @@ const Register = () => {
           {message}
         </span>
       </form>
+      </div>
     </div>
   );
 };
