@@ -8,7 +8,7 @@ const connection = require("../database/db");
 const createNewUser = async (req, res) => {
   const { user_name, email, password } = req.body;
 
-  const hashingPass = await bcrypt.hash(password, 7);
+  const hashingPass = await bcrypt.hash(password, 5);
 
   const query = `INSERT INTO users (user_name, email, password, role_id) VALUES (?,?,?,1)`;
   const data = [user_name, email, hashingPass];
