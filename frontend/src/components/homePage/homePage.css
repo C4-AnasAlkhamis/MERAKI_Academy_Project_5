@@ -1,0 +1,10 @@
+.homePage {
+    margin: 5%;
+    padding-left: 3%;
+    padding-right: 3%;
+  }
+
+  .items {
+    display: grid;
+    grid-template-columns: repeat(3, 2fr);
+  }

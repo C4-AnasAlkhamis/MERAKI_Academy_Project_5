@@ -1,8 +1,16 @@
-import { Link } from "react-router-dom";
+/** @format */
 
+import { Link } from "react-router-dom";
+import "./navbar.css";
 import { logOut } from "../../reducer/login/index";
 import { useSelector, useDispatch } from "react-redux";
 
+//
+import { GrUser } from "react-icons/gr";
+import { BiLogOut } from "react-icons/bi";
+import { BiLogIn } from "react-icons/bi";
+import { AiOutlineFundProjectionScreen } from "react-icons/ai";
+//
 const NavBar = () => {
   const { isLoggedIn } = useSelector((state) => {
     return { isLoggedIn: state.loginReducer.isLoggedIn };
@@ -11,39 +19,45 @@ const NavBar = () => {
   return (
     <>
       <div className="NavBar">
-        {isLoggedIn ? (
-          <>
-            <Link to="/cart" style={{ textDecoration: "none" }}>
-              Cart
-            </Link>
-            <Link to="/wishlist" style={{ textDecoration: "none" }}>
-              Wishlist
-            </Link>
-            <Link to="/more-info" style={{ textDecoration: "none" }}>
-              I
-            </Link>
+        <div className="Link">
+          <h2>
+            {isLoggedIn ? (
+              <>
+                <Link to="/homePage" style={{ textDecoration: "none" }}>
+                  <AiOutlineFundProjectionScreen /> HOME
+                </Link>
+                <Link to="/cart" style={{ textDecoration: "none" }}>
+                  CART
+                </Link>
+                <Link to="/wishlist" style={{ textDecoration: "none" }}>
+                  WISHLIST
+                </Link>
 
-            <Link
-              to="/homePage"
-              className="logout"
-              onClick={(e) => {
-                logOut();
-                localStorage.setItem("token", "");
-              }}
-            >
-              logout
-            </Link>
-          </>
-        ) : (
-          <>
-            <Link to="/register" style={{ textDecoration: "none" }}>
-              Register{" "}
-            </Link>
-            <Link to="/login" style={{ textDecoration: "none" }}>
-              Login
-            </Link>
-          </>
-        )}
+                <Link
+                  to="/homePage"
+                  className="logout"
+                  onClick={(e) => {
+                    logOut();
+                    localStorage.setItem("token", "");
+                  }}>
+                  <BiLogOut /> LOGOUT
+                </Link>
+              </>
+            ) : (
+              <>
+                <Link to="/homePage" style={{ textDecoration: "none" }}>
+                  <AiOutlineFundProjectionScreen /> HOME
+                </Link>
+                <Link to="/register" style={{ textDecoration: "none" }}>
+                  <GrUser /> REGISTER{" "}
+                </Link>
+                <Link to="/login" style={{ textDecoration: "none" }}>
+                  <BiLogIn /> LOGIN
+                </Link>
+              </>
+            )}
+          </h2>
+        </div>
       </div>
     </>
   );
