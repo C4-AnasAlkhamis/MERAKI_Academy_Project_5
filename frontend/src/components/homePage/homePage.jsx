@@ -2,6 +2,8 @@
 
 import React, { useEffect, useState } from "react";
 
+import "./homePage.css";
+
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import { setItems, setCategories } from "../../reducer/item/index";
