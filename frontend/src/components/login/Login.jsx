@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 import "./login.css";
 import { logIn } from "../../reducer/login/index";
 
+import login from "../../image/login1.png";
+
 import { useDispatch } from "react-redux";
 // import LoginWG from "../LoginWG/LoginWG";
 const Login = () => {
@@ -38,6 +40,9 @@ const Login = () => {
   return (
     <>
       <div className="login_box">
+      <div className="regImg">
+          <img src={login} />
+        </div>
         <form onSubmit={verifyUser}>
           <input
             onChange={(e) => {
