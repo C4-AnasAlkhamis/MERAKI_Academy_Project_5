@@ -109,6 +109,7 @@ const HomePage = () => {
                 <span>$ {item.price}</span>
                 <span>{item.rate}</span>
               </div>
+              <div className="btn"><button>Item Details</button></div>
             </div>
           );
         })}
