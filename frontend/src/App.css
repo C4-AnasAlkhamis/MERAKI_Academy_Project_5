@@ -40,9 +40,13 @@ input:focus {
 }
 
 .logo{
-  padding-top: 20px;
-  padding-bottom: 1px;
-  margin-bottom: 20px;
+
+  /* margin-bottom: 20px; */
   /* border-bottom:solid 1px  rgb(0, 156, 215); */
   text-align: center;
+}
+
+.logo img{
+  padding-top: 20px;
+  padding-bottom: 10px;
 }
