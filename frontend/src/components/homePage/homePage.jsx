@@ -5,6 +5,9 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import { setItems, setCategories } from "../../reducer/item/index";
+import { setItemInfo } from "../../reducer/itemInfo/index";
+import { useNavigate } from "react-router-dom";
+
 //===============================================================
 
 const HomePage = () => {
@@ -16,6 +19,8 @@ const HomePage = () => {
       categories: state.itemsReducer.categories,
     };
   });
+
+  const navigate = useNavigate();
 
   const { categories, token, items } = state;
 
@@ -68,111 +73,72 @@ const HomePage = () => {
   };
   //===============================================================
 
-  //   const handleUpdateClick = (article) => {
-  //     setUpdateBox(!updateBox);
-  //     setArticleId(article.id);
-  //     setTitle(article.title);
-  //     setDescription(article.description);
-  //     if (updateBox) updateArticle(article.id);
-  //   };
-
-  //===============================================================
-
-  //   const updateArticle = async (id) => {
-  //     try {
-  //       await axios.put(`http://localhost:5000/articles/${id}`, {
-  //         title,
-  //         description,
-  //       });
-  //       getAllArticles();
-  //       dispatch(updateArticleById({ title, description }));
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   };
-
-  //===============================================================
-
-  //   const deleteArticle = async (id) => {
-  //     try {
-  //       await axios.delete(`http://localhost:5000/articles/${id}`);
-  //       getAllArticles();
-  //       dispatch(deleteArticleById(id));
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   };
-
-  //===============================================================
-
-  //   const addComment = async (id) => {
-  //     try {
-  //       await axios.post(
-  //         `http://localhost:5000/articles/${id}/comments`,
-  //         {
-  //           comment,
-  //         },
-  //         {
-  //           headers: {
-  //             Authorization: `Bearer ${token}`,
-  //           },
-  //         }
-  //       );
-  //       getAllArticles();
-  //     } catch (error) {
-  //       console.log(error.response);
-  //     }
-  //   };
-
-  //===============================================================
-
   useEffect(() => {
     getAllCategories();
     getAllItems();
   }, []);
+  //===============================================================
+  const getItemById = async (id) => {
+    //get http://localhost:5000/item/
 
+    await axios
+      .get(`http://localhost:5000/item/id?id=${id}`)
+      .then((result) => {
+        dispatch(setItemInfo({ ...result.data.result }));
+        console.log(...result.data.result);
+        navigate("/more-info")
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   //===============================================================
 
+  let categoriesMap = categories.map((category, indx) => {
+    return (
+      <>
+        <li
+          id={category.id}
+          onClick={(e) => {
+            setCategoryId(parseInt(e.target.id));
+          }}>
+          {category.category}
+        </li>
+      </>
+    );
+  });
+
+  let itemsMap = items.filter((item, index) => {
+    return item.category_id === categoryId;
+  });
   return (
     <div className="homePage">
       <div className="categories">
-        <ul>
-          {categories.map((category, indx) => {
-            return (
-              <>
-                <li
-                  id={category.id}
-                  onClick={(e) => {
-                    setCategoryId(e.target.id);
-                  }}>
-                  {category.category}
-                </li>
-              </>
-            );
-          })}
-        </ul>
+        <ul>{categoriesMap}</ul>
       </div>
 
       <div className="items">
-        {items.map((item, index) => {
-          // if(categoryId===item.category_id){
-        //   console.log("item", item.category_id);
-        //   console.log("category",categoryId,);
+        {itemsMap.map((item, index) => {
           return (
             <div className="item">
-              {categoryId === item.category_id ? (
-                <>
-                  <div className="img_box">
-                    <img src={item.img} alt={item.title} />
-                  </div>
-                  <div className="info_box">
-                    <p>{item.title}</p>
-                    <p>{item.descriptions}</p>
-                    <span>$ {item.price}</span>
-                    <span>{item.rate}</span>
-                  </div>
-                </>
-               ) : null}
+              <div className="img_box">
+                {item.img ? <img src={item.img} alt={item.title} /> : null}
+              </div>
+              <div className="info_box">
+                <p>{item.title}</p>
+                <p>{item.descriptions}</p>
+                <span>$ {item.price}</span>
+                <span>{item.rate}</span>
+              </div>
+              <div className="btn">
+                <button
+                  id={item.id}
+                  onClick={(e) => {
+                    getItemById(e.target.id);
+                  }}>
+                  Item Details
+                </button>
+              </div>
             </div>
           );
         })}

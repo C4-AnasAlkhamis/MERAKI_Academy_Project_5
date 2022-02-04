@@ -19,7 +19,7 @@ const ItemInfo = () => {
   const state = useSelector((state) => {
     return { item: state.itemInfoReducer.itemInfo };
   });
-
+console.log(state.item);
   // ============================================= //
 
   const getItemById = async () => {
@@ -91,7 +91,7 @@ const ItemInfo = () => {
       ) : (
         <>
           <div className="img_box">
-            <img src={state.item.image} alt={state.item.title} />
+            <img src={state.item.img} alt={state.item.title} />
           </div>
           <div className="info_box">
             <p>{state.item.title}</p>
@@ -99,9 +99,9 @@ const ItemInfo = () => {
             <span>{state.item.rate}</span>
           </div>
           <div>
-            <div className="update_box">
-              <button onClick={deleteItemById}>delete</button>
-              <div className="update_item">
+            {/* <div className="update_box">
+              <button onClick={deleteItemById}>delete</button> */}
+              {/* <div className="update_item">
                 <input
                   type="text"
                   onChange={(e) => {
@@ -137,9 +137,9 @@ const ItemInfo = () => {
                   }}
                   placeholder="Description"
                 />
-                <button onClick={updateItemById}>update</button>
-              </div>
-            </div>
+                <button onClick={updateItemById}>update</button> */}
+              {/* </div> */}
+            {/* </div> */}
           </div>
         </>
       )}
