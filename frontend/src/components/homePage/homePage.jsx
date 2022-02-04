@@ -113,23 +113,41 @@ const HomePage = () => {
   let itemsMap = items.filter((item, index) => {
     return item.category_id === categoryId;
   });
+
+const headerImg=()=>{
+switch (categoryId) {
+    case value:
+        
+        break;
+
+    default:
+        break;
+}
+}
+
+
+
   return (
     <div className="homePage">
       <div className="categories">
         <ul>{categoriesMap}</ul>
+      </div>
+      <div className="Hadar">
+          
       </div>
 
       <div className="items">
         {itemsMap.map((item, index) => {
           return (
             <div className="item">
-              <div className="img_box">
+                <div className="title">
                 <p>{item.title}</p>
+                </div>
+              <div className="img_box">
                 {item.img ? <img src={item.img} alt={item.title} /> : null}
               </div>
               <div className="info_box">
-                {/* <p>{item.descriptions}</p> */}
-                <span>$ {item.price}</span>
+                <h1>{item.price} JOD</h1>
                 <span>{item.rate}</span>
               </div>
               <div className="btn">
@@ -138,7 +156,7 @@ const HomePage = () => {
                   onClick={(e) => {
                     getItemById(e.target.id);
                   }}>
-                  Item Details
+                  ITEM DETAILS
                 </button>
               </div>
             </div>
