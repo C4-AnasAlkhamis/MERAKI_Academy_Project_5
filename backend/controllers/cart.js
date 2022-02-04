@@ -25,8 +25,8 @@ const createNewCart = (req, res) => {
 
 // This function returns Cart By Id
 const getCartById = (req, res) => {
-  const id = req.params.id;
-  const query = `SELECT * FROM carts join items ON carts.item_id = items.id where carts.user_id =?`;
+  const id = req.token.userId;
+    const query = `SELECT * FROM carts join items ON carts.item_id = items.id where carts.user_id =?`;
   const data = [id];
   connection.query(query, data, (err, result) => {
     if (err) {
@@ -35,6 +35,7 @@ const getCartById = (req, res) => {
         message: `Server Error`,
       });
     }
+
     res.status(200).json({
       success: true,
       message: `The carts with user ${id}`,
