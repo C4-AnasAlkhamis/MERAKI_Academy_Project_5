@@ -2,7 +2,7 @@
 
 .NavBar {
   font-weight: bold;
-  width: 100%;
+  /* width: 100%; */
   background-color: white;
   display: grid;
   position: sticky;
@@ -33,7 +33,7 @@
 }
 
 .NavBar a:hover {
-  color: white;
-  background-color: rgb(4, 81, 140);
+  color: black;
+  background-color: rgb(255, 211, 51);
   border-radius: 5px;
 }

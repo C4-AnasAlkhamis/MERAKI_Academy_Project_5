@@ -1,8 +1,6 @@
 /** @format */
 
 .homePage {
-  padding-left: 10px;
-  padding-right: 10px;
   background-color: white;
 }
 
@@ -10,7 +8,7 @@
   display: flex;
   justify-content: center;
   gap: 10px;
-  grid-template-columns: repeat(5, 250px);
+  grid-template-columns: repeat(4, 250px);
 }
 
 .items {
@@ -42,19 +40,19 @@
   align-items: center;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   position: sticky;
-  top: 60px;
+  top: 63px;
+  border-bottom: solid 3px rgb(4, 81, 140);
 }
 
 .categories ul {
   font-weight: bold;
-  width: 100%;
   display: grid;
-  grid-template-columns: repeat(10, 200px);
+  grid-template-columns: repeat(3, 200px);
   list-style: none;
 }
 
 .categories ul:hover{
-
+cursor: pointer;
 }
 
 .item button {
@@ -65,7 +63,7 @@
   width: 90%;
   background-color: rgb(4, 81, 140);
   margin-bottom: 20px;
-  border-bottom: solid 3px rgb(255, 211, 51);
+  border-left: solid 5px rgb(255, 211, 51);
 }
 
 .item button:hover {
@@ -84,5 +82,5 @@
 }
 
 .Hadar img {
-  width: 100%;
+    width: 100%;
 }
