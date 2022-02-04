@@ -18,13 +18,13 @@ const NavBar = () => {
           {isLoggedIn ? (
             <>
               <Link to="/homePage" style={{ textDecoration: "none" }}>
-                Home
+                HOME
               </Link>
               <Link to="/cart" style={{ textDecoration: "none" }}>
-                Cart
+                CART
               </Link>
               <Link to="/wishlist" style={{ textDecoration: "none" }}>
-                Wishlist
+                WISHLIST
               </Link>
 
               <Link
