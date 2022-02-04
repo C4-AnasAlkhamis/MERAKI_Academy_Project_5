@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 import "./login.css";
 import { logIn } from "../../reducer/login/index";
 
+import login from "../../image/login1.png";
+
 import { useDispatch } from "react-redux";
 // import LoginWG from "../LoginWG/LoginWG";
 const Login = () => {
@@ -22,7 +24,7 @@ const Login = () => {
       })
       .then((result) => {
         if (result) {
-          navigate(`/home`);
+          navigate(`/homePage`);
           localStorage.setItem("token", result.data.token);
           dispatch(logIn(result.data.token));
           setMessage("");
@@ -38,6 +40,10 @@ const Login = () => {
   return (
     <>
       <div className="login_box">
+        <div className="group1">
+      <div className="regImg1">
+          <img className="image" src={login} />
+        </div>
         <form onSubmit={verifyUser}>
           <input
             onChange={(e) => {
@@ -58,6 +64,7 @@ const Login = () => {
           <button>Login</button>
           <span>{message}</span>
         </form>
+      </div>
       </div>
     </>
   );

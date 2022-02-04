@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
+import logo from "../../image/cones.jpg";
+
 const Register = () => {
   const navigate = useNavigate();
   const [userName, setUserName] = useState("");
@@ -41,6 +43,10 @@ const Register = () => {
   };
   return (
     <div className="register">
+      <div className="group">
+      <div className="regImg">
+          <img src={logo} />
+        </div>
       <form onSubmit={createUser}>
         <input
           onChange={(e) => {
@@ -85,6 +91,7 @@ const Register = () => {
           {message}
         </span>
       </form>
+      </div>
     </div>
   );
 };
