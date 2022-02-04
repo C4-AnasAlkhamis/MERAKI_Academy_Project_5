@@ -19,7 +19,7 @@ const ItemInfo = () => {
   const state = useSelector((state) => {
     return { item: state.itemInfoReducer.itemInfo };
   });
-
+console.log(state.item);
   // ============================================= //
 
   const getItemById = async () => {

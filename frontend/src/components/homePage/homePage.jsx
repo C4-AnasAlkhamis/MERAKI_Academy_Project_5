@@ -5,6 +5,9 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import { setItems, setCategories } from "../../reducer/item/index";
+import { setItemInfo } from "../../reducer/itemInfo/index";
+import { useNavigate } from "react-router-dom";
+
 //===============================================================
 
 const HomePage = () => {
@@ -16,6 +19,8 @@ const HomePage = () => {
       categories: state.itemsReducer.categories,
     };
   });
+
+  const navigate = useNavigate();
 
   const { categories, token, items } = state;
 
@@ -72,8 +77,23 @@ const HomePage = () => {
     getAllCategories();
     getAllItems();
   }, []);
-
   //===============================================================
+  const getItemById = async (id) => {
+    //get http://localhost:5000/item/
+
+    await axios
+      .get(`http://localhost:5000/item/id?id=${id}`)
+      .then((result) => {
+        dispatch(setItemInfo({ ...result.data.result }));
+        console.log(...result.data.result);
+        navigate("/more-info")
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  //===============================================================
+
   let categoriesMap = categories.map((category, indx) => {
     return (
       <>
@@ -87,6 +107,7 @@ const HomePage = () => {
       </>
     );
   });
+
   let itemsMap = items.filter((item, index) => {
     return item.category_id === categoryId;
   });
@@ -109,7 +130,15 @@ const HomePage = () => {
                 <span>$ {item.price}</span>
                 <span>{item.rate}</span>
               </div>
-              <div className="btn"><button>Item Details</button></div>
+              <div className="btn">
+                <button
+                  id={item.id}
+                  onClick={(e) => {
+                    getItemById(e.target.id);
+                  }}>
+                  Item Details
+                </button>
+              </div>
             </div>
           );
         })}
