@@ -24,7 +24,7 @@ const Login = () => {
       })
       .then((result) => {
         if (result) {
-          navigate(`/home`);
+          navigate(`/homePage`);
           localStorage.setItem("token", result.data.token);
           dispatch(logIn(result.data.token));
           setMessage("");
