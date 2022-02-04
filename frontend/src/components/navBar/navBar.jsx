@@ -5,7 +5,6 @@ import "./navbar.css";
 import { logOut } from "../../reducer/login/index";
 import { useSelector, useDispatch } from "react-redux";
 
-import logo from "../../image/logo.png";
 const NavBar = () => {
   const { isLoggedIn } = useSelector((state) => {
     return { isLoggedIn: state.loginReducer.isLoggedIn };
@@ -14,10 +13,8 @@ const NavBar = () => {
   return (
     <>
       <div className="NavBar">
-        <div>
-          <img src={logo} />
-        </div>
         <div className="Link">
+          <h2>
           {isLoggedIn ? (
             <>
               <Link to="/homePage" style={{ textDecoration: "none" }}>
@@ -50,6 +47,7 @@ const NavBar = () => {
               </Link>
             </>
           )}
+          </h2>
         </div>
       </div>
     </>
