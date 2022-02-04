@@ -40,8 +40,9 @@ const Login = () => {
   return (
     <>
       <div className="login_box">
-      <div className="regImg">
-          <img src={login} />
+        <div className="group1">
+      <div className="regImg1">
+          <img className="image" src={login} />
         </div>
         <form onSubmit={verifyUser}>
           <input
@@ -63,6 +64,7 @@ const Login = () => {
           <button>Login</button>
           <span>{message}</span>
         </form>
+      </div>
       </div>
     </>
   );
