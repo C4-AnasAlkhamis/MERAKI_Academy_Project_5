@@ -38,6 +38,12 @@ input:focus {
   box-shadow: 0 0 8px 0 #40bb75;
 }
 
+
+.flex_column {
+  display: flex;
+  flex-direction: column;
+}
+
 .logo{
 background-color: white;
   /* margin-bottom: 20px; */
@@ -50,3 +56,4 @@ background-color: white;
   padding-top: 20px;
   padding-bottom: 10px;
 }
+

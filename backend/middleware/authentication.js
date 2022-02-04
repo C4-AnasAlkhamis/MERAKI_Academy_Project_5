@@ -1,6 +1,6 @@
 const jwt = require("jsonwebtoken");
 
-// This function checks if the user logged in 
+// This function checks if the user logged in
 const authentication = (req, res, next) => {
   try {
     if (!req.headers.authorization) {
@@ -30,4 +30,4 @@ const authentication = (req, res, next) => {
   }
 };
 
-module.exports = authentication;
+module.exports = {authentication};

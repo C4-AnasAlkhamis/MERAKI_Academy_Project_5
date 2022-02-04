@@ -17,6 +17,7 @@ import {
 } from "react-icons/ai";
 //
 const NavBar = () => {
+  const dispatch = useDispatch();
   const { isLoggedIn } = useSelector((state) => {
     return { isLoggedIn: state.loginReducer.isLoggedIn };
   });
@@ -42,9 +43,10 @@ const NavBar = () => {
                   to="/homePage"
                   className="logout"
                   onClick={(e) => {
-                    logOut();
+                    dispatch(logOut());
                     localStorage.setItem("token", "");
-                  }}>
+                  }}
+                >
                   <BiLogOut /> LOGOUT
                 </Link>
               </>
