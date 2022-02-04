@@ -56,6 +56,9 @@ const NavBar = () => {
                 <Link to="/login" style={{ textDecoration: "none" }}>
                   <BiLogIn /> LOGIN
                 </Link>
+                <Link to="/Paginate" style={{ textDecoration: "none" }}>
+                 paginate
+                </Link>
               </>
             )}
           </h2>
