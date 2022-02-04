@@ -37,8 +37,8 @@ CREATE TABLE role_permission (
 CREATE TABLE users(
     id INT AUTO_INCREMENT NOT NULL,
     user_name VARCHAR(100),
-    email VARCHAR(100) UNIQUE,
-    password VARCHAR(100),
+    email VARCHAR(100) UNIQUE NOT NULL,
+    password VARCHAR(100) NOT NULL,
     role_id INT,
     FOREIGN KEY (role_id) REFERENCES roles(id),
     is_deleted TINYINT DEFAULT 0,
