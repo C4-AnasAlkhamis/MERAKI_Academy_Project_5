@@ -12,6 +12,7 @@ const {
   getItemById,
   updateItemById,
   getItemByCategory_id,
+  getFilteredItems,
 } = require("../controllers/items");
 const pushItem = require("../controllers/addItem");
 //Post http://localhost:5000/item/
@@ -21,7 +22,7 @@ const pushItem = require("../controllers/addItem");
 //put http://localhost:5000/item/4
 itemsRouter.post("/", createNewItem);
 itemsRouter.post("/push", pushItem);
-
+itemsRouter.post("/filter", getFilteredItems);
 itemsRouter.get("/", getAllItems);
 itemsRouter.delete("/:id", deleteItemById);
 itemsRouter.get("/id", getItemById);

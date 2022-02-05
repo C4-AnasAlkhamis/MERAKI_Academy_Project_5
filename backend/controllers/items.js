@@ -50,6 +50,33 @@ const getAllItems = (req, res) => {
 };
 // // =================================================== // done
 
+// // =================================================== // done
+
+// This function get all items from items
+const getFilteredItems = (req, res) => {
+  const { value } = req.body;
+  const query = `SELECT * FROM items WHERE items.title LIKE ?;`;
+  const data = [value];
+  connection.query(query, data, (err, result) => {
+    if (err) {
+      return res.status(500).json({
+        success: false,
+        message: `Server Error`,
+      });
+    }
+    if (!result) {
+      return res.status(200).json({
+        success: false,
+        message: `No items Yet`,
+      });
+    }
+    res.status(200).json({
+      success: true,
+      message: `all the items`,
+      items: result,
+    });
+  });
+};
 // This function delete Item By Id
 const deleteItemById = (req, res) => {
   const { id } = req.params;
@@ -157,4 +184,5 @@ module.exports = {
   getItemById,
   updateItemById,
   getItemByCategory_id,
+  getFilteredItems,
 };
