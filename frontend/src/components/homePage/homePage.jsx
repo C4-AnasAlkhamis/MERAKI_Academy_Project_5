@@ -1,12 +1,12 @@
 /** @format */
 
 import React, { useEffect, useState } from "react";
-
+import Select from "react-select";
 import "./homePage.css";
 
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
-import { setItems, setCategories } from "../../reducer/item/index";
+import { setItems, setCategories, setFilter } from "../../reducer/item/index";
 import { setItemInfo } from "../../reducer/itemInfo/index";
 import { useNavigate } from "react-router-dom";
 
@@ -19,6 +19,18 @@ import safetyTool from "../../image/landing-banner-d (1).jpg";
 
 const HomePage = () => {
   // ---------------------------------------------
+  const options = [
+    { value: "Grinder", label: "Grinder" },
+    { value: "Inflator", label: "Inflator" },
+    { value: "Nailer", label: "Nailer" },
+    { value: "Drill", label: "Drill" },
+    { value: "Multi", label: "Multi Tool" },
+    { value: "Boot", label: "Boot" },
+    { value: "Helmet", label: "Helmet" },
+    { value: "Toolvest", label: "Toolvest" },
+    { value: "Trousers", label: "Trousers" },
+    { value: "Shield", label: "Shield" },
+  ];
   const state = useSelector((state) => {
     return {
       token: state.loginReducer.token,
@@ -28,15 +40,13 @@ const HomePage = () => {
   });
 
   const navigate = useNavigate();
-
   const { categories, token, items } = state;
-
   const dispatch = useDispatch();
   // ---------------------------------------------
   const [message, setMessage] = useState("");
   const [userId, setUserId] = useState("");
   const [categoryId, setCategoryId] = useState(1);
-
+  const [isFilter, setIsFilter] = useState(false);
   //===============================================================
 
   const getAllItems = async () => {
@@ -52,6 +62,33 @@ const HomePage = () => {
         setUserId(res.data.userId);
       } else throw Error;
     } catch (error) {
+      if (!error.response.data.success) {
+        return setMessage(error.response.data.message);
+      }
+      setMessage("Error happened while Get Data, please try again");
+    }
+  };
+  //===============================================================
+
+  const getFilteredItems = async (value) => {
+    try {
+      const res = await axios.post(
+        "http://localhost:5000/item/filter",
+        { value },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      if (res.data.success) {
+        setIsFilter(true);
+        dispatch(setItems(res.data.items));
+        setMessage("");
+        setUserId(res.data.userId);
+      } else throw Error;
+    } catch (error) {
+      console.log(error);
       if (!error.response.data.success) {
         return setMessage(error.response.data.message);
       }
@@ -80,11 +117,6 @@ const HomePage = () => {
   };
   //===============================================================
 
-  useEffect(() => {
-    getAllCategories();
-    getAllItems();
-  }, []);
-  //===============================================================
   const getItemById = async (id) => {
     //get http://localhost:5000/item/
 
@@ -99,25 +131,31 @@ const HomePage = () => {
         console.log(err);
       });
   };
+  //
   //===============================================================
-
-  let categoriesMap = categories.map((category, indx) => {
+  let categoriesMap = categories.map((category, index) => {
     return (
-      <>
-        <li
-          id={category.id}
-          onClick={(e) => {
-            setCategoryId(parseInt(e.target.id));
-          }}>
-          {category.category}
-        </li>
-      </>
+      <li
+        key={index}
+        id={category.id}
+        onClick={(e) => {
+          setCategoryId(parseInt(e.target.id));
+        }}
+      >
+        {category.category}
+      </li>
     );
   });
 
-  let itemsMap = items.filter((item, index) => {
-    return item.category_id === categoryId;
-  });
+  let itemsMap;
+
+  if (isFilter) {
+    itemsMap = items;
+  } else {
+    itemsMap = items.filter((item, index) => {
+      return item.category_id === categoryId;
+    });
+  }
 
   const headerImg = () => {
     switch (categoryId) {
@@ -146,8 +184,23 @@ const HomePage = () => {
     }
   };
 
+  useEffect(() => {
+    getAllCategories();
+    getAllItems();
+  }, []);
+
+  console.log(items);
+  //===============================================================
   return (
     <div className="homePage">
+      <Select
+        onChange={(e) => {
+          getFilteredItems(`%${e.value}%`);
+        }}
+        options={options}
+        placeholder="Filter"
+      />
+
       <div className="categories">
         <ul>
           <li></li>
@@ -161,7 +214,7 @@ const HomePage = () => {
       <div className="items">
         {itemsMap.map((item, index) => {
           return (
-            <div className="item">
+            <div key={index} className="item">
               <div className="title">
                 <p>{item.title}</p>
               </div>
@@ -177,7 +230,8 @@ const HomePage = () => {
                   id={item.id}
                   onClick={(e) => {
                     getItemById(e.target.id);
-                  }}>
+                  }}
+                >
                   ITEM DETAILS
                 </button>
               </div>
