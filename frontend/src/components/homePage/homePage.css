@@ -45,7 +45,7 @@
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   position: sticky;
   top: 63px;
-  border-bottom: solid 3px rgb(4, 81, 140);
+  border-bottom: solid 3px rgb(57, 208, 177);
 }
 
 .categories ul {
@@ -123,13 +123,14 @@
 }
 
 .filter_box{
-width: 100%;
-padding: 10px;
+width: 80vw;
+padding: 5px;
 position: sticky;
 top: 133px;
 }
 
 .filter_box div{
-  max-width: 50vw;
+  max-width: 30vw;
   margin: 0 auto;
+  font-size: 20px;
 }
