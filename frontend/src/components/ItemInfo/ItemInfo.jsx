@@ -131,22 +131,20 @@ const ItemInfo = () => {
       ) : (
         <>
           <div className="box">
-            <div className="title">
+            <div className="titleI">
               <p>{state.item.title}</p>
-            </div>
-            <div className="img_box">
+            <div className="img_boxI">
               <img src={state.item.img} alt={state.item.title} />
             </div>
-            <div className="btn">
-              <Cart />
             </div>
+            <div className="btnI">
+              <Cart />
           </div>
           <div className="info_box">
             <span>
               Order within 6 Hours and 15 Minutes for earliest possible
               delivery.
             </span>
-            <div className="list_box">
               <ul>
                 <li>
                   <span>
