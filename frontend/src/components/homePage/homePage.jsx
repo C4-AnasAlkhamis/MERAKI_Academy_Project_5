@@ -140,7 +140,9 @@ const HomePage = () => {
         key={index}
         id={category.id}
         onClick={(e) => {
+          getAllItems();
           setCategoryId(parseInt(e.target.id));
+          setIsFilter(false);
         }}
       >
         {category.category}
@@ -149,7 +151,6 @@ const HomePage = () => {
   });
 
   let itemsMap;
-
   if (isFilter) {
     itemsMap = items;
   } else {
@@ -193,10 +194,9 @@ const HomePage = () => {
 
   const itemsPerPg = 15;
   const pgVS = pgNum * itemsPerPg;
-  console.log(pgVS, itemsPerPg);
+  console.log(itemsMap);
 
   const display = itemsMap.slice(pgVS, pgVS + itemsPerPg).map((item, index) => {
-    console.log(item);
     return (
       <div key={index} className="item">
         <div className="title">
@@ -249,7 +249,7 @@ const HomePage = () => {
       </div>
       <div className="categories">
         <ul>
-          <li></li>
+          {/* <li></li> */}
           {categoriesMap}
           <li>Tool Storage</li>
           <li>Plumbing</li>
