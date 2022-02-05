@@ -10,6 +10,10 @@ import { useSelector, useDispatch } from "react-redux";
 import { RiMoneyDollarCircleLine, RiPaypalFill } from "react-icons/ri";
 import { BsFillCalendarCheckFill, BsHourglassSplit } from "react-icons/bs";
 import { FaShippingFast } from "react-icons/fa";
+
+import tool from '../../image/crown.png'
+
+
 const ItemInfo = () => {
   const dispatch = useDispatch();
   const [message, setMessage] = useState("");
