@@ -22,7 +22,6 @@ const ItemInfo = () => {
       token: state.loginReducer.token,
     };
   });
-  console.log(state.item);
   // ============================================= //
 
   const getItemById = async () => {

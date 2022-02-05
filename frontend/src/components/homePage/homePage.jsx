@@ -124,7 +124,6 @@ const HomePage = () => {
       .get(`http://localhost:5000/item/id?id=${id}`)
       .then((result) => {
         dispatch(setItemInfo({ ...result.data.result }));
-        console.log(...result.data.result);
         navigate("/more-info");
       })
       .catch((err) => {

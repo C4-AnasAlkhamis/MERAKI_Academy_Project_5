@@ -21,7 +21,6 @@ const Cart = () => {
         },
       })
       .then((result) => {
-        console.log(result);
         dispatch(setCart(result.data.result));
       })
       .catch((err) => {

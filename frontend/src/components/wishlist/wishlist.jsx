@@ -28,7 +28,6 @@ const Wishlist = () => {
       });
   };
 
-  console.log(wishlists);
   const deleteWishlistById = async (id) => {
     //delete http://localhost:5000/wishlist/:id
 
@@ -45,7 +44,6 @@ const Wishlist = () => {
   useEffect(() => {
     getWishlistById();
   }, []);
-
   return (
     <div className="Wishlist">
       <h1>Wishlist content </h1>
