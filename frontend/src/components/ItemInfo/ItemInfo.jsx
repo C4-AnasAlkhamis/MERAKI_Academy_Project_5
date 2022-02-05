@@ -145,7 +145,7 @@ const ItemInfo = () => {
               <img className="tool" src={tool} alt={"tool"} />
               <img className="itemI" src={state.item.img} alt={state.item.title} />
           <div className="info_box">
-            <span>
+            <span className="list_title">
               Order within 6 Hours and 15 Minutes for earliest possible
               delivery.
             </span>
@@ -181,16 +181,16 @@ const ItemInfo = () => {
                 </li>
               </ul>
               <div>
+              <Cart />
+            <span>$ {state.item.price}</span>
+            <span>{state.item.rate}</span>
+              </div>
                 <img
                   src="https://its-london.s3-eu-west-1.amazonaws.com/CMS/Footer/cards.png"
                   alt=""
                 />
-              <Cart />
-              </div>
             </div>
 
-            <span>$ {state.item.price}</span>
-            <span>{state.item.rate}</span>
           </div>
             </div>
             <div className="btnI">

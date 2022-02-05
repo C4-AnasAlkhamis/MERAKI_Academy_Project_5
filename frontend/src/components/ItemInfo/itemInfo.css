@@ -3,6 +3,14 @@
    display: flex;
 } 
 
+.info_box {
+padding-left: 50px;
+}
+
+.info_box ul{
+font-size: 18px;
+}
+
 .titleI {
   padding: 2%;
   font-size: 30px;
@@ -24,5 +32,10 @@
 .tool {
   height: 200px;
   padding-left: 50px;
-  padding-right: 4%;
+  padding-right: 10%;
+  padding-top: 4%;
+}
+
+.list_title{
+  
 }
