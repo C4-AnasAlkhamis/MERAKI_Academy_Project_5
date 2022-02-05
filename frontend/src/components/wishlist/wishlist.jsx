@@ -41,6 +41,19 @@ const Wishlist = () => {
       });
   };
 
+  const createNewCart = async (id) => {
+    try {
+      const result = await axios.post(
+        `http://localhost:5000/cart`,
+        { item_id: id },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+    } catch (error) {}
+  };
   useEffect(() => {
     getWishlistById();
   }, []);
@@ -68,6 +81,14 @@ const Wishlist = () => {
                     }}
                   >
                     Remove from wishlist
+                  </button>
+                  <button
+                    id={wishlist.id}
+                    onClick={(e) => {
+                      createNewCart(wishlist.item_id);
+                    }}
+                  >
+                    Add to cart
                   </button>
                 </div>
               </div>

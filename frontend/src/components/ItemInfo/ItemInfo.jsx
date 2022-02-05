@@ -95,19 +95,7 @@ const ItemInfo = () => {
             },
           }
         );
-        if (result.data.success) {
-          // setStatus(true);
-          // // dispatch(addItem({ title, descriptions, img, price, category_id }));
-          // setMessage("The item has been created successfully");
-          console.log(result);
-        }
-      } catch (error) {
-        if (!error.response.data.success) {
-          console.log(error.response.data.success);
-          // setStatus(false);
-          // setMessage(error.response.data.message);
-        }
-      }
+      } catch (error) {}
     };
     return (
       <div>
@@ -144,6 +132,29 @@ const ItemInfo = () => {
             <img src={state.item.img} alt={state.item.title} />
           </div>
           <div className="info_box">
+            <span>
+              Order within 6 Hours and 15 Minutes for earliest possible
+              delivery.
+            </span>
+            <div>
+              <ul>
+                <li>
+                  <span>Free Delivery</span>
+                </li>
+                <li>
+                  <span>Select Your Own Delivery Date</span>
+                </li>
+                <li>
+                  <span>Next Day Delivery Service</span>
+                </li>
+                <li>
+                  <span> 1 Hour Delivery Slot</span>
+                  <span>
+                    Spread the cost over 4 months with 0% Interest from PayPal
+                  </span>
+                </li>
+              </ul>
+            </div>
             <p>{state.item.title}</p>
             <span>$ {state.item.price}</span>
             <span>{state.item.rate}</span>
