@@ -26,60 +26,60 @@ const Cart = () => {
       .catch((err) => {
         console.log(err);
       });
+  };
 
-    const deleteCartById = async (id) => {
-      //delete http://localhost:5000/cart/:id
+  const deleteCartById = async (id) => {
+    //delete http://localhost:5000/cart/:id
 
-      await axios
-        .delete(`http://localhost:5000/cart/${id}`)
-        .then((result) => {
-          dispatch(deleteCart(id));
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    };
+    await axios
+      .delete(`http://localhost:5000/cart/${id}`)
+      .then((result) => {
+        dispatch(deleteCart(id));
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
-    // useEffect(() => {
-    //   getCartById();
-    // }, []);
+  useEffect(() => {
+    getCartById();
+  }, []);
 
-    return (
-      <div className="Cart">
-        <h1>cart content </h1>
+  return (
+    <div className="cart">
+      <h1>cart content </h1>
 
-        {carts ? (
-          carts.map((cart, index) => {
-            return (
-              <div key={index}>
-                <div className="cart_box">
-                  <div>
-                    <img src={cart.img} alt={cart.title} />
-                  </div>
-                  <div className="info_box flex_column">
-                    <span>{cart.title}</span>
-                    <span>{cart.description}</span>
-                    <span>{cart.price}</span>
-                    <span>{cart.rate}</span>
-                    <button
-                      id={cart.id}
-                      onClick={(e) => {
-                        deleteCartById(cart.cart_id);
-                      }}
-                    >
-                      Remove from cart
-                    </button>
-                  </div>
+      {carts ? (
+        carts.map((cart, index) => {
+          return (
+            <div key={index}>
+              <div className="cart_box">
+                <div>
+                  <img src={cart.img} alt={cart.title} />
+                </div>
+                <div className="info_box flex_column">
+                  <span>{cart.title}</span>
+                  <span>{cart.description}</span>
+                  <span>{cart.price}</span>
+                  <span>{cart.rate}</span>
+                  <button
+                    id={cart.id}
+                    onClick={(e) => {
+                      deleteCartById(cart.cart_id);
+                    }}
+                  >
+                    Remove from cart
+                  </button>
                 </div>
               </div>
-            );
-          })
-        ) : (
-          <div>no carts</div>
-        )}
-      </div>
-    );
-  };
+            </div>
+          );
+        })
+      ) : (
+        <div>no carts</div>
+      )}
+    </div>
+  );
 };
 
 export default Cart;

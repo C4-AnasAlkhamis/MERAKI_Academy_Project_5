@@ -14,26 +14,23 @@ import Pag from "./components/cart/test";
 
 import logo from "./image/logo.png";
 
-
 function App() {
   return (
     <div className="App">
-
       <div className="logo">
-          <img src={logo} />
-        </div>
+        <img src={logo} />
+      </div>
       <NavBar />
 
       <Routes>
         <Route path="/login" element={<Login />} />
-        <Route path="/Register" element={<Register />} />
+        <Route path="/register" element={<Register />} />
         <Route path="/more-info" element={<ItemInfo />} />
-        <Route path="/Cart" element={<Cart />} />
+        <Route path="/cart" element={<Cart />} />
         <Route path="/Wishlist" element={<Wishlist />} />
         <Route path="/addItem" element={<AddItem />} />
         <Route path="/homePage" element={<HomePage />} />
-        <Route path="/Paginate" element={<Pag />} />
-
+        <Route path="/paginate" element={<Pag />} />
       </Routes>
     </div>
   );

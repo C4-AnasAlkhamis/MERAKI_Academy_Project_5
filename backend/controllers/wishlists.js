@@ -56,7 +56,7 @@ const getWishlistById = (req, res) => {
 // This function delete item in wishlists by id
 
 const deleteItemInWishlistById = (req, res) => {
-  const id = req.token.userId;
+  const id = req.params.id;
 
   const query = `DELETE FROM wishlists WHERE id = ?`;
 
