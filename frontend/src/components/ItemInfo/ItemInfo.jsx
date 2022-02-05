@@ -152,20 +152,17 @@ const ItemInfo = () => {
               <ul>
                 <li>
                   <span>
-                    <RiMoneyDollarCircleLine />
-                    Free Delivery
+                    <RiMoneyDollarCircleLine /> Free Delivery
                   </span>
                 </li>
                 <li>
                   <span>
-                    <BsFillCalendarCheckFill />
-                    Select Your Own Delivery Date
+                    <BsFillCalendarCheckFill /> Select Your Own Delivery Date
                   </span>
                 </li>
                 <li>
                   <span>
-                    <FaShippingFast />
-                    Next Day Delivery Service
+                    <FaShippingFast /> Next Day Delivery Service
                   </span>
                 </li>
                 <li>
@@ -175,20 +172,19 @@ const ItemInfo = () => {
                 </li>
                 <li>
                   <span>
-                    <RiPaypalFill />
-                    Spread the cost over 4 months with 0% Interest from PayPal
+                    <RiPaypalFill /> Spread the cost over 4 months with 0% Interest from PayPal
                   </span>
                 </li>
               </ul>
               <div>
               <Cart />
-            <span>$ {state.item.price}</span>
+            <span className="price"> {state.item.price}  JOD</span>
             <span>{state.item.rate}</span>
               </div>
-                <img
+                {/* <img
                   src="https://its-london.s3-eu-west-1.amazonaws.com/CMS/Footer/cards.png"
                   alt=""
-                />
+                /> */}
             </div>
 
           </div>
