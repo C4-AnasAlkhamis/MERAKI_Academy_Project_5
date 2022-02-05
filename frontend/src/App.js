@@ -10,6 +10,7 @@ import Cart from "./components/cart/cart";
 import Wishlist from "./components/wishlist/wishlist";
 import AddItem from "./components/addItem/addItem";
 import HomePage from "./components/homePage/homePage";
+import Pag from "./components/cart/test";
 
 import logo from "./image/logo.png";
 
@@ -31,6 +32,8 @@ function App() {
         <Route path="/Wishlist" element={<Wishlist />} />
         <Route path="/addItem" element={<AddItem />} />
         <Route path="/homePage" element={<HomePage />} />
+        <Route path="/Paginate" element={<Pag />} />
+
       </Routes>
     </div>
   );
