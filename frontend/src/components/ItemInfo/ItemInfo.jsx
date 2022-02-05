@@ -119,6 +119,7 @@ const ItemInfo = () => {
           onClick={(e) => {
             createNewCartOrWishlist(e.target.id);
           }}>
+            
           Add to Wishlist
         </button>
       </div>
