@@ -193,14 +193,23 @@ const HomePage = () => {
   //===============================================================
   return (
     <div className="homePage">
-      <Select
-        onChange={(e) => {
-          getFilteredItems(`%${e.value}%`);
-        }}
-        options={options}
-        placeholder="Filter"
-      />
+      <div className="filter_box">
+        <Select
+          onChange={(e) => {
+            getFilteredItems(`%${e.value}%`);
+          }}
+          options={options}
+          placeholder="Filter"
+        />
 
+        <input
+          type="search"
+          placeholder="Search"
+          onChange={(e) => {
+            getFilteredItems(`%${e.target.value}%`);
+          }}
+        />
+      </div>
       <div className="categories">
         <ul>
           <li></li>
