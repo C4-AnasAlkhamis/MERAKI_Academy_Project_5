@@ -4,7 +4,7 @@ const express = require("express");
 
 const cartRouter = express.Router();
 
-const {authentication}= require("../middleware/authentication");
+const { authentication } = require("../middleware/authentication");
 //dont press enter
 //write your code here
 const {
@@ -14,9 +14,9 @@ const {
 } = require("../controllers/cart");
 
 //   ========================================== //
-cartRouter.post("/", createNewCart);
+cartRouter.post("/", authentication, createNewCart);
 
-cartRouter.get("/",authentication, getCartById);
+cartRouter.get("/", authentication, getCartById);
 cartRouter.delete("/:id", deleteCartById);
 
 //write your code here
