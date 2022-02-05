@@ -17,9 +17,12 @@ const ItemInfo = () => {
   const [category, setCategory] = useState(0);
 
   const state = useSelector((state) => {
-    return { item: state.itemInfoReducer.itemInfo };
+    return {
+      item: state.itemInfoReducer.itemInfo,
+      token: state.loginReducer.token,
+    };
   });
-console.log(state.item);
+  console.log(state.item);
   // ============================================= //
 
   const getItemById = async () => {
@@ -80,6 +83,35 @@ console.log(state.item);
         setMessage("Error happened while updating the item");
       });
   };
+
+  const Cart = () => {
+    const createNewCart = async (endPoint) => {
+      try {
+        const result = await axios.post(
+          "http://localhost:5000/cart",
+          { item_id: state.item.id },
+          {
+            headers: {
+              Authorization: `Bearer ${state.token}`,
+            },
+          }
+        );
+        if (result.data.success) {
+          // setStatus(true);
+          // // dispatch(addItem({ title, descriptions, img, price, category_id }));
+          // setMessage("The item has been created successfully");
+          console.log(result);
+        }
+      } catch (error) {
+        if (!error.response.data.success) {
+          console.log(error.response.data.success);
+          // setStatus(false);
+          // setMessage(error.response.data.message);
+        }
+      }
+    };
+    return <button onClick={createNewCart}>Add to cart</button>;
+  };
   // image, title, description, category, price, id
   // useEffect(() => {
   //   getItemById();
@@ -98,10 +130,12 @@ console.log(state.item);
             <span>$ {state.item.price}</span>
             <span>{state.item.rate}</span>
           </div>
+          <Cart />
+
           <div>
             {/* <div className="update_box">
               <button onClick={deleteItemById}>delete</button> */}
-              {/* <div className="update_item">
+            {/* <div className="update_item">
                 <input
                   type="text"
                   onChange={(e) => {
@@ -138,7 +172,7 @@ console.log(state.item);
                   placeholder="Description"
                 />
                 <button onClick={updateItemById}>update</button> */}
-              {/* </div> */}
+            {/* </div> */}
             {/* </div> */}
           </div>
         </>

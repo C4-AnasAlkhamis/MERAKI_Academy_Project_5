@@ -3,8 +3,8 @@ const connection = require("../database/db");
 
 // This function creates new cart
 const createNewCart = (req, res) => {
-  const { user_id, item_id } = req.body;
-
+  const { item_id } = req.body;
+  const user_id = req.token.userId;
   const query = `INSERT INTO carts (user_id,item_id) VALUE (?,?)`;
   const data = [user_id, item_id];
   connection.query(query, data, (err, result) => {
@@ -25,7 +25,6 @@ const createNewCart = (req, res) => {
 
 // This function returns Cart By Id
 const getCartById = (req, res) => {
-
   const id = req.token.userId;
   const query = `SELECT *, carts.id as cart_id FROM carts join items ON carts.item_id = items.id where carts.user_id =?`;
   const data = [id];
