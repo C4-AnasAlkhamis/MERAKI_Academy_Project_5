@@ -5,7 +5,9 @@ import { useNavigate, LINK } from "react-router-dom";
 import "./itemInfo.css";
 import { setItemInfo, updateItemInfo } from "../../reducer/itemInfo/index";
 import { useSelector, useDispatch } from "react-redux";
-
+import { RiMoneyDollarCircleLine, RiPaypalFill } from "react-icons/ri";
+import { BsFillCalendarCheckFill, BsHourglassSplit } from "react-icons/bs";
+import { FaShippingFast } from "react-icons/fa";
 const ItemInfo = () => {
   const dispatch = useDispatch();
   const [message, setMessage] = useState("");
@@ -95,19 +97,7 @@ const ItemInfo = () => {
             },
           }
         );
-        if (result.data.success) {
-          // setStatus(true);
-          // // dispatch(addItem({ title, descriptions, img, price, category_id }));
-          // setMessage("The item has been created successfully");
-          console.log(result);
-        }
-      } catch (error) {
-        if (!error.response.data.success) {
-          console.log(error.response.data.success);
-          // setStatus(false);
-          // setMessage(error.response.data.message);
-        }
-      }
+      } catch (error) {}
     };
     return (
       <div>
@@ -141,10 +131,54 @@ const ItemInfo = () => {
       ) : (
         <>
           <div className="img_box">
+            <p>{state.item.title}</p>
             <img src={state.item.img} alt={state.item.title} />
           </div>
           <div className="info_box">
-            <p>{state.item.title}</p>
+            <span>
+              Order within 6 Hours and 15 Minutes for earliest possible
+              delivery.
+            </span>
+            <div className="list_box">
+              <ul>
+                <li>
+                  <span>
+                    <RiMoneyDollarCircleLine />
+                    Free Delivery
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <BsFillCalendarCheckFill />
+                    Select Your Own Delivery Date
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <FaShippingFast />
+                    Next Day Delivery Service
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <BsHourglassSplit /> 1 Hour Delivery Slot
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <RiPaypalFill />
+                    Spread the cost over 4 months with 0% Interest from PayPal
+                  </span>
+                </li>
+              </ul>
+              <div>
+                <img
+                  src="https://its-london.s3-eu-west-1.amazonaws.com/CMS/Footer/cards.png"
+                  alt=""
+                />
+              </div>
+            </div>
+
             <span>$ {state.item.price}</span>
             <span>{state.item.rate}</span>
           </div>

@@ -44,13 +44,15 @@ const Cart = () => {
   useEffect(() => {
     getCartById();
   }, []);
-
+  let totalPrice = 0;
   return (
     <div className="cart">
       <h1>cart content </h1>
 
       {carts ? (
         carts.map((cart, index) => {
+          totalPrice += cart.price;
+          // setTotalPrice(cart.price++);
           return (
             <div key={index}>
               <div className="cart_box">
@@ -60,7 +62,7 @@ const Cart = () => {
                 <div className="info_box flex_column">
                   <span>{cart.title}</span>
                   <span>{cart.description}</span>
-                  <span>{cart.price}</span>
+                  <span>$ {cart.price}</span>
                   <span>{cart.rate}</span>
                   <button
                     id={cart.id}
@@ -78,6 +80,10 @@ const Cart = () => {
       ) : (
         <div>no carts</div>
       )}
+      <div className="buy_box">
+        <span>{totalPrice}</span>
+        <button>BUY</button>
+      </div>
     </div>
   );
 };

@@ -194,7 +194,6 @@ const HomePage = () => {
 
   const itemsPerPg = 15;
   const pgVS = pgNum * itemsPerPg;
-  console.log(itemsMap);
 
   const display = itemsMap.slice(pgVS, pgVS + itemsPerPg).map((item, index) => {
     return (
