@@ -227,31 +227,31 @@ const HomePage = () => {
   //===============================================================
   return (
     <div className="homePage">
-      
       <div className="categories">
         <ul>
           {/* <li></li> */}
           {categoriesMap}
           <li>Tool Storage</li>
         </ul>
-          <input
-            type="search"
-            placeholder="Search"
-            onChange={(e) => {
-              getFilteredItems(`%${e.target.value}%`);
-            }}
-          />
+        <input
+          type="search"
+          placeholder="Search"
+          onChange={(e) => {
+            getFilteredItems(`%${e.target.value}%`);
+          }}
+        />
       </div>
       <div className="Hadar">{headerImg()}</div>
+      <div className="filter_box">
         <Select
-        className="filter_box"
+        className="filter"
           onChange={(e) => {
             getFilteredItems(`%${e.value}%`);
           }}
           options={options}
           placeholder="Filter"
         />
-
+      </div>
       <div className="items">
         {display}
 
