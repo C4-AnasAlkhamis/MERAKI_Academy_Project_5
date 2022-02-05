@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import Select from "react-select";
 import "./homePage.css";
-
+import PaginateReact from "react-paginate";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import { setItems, setCategories } from "../../reducer/item/index";
@@ -47,6 +47,8 @@ const HomePage = () => {
   const [userId, setUserId] = useState("");
   const [categoryId, setCategoryId] = useState(1);
   const [isFilter, setIsFilter] = useState(false);
+  const [pgNum, setPgNum] = useState(0);
+
   //===============================================================
 
   const getAllItems = async () => {
@@ -138,7 +140,9 @@ const HomePage = () => {
         key={index}
         id={category.id}
         onClick={(e) => {
+          getAllItems();
           setCategoryId(parseInt(e.target.id));
+          setIsFilter(false);
         }}
       >
         {category.category}
@@ -147,7 +151,6 @@ const HomePage = () => {
   });
 
   let itemsMap;
-
   if (isFilter) {
     itemsMap = items;
   } else {
@@ -187,6 +190,42 @@ const HomePage = () => {
     getAllCategories();
     getAllItems();
   }, []);
+  //===============================================================
+
+  const itemsPerPg = 15;
+  const pgVS = pgNum * itemsPerPg;
+  console.log(itemsMap);
+
+  const display = itemsMap.slice(pgVS, pgVS + itemsPerPg).map((item, index) => {
+    return (
+      <div key={index} className="item">
+        <div className="title">
+          <p>{item.title}</p>
+        </div>
+        <div className="img_box">
+          {item.img ? <img src={item.img} alt={item.title} /> : null}
+        </div>
+        <div className="info_box">
+          <h1>{item.price} JOD</h1>
+          <span>{item.rate}</span>
+        </div>
+        <div className="btn">
+          <button
+            id={item.id}
+            onClick={(e) => {
+              getItemById(e.target.id);
+            }}
+          >
+            ITEM DETAILS
+          </button>
+        </div>
+      </div>
+    );
+  });
+  const pageCount = Math.ceil(itemsMap.length / itemsPerPg);
+  const changePage = ({ selected }) => {
+    setPgNum(selected);
+  };
 
   //===============================================================
   return (
@@ -210,7 +249,7 @@ const HomePage = () => {
       </div>
       <div className="categories">
         <ul>
-          <li></li>
+          {/* <li></li> */}
           {categoriesMap}
           <li>Tool Storage</li>
           <li>Plumbing</li>
@@ -219,7 +258,9 @@ const HomePage = () => {
       <div className="Hadar">{headerImg()}</div>
 
       <div className="items">
-        {itemsMap.map((item, index) => {
+        {display}
+
+        {/* {itemsMap.map((item, index) => {
           return (
             <div key={index} className="item">
               <div className="title">
@@ -244,8 +285,17 @@ const HomePage = () => {
               </div>
             </div>
           );
-        })}
+        })} */}
       </div>
+      <PaginateReact
+        PreviousLabel={"Previous"}
+        NextLabel={"Next"}
+        pageCount={pageCount}
+        onPageChange={changePage}
+        containerClassName={"pagination_box"}
+        disabledClassName={" paginationDisabled "}
+        activeClassName={" paginationActive "}
+      />
     </div>
   );
 };
