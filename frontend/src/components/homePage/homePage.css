@@ -59,7 +59,7 @@
   cursor: pointer;
 }
 
-.categories input{
+.categories input {
   width: 400px;
 }
 
@@ -86,6 +86,7 @@
   background-color: #2790bd;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px,
     rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+  border-left: solid 5px rgb(255, 211, 51);
 }
 
 .info_box {
@@ -126,14 +127,14 @@
   display: none;
 }
 
-.filter_box{
-width: 80vw;
-padding: 5px;
-position: sticky;
-top: 133px;
+.filter_box {
+  width: 80vw;
+  padding: 5px;
+  position: sticky;
+  top: 133px;
 }
 
-.filter_box div{
+.filter_box div {
   max-width: 30vw;
   margin: 0 auto;
   font-size: 20px;

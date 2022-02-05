@@ -1,3 +1,5 @@
+/** @format */
+
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 
@@ -8,6 +10,10 @@ import { useSelector, useDispatch } from "react-redux";
 import { RiMoneyDollarCircleLine, RiPaypalFill } from "react-icons/ri";
 import { BsFillCalendarCheckFill, BsHourglassSplit } from "react-icons/bs";
 import { FaShippingFast } from "react-icons/fa";
+
+import tool from '../../image/crown.png'
+
+
 const ItemInfo = () => {
   const dispatch = useDispatch();
   const [message, setMessage] = useState("");
@@ -105,16 +111,15 @@ const ItemInfo = () => {
           id="cart"
           onClick={(e) => {
             createNewCartOrWishlist(e.target.id);
-          }}
-        >
+          }}>
           Add to Cart
         </button>
         <button
           id="wishlist"
           onClick={(e) => {
             createNewCartOrWishlist(e.target.id);
-          }}
-        >
+          }}>
+            
           Add to Wishlist
         </button>
       </div>
@@ -130,33 +135,37 @@ const ItemInfo = () => {
         <span>{message}</span>
       ) : (
         <>
-          <div className="img_box">
-            <p>{state.item.title}</p>
-            <img src={state.item.img} alt={state.item.title} />
-          </div>
+          <div className="box">
+            <div className="titleI">
+              <h2><p>{state.item.title}</p></h2>
+            </div>
+            <div className="sub_titleI">
+              <p> Order Reference: 977209</p>
+              <h1><p style={{color:"green"}}>IN STOCK</p></h1>
+              </div>
+            <div className="img_boxI">
+              <img className="tool" src={tool} alt={"tool"} />
+              <img className="itemI" src={state.item.img} alt={state.item.title} />
           <div className="info_box">
-            <span>
+            <h3><span className="price" > {state.item.price}  JOD</span><br/></h3>
+            <span className="list_title">
               Order within 6 Hours and 15 Minutes for earliest possible
               delivery.
             </span>
-            <div className="list_box">
               <ul>
                 <li>
                   <span>
-                    <RiMoneyDollarCircleLine />
-                    Free Delivery
+                    <RiMoneyDollarCircleLine /> Free Delivery
                   </span>
                 </li>
                 <li>
                   <span>
-                    <BsFillCalendarCheckFill />
-                    Select Your Own Delivery Date
+                    <BsFillCalendarCheckFill /> Select Your Own Delivery Date
                   </span>
                 </li>
                 <li>
                   <span>
-                    <FaShippingFast />
-                    Next Day Delivery Service
+                    <FaShippingFast /> Next Day Delivery Service
                   </span>
                 </li>
                 <li>
@@ -166,23 +175,24 @@ const ItemInfo = () => {
                 </li>
                 <li>
                   <span>
-                    <RiPaypalFill />
-                    Spread the cost over 4 months with 0% Interest from PayPal
+                    <RiPaypalFill /> Spread the cost over 4 months with 0% Interest from PayPal
                   </span>
                 </li>
               </ul>
               <div>
-                <img
+              <Cart />
+            <span>{state.item.rate}</span>
+              </div>
+                {/* <img
                   src="https://its-london.s3-eu-west-1.amazonaws.com/CMS/Footer/cards.png"
                   alt=""
-                />
-              </div>
+                /> */}
             </div>
 
-            <span>$ {state.item.price}</span>
-            <span>{state.item.rate}</span>
           </div>
-          <Cart />
+            </div>
+            <div className="btnI">
+          </div>
 
           <div>
             {/* <div className="update_box">
