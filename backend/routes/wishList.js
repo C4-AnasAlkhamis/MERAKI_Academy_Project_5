@@ -7,11 +7,13 @@ const {
   deleteItemInWishlistById,
 } = require("../controllers/wishlists");
 
+const { authentication } = require("../middleware/authentication");
+
 const wishListRouter = express.Router();
 //dont press enter
 //write your code here
 
-wishListRouter.post("/", CreateNewWishlist);
+wishListRouter.post("/", authentication, CreateNewWishlist);
 wishListRouter.get("/:id", getWishlistById);
 wishListRouter.delete("/:id", deleteItemInWishlistById);
 
