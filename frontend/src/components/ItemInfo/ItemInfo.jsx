@@ -144,10 +144,6 @@ const ItemInfo = () => {
             <div className="img_boxI">
               <img className="tool" src={tool} alt={"tool"} />
               <img className="itemI" src={state.item.img} alt={state.item.title} />
-            </div>
-            <div className="btnI">
-              <Cart />
-          </div>
           <div className="info_box">
             <span>
               Order within 6 Hours and 15 Minutes for earliest possible
@@ -189,11 +185,15 @@ const ItemInfo = () => {
                   src="https://its-london.s3-eu-west-1.amazonaws.com/CMS/Footer/cards.png"
                   alt=""
                 />
+              <Cart />
               </div>
             </div>
 
             <span>$ {state.item.price}</span>
             <span>{state.item.rate}</span>
+          </div>
+            </div>
+            <div className="btnI">
           </div>
 
           <div>
