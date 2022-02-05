@@ -5,7 +5,9 @@ import { useNavigate, LINK } from "react-router-dom";
 import "./itemInfo.css";
 import { setItemInfo, updateItemInfo } from "../../reducer/itemInfo/index";
 import { useSelector, useDispatch } from "react-redux";
-
+import { RiMoneyDollarCircleLine, RiPaypalFill } from "react-icons/ri";
+import { BsFillCalendarCheckFill, BsHourglassSplit } from "react-icons/bs";
+import { FaShippingFast } from "react-icons/fa";
 const ItemInfo = () => {
   const dispatch = useDispatch();
   const [message, setMessage] = useState("");
@@ -129,6 +131,7 @@ const ItemInfo = () => {
       ) : (
         <>
           <div className="img_box">
+            <p>{state.item.title}</p>
             <img src={state.item.img} alt={state.item.title} />
           </div>
           <div className="info_box">
@@ -136,26 +139,46 @@ const ItemInfo = () => {
               Order within 6 Hours and 15 Minutes for earliest possible
               delivery.
             </span>
-            <div>
+            <div className="list_box">
               <ul>
                 <li>
-                  <span>Free Delivery</span>
-                </li>
-                <li>
-                  <span>Select Your Own Delivery Date</span>
-                </li>
-                <li>
-                  <span>Next Day Delivery Service</span>
-                </li>
-                <li>
-                  <span> 1 Hour Delivery Slot</span>
                   <span>
+                    <RiMoneyDollarCircleLine />
+                    Free Delivery
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <BsFillCalendarCheckFill />
+                    Select Your Own Delivery Date
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <FaShippingFast />
+                    Next Day Delivery Service
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <BsHourglassSplit /> 1 Hour Delivery Slot
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <RiPaypalFill />
                     Spread the cost over 4 months with 0% Interest from PayPal
                   </span>
                 </li>
               </ul>
+              <div>
+                <img
+                  src="https://its-london.s3-eu-west-1.amazonaws.com/CMS/Footer/cards.png"
+                  alt=""
+                />
+              </div>
             </div>
-            <p>{state.item.title}</p>
+
             <span>$ {state.item.price}</span>
             <span>{state.item.rate}</span>
           </div>
