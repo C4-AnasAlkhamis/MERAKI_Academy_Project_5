@@ -1,3 +1,5 @@
+/** @format */
+
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 
@@ -105,16 +107,14 @@ const ItemInfo = () => {
           id="cart"
           onClick={(e) => {
             createNewCartOrWishlist(e.target.id);
-          }}
-        >
+          }}>
           Add to Cart
         </button>
         <button
           id="wishlist"
           onClick={(e) => {
             createNewCartOrWishlist(e.target.id);
-          }}
-        >
+          }}>
           Add to Wishlist
         </button>
       </div>
@@ -130,9 +130,16 @@ const ItemInfo = () => {
         <span>{message}</span>
       ) : (
         <>
-          <div className="img_box">
-            <p>{state.item.title}</p>
-            <img src={state.item.img} alt={state.item.title} />
+          <div className="box">
+            <div className="title">
+              <p>{state.item.title}</p>
+            </div>
+            <div className="img_box">
+              <img src={state.item.img} alt={state.item.title} />
+            </div>
+            <div className="btn">
+              <Cart />
+            </div>
           </div>
           <div className="info_box">
             <span>
@@ -182,7 +189,6 @@ const ItemInfo = () => {
             <span>$ {state.item.price}</span>
             <span>{state.item.rate}</span>
           </div>
-          <Cart />
 
           <div>
             {/* <div className="update_box">

@@ -54,6 +54,12 @@ border-radius: 20px;
 .image{
   padding: 5%;
   width: 80%;
+  background-image: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.741),
+    #7ed56fb1,
+    #28d484a3
+  );
 
 }
 
