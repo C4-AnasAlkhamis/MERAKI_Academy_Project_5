@@ -14,7 +14,7 @@ const wishListRouter = express.Router();
 //write your code here
 
 wishListRouter.post("/", authentication, CreateNewWishlist);
-wishListRouter.get("/:id", getWishlistById);
+wishListRouter.get("/", authentication, getWishlistById);
 wishListRouter.delete("/:id", deleteItemInWishlistById);
 
 //write your code here

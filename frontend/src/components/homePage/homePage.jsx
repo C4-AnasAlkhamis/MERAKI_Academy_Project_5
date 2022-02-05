@@ -6,7 +6,7 @@ import "./homePage.css";
 
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
-import { setItems, setCategories, setFilter } from "../../reducer/item/index";
+import { setItems, setCategories } from "../../reducer/item/index";
 import { setItemInfo } from "../../reducer/itemInfo/index";
 import { useNavigate } from "react-router-dom";
 
@@ -189,7 +189,6 @@ const HomePage = () => {
     getAllItems();
   }, []);
 
-  console.log(items);
   //===============================================================
   return (
     <div className="homePage">
