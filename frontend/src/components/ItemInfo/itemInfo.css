@@ -6,9 +6,16 @@
 .titleI{
   padding: 2%;
 font-size: 30px;
-text-align: center;
+margin-left: 340px;
 }
 
 .img_boxI img{
   width: 250px;
+}
+
+.sub_titleI{
+  padding: 2%;
+  font-size: 20px;
+  margin-left: 340px;
+text-align: start;
 }

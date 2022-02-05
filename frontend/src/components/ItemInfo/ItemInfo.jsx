@@ -133,6 +133,9 @@ const ItemInfo = () => {
           <div className="box">
             <div className="titleI">
               <p>{state.item.title}</p>
+            <div className="sub_titleI">
+              <p> Order Reference: 977209</p>
+              </div>
             <div className="img_boxI">
               <img src={state.item.img} alt={state.item.title} />
             </div>
