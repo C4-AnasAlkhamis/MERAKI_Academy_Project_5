@@ -2,7 +2,8 @@ const connection = require("../database/db");
 
 // This function creates new wishlists
 const CreateNewWishlist = (req, res) => {
-  const { item_id, user_id } = req.body;
+  const { item_id } = req.body;
+  const user_id = req.token.userId;
 
   const query = `INSERT INTO wishlists (item_id, user_id) VALUES (?,?)`;
   const data = [item_id, user_id];

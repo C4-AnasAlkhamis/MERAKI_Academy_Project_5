@@ -85,10 +85,10 @@ const ItemInfo = () => {
   };
 
   const Cart = () => {
-    const createNewCart = async (endPoint) => {
+    const createNewCartOrWishlist = async (endPoint) => {
       try {
         const result = await axios.post(
-          "http://localhost:5000/cart",
+          `http://localhost:5000/${endPoint}`,
           { item_id: state.item.id },
           {
             headers: {
@@ -110,7 +110,26 @@ const ItemInfo = () => {
         }
       }
     };
-    return <button onClick={createNewCart}>Add to cart</button>;
+    return (
+      <div>
+        <button
+          id="cart"
+          onClick={(e) => {
+            createNewCartOrWishlist(e.target.id);
+          }}
+        >
+          Add to Cart
+        </button>
+        <button
+          id="wishlist"
+          onClick={(e) => {
+            createNewCartOrWishlist(e.target.id);
+          }}
+        >
+          Add to Wishlist
+        </button>
+      </div>
+    );
   };
   // image, title, description, category, price, id
   // useEffect(() => {
