@@ -24,8 +24,23 @@ const url3 = [
   "https://www.its.co.uk/SafetyWork-Wear/Hi-Vis-Clothing.htm#?pi=2",
 ];
 
+// this urls for category 4
+const url4 = [
+  "https://www.its.co.uk/Tool-Storage--Pouches/Tool-Boxes.htm",
+  "https://www.its.co.uk/Tool-Storage--Pouches/Storage-Cases.htm",
+  "https://www.its.co.uk/Tool-Storage--Pouches/Tool-Boxes.htm#?pi=2",
+  "https://www.its.co.uk/Tool-Storage--Pouches/Storage-Cases.htm#?pi=3",
+];
+
+// this urls for category 5
+const url5 = [
+  "https://www.its.co.uk/Plumbing/Plumbing-Tools.htm#?pi=3",
+  "https://www.its.co.uk/Plumbing/Plastic-Fittings/",
+  "https://www.its.co.uk/Plumbing/Plumbing-Consumables.htm",
+  "https://www.its.co.uk/Plumbing/Plumbing-Tools.htm",
+];
 const pushItem = async (req, res) => {
-  url1.forEach(async (url, i) => {
+  url4.forEach(async (url, i) => {
     const arr = [];
 
     // open browser
@@ -55,11 +70,10 @@ const pushItem = async (req, res) => {
           title: y[i],
           price: z[i].substr(1, z[i].length - 1),
           description: "this is a Safety Work Wear",
-          category: 1,
+          category: 4,
         }
       );
     }
-    // await fs.writeFile("src.txt", `${[...el].join("\r\n")}`);
     if (arr.length > 0) {
       await arr.map((obj) => {
         const query = `INSERT INTO items (img, title, descriptions, category_id, price) VALUE (?,?,?,?,?)`;
