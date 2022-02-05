@@ -1,21 +1,30 @@
+/** @format */
+
 .item_info_box {
   display: grid;
   grid-template-rows: 1fr 1fr;
 }
 
-.titleI{
+.titleI {
   padding: 2%;
-font-size: 30px;
-margin-left: 340px;
+  font-size: 30px;
+  margin-left: 240px;
 }
 
-.img_boxI img{
+.itemI {
   width: 250px;
+  padding: 0px;
+
 }
 
-.sub_titleI{
-  padding-top: 2%;
-  padding-bottom: 2%;
+.sub_titleI {
   font-size: 20px;
-text-align: start;
+  text-align: start;
+  margin-left: 270px;
+}
+
+.tool {
+  height: 200px;
+  padding-left: 200px;
+  padding-right: 4%;
 }
