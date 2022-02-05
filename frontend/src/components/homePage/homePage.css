@@ -59,6 +59,10 @@
   cursor: pointer;
 }
 
+.categories input{
+  width: 400px;
+}
+
 .item:hover {
   border: solid 2px rgb(255, 211, 51);
   box-shadow: rgba(0, 0, 0, 0.24) 0px 1px 2px;
