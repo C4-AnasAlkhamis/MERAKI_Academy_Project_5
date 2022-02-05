@@ -1,6 +1,5 @@
 const connection = require("../database/db");
 const puppeteer = require("puppeteer");
-const arr = [];
 // this urls for category 1
 const url1 = [
   "https://www.its.co.uk/Hand-Tools/Files.htm",
@@ -26,7 +25,9 @@ const url3 = [
 ];
 
 const pushItem = async (req, res) => {
-  url3.forEach(async (url) => {
+  url1.forEach(async (url, i) => {
+    const arr = [];
+
     // open browser
     const browser = await puppeteer.launch();
     // open page
@@ -45,19 +46,22 @@ const pushItem = async (req, res) => {
         ),
       ];
     });
-    const [x, y, z] = [...el];
+    console.log(el, i);
+    const [x, y, z] = await [...el];
     for (let i = 0; i < x.length; i++) {
-      arr.push({
-        img: x[i],
-        title: y[i],
-        price: z[i].substr(1, z[i].length - 1),
-        description: "this is a Safety Work Wear",
-        category: 3,
-      });
+      arr.push(
+        await {
+          img: x[i],
+          title: y[i],
+          price: z[i].substr(1, z[i].length - 1),
+          description: "this is a Safety Work Wear",
+          category: 1,
+        }
+      );
     }
     // await fs.writeFile("src.txt", `${[...el].join("\r\n")}`);
     if (arr.length > 0) {
-      arr.map((obj) => {
+      await arr.map((obj) => {
         const query = `INSERT INTO items (img, title, descriptions, category_id, price) VALUE (?,?,?,?,?)`;
         connection.query(
           query,
@@ -70,7 +74,7 @@ const pushItem = async (req, res) => {
         );
       });
     }
-    await browser.close(res.json("done"));
+    await browser.close();
   });
 };
 
