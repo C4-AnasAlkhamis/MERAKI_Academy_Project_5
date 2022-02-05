@@ -143,8 +143,7 @@ const HomePage = () => {
           getAllItems();
           setCategoryId(parseInt(e.target.id));
           setIsFilter(false);
-        }}
-      >
+        }}>
         {category.category}
       </li>
     );
@@ -194,7 +193,11 @@ const HomePage = () => {
 
   const itemsPerPg = 15;
   const pgVS = pgNum * itemsPerPg;
-
+  const pageCount = Math.ceil(itemsMap.length / itemsPerPg);
+  const changePage = ({ selected }) => {
+    console.log(selected);
+    setPgNum(selected);
+  };
   const display = itemsMap.slice(pgVS, pgVS + itemsPerPg).map((item, index) => {
     return (
       <div key={index} className="item">
@@ -213,31 +216,23 @@ const HomePage = () => {
             id={item.id}
             onClick={(e) => {
               getItemById(e.target.id);
-            }}
-          >
+            }}>
             ITEM DETAILS
           </button>
         </div>
       </div>
     );
   });
-  const pageCount = Math.ceil(itemsMap.length / itemsPerPg);
-  const changePage = ({ selected }) => {
-    setPgNum(selected);
-  };
 
   //===============================================================
   return (
     <div className="homePage">
-      <div className="filter_box">
-        <Select
-          onChange={(e) => {
-            getFilteredItems(`%${e.value}%`);
-          }}
-          options={options}
-          placeholder="Filter"
-        />
-
+      <div className="categories">
+        <ul>
+          {/* <li></li> */}
+          {categoriesMap}
+          <li>Tool Storage</li>
+        </ul>
         <input
           type="search"
           placeholder="Search"
@@ -246,16 +241,17 @@ const HomePage = () => {
           }}
         />
       </div>
-      <div className="categories">
-        <ul>
-          {/* <li></li> */}
-          {categoriesMap}
-          <li>Tool Storage</li>
-          <li>Plumbing</li>
-        </ul>
-      </div>
       <div className="Hadar">{headerImg()}</div>
-
+      <div className="filter_box">
+        <Select
+        className="filter"
+          onChange={(e) => {
+            getFilteredItems(`%${e.value}%`);
+          }}
+          options={options}
+          placeholder="Filter"
+        />
+      </div>
       <div className="items">
         {display}
 
