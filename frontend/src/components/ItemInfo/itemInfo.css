@@ -19,7 +19,7 @@ list-style: none;
 
 .titleI {
   padding: 2%;
-  font-size: 30px;
+  font-size: 20px;
   margin-left: 30px;
 }
 
@@ -31,16 +31,21 @@ list-style: none;
 }
 
 .sub_titleI {
+  display: flex;
   font-size: 20px;
   text-align: start;
-  margin-left: 50px;
+  margin-left: 60px;
+}
+
+.sub_titleI p{
+margin-right: 375px;
 }
 
 .tool {
-  height: 200px;
+  height: 250px;
   padding-left: 50px;
   padding-right: 10%;
-  padding-top: 4%;
+
 }
 
 .list_title{
@@ -65,9 +70,15 @@ list-style: none;
   background-color: #2790bd;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px,
     rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+  border-left: solid 5px rgb(255, 211, 51);
+
 }
 
 .price{
-  font-size: 20px;
+  font-size: 30px;
   margin: 30px;
 }
+
+/* .box{
+  border: solid 2px;
+} */
