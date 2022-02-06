@@ -46,11 +46,12 @@ const Cart = () => {
 
   useEffect(() => {
     getCartById();
-    setTotal(totalPrice);
-  }, []);
+    if ((totalPrice)) {
+      setTotal(totalPrice);
+    }
+  });
 
   let totalPrice = 0;
-
   return (
     <div className="cart">
       <div className="cart_nav_box">
@@ -109,6 +110,10 @@ const Cart = () => {
       {carts.length > 0 ? (
         carts.map((cart, index) => {
           totalPrice += cart.price;
+
+          // setTotal(totalPrice);
+
+          // console.log(totalPrice);
           return (
             <div key={index} className="cart_box">
               <div className="cart_img_box">
