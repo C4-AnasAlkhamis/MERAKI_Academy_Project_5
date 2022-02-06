@@ -229,9 +229,7 @@ const HomePage = () => {
     <div className="homePage">
       <div className="categories">
         <ul>
-          {/* <li></li> */}
           {categoriesMap}
-          <li>Tool Storage</li>
         </ul>
         <input
           type="search"

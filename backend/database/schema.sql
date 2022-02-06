@@ -155,3 +155,6 @@ INSERT INTO
 
 INSERT INTO
     categories (category) VALUE ('Safty Work Waer');
+
+INSERT INTO
+    categories (category) VALUE ('Tool Storage');

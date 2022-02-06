@@ -152,7 +152,7 @@ const Cart = () => {
       ) : (
         <div>no carts</div>
       )}
-      <div className="info_box buy_box">
+      <div className="info_box buy_box payment_box_info">
         <button>BUY</button>
         <span>JOD {totalPrice}</span>
       </div>
