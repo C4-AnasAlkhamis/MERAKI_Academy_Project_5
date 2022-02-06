@@ -3,6 +3,8 @@ import "./cart.css";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import { setCart, deleteCart } from "../../reducer/cart/index";
+import { RiPaypalLine, RiVisaFill } from "react-icons/ri";
+import { FaCcMastercard, FaBitcoin } from "react-icons/fa";
 
 const Cart = () => {
   const dispatch = useDispatch();
@@ -106,11 +108,19 @@ const Cart = () => {
                   <img src={cart.img} alt={cart.title} />
                 </div>
 
-                <div>
+                <div className="cart_title">
                   <span>{cart.title}</span>
                 </div>
               </div>
-
+              <div className="payment_box_info">
+                <h4>payment options</h4>
+                <div>
+                  <RiPaypalLine />
+                  <RiVisaFill />
+                  <FaCcMastercard />
+                  <FaBitcoin />
+                </div>
+              </div>
               <div className="info_box">
                 {/* <div className="info_center">
                   <h3>description</h3>
