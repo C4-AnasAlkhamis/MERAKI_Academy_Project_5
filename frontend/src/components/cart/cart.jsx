@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-
+import "./cart.css";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import { setCart, deleteCart } from "../../reducer/cart/index";
@@ -47,32 +47,92 @@ const Cart = () => {
   let totalPrice = 0;
   return (
     <div className="cart">
-      <h1>cart content </h1>
+      <div className="cart_nav_box">
+        <ul>
+          <li>
+            <img
+              src="https://its-london.s3-eu-west-1.amazonaws.com/assets/USPTickIcon.png"
+              alt="Price match promise"
+            />
+            <span>Price match promise</span>
+          </li>
+          <li>
+            <img
+              src="https://its-london.s3-eu-west-1.amazonaws.com/assets/USPSDeliveryIcon.png"
+              alt="ext day delivery, 7 days a week"
+            />
+            <span>Next day delivery, 7 days a week</span>
+          </li>
+          <li>
+            <img
+              src="https://its-london.s3-eu-west-1.amazonaws.com/assets/USPTrustpilotIcon.png"
+              alt="5 Star Rating on Trustpilot"
+            />
+            <span>5 Star Rating on Trustpilot</span>
+          </li>
+          <li>
+            <img
+              src="https://its-london.s3-eu-west-1.amazonaws.com/assets/USPSHourIcon.png"
+              alt="One Hour Delivery slot"
+            />
+            <span>One Hour Delivery slot</span>
+          </li>
+          <li>
+            <img
+              src="https://its-london.s3-eu-west-1.amazonaws.com/assets/USPDrillIcon.png"
+              alt="Finance Available over £99 inc VAT"
+            />
+            <span>Finance Available over JD99 inc VAT</span>
+          </li>
+        </ul>
+      </div>
+      <dir className="cart_header">
+        <h1>YOUR SHOPPING Cart</h1>
+      </dir>
 
-      {carts ? (
+      {carts.length > 0 ? (
         carts.map((cart, index) => {
           totalPrice += cart.price;
           // setTotalPrice(cart.price++);
           return (
-            <div key={index}>
-              <div className="cart_box">
-                <div>
+            <div key={index} className="cart_box">
+              <div className="cart_img_box">
+                <div className="info_center">
+                  <h3>Item</h3>
                   <img src={cart.img} alt={cart.title} />
                 </div>
-                <div className="info_box flex_column">
+
+                <div>
                   <span>{cart.title}</span>
-                  <span>{cart.description}</span>
-                  <span>$ {cart.price}</span>
-                  <span>{cart.rate}</span>
-                  <button
-                    id={cart.id}
-                    onClick={(e) => {
-                      deleteCartById(cart.cart_id);
-                    }}
-                  >
-                    Remove from cart
-                  </button>
                 </div>
+              </div>
+
+              <div className="info_box">
+                <div>
+                  <h3>description</h3>
+
+                  <span>{cart.description}</span>
+                </div>
+
+                <div className="info_center">
+                  <h3>price</h3>
+
+                  <span>$ {cart.price}</span>
+                </div>
+
+                <div>
+                  <h3>rate</h3>
+                  <span>{cart.rate}</span>
+                </div>
+
+                <button
+                  id={cart.id}
+                  onClick={(e) => {
+                    deleteCartById(cart.cart_id);
+                  }}
+                >
+                  Remove from cart
+                </button>
               </div>
             </div>
           );
