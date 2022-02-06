@@ -1,7 +1,10 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+.wishlist_box {
+  display: grid;
+  grid-template-columns: 3fr 1fr 2fr;
+  width: 85%;
+  margin: 0 auto;
+  border-bottom: 1px solid rgba(94, 94, 94, 0.541);
+  padding: 1rem 0;
 }
 /* @font-face {
     font-family: "Open Sans";
@@ -17,34 +20,34 @@
     font-weight: 400;
   } */
 
-.Wishlist {
+/* .Wishlist { */
   /* background-image: url(https://thumbs.dreamstime.com/b/auto-mechanic-s-tools-white-background-flat-lay-space-text-auto-mechanic-s-tools-white-wooden-background-flat-lay-space-168999334.jpg); */
-  background-image: url("../../image/wishlist.webp");
+  /* background-image: url("../../image/wishlist.webp");
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
-  text-align: center;
+  text-align: center; */
   /* background-color: rgb(182, 211, 255); */
   /* height: 660px; */
   /* padding: 5px; */
-  display: flex;
+  /* display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: center; */
   /* padding-top: 5px; */
   /* display: grid;
   grid-template-columns: repeat(2, 1000px); */
-}
-.box {
+/* } */
+/* .box { */
   /* position: sticky; */
 
   /* width: 1200px; */
   /* display: flex; */
   /* flex-direction: row; */
   /* justify-content: right; */
-}
+/* } */
 
-.wishlist_box {
+/* .wishlist_box {
   text-align: center;
   border: solid 1px #dddbdb;
   display: grid;
@@ -57,29 +60,29 @@
   box-shadow: rgba(0, 0, 0, 0.24) 0px 1px 2px;
   margin-right: 1000px;
   /* margin-left: 150px; */
-  margin-bottom: 50px;
-}
+  /* margin-bottom: 50px; */
+/* } */ 
 
 /* margin: 10px; */
 /* border-bottom: solid 1px rgb(0, 156, 215);
       border-right: solid 1px rgb(0, 156, 215); */
 
-.info_box_flex_column {
-  /* font-family: 'Bebas Neue', cursive; */
+/* .info_box_flex_column {
+  font-family: 'Bebas Neue', cursive;
   font-family: "Josefin Sans", sans-serif;
   font-family: "Zen Kurenaido", sans-serif;
   font-size: large;
-}
+} */
 
-.Wishlist_title {
-  /* background-color: rgb(236, 13, 13); */
+/* .Wishlist_title {
+  background-color: rgb(236, 13, 13);
   padding-top: 25px;
   padding-left: 25px;
 
   font-family: "Bebas Neue", cursive;
-}
+} */
 
-.wishlist_delete {
+/* .wishlist_delete {
   width: 120px;
   margin: 5px;
   height: 50px;
@@ -89,15 +92,15 @@
   cursor: pointer;
   color: seashell;
   font-size: large;
-  /* display: flex;
+  display: flex;
   flex-direction: column;
-  justify-content: center; */
+  justify-content: center;
   align-items: center;
-  /* margin-top: 30px;
-  margin-left: 160px; */
-}
+  margin-top: 30px;
+  margin-left: 160px;
+} */
 
-.wishlist_add_cart {
+/* .wishlist_add_cart {
   width: 120px;
   margin: 5px;
   height: 50px;
@@ -108,17 +111,17 @@
   color: rgb(26, 24, 24);
   font-size: large;
   align-items: center;
-  /* margin-top: -55px;
-  margin-left: 20px; */
-}
+  margin-top: -55px;
+  margin-left: 20px;
+} */
 
-.note {
+/* .note {
   padding-top: 60px;
   width: 600px;
   border: solid 2px #dddbdb;
-}
+} */
 
-.noteBttn {
+/* .noteBttn {
   width: 120px;
   margin: 5px;
   height: 50px;
@@ -129,6 +132,20 @@
   color: rgb(26, 24, 24);
   font-size: large;
   align-items: center;
-  /* margin-top: -55px;
-    margin-left: 20px; */
+  margin-top: -55px;
+    margin-left: 20px;
+} */
+
+.wishlist_btn {
+  display: flex;
+  border-radius: 3px;
+  cursor: pointer;
+  align-items: center;
+  width: auto;
+}
+.icon_style_add {
+  color: #43d63e;
+}
+.icon_style_remove {
+  color: #f22626;
 }

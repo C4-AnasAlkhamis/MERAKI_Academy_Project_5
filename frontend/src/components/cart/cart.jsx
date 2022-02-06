@@ -104,7 +104,6 @@ const Cart = () => {
             <div key={index} className="cart_box">
               <div className="cart_img_box">
                 <div className="info_center">
-                  <h3>Item</h3>
                   <img src={cart.img} alt={cart.title} />
                 </div>
 
@@ -128,7 +127,7 @@ const Cart = () => {
                 </div> */}
                 <div className="info_center">
                   <h3>price</h3>
-                  <span>$ {cart.price}</span>
+                  <span>JOD {cart.price}</span>
                 </div>
                 {/* <div className="info_center">
                   <h3>rate</h3>
@@ -155,7 +154,7 @@ const Cart = () => {
       )}
       <div className="info_box buy_box">
         <button>BUY</button>
-        <span>{totalPrice} JD</span>
+        <span>JOD {totalPrice}</span>
       </div>
     </div>
   );
