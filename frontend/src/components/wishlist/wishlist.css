@@ -19,7 +19,7 @@
 
 .Wishlist {
   /* background-image: url(https://thumbs.dreamstime.com/b/auto-mechanic-s-tools-white-background-flat-lay-space-text-auto-mechanic-s-tools-white-wooden-background-flat-lay-space-168999334.jpg); */
-  background-image: url("D:\MERAKI_Academy\Materials\Materials\MERAKI_Academy_Project_5\MERAKI_Academy_Project_5\frontend\src\image\wishlist.webp");
+  background-image: url("../../image/wishlist.webp");
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
