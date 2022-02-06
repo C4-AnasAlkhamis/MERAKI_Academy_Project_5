@@ -46,7 +46,9 @@ const Cart = () => {
 
   useEffect(() => {
     getCartById();
-    if ((totalPrice)) {
+  }, []);
+  useEffect(() => {
+    if (totalPrice !== total) {
       setTotal(totalPrice);
     }
   });
@@ -113,7 +115,7 @@ const Cart = () => {
 
           // setTotal(totalPrice);
 
-          // console.log(totalPrice);
+          console.log(totalPrice);
           return (
             <div key={index} className="cart_box">
               <div className="cart_img_box">
