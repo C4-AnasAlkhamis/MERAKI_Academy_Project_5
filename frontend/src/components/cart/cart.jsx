@@ -44,6 +44,7 @@ const Cart = () => {
   useEffect(() => {
     getCartById();
   }, []);
+
   let totalPrice = 0;
   return (
     <div className="cart">
@@ -86,14 +87,17 @@ const Cart = () => {
           </li>
         </ul>
       </div>
+
       <dir className="cart_header">
-        <h1>YOUR SHOPPING Cart</h1>
+        <div>
+          <h1>YOUR SHOPPING Cart</h1>
+        </div>
       </dir>
 
       {carts.length > 0 ? (
         carts.map((cart, index) => {
           totalPrice += cart.price;
-          // setTotalPrice(cart.price++);
+
           return (
             <div key={index} className="cart_box">
               <div className="cart_img_box">
@@ -108,24 +112,23 @@ const Cart = () => {
               </div>
 
               <div className="info_box">
-                <div>
+                {/* <div className="info_center">
                   <h3>description</h3>
-
                   <span>{cart.description}</span>
-                </div>
-
+                </div> */}
                 <div className="info_center">
                   <h3>price</h3>
-
                   <span>$ {cart.price}</span>
                 </div>
-
-                <div>
+                {/* <div className="info_center">
                   <h3>rate</h3>
                   <span>{cart.rate}</span>
-                </div>
+                </div> */}
 
                 <button
+                  style={{
+                    borderColor: "red",
+                  }}
                   id={cart.id}
                   onClick={(e) => {
                     deleteCartById(cart.cart_id);
@@ -140,9 +143,9 @@ const Cart = () => {
       ) : (
         <div>no carts</div>
       )}
-      <div className="buy_box">
-        <span>{totalPrice}</span>
+      <div className="info_box buy_box">
         <button>BUY</button>
+        <span>{totalPrice} JD</span>
       </div>
     </div>
   );
