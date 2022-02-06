@@ -99,7 +99,10 @@ const Cart = () => {
         </div>
         <div className="info_box buy_box ">
           <button>BUY</button>
-          <span>{total} JOD</span>
+          <div>
+            <p>total price </p>
+            <span>{total} JOD</span>
+          </div>
         </div>
       </dir>
 
