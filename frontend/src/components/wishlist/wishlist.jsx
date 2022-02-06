@@ -209,7 +209,7 @@ const Wishlist = () => {
               </div>
               <div className="info_center">
                 <h3>price</h3>
-                <span>JOD {wishlist.price}</span>
+                <span>{wishlist.price} JOD</span>
               </div>
               <div className="info_box btn_box info_box_cart">
                 <button

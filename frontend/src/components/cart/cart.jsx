@@ -14,6 +14,7 @@ const Cart = () => {
       carts: state.cartReducer.carts,
     };
   });
+  const [total, setTotal] = useState(0);
 
   const getCartById = async () => {
     await axios
@@ -45,9 +46,11 @@ const Cart = () => {
 
   useEffect(() => {
     getCartById();
+    setTotal(totalPrice);
   }, []);
 
   let totalPrice = 0;
+
   return (
     <div className="cart">
       <div className="cart_nav_box">
@@ -94,12 +97,15 @@ const Cart = () => {
         <div>
           <h1>YOUR SHOPPING Cart</h1>
         </div>
+        <div className="info_box buy_box ">
+          <button>BUY</button>
+          <span>{total} JOD</span>
+        </div>
       </dir>
 
       {carts.length > 0 ? (
         carts.map((cart, index) => {
           totalPrice += cart.price;
-
           return (
             <div key={index} className="cart_box">
               <div className="cart_img_box">
@@ -127,7 +133,7 @@ const Cart = () => {
                 </div> */}
                 <div className="info_center">
                   <h3>price</h3>
-                  <span>JOD {cart.price}</span>
+                  <span>{cart.price} JOD</span>
                 </div>
                 {/* <div className="info_center">
                   <h3>rate</h3>
@@ -152,10 +158,6 @@ const Cart = () => {
       ) : (
         <div>no carts</div>
       )}
-      <div className="info_box buy_box payment_box_info">
-        <button>BUY</button>
-        <span>JOD {totalPrice}</span>
-      </div>
     </div>
   );
 };
