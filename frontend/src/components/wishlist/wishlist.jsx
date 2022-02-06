@@ -211,7 +211,7 @@ const Wishlist = () => {
                 <h3>price</h3>
                 <span>JOD {wishlist.price}</span>
               </div>
-              <div className="info_box">
+              <div className="info_box btn_box info_box_cart">
                 <button
                   className="wishlist_btn"
                   style={{
@@ -233,14 +233,14 @@ const Wishlist = () => {
                   }}
                 >
                   <IoIosAddCircle className="icon_style_add" />
-                  Cart
+                  To Cart
                 </button>
               </div>
             </div>
           );
         })
       ) : (
-        <div>no carts</div>
+        <div>no Wishlist</div>
       )}
     </div>
   );

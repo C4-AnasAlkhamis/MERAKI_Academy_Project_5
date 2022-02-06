@@ -120,7 +120,7 @@ const Cart = () => {
                   <FaBitcoin />
                 </div>
               </div>
-              <div className="info_box">
+              <div className="info_box info_box_cart">
                 {/* <div className="info_center">
                   <h3>description</h3>
                   <span>{cart.description}</span>
