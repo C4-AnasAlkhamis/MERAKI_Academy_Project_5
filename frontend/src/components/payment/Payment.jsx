@@ -2,11 +2,14 @@ import React, { useState } from "react";
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 const Pay = ({ items, price }) => {
   const [isDone, setIsDone] = useState(false);
-  const [paidFor, setPaidFor] = useState(false);
-  const [error, setError] = useState(null);
-  const carts = items.map((item) => {
-    return item.title;
-  });
+  // const [paidFor, setPaidFor] = useState(false);
+  // const [error, setError] = useState(null);
+  // const carts = items.map((item) => {
+  //   return item.title;
+  // });
+  // yJ6N&FPp
+  // sb-kgjsd13291652@personal.example.com
+
   return (
     <>
       {isDone ? (
@@ -17,6 +20,7 @@ const Pay = ({ items, price }) => {
             <PayPalButtons
               style={{
                 color: "silver",
+                layout: "horizontal",
                 height: 48,
                 shape: "pill",
               }}
@@ -24,6 +28,7 @@ const Pay = ({ items, price }) => {
                 return actions.order.create({
                   purchase_units: [
                     {
+                      description: "dril",
                       amount: {
                         value: price,
                       },
@@ -40,7 +45,6 @@ const Pay = ({ items, price }) => {
                 );
               }}
               onError={(err) => {
-                setError(err);
                 console.error("paypal error", err);
               }}
             />
