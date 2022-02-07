@@ -119,7 +119,7 @@ const getOutOfSItems = (req, res) => {
     res.status(200).json({
       success: true,
       message: `all the items`,
-      items: result,
+      result: result,
     });
   });
 };
@@ -140,7 +140,7 @@ const isDeleteItemById = (req, res) => {
     }
     res.status(200).json({
       success: true,
-      message: `Succeeded to delete item with id ${id}`,
+      message: `Succeeded to update is_deleted item with id ${id}`,
       result: result,
     });
   });
