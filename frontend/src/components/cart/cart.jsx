@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { setCart, deleteCart } from "../../reducer/cart/index";
 import { RiPaypalLine, RiVisaFill } from "react-icons/ri";
 import { FaCcMastercard, FaBitcoin } from "react-icons/fa";
+import Pay from "../payment/Payment";
 
 const Cart = () => {
   const dispatch = useDispatch();
@@ -102,6 +103,7 @@ const Cart = () => {
         </div>
         <div className="info_box buy_box ">
           <button>BUY</button>
+          <Pay items={carts} price={total} />
           <div>
             <p>total price </p>
             <span>{total} JOD</span>
@@ -115,7 +117,6 @@ const Cart = () => {
 
           // setTotal(totalPrice);
 
-          console.log(totalPrice);
           return (
             <div key={index} className="cart_box">
               <div className="cart_img_box">
