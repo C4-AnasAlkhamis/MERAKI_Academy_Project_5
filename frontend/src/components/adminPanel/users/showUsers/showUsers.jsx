@@ -6,17 +6,16 @@ import "./homePage.css";
 import PaginateReact from "react-paginate";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
-import { setItems, setCategories } from "../../reducer/item/index";
+import { setItems, setCategories } from "../../reducer//index";
 import { setItemInfo } from "../../reducer/itemInfo/index";
 import { useNavigate } from "react-router-dom";
 
 //===============================================================
 
 const ShowUsers = () => {
-  const state = useSelector((state) => {
+  const {users} = useSelector((state) => {
     return {
-      items: state.itemsReducer.items,
-      categories: state.itemsReducer.categories,
+      users: state.usersReducer.users,
     };
   });
 
