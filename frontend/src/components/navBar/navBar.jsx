@@ -67,6 +67,9 @@ const NavBar = () => {
              
               </>
             )}
+                <Link to="/adminPanel" style={{ textDecoration: "none" }}>
+                   ADMIN
+                </Link>
           </h2>
         </div>
       </div>

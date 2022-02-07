@@ -50,9 +50,7 @@ const getAllItems = (req, res) => {
 };
 // // =================================================== // done
 
-// // =================================================== // done
-
-// This function get all items from items
+// This function get all items like value
 const getFilteredItems = (req, res) => {
   const { value } = req.body;
   const query = `SELECT * FROM items WHERE items.title LIKE ?;`;
@@ -77,11 +75,14 @@ const getFilteredItems = (req, res) => {
     });
   });
 };
+
+// // =================================================== // done
+
 // This function delete Item By Id
 const deleteItemById = (req, res) => {
   const { id } = req.params;
 
-  const query = `DELETE FROM items WHERE id = ?`;
+  const query = `zz FROM items WHERE id = ?`;
   const data = [id];
   connection.query(query, data, (err, result) => {
     if (err) {
@@ -97,8 +98,53 @@ const deleteItemById = (req, res) => {
     });
   });
 };
+// =================================================== // done
+// This function get all out of stock items
 
+const getOutOfSItems = (req, res) => {
+  const query = `SELECT * FROM items WHERE items.is_deleted = 1;`;
+  connection.query(query, (err, result) => {
+    if (err) {
+      return res.status(500).json({
+        success: false,
+        message: `Server Error`,
+      });
+    }
+    if (!result) {
+      return res.status(200).json({
+        success: false,
+        message: `No items Yet`,
+      });
+    }
+    res.status(200).json({
+      success: true,
+      message: `all the items`,
+      result: result,
+    });
+  });
+};
 // // =================================================== // done
+
+// This function update on is_deleted Item By Id
+const isDeleteItemById = (req, res) => {
+  const { id } = req.params;
+  const { is_deleted, descriptions } = req.body;
+  const query = `UPDATE items SET is_deleted = ?,descriptions = ? WHERE id = ?`;
+  const data = [is_deleted, descriptions, id];
+  connection.query(query, data, (err, result) => {
+    if (err) {
+      return res.status(500).json({
+        success: false,
+        message: ` No item with id ${id}`,
+      });
+    }
+    res.status(200).json({
+      success: true,
+      message: `Succeeded to update is_deleted item with id ${id}`,
+      result: result,
+    });
+  });
+};
 
 // This function get Item By Id
 const getItemById = (req, res) => {
@@ -185,4 +231,6 @@ module.exports = {
   updateItemById,
   getItemByCategory_id,
   getFilteredItems,
+  isDeleteItemById,
+  getOutOfSItems,
 };
