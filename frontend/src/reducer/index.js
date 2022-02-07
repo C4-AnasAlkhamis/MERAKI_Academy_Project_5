@@ -6,7 +6,7 @@ import itemsReducer from "./item/index";
 import loginReducer from "./login/index";
 import itemInfoReducer from "./itemInfo/index";
 import wishlistReducer from "./wishlist/index";
-import usersReducer from "./item/index";
+import usersReducer from "./users/index";
 
 const reducers = combineReducers({
   itemsReducer,
