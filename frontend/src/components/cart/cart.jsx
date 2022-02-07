@@ -102,7 +102,6 @@ const Cart = () => {
           <h1>YOUR SHOPPING Cart</h1>
         </div>
         <div className="info_box buy_box ">
-          <button>BUY</button>
           <Pay items={carts} price={total} />
           <div>
             <p>total price </p>
