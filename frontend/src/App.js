@@ -11,7 +11,7 @@ import Wishlist from "./components/wishlist/wishlist";
 import AddItem from "./components/addItem/addItem";
 import HomePage from "./components/homePage/homePage";
 import Pag from "./components/cart/test";
-
+import AdminPanel from "./components/adminPanel/adminPanel";
 import logo from "./image/logo.png";
 
 function App() {
@@ -31,6 +31,8 @@ function App() {
         <Route path="/addItem" element={<AddItem />} />
         <Route path="/homePage" element={<HomePage />} />
         <Route path="/paginate" element={<Pag />} />
+        <Route path="/paginate" element={<Pag />} />
+        <Route path="/adminPanel" element={<AdminPanel />} />
       </Routes>
     </div>
   );
