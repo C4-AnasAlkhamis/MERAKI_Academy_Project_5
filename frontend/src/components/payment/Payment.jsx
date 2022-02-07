@@ -34,6 +34,7 @@ const Pay = ({ items, price }) => {
                         value: price,
                       },
                     },
+                    
                   ],
                 });
               }}
