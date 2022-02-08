@@ -16,6 +16,13 @@ import logo from "./image/logo.png";
 // import Category from "./components/adminPanel/categories/Caregories";
 
 import AddItem from "./components/adminPanel/items/addItem/addItem";
+import  Dashboard  from "./components/adminPanel/dashboard/dashboard";
+import  AddCategory  from "./components/adminPanel/categories/Caregories";
+import  ShowItems  from "./components/adminPanel/items/showItems/showItems";
+import  AddService  from "./components/adminPanel/services/addService/addService";
+import ShowServices  from "./components/adminPanel/services/addService/addService";
+import ShowUsers  from "./components/adminPanel/users/showUsers/showUsers";
+import ShowWorkers  from "./components/adminPanel/users/showWorkers/showWorkers";
 
 function App() {
   return (

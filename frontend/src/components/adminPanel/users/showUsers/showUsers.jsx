@@ -5,7 +5,7 @@ import Select from "react-select";
 import PaginateReact from "react-paginate";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
-import { setUsers } from "../../../../reducer/users/index";
+import { setUsers,deleteUsers } from "../../../../reducer/users/index";
 import { useNavigate } from "react-router-dom";
 import { AiTwotoneDelete } from "react-icons/ai";
 
@@ -36,6 +36,23 @@ const ShowUsers = () => {
         return setMessage(error.response.data.message);
       }
       setMessage("Error happened while Get Data, please try again");
+    }
+  };
+  //===============================================================
+  const deleteUserById = async () => {
+    try {
+      const res = await axios.delete(`http://localhost:5000/user/${id}`);
+      if (res.data.success) {
+        setMessage(res.data.success);
+        dispatch(deleteUsers(id));
+      } else {
+        throw Error;
+      }
+    } catch (error) {
+      if (!error.response.data.success) {
+        return setMessage(error.response.data.message);
+      }
+      setMessage("Error happened while deleting new data");
     }
   };
   //===============================================================

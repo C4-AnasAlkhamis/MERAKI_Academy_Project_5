@@ -8,14 +8,7 @@ import { Link } from "react-router-dom";
 
 //============================================================================
 //import
-import  Dashboard  from "./dashboard/dashboard";
-import  AddCategory  from "./categories/Caregories";
-import  AddItem  from "./items/addItem/addItem";
-import  ShowItems  from "./items/showItems/showItems";
-import  AddService  from "./services/addService/addService";
-import ShowServices  from "./services/addService/addService";
-import ShowUsers  from "./users/showUsers/showUsers";
-import ShowWorkers  from "./users/showWorkers/showWorkers";
+
 //============================================================================
 
 const AdminPanel = () => {
