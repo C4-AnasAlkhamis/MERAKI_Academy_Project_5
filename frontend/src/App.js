@@ -8,12 +8,14 @@ import Register from "./components/register/Register";
 import NavBar from "./components/navBar/navBar";
 import Cart from "./components/cart/cart";
 import Wishlist from "./components/wishlist/wishlist";
-import AddItem from "./components/addItem/addItem";
+// import AddItem from "./components/addItem/addItem";
 import HomePage from "./components/homePage/homePage";
 // import Pag from "./components/cart/test";
 import AdminPanel from "./components/adminPanel/adminPanel";
 import logo from "./image/logo.png";
 import Category from "./components/adminPanel/categories/Caregories";
+
+import AddItem from "./components/adminPanel/items/addItem/addItem";
 
 function App() {
   return (
@@ -34,6 +36,7 @@ function App() {
         {/* <Route path="/paginate" element={<Pag />} /> */}
         {/* <Route path="/paginate" element={<Pag />} /> */}
         <Route path="/adminPanel" element={<AdminPanel />} />
+
       </Routes>
     </div>
   );
