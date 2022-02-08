@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { setCategories } from "../../../reducer/item/index";
 import { BiPencil } from "react-icons/bi";
 import { FcDeleteRow } from "react-icons/fc";
-
+import "./categories.css";
 const Category = () => {
   const dispatch = useDispatch();
   const [message, setMessage] = useState();
@@ -44,25 +44,32 @@ const Category = () => {
     <>
       <h1>Category panel</h1>
       <table>
-        <tr>
-          <th>id</th>
-          <th>category</th>
-        </tr>
-        {categories.map((category) => {
-          console.log(category);
-          return (
-            <tr>
-              <td>{category.id}</td>
-              <td>{category.category}</td>
-              <td>
-                <BiPencil />
-              </td>
-              <td>
-                <FcDeleteRow />
-              </td>
-            </tr>
-          );
-        })}
+        <tbody>
+          <tr>
+            <th>id</th>
+            <th>category</th>
+            <th className="icon">update</th>
+            <th className="icon">delete</th>
+          </tr>
+          {categories.map((category, index) => {
+            return (
+              <tr key={index}>
+                <td>{category.id}</td>
+                <td>{category.category}</td>
+                <td>
+                  <i>
+                    <BiPencil className="btn" />
+                  </i>
+                </td>
+                <td>
+                  <i>
+                    <FcDeleteRow className="btn" />
+                  </i>
+                </td>
+              </tr>
+            );
+          })}
+        </tbody>
       </table>
     </>
   );
