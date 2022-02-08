@@ -5,7 +5,7 @@ import PaginateReact from "react-paginate";
 import "./test.css";
 
 // import cloudImage from "cloudinary-react";
-import image from "cloudinary-react";
+import { Image } from "cloudinary-react";
 
 ////////////
 /** @format */
@@ -47,6 +47,8 @@ const Pag = () => {
   // };
   // const url="CLOUDINARY_URL=cloudinary://186168973372335:b8FUrazq0ox83eJsFuWV1boJpI0@debtpixx1";
   const [imageSelected, setImageSelected] = useState("");
+  const [imageBack, setImageBack] = useState("");
+
   // const formData=(){
 
   // }
@@ -61,6 +63,7 @@ const Pag = () => {
     axios
       .post(`https://api.cloudinary.com/v1_1/debtpixx1/image/upload/`, formData)
       .then((res) => {
+        setImageBack(res.data.secure_url);
         console.log(res.data.secure_url);
       });
 
@@ -101,12 +104,11 @@ const Pag = () => {
 
         <button onClick={uploadImage}> upload image</button>
 
-
-
-        <image 
-        
-        style={{width:300}}
-        cloudName="debtpixx1" publicId="https://res.cloudinary.com/debtpixx1/image/upload/v1644261052/oqdmxvaezsvrsvjxehzw.jpg" /> 
+        <Image
+          style={{ width: 300 }}
+          cloudName="debtpixx1"
+          publicId={imageBack}
+        />
       </div>
     </>
   );
