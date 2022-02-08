@@ -16,6 +16,7 @@ import logo from "./image/logo.png";
 // import Category from "./components/adminPanel/categories/Caregories";
 
 import AddItem from "./components/adminPanel/items/addItem/addItem";
+
 // import  Dashboard  from "./components/adminPanel/dashboard/dashboard";
 import  AddCategory  from "./components/adminPanel/categories/Caregories";
 import  ShowItems  from "./components/adminPanel/items/showItems/showItems";
@@ -23,6 +24,7 @@ import  ShowItems  from "./components/adminPanel/items/showItems/showItems";
 // import ShowServices  from "./components/adminPanel/services/showServices/showServices";
 import ShowUsers  from "./components/adminPanel/users/showUsers/showUsers";
 // import ShowWorkers  from "./components/adminPanel/users/showWorkers/showWorkers";
+
 
 function App() {
   return (
@@ -32,17 +34,19 @@ function App() {
       </div>
       <NavBar />
       <Routes>
+
         <Route path="/login" element={<Login />} />7
-        {/* <Route path="/addCategory" element={<Category />} /> */}
+
         <Route path="/register" element={<Register />} />
         <Route path="/more-info" element={<ItemInfo />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/Wishlist" element={<Wishlist />} />
-        {/* <Route path="/addItem" element={<AddItem />} /> */}
+
         <Route path="/homePage" element={<HomePage />} />
         {/* <Route path="/paginate" element={<Pag />} /> */}
         {/* <Route path="/paginate" element={<Pag />} /> */}
         <Route path="/adminPanel" element={<AdminPanel />} />
+
 
         {/* <Route path="/dashboard" element={<Dashboard />} /> */}
         <Route path="/addCategory" element={<AddCategory />} />
@@ -52,6 +56,7 @@ function App() {
         {/* <Route path="/showServices" element={<ShowServices />} /> */}
         <Route path="/showUsers" element={<ShowUsers />} />
         {/* <Route path="/showWorkers" element={<ShowWorkers />} /> */}
+
 
 
       </Routes>

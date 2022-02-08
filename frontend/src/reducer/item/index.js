@@ -14,10 +14,23 @@ const itemsReducer = (state = initialState, { type, payload }) => {
     case "ADD_ITEM":
       return { ...state, items: [...state.items, payload] };
 
-    case "SET_CATEGORIES":
-      return { ...state, categories: payload };
-    case "ADD_CATEGORY":
-      return { ...state, categories: [...state.categories, payload] };
+    case "DELETE_ITEM":
+      return {
+        ...state,
+        items: state.items.filter((item) => {
+          return item.id !== payload;
+        }),
+      };
+    case "UPDATE_ITEM":
+      return {
+        ...state,
+        items: state.items.map((item) => {
+          if (item.id === payload.id) {
+            return payload;
+          }
+          return item;
+        }),
+      };
 
     case "DELETE_CATEGORY":
       return {
@@ -26,6 +39,13 @@ const itemsReducer = (state = initialState, { type, payload }) => {
           return category.id !== payload;
         }),
       };
+
+    case "SET_CATEGORIES":
+      return { ...state, categories: payload };
+
+    case "ADD_CATEGORY":
+      return { ...state, categories: [...state.categories, payload] };
+
     case "UPDATE_CATEGORY":
       return {
         ...state,
@@ -36,6 +56,7 @@ const itemsReducer = (state = initialState, { type, payload }) => {
           return category;
         }),
       };
+
     default:
       return state;
   }
@@ -52,6 +73,16 @@ export const setItems = (items) => {
 
 export const addItem = (newItem) => {
   return { type: "ADD_ITEM", payload: newItem };
+};
+// =======================  //
+
+export const updateItem = (newItem) => {
+  return { type: "UPDATE_ITEM", payload: newItem };
+};
+// =======================  //
+
+export const deleteItem = (id) => {
+  return { type: "DELETE_ITEM", payload: id };
 };
 // =======================  //
 export const addCategory = (newCategory) => {

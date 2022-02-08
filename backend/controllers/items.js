@@ -82,7 +82,7 @@ const getFilteredItems = (req, res) => {
 const deleteItemById = (req, res) => {
   const { id } = req.params;
 
-  const query = `zz FROM items WHERE id = ?`;
+  const query = `DELETE FROM items WHERE id = ?`;
   const data = [id];
   connection.query(query, data, (err, result) => {
     if (err) {
@@ -127,10 +127,10 @@ const getOutOfSItems = (req, res) => {
 
 // This function update on is_deleted Item By Id
 const isDeleteItemById = (req, res) => {
-  const { id } = req.params;
-  const { is_deleted, descriptions } = req.body;
+  const id = req.params.id;
+  const { is_deleted, description } = req.body;
   const query = `UPDATE items SET is_deleted = ?,descriptions = ? WHERE id = ?`;
-  const data = [is_deleted, descriptions, id];
+  const data = [is_deleted, description, id];
   connection.query(query, data, (err, result) => {
     if (err) {
       return res.status(500).json({
@@ -172,8 +172,13 @@ const getItemById = (req, res) => {
 const updateItemById = (req, res) => {
   const { image, title, description, category, price } = req.body;
   const id = req.params.id;
-
-  const query = `UPDATE items SET img=?, title=?, descriptions=? , category_id = ? , price=? WHERE id=?;`;
+  const query = `UPDATE items SET img= IF(${image != ""}, ?, img), title= IF(${
+    title != ""
+  }, ?, title), descriptions=IF(${
+    description != ""
+  }, ?, descriptions) , category_id = IF(${
+    category != ""
+  }, ?, category_id) , price= IF(${price != ""}, ?, price) WHERE id=?;`;
 
   const data = [image, title, description, category, price, id];
 
@@ -204,10 +209,10 @@ const updateItemById = (req, res) => {
 // // =================================================== // done
 // This function to get item by Category_id.
 const getItemByCategory_id = (req, res) => {
-  let category_id = req.query.id;
+  let id = req.params.id;
 
   const query = `select * FROM items WHERE category_id = ?`;
-  const data = [category_id];
+  const data = [id];
   connection.query(query, data, (err, result) => {
     if (err) {
       return res.status(500).json({

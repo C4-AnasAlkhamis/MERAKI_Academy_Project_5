@@ -196,7 +196,6 @@ const HomePage = () => {
   const pgVS = pgNum * itemsPerPg;
   const pageCount = Math.ceil(itemsMap.length / itemsPerPg);
   const changePage = ({ selected }) => {
-    console.log(selected);
     setPgNum(selected);
   };
   const display = itemsMap.slice(pgVS, pgVS + itemsPerPg).map((item, index) => {
