@@ -38,11 +38,12 @@ function App() {
         <Route path="/more-info" element={<ItemInfo />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/Wishlist" element={<Wishlist />} />
-        <Route path="/addItem" element={<AddItem />} />
+        {/* <Route path="/addItem" element={<AddItem />} /> */}
         <Route path="/homePage" element={<HomePage />} />
         {/* <Route path="/paginate" element={<Pag />} /> */}
         {/* <Route path="/paginate" element={<Pag />} /> */}
         <Route path="/adminPanel" element={<AdminPanel />} />
+
         {/* <Route path="/dashboard" element={<Dashboard />} /> */}
         <Route path="/addCategory" element={<AddCategory />} />
         <Route path="/addItems" element={<AddItem />} />
@@ -51,6 +52,7 @@ function App() {
         {/* <Route path="/showServices" element={<ShowServices />} /> */}
         <Route path="/showUsers" element={<ShowUsers />} />
         {/* <Route path="/showWorkers" element={<ShowWorkers />} /> */}
+
 
       </Routes>
     </div>
