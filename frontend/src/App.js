@@ -10,9 +10,10 @@ import Cart from "./components/cart/cart";
 import Wishlist from "./components/wishlist/wishlist";
 import AddItem from "./components/addItem/addItem";
 import HomePage from "./components/homePage/homePage";
-import Pag from "./components/cart/test";
+// import Pag from "./components/cart/test";
 import AdminPanel from "./components/adminPanel/adminPanel";
 import logo from "./image/logo.png";
+import Category from "./components/adminPanel/categories/Caregories";
 
 function App() {
   return (
@@ -21,17 +22,17 @@ function App() {
         <img src={logo} />
       </div>
       <NavBar />
-
       <Routes>
-        <Route path="/login" element={<Login />} />
+        <Route path="/login" element={<Login />} />7
+        <Route path="/addCategory" element={<Category />} />
         <Route path="/register" element={<Register />} />
         <Route path="/more-info" element={<ItemInfo />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/Wishlist" element={<Wishlist />} />
         <Route path="/addItem" element={<AddItem />} />
         <Route path="/homePage" element={<HomePage />} />
-        <Route path="/paginate" element={<Pag />} />
-        <Route path="/paginate" element={<Pag />} />
+        {/* <Route path="/paginate" element={<Pag />} /> */}
+        {/* <Route path="/paginate" element={<Pag />} /> */}
         <Route path="/adminPanel" element={<AdminPanel />} />
       </Routes>
     </div>

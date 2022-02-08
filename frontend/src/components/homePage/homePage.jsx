@@ -134,7 +134,7 @@ const HomePage = () => {
   };
   //
   //===============================================================
-  let categoriesMap = categories.map((category, index) => {
+  const categoriesMap = categories.map((category, index) => {
     return (
       <li
         key={index}
@@ -143,7 +143,8 @@ const HomePage = () => {
           getAllItems();
           setCategoryId(parseInt(e.target.id));
           setIsFilter(false);
-        }}>
+        }}
+      >
         {category.category}
       </li>
     );
@@ -216,7 +217,8 @@ const HomePage = () => {
             id={item.id}
             onClick={(e) => {
               getItemById(e.target.id);
-            }}>
+            }}
+          >
             ITEM DETAILS
           </button>
         </div>
@@ -228,9 +230,7 @@ const HomePage = () => {
   return (
     <div className="homePage">
       <div className="categories">
-        <ul>
-          {categoriesMap}
-        </ul>
+        <ul>{categoriesMap}</ul>
         <input
           type="search"
           placeholder="Search"
@@ -242,7 +242,7 @@ const HomePage = () => {
       <div className="Hadar">{headerImg()}</div>
       <div className="filter_box">
         <Select
-        className="filter"
+          className="filter"
           onChange={(e) => {
             getFilteredItems(`%${e.value}%`);
           }}

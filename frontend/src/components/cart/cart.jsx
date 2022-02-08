@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "./cart.css";
 import axios from "axios";
+import { PayPalScriptProvider } from "@paypal/react-paypal-js";
+
 import { useSelector, useDispatch } from "react-redux";
 import { setCart, deleteCart } from "../../reducer/cart/index";
 import { RiPaypalLine, RiVisaFill } from "react-icons/ri";
@@ -102,7 +104,9 @@ const Cart = () => {
           <h1>YOUR SHOPPING Cart</h1>
         </div>
         <div className="info_box buy_box ">
-          <Pay items={carts} price={total} />
+          <PayPalScriptProvider>
+            <Pay items={carts} price={total} />
+          </PayPalScriptProvider>
           <div>
             <p>total price </p>
             <span>{total} JOD</span>
