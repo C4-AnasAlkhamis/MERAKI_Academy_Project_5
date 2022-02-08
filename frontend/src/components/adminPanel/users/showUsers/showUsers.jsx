@@ -37,6 +37,8 @@ const ShowUsers = () => {
       }
       setMessage("Error happened while Get Data, please try again");
     }
+    console.log(message);
+
   };
   //===============================================================
   const deleteUserById = async (id) => {
@@ -55,12 +57,11 @@ const ShowUsers = () => {
       }
       setMessage("Error happened while deleting new data");
     }
-    console.log(message);
   };
   //===============================================================
   useEffect(() => {
     getAllUsers();
-  }, []);
+  }, [id]);
   return (
     <div className="showUsers">
       <table>
