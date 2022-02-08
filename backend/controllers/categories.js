@@ -24,6 +24,28 @@ const createNewCategory = (req, res) => {
 };
 // =================================================== // done
 
+// This function creates new category
+const updateCategory = (req, res) => {
+  const id = req.params.id;
+  const { category } = req.body;
+  const query = `UPDATE categories SET category =?  WHERE id = ?`;
+  const data = [category, id];
+  connection.query(query, data, (err, result) => {
+    if (err) {
+      return res.status(500).json({
+        success: false,
+        message: `Server Error`,
+      });
+    }
+    res.status(200).json({
+      success: true,
+      message: `category with id ${id} updated `,
+      result: result,
+    });
+  });
+};
+// =================================================== // done
+
 // This function returns the categories
 const getAllCategories = (req, res) => {
   const query = `SELECT * FROM categories`;
@@ -93,5 +115,6 @@ module.exports = {
   createNewCategory,
   getAllCategories,
   getCategoryById,
-  deleteCategoryById
+  deleteCategoryById,
+  updateCategory,
 };

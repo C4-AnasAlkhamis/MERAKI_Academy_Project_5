@@ -6,10 +6,11 @@ import {
   setCategories,
   addCategory,
   deleteCategory,
+  updateCategory,
 } from "../../../reducer/item/index";
 import { FcDeleteRow } from "react-icons/fc";
 import { FaTimesCircle } from "react-icons/fa";
-
+import { TiPencil } from "react-icons/ti";
 import { VscGitPullRequestCreate } from "react-icons/vsc";
 
 import "./categories.css";
@@ -18,6 +19,7 @@ const Category = () => {
   const [message, setMessage] = useState();
   const [show, setShow] = useState(false);
   const [category, setCategory] = useState("");
+  const [id, setId] = useState();
   const state = useSelector((state) => {
     return {
       token: state.loginReducer.token,
@@ -67,7 +69,7 @@ const Category = () => {
     }
   };
   //======================================
-  const deleteCategoryById = async (id) => {
+  const deleteCategoryById = async () => {
     try {
       const res = await axios.delete(`http://localhost:5000/category/${id}`);
       if (res.data.success) {
@@ -80,10 +82,28 @@ const Category = () => {
       if (!error.response.data.success) {
         return setMessage(error.response.data.message);
       }
-      setMessage("Error happened while creating new data");
+      setMessage("Error happened while deleting new data");
     }
   };
   //======================================
+  const updateCategoryById = async () => {
+    try {
+      const res = await axios.put(`http://localhost:5000/category/${id}`, {
+        category,
+      });
+      if (res.data.success) {
+        setMessage(res.data.success);
+        dispatch(updateCategory({ category: category, id: id }));
+      } else {
+        throw Error;
+      }
+    } catch (error) {
+      if (!error.response.data.success) {
+        return setMessage(error.response.data.message);
+      }
+      setMessage("Error happened while updating new data");
+    }
+  };
 
   useEffect(() => {
     getAllCategories();
@@ -100,14 +120,15 @@ const Category = () => {
             <th>id</th>
             <th>category</th>
             <th className="icon">delete</th>
-            <th className="add icon">
+            <th className="icon">update</th>
+            <th
+              onClick={() => {
+                setShow(!show);
+              }}
+              className="add icon"
+            >
               <i>
-                <VscGitPullRequestCreate
-                  onClick={() => {
-                    setShow(!show);
-                  }}
-                  className="btn"
-                />
+                <VscGitPullRequestCreate className="btn" />
               </i>
             </th>
           </tr>
@@ -120,7 +141,19 @@ const Category = () => {
                   <i>
                     <FcDeleteRow
                       onClick={() => {
-                        deleteCategoryById(category.id);
+                        setId(category.id);
+                        deleteCategoryById();
+                      }}
+                      className="btn"
+                    />
+                  </i>
+                </td>
+                <td>
+                  <i>
+                    <TiPencil
+                      onClick={() => {
+                        setShow(!show);
+                        setId(category.id);
                       }}
                       className="btn"
                     />
@@ -155,6 +188,14 @@ const Category = () => {
             }}
           >
             Add
+          </button>
+          <button
+            onClick={() => {
+              updateCategoryById();
+              setShow(!show);
+            }}
+          >
+            Update
           </button>
         </div>
       ) : null}

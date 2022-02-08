@@ -26,6 +26,16 @@ const itemsReducer = (state = initialState, { type, payload }) => {
           return category.id !== payload;
         }),
       };
+    case "UPDATE_CATEGORY":
+      return {
+        ...state,
+        categories: state.categories.map((category) => {
+          if (category.id === payload.id) {
+            return payload;
+          }
+          return category;
+        }),
+      };
     default:
       return state;
   }
@@ -55,5 +65,9 @@ export const setCategories = (categories) => {
 // =======================  //
 export const deleteCategory = (id) => {
   return { type: "DELETE_CATEGORY", payload: id };
+};
+// =======================  //
+export const updateCategory = (newCategory) => {
+  return { type: "UPDATE_CATEGORY", payload: newCategory };
 };
 // =======================  //
