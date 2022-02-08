@@ -2,30 +2,34 @@
 
 import React, { useEffect, useState } from "react";
 import Select from "react-select";
-import "./homePage.css";
 import PaginateReact from "react-paginate";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import { setUsers } from "../../../../reducer/users/index";
-import { setItemInfo } from "../../reducer/itemInfo/index";
 import { useNavigate } from "react-router-dom";
+import { AiTwotoneDelete } from "react-icons/ai";
 
 //===============================================================
 
 const ShowUsers = () => {
-  const {users} = useSelector((state) => {
+  const [message, setMessage] = useState("");
+  const [id, setId] = useState();
+
+  const dispatch = useDispatch();
+
+  const { users } = useSelector((state) => {
     return {
       users: state.usersReducer.users,
     };
   });
-
+  console.log(users);
   //===============================================================
 
   const getAllUsers = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/user");
+      const res = await axios.get("http://localhost:5000/user/all");
       if (res.data.success) {
-        dispatch(setUsers(res.data.items));
+        dispatch(setUsers(res.data.result));
       } else throw Error;
     } catch (error) {
       if (!error.response.data.success) {
@@ -35,10 +39,45 @@ const ShowUsers = () => {
     }
   };
   //===============================================================
+  useEffect(() => {
+    getAllUsers();
+  }, []);
+  return (
+    <div className="showUsers">
+ 
+ <table>
+        <tbody>
+          <tr>
+            <th>id</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th className="icon">Delete</th>
+          </tr>
+          {users.map((user, index) => {
+            return (
+              <tr key={index}>
+                <td>{user.id}</td>
+                <td>{user.user_name}</td>
+                <td>{user.email}</td>
+                <td>
+                  <i>
+                    <AiTwotoneDelete
+                      onClick={() => {
+                        setId(user.id);
 
-  return <div className="showUsers">
+                      }}
+                      className="btn"
+                    />
+                  </i>
+                </td> 
 
-  </div>;
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    </div>
+  );
 };
 
 export default ShowUsers;

@@ -4,10 +4,11 @@ import React from "react";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-
+import ShowUsers from "./users/showUsers/showUsers";
 const AdminPanel = () => {
   return (
     <div className="adminPanel">
+      <ShowUsers />
       <div className="adminNavbar">
         <ul>
           <Link to={"/dashboard"}>Dashboard</Link>
@@ -49,7 +50,6 @@ const AdminPanel = () => {
           </li>
         </ul>
       </div>
-      
     </div>
   );
 };
