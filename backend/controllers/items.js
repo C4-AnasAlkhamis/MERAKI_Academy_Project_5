@@ -82,7 +82,7 @@ const getFilteredItems = (req, res) => {
 const deleteItemById = (req, res) => {
   const { id } = req.params;
 
-  const query = `zz FROM items WHERE id = ?`;
+  const query = `DELETE FROM items WHERE id = ?`;
   const data = [id];
   connection.query(query, data, (err, result) => {
     if (err) {

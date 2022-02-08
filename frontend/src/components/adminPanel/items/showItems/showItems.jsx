@@ -8,7 +8,7 @@ import { FaTimesCircle } from "react-icons/fa";
 import Select from "react-select";
 
 const ShowItem = () => {
-  //===============================================================
+  // ================================================  //
   const dispatch = useDispatch();
   const [id, setId] = useState();
   const [image, setImage] = useState("");
@@ -19,6 +19,7 @@ const ShowItem = () => {
   const [show, setShow] = useState(false);
   const [item, setItem] = useState();
   const [message, setMessage] = useState();
+  // ================================================  //
 
   const state = useSelector((state) => {
     return {
@@ -28,6 +29,7 @@ const ShowItem = () => {
     };
   });
   const { token, items, categories } = state;
+  // ================================================  //
 
   const options = categories.map((element, index) => {
     return {
@@ -35,6 +37,8 @@ const ShowItem = () => {
       label: element.category,
     };
   });
+  // ================================================  //
+
   const getAllItems = async (category_id) => {
     try {
       const res = await axios.get(
@@ -57,6 +61,8 @@ const ShowItem = () => {
       setMessage("Error happened while Get Data, please try again");
     }
   };
+  // ================================================  //
+
   const inStock = async (id, is_deleted, description) => {
     try {
       const res = await axios.put(
@@ -80,6 +86,8 @@ const ShowItem = () => {
       setMessage("Error happened while Get Data, please try again");
     }
   };
+  // ================================================  //
+
   const updateItemById = async () => {
     await axios
       .put(`http://localhost:5000/item/${id}`, {
@@ -108,8 +116,8 @@ const ShowItem = () => {
         // setMessage("Error happened while updating the item");
       });
   };
+  // ================================================  //
 
-  //=======================================
   const getAllCategories = async () => {
     try {
       const res = await axios.get("http://localhost:5000/category", {
@@ -127,6 +135,23 @@ const ShowItem = () => {
       setMessage("Error happened while Get Data, please try again");
     }
   };
+  // ================================================  //
+  const deleteItemById = async (id) => {
+    try {
+      const res = await axios.delete(`http://localhost:5000/item/${id}`);
+      if (res.data.success) {
+        setMessage(res.data.success);
+      } else {
+        throw Error;
+      }
+    } catch (error) {
+      if (!error.response.data.success) {
+        return setMessage(error.response.data.message);
+      }
+      setMessage("Error happened while deleting new data");
+    }
+  };
+  // ================================================  //
 
   useEffect(() => {
     getAllCategories();
@@ -152,6 +177,7 @@ const ShowItem = () => {
             <th>price</th>
             <th className="icon">delete</th>
             <th className="icon">update</th>
+            <th className="icon">delete</th>
           </tr>
           {items.map((item, index) => {
             return (
