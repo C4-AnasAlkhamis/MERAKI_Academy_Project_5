@@ -1,9 +1,15 @@
 /** @format */
 
 import React from "react";
+import { Routes, Route } from "react-router-dom";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+
+//============================================================================
+//import
+
+//============================================================================
 
 const AdminPanel = () => {
   return (
@@ -16,8 +22,6 @@ const AdminPanel = () => {
             <ul>
               <Link to={"/addCategory"}>Add Category</Link>
               <br />
-              <Link to={"/ShowCategories"}>Show Categories</Link>
-              <br />
             </ul>
           </li>
           <li>ITEMS</li>
@@ -25,7 +29,7 @@ const AdminPanel = () => {
             <ul>
               <Link to={"/addItems"}>Add Item</Link>
               <br />
-              <Link to={"/ShowItems"}>Show Items</Link>
+              <Link to={"/showItems"}>Show Items</Link>
               <br />
             </ul>
           </li>
@@ -34,22 +38,24 @@ const AdminPanel = () => {
             <ul>
               <Link to={"/addService"}>Add Service</Link>
               <br />
-              <Link to={"/ShowServices"}>Show Services</Link>
+              <Link to={"/showServices"}>Show Services</Link>
               <br />
             </ul>
           </li>
           <li>USERS</li>
           <li>
             <ul>
-              <Link to={"/ShowUsers"}>Show Users</Link>
+              <Link to={"/showUsers"}>Show Users</Link>
               <br />
-              <Link to={"/ShowWorkers"}>Show Workers</Link>
+              <Link to={"/showWorkers"}>Show Workers</Link>
               <br />
             </ul>
           </li>
         </ul>
       </div>
-      
+      <Routes>
+
+      </Routes>
     </div>
   );
 };

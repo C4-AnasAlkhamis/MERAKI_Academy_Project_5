@@ -2,18 +2,22 @@
 
 import React, { useEffect, useState } from "react";
 import Select from "react-select";
-import "./homePage.css";
 import PaginateReact from "react-paginate";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
-import { setUsers } from "../../../../reducer/users/index";
-import { setItemInfo } from "../../reducer/itemInfo/index";
+import { setUsers, deleteUsers } from "../../../../reducer/users/index";
 import { useNavigate } from "react-router-dom";
+import { AiTwotoneDelete } from "react-icons/ai";
 
 //===============================================================
 
 const ShowUsers = () => {
-  const {users} = useSelector((state) => {
+  const [message, setMessage] = useState("");
+  const [id, setId] = useState();
+
+  const dispatch = useDispatch();
+
+  const { users } = useSelector((state) => {
     return {
       users: state.usersReducer.users,
     };
@@ -23,9 +27,9 @@ const ShowUsers = () => {
 
   const getAllUsers = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/user");
+      const res = await axios.get("http://localhost:5000/user/all");
       if (res.data.success) {
-        dispatch(setUsers(res.data.items));
+        dispatch(setUsers(res.data.result));
       } else throw Error;
     } catch (error) {
       if (!error.response.data.success) {
@@ -33,12 +37,65 @@ const ShowUsers = () => {
       }
       setMessage("Error happened while Get Data, please try again");
     }
+    console.log(message);
+
   };
   //===============================================================
-
-  return <div className="showUsers">
-
-  </div>;
+  const deleteUserById = async (id) => {
+    try {
+      const res = await axios.delete(`http://localhost:5000/user/${id}`);
+      console.log(res);
+      if (res.data.success) {
+        setMessage(res.data.success);
+        dispatch(deleteUsers(id));
+      } else {
+        throw Error;
+      }
+    } catch (error) {
+      if (!error.response.data.success) {
+        return setMessage(error.response.data.message);
+      }
+      setMessage("Error happened while deleting new data");
+    }
+  };
+  //===============================================================
+  useEffect(() => {
+    getAllUsers();
+  }, [id]);
+  return (
+    <div className="showUsers">
+      <table>
+        <tbody>
+          <tr>
+            <th>id</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th className="icon">Delete</th>
+          </tr>
+          {users.map((user, index) => {
+            return (
+              <tr key={index}>
+                <td>{user.id}</td>
+                <td>{user.user_name}</td>
+                <td>{user.email}</td>
+                <td>
+                  <i>
+                    <AiTwotoneDelete
+                      onClick={() => {
+                        setId(user.id);
+                        deleteUserById(user.id);
+                      }}
+                      className="btn"
+                    />
+                  </i>
+                </td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    </div>
+  );
 };
 
 export default ShowUsers;
