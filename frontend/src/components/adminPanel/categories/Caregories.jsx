@@ -83,13 +83,16 @@ const Category = () => {
       setMessage("Error happened while creating new data");
     }
   };
+  //======================================
+
   useEffect(() => {
     getAllCategories();
   }, []);
+  //======================================
 
   return (
     <>
-      <h1>Category panel</h1>
+      <h1 className="head_table">Category panel</h1>
 
       <table>
         <tbody>
