@@ -122,10 +122,29 @@ const deleteUserById = (req, res) => {
     });
   });
 };
+// // =================================================== // done
 
+// This function get all items from items
+const getAllIUses = (req, res) => {
+  const query = `SELECT * FROM users`;
+  connection.query(query, (err, result) => {
+    if (err) {
+      return res.status(500).json({
+        success: false,
+        message: `Server Error`,
+      });
+    }
+    res.status(200).json({
+      success: true,
+      message: `all the users`,
+      result: result,
+    });
+  });
+};
 module.exports = {
   createNewUser,
   getUserById,
   updateUserById,
   deleteUserById,
+  getAllIUses,
 };
