@@ -1,10 +1,11 @@
 import axios from "axios";
-
+import "./showItem.css";
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { setItems, setCategories } from "../../../../reducer/item/index";
 import { TiPencil } from "react-icons/ti";
 import { FaTimesCircle } from "react-icons/fa";
+import Select from "react-select";
 
 const ShowItem = () => {
   //===============================================================
@@ -16,6 +17,8 @@ const ShowItem = () => {
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState(0);
   const [show, setShow] = useState(false);
+  const [item, setItem] = useState();
+  const [message, setMessage] = useState();
 
   const state = useSelector((state) => {
     return {
@@ -24,30 +27,36 @@ const ShowItem = () => {
       items: state.itemsReducer.items,
     };
   });
-  const { token, items } = state;
+  const { token, items, categories } = state;
 
-  const getAllItems = async () => {
+  const options = categories.map((element, index) => {
+    return {
+      value: element.id,
+      label: element.category,
+    };
+  });
+  const getAllItems = async (category_id) => {
     try {
-      const res = await axios.get(`http://localhost:5000/item/category/${id}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const res = await axios.get(
+        `http://localhost:5000/item/category/${category_id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
       if (res.data.success) {
-        console.log(res);
-        // setMessage("");
-        // setUserId(res.data.userId);
+        setMessage("");
         dispatch(setItems(res.data.item));
       } else throw Error;
     } catch (error) {
       console.log(error);
       if (!error.response.data.success) {
-        // return setMessage(error.response.data.message);
+        return setMessage(error.response.data.message);
       }
-      // setMessage("Error happened while Get Data, please try again");
+      setMessage("Error happened while Get Data, please try again");
     }
   };
-  // image, title, description, category, price
   const inStock = async (id, is_deleted, description) => {
     try {
       const res = await axios.put(
@@ -61,15 +70,14 @@ const ShowItem = () => {
       );
       if (res.data.success) {
         console.log(res);
-        // setMessage("");
-        // setUserId(res.data.userId);
+        setMessage("");
       } else throw Error;
     } catch (error) {
       console.log(error);
       if (!error.response.data.success) {
-        // return setMessage(error.response.data.message);
+        return setMessage(error.response.data.message);
       }
-      // setMessage("Error happened while Get Data, please try again");
+      setMessage("Error happened while Get Data, please try again");
     }
   };
   const updateItemById = async () => {
@@ -82,7 +90,7 @@ const ShowItem = () => {
         price,
       })
       .then((result) => {
-        // setMessage("Item has been updating successfully");
+        setMessage("Item has been updating successfully");
         console.log(result);
         // dispatch(
         //   updateItemInfo({
@@ -100,17 +108,39 @@ const ShowItem = () => {
         // setMessage("Error happened while updating the item");
       });
   };
+
+  //=======================================
+  const getAllCategories = async () => {
+    try {
+      const res = await axios.get("http://localhost:5000/category", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      if (res.data.success) {
+        dispatch(setCategories(res.data.result));
+      } else throw Error;
+    } catch (error) {
+      if (!error.response.data.success) {
+        return setMessage(error.response.data.message);
+      }
+      setMessage("Error happened while Get Data, please try again");
+    }
+  };
+
+  useEffect(() => {
+    getAllCategories();
+  }, []);
   return (
     <>
-      <div>
-        <input
+      <div className="show_filter">
+        <Select
           onChange={(e) => {
-            setId(e.target.value);
+            getAllItems(e.value);
           }}
-          type="number"
-          placeholder="Category id"
+          options={options}
+          placeholder="Filter"
         />
-        <button onClick={getAllItems}>Get</button>
       </div>
       <table>
         <tbody>
@@ -145,8 +175,6 @@ const ShowItem = () => {
                     outOf stock
                     <input
                       onChange={(e) => {
-                        // setIs_deleted(e.target.value);
-                        // setDescription("OUT OF STOCK");
                         let id = item.id;
                         let is_deleted = e.target.value;
                         let description = "OUT OF STOCK";
@@ -162,8 +190,6 @@ const ShowItem = () => {
                     in stock
                     <input
                       onChange={(e) => {
-                        // setIs_deleted(e.target.value);
-                        // setDescription("IN STOCK");
                         let id = item.id;
                         let is_deleted = e.target.value;
                         let description = "IN STOCK";
@@ -183,6 +209,7 @@ const ShowItem = () => {
                       onClick={() => {
                         setShow(!show);
                         setId(item.id);
+                        setItem(item);
                       }}
                     />
                   </i>
@@ -217,16 +244,9 @@ const ShowItem = () => {
           <input
             type="number"
             onChange={(e) => {
-              setCategory(e.target.value);
-            }}
-            placeholder="Category"
-          />
-          <input
-            type="number"
-            onChange={(e) => {
               setPrice(e.target.value);
             }}
-            placeholder="Price"
+            placeholder="price"
           />
           <input
             type="text"
@@ -234,6 +254,13 @@ const ShowItem = () => {
               setDescription(e.target.value);
             }}
             placeholder="Description"
+          />
+          <Select
+            onChange={(e) => {
+              setCategory(e.value);
+            }}
+            options={options}
+            placeholder="category"
           />
           <button onClick={updateItemById}>update</button>
         </div>
