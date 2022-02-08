@@ -2,10 +2,16 @@ import axios from "axios";
 import "./showItem.css";
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { setItems, setCategories } from "../../../../reducer/item/index";
+import {
+  setItems,
+  setCategories,
+  updateItem,
+  deleteItem,
+} from "../../../../reducer/item/index";
 import { TiPencil } from "react-icons/ti";
 import { FaTimesCircle } from "react-icons/fa";
 import Select from "react-select";
+import { FcDeleteRow } from "react-icons/fc";
 
 const ShowItem = () => {
   // ================================================  //
@@ -101,7 +107,7 @@ const ShowItem = () => {
         setMessage("Item has been updating successfully");
         console.log(result);
         // dispatch(
-        //   updateItemInfo({
+        //   updateItem({
         //     image: image ? image : state.item.image,
         //     title: title ? title : state.item.title,
         //     description: description ? description : state.item.description,
@@ -136,11 +142,12 @@ const ShowItem = () => {
     }
   };
   // ================================================  //
-  const deleteItemById = async (id) => {
+  const deleteItemById = async (item_id) => {
     try {
-      const res = await axios.delete(`http://localhost:5000/item/${id}`);
+      const res = await axios.delete(`http://localhost:5000/item/${item_id}`);
       if (res.data.success) {
         setMessage(res.data.success);
+        dispatch(deleteItem(item_id));
       } else {
         throw Error;
       }
@@ -236,6 +243,17 @@ const ShowItem = () => {
                         setShow(!show);
                         setId(item.id);
                         setItem(item);
+                      }}
+                    />
+                  </i>
+                </td>
+                <td>
+                  <i>
+                    <FcDeleteRow
+                      className="btn"
+                      onClick={() => {
+                        // setId(item.id);
+                        deleteItemById(item.id);
                       }}
                     />
                   </i>
