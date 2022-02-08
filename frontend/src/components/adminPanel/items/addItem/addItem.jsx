@@ -32,7 +32,6 @@ const AddItem = () => {
   const [category_id, setCategory_id] = useState(0);
   const [message, setMessage] = useState("");
   const [status, setStatus] = useState(false);
-  // const [imageSelected, setImageSelected] = useState("");
   const [imageUrl, setImageUrl] = useState("");
 
   //===============================================================
@@ -54,15 +53,16 @@ const AddItem = () => {
 
   const createNewItem = async (e) => {
     e.preventDefault();
+
     try {
       const item = {
-        title: "sss",
-        descriptions: "ddd",
+        title: title,
+        descriptions: descriptions,
         img: imageUrl,
-        price: 3,
-        category_id: 1,
+        price: price,
+        category_id: category_id,
       };
-      const result = await axios.post("http://localhost:5000/item", item, {
+      const result = await axios.post("http://localhost:5000/item/", item, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -91,74 +91,54 @@ const AddItem = () => {
   //===============================================================
   return (
     <>
-      <form onSubmit={createNewItem}>
-        <br />
-        <input
-          type="text"
-          placeholder="item title here"
-          onChange={(e) => setTitle(e.target.value)}
-        />
-        <br />
-        <textarea
-          placeholder="item description here"
-          onChange={(e) => setDescriptions(e.target.value)}
-        ></textarea>
-        <br />
-        <input
-          type="number"
-          placeholder="item price here"
-          onChange={(e) => setPrice(e.target.value)}
-        />
-        <br />
-        <input
-          type="text"
-          list="data"
-          placeholder="Category Type"
-          onClick={(e) => {
-            e.target.value = "";
-          }}
-          onChange={(e) => {
-            console.log(e.target.id);
-            setCategory_id(e.target.id);
-          }}
-        />
-        <datalist id="data">
-          <option id={1} value={"Hand Tools"} />
-          <option id={2} value={"Power Tools"} />
-          <option id={3} value={"Safety Work wear"} />
-        </datalist>
-        <br />
+      {/* <form onSubmit={createNewItem}> */}
+      <br />
+      <input
+        type="text"
+        placeholder="item title here"
+        onChange={(e) => setTitle(e.target.value)}
+      />
+      <br />
+      <textarea
+        placeholder="item description here"
+        onChange={(e) => setDescriptions(e.target.value)}
+      ></textarea>
+      <br />
+      <input
+        type="number"
+        placeholder="item price here"
+        onChange={(e) => setPrice(e.target.value)}
+      />
+      <br />
+      <input
+        placeholder="1,2,3 or 4"
+        onChange={(e) => setCategory_id(e.target.value)}
+      />
+      <datalist id="data">
+        <option id={1} value={"Hand Tools"} />
+        <option id={2} value={"Power Tools"} />
+        <option id={3} value={"Safety Work wear"} />
+      </datalist>
+      <br />
 
-        {/* <input
-          type="file"
-          onChange={(e) => {
-            setImg(e.target.value);
-          }}
-        /> */}
+      <input
+        type="file"
+        onChange={(e) => {
+          setImg(e.target.files[0]);
+        }}
+      />
 
-        <input
-          type="file"
-          onChange={(e) => {
-            setImg(e.target.files[0]);
-          }}
-        />
-        <button onClick={uploadImage}> upload image</button>
+      <button onClick={uploadImage}> upload image</button>
 
-        <button>Create New item</button>
-      </form>
+      <button onClick={createNewItem}>Create New item</button>
+      {/* </form> */}
 
       <br />
       {status
         ? message && <div className="SuccessMessage">{message}</div>
         : message && <div className="ErrorMessage">{message}</div>}
 
-      <>
-        {/* <Image 
-        
-        style={{width:300}}
-        cloudName="debtpixx1" 
-       publicId={imageUrl} />  */}
-      </>
+  
     </>
   );
 };
