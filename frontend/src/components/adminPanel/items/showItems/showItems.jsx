@@ -4,13 +4,19 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { setItems, setCategories } from "../../../../reducer/item/index";
 import { TiPencil } from "react-icons/ti";
+import { FaTimesCircle } from "react-icons/fa";
 
 const ShowItem = () => {
   //===============================================================
   const dispatch = useDispatch();
   const [id, setId] = useState();
-  // const [is_deleted, setIs_deleted] = useState();
-  // const [description, setDescription] = useState();
+  const [image, setImage] = useState("");
+  const [title, setTitle] = useState("");
+  const [price, setPrice] = useState(0);
+  const [description, setDescription] = useState("");
+  const [category, setCategory] = useState(0);
+  const [show, setShow] = useState(false);
+
   const state = useSelector((state) => {
     return {
       token: state.loginReducer.token,
@@ -66,29 +72,33 @@ const ShowItem = () => {
       // setMessage("Error happened while Get Data, please try again");
     }
   };
-  const updateItemById = async (item_id) => {
-    try {
-      const res = await axios.put(
-        `http://localhost:5000/item/${item_id}`,
-        // { image, title, description, category, price },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-      if (res.data.success) {
-        console.log(res);
-        // setMessage("");
-        // setUserId(res.data.userId);
-      } else throw Error;
-    } catch (error) {
-      console.log(error);
-      if (!error.response.data.success) {
-        // return setMessage(error.response.data.message);
-      }
-      // setMessage("Error happened while Get Data, please try again");
-    }
+  const updateItemById = async () => {
+    await axios
+      .put(`http://localhost:5000/item/${id}`, {
+        image,
+        title,
+        description,
+        category,
+        price,
+      })
+      .then((result) => {
+        // setMessage("Item has been updating successfully");
+        console.log(result);
+        // dispatch(
+        //   updateItemInfo({
+        //     image: image ? image : state.item.image,
+        //     title: title ? title : state.item.title,
+        //     description: description ? description : state.item.description,
+        //     category: category ? category : state.item.category,
+        //     price: price ? price : state.item.price,
+        //     id: state.item.id,
+        //   })
+        // );
+      })
+      .catch((err) => {
+        console.log(err);
+        // setMessage("Error happened while updating the item");
+      });
   };
   return (
     <>
@@ -168,7 +178,13 @@ const ShowItem = () => {
                 </td>
                 <td>
                   <i>
-                    <TiPencil />
+                    <TiPencil
+                      className="btn"
+                      onClick={() => {
+                        setShow(!show);
+                        setId(item.id);
+                      }}
+                    />
                   </i>
                 </td>
               </tr>
@@ -176,6 +192,52 @@ const ShowItem = () => {
           })}
         </tbody>
       </table>
+      {show ? (
+        <div className="input_box">
+          <FaTimesCircle
+            onClick={() => {
+              setShow(!show);
+            }}
+            className="btn esc"
+          />
+          <input
+            type="text"
+            onChange={(e) => {
+              setImage(e.target.value);
+            }}
+            placeholder="Image URl"
+          />
+          <input
+            type="text"
+            onChange={(e) => {
+              setTitle(e.target.value);
+            }}
+            placeholder="Title"
+          />
+          <input
+            type="number"
+            onChange={(e) => {
+              setCategory(e.target.value);
+            }}
+            placeholder="Category"
+          />
+          <input
+            type="number"
+            onChange={(e) => {
+              setPrice(e.target.value);
+            }}
+            placeholder="Price"
+          />
+          <input
+            type="text"
+            onChange={(e) => {
+              setDescription(e.target.value);
+            }}
+            placeholder="Description"
+          />
+          <button onClick={updateItemById}>update</button>
+        </div>
+      ) : null}
     </>
   );
 };
