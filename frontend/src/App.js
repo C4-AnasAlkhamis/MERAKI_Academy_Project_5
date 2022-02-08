@@ -31,11 +31,14 @@ function App() {
         <Route path="/more-info" element={<ItemInfo />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/Wishlist" element={<Wishlist />} />
-        <Route path="/addItem" element={<AddItem />} />
+        {/* <Route path="/addItem" element={<AddItem />} /> */}
         <Route path="/homePage" element={<HomePage />} />
         {/* <Route path="/paginate" element={<Pag />} /> */}
         {/* <Route path="/paginate" element={<Pag />} /> */}
         <Route path="/adminPanel" element={<AdminPanel />} />
+        <Route path="addItems" element={<AddItem />} />
+
+
 
       </Routes>
     </div>
