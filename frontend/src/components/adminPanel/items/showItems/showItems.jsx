@@ -1,8 +1,9 @@
 import axios from "axios";
-import Select from "react-select";
+
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { setItems, setCategories } from "../../../../reducer/item/index";
+import { TiPencil } from "react-icons/ti";
 
 const ShowItem = () => {
   //===============================================================
@@ -17,10 +18,6 @@ const ShowItem = () => {
   });
   const { token, items } = state;
 
-  const options = [
-    { value: "Grinder", label: "Grinder" },
-    { value: "Inflator", label: "Inflator" },
-  ];
   const getAllItems = async () => {
     try {
       const res = await axios.get(`http://localhost:5000/item/category/${id}`, {
@@ -62,7 +59,6 @@ const ShowItem = () => {
             <th>title</th>
             <th>description</th>
             <th>price</th>
-
             <th className="icon">delete</th>
             <th className="icon">update</th>
           </tr>
@@ -84,11 +80,19 @@ const ShowItem = () => {
                 <td>{item.descriptions}</td>
                 <td>{item.price}</td>
                 <td>
-                  <Select
-                    onChange={(e) => {}}
-                    options={options}
-                    placeholder="change stoke"
-                  />
+                  <label>
+                    out of stock
+                    <input type="radio" />
+                  </label>
+                  <label>
+                    in stock
+                    <input type="radio" />
+                  </label>
+                </td>
+                <td>
+                  <i>
+                    <TiPencil />
+                  </i>
                 </td>
               </tr>
             );
