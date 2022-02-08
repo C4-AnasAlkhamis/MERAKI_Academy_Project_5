@@ -88,10 +88,11 @@ const ShowItem = () => {
             descriptions: stock,
             category: item.category,
             price: item.price,
+            is_deleted: is_deleted,
             id: item.id,
           })
         );
-        // setItem("");
+        setItem("");
       } else throw Error;
     } catch (error) {
       console.log(error);
@@ -114,14 +115,15 @@ const ShowItem = () => {
       })
       .then((result) => {
         setMessage("Item has been updating successfully");
-        console.log("done");
+        console.log(item);
         dispatch(
           updateItem({
             img: image ? image : item.img,
             title: title ? title : item.title,
-            description: description ? description : item.description,
+            descriptions: description ? description : item.descriptions,
             category: category ? category : item.category,
             price: price ? price : item.price,
+            is_deleted: item.is_deleted,
             id: item.id,
           })
         );
@@ -225,6 +227,7 @@ const ShowItem = () => {
                       type="radio"
                       name={item.id}
                       value={1}
+                      // checked={item.is_deleted === 1}
                     />
                   </label>
                   <label>
@@ -240,6 +243,7 @@ const ShowItem = () => {
                       type="radio"
                       name={item.id}
                       value={0}
+                      // checked={item.is_deleted === 0}
                     />
                   </label>
                 </td>
@@ -314,7 +318,14 @@ const ShowItem = () => {
             options={options}
             placeholder="category"
           />
-          <button onClick={updateItemById}>update</button>
+          <button
+            onClick={() => {
+              updateItemById();
+              setShow(!show);
+            }}
+          >
+            update
+          </button>
         </div>
       ) : null}
     </>
