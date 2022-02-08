@@ -39,9 +39,10 @@ const ShowUsers = () => {
     }
   };
   //===============================================================
-  const deleteUserById = async () => {
+  const deleteUserById = async (id) => {
     try {
       const res = await axios.delete(`http://localhost:5000/user/${id}`);
+      console.log(res);
       if (res.data.success) {
         setMessage(res.data.success);
         dispatch(deleteUsers(id));
@@ -81,7 +82,7 @@ const ShowUsers = () => {
                     <AiTwotoneDelete
                       onClick={() => {
                         setId(user.id);
-                        deleteUserById();
+                        deleteUserById(user.id);
                       }}
                       className="btn"
                     />
