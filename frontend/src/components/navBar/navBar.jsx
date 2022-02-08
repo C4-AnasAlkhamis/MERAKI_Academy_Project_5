@@ -13,7 +13,7 @@ import {
   AiOutlineFundProjectionScreen,
   AiOutlineShoppingCart,
   AiOutlineOrderedList,
-  AiOutlineUserAdd
+  AiOutlineUserAdd,
 } from "react-icons/ai";
 //
 const NavBar = () => {
@@ -29,9 +29,9 @@ const NavBar = () => {
           <h2>
             {isLoggedIn ? (
               <>
-              <Link to="/paginate" style={{ textDecoration: "none" }}>
+                {/* <Link to="/paginate" style={{ textDecoration: "none" }}>
                    pag
-                </Link>
+                </Link> */}
                 <Link to="/homePage" style={{ textDecoration: "none" }}>
                   <AiOutlineFundProjectionScreen /> HOME
                 </Link>
@@ -64,12 +64,11 @@ const NavBar = () => {
                 <Link to="/login" style={{ textDecoration: "none" }}>
                   <BiLogIn /> LOGIN
                 </Link>
-             
               </>
             )}
-                <Link to="/adminPanel" style={{ textDecoration: "none" }}>
-                   ADMIN
-                </Link>
+            <Link to="/adminPanel" style={{ textDecoration: "none" }}>
+              ADMIN
+            </Link>
           </h2>
         </div>
       </div>

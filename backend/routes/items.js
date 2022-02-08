@@ -35,7 +35,7 @@ itemsRouter.get("/id", getItemById);
 itemsRouter.put("/:id", updateItemById);
 itemsRouter.put("/stock/:id", isDeleteItemById);
 
-itemsRouter.get("/:category_id", getItemByCategory_id);
+itemsRouter.get("/category/:id", getItemByCategory_id);
 
 //write your code here
 module.exports = itemsRouter;

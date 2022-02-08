@@ -16,6 +16,7 @@ import logo from "./image/logo.png";
 import Category from "./components/adminPanel/categories/Caregories";
 
 import AddItem from "./components/adminPanel/items/addItem/addItem";
+import ShowItem from "./components/adminPanel/items/showItems/showItems";
 
 function App() {
   return (
@@ -25,8 +26,10 @@ function App() {
       </div>
       <NavBar />
       <Routes>
-        <Route path="/login" element={<Login />} />7
+        <Route path="/login" element={<Login />} />
         <Route path="/addCategory" element={<Category />} />
+        <Route path="/ShowItems" element={<ShowItem />} />
+
         <Route path="/register" element={<Register />} />
         <Route path="/more-info" element={<ItemInfo />} />
         <Route path="/cart" element={<Cart />} />
@@ -36,7 +39,6 @@ function App() {
         {/* <Route path="/paginate" element={<Pag />} /> */}
         {/* <Route path="/paginate" element={<Pag />} /> */}
         <Route path="/adminPanel" element={<AdminPanel />} />
-
       </Routes>
     </div>
   );

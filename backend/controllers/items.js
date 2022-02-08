@@ -204,10 +204,10 @@ const updateItemById = (req, res) => {
 // // =================================================== // done
 // This function to get item by Category_id.
 const getItemByCategory_id = (req, res) => {
-  let category_id = req.query.id;
+  let id = req.params.id;
 
   const query = `select * FROM items WHERE category_id = ?`;
-  const data = [category_id];
+  const data = [id];
   connection.query(query, data, (err, result) => {
     if (err) {
       return res.status(500).json({

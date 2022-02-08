@@ -41,7 +41,7 @@ const url4 = [
 ];
 
 const pushItem = async (req, res) => {
-  url4.forEach(async (url, i) => {
+  url1.forEach(async (url, i) => {
     const arr = [];
 
     // open browser
@@ -71,7 +71,7 @@ const pushItem = async (req, res) => {
           title: y[i],
           price: z[i].substr(1, z[i].length - 1),
           description: "this is a Tool storage",
-          category: 4,
+          category: 1,
         }
       );
     }
