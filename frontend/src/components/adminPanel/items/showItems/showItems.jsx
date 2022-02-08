@@ -9,6 +9,8 @@ const ShowItem = () => {
   //===============================================================
   const dispatch = useDispatch();
   const [id, setId] = useState();
+  // const [is_deleted, setIs_deleted] = useState();
+  // const [description, setDescription] = useState();
   const state = useSelector((state) => {
     return {
       token: state.loginReducer.token,
@@ -30,6 +32,55 @@ const ShowItem = () => {
         // setMessage("");
         // setUserId(res.data.userId);
         dispatch(setItems(res.data.item));
+      } else throw Error;
+    } catch (error) {
+      console.log(error);
+      if (!error.response.data.success) {
+        // return setMessage(error.response.data.message);
+      }
+      // setMessage("Error happened while Get Data, please try again");
+    }
+  };
+  // image, title, description, category, price
+  const inStock = async (id, is_deleted, description) => {
+    try {
+      const res = await axios.put(
+        `http://localhost:5000/item/stock/${id}`,
+        { is_deleted, description },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      if (res.data.success) {
+        console.log(res);
+        // setMessage("");
+        // setUserId(res.data.userId);
+      } else throw Error;
+    } catch (error) {
+      console.log(error);
+      if (!error.response.data.success) {
+        // return setMessage(error.response.data.message);
+      }
+      // setMessage("Error happened while Get Data, please try again");
+    }
+  };
+  const updateItemById = async (item_id) => {
+    try {
+      const res = await axios.put(
+        `http://localhost:5000/item/${item_id}`,
+        // { image, title, description, category, price },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      if (res.data.success) {
+        console.log(res);
+        // setMessage("");
+        // setUserId(res.data.userId);
       } else throw Error;
     } catch (error) {
       console.log(error);
@@ -81,12 +132,38 @@ const ShowItem = () => {
                 <td>{item.price}</td>
                 <td>
                   <label>
-                    out of stock
-                    <input type="radio" />
+                    outOf stock
+                    <input
+                      onChange={(e) => {
+                        // setIs_deleted(e.target.value);
+                        // setDescription("OUT OF STOCK");
+                        let id = item.id;
+                        let is_deleted = e.target.value;
+                        let description = "OUT OF STOCK";
+
+                        inStock(id, is_deleted, description);
+                      }}
+                      type="radio"
+                      name={item.id}
+                      value={1}
+                    />
                   </label>
                   <label>
                     in stock
-                    <input type="radio" />
+                    <input
+                      onChange={(e) => {
+                        // setIs_deleted(e.target.value);
+                        // setDescription("IN STOCK");
+                        let id = item.id;
+                        let is_deleted = e.target.value;
+                        let description = "IN STOCK";
+
+                        inStock(id, is_deleted, description);
+                      }}
+                      type="radio"
+                      name={item.id}
+                      value={0}
+                    />
                   </label>
                 </td>
                 <td>

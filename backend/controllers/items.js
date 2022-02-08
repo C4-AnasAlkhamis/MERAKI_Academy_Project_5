@@ -127,10 +127,10 @@ const getOutOfSItems = (req, res) => {
 
 // This function update on is_deleted Item By Id
 const isDeleteItemById = (req, res) => {
-  const { id } = req.params;
-  const { is_deleted, descriptions } = req.body;
+  const id = req.params.id;
+  const { is_deleted, description } = req.body;
   const query = `UPDATE items SET is_deleted = ?,descriptions = ? WHERE id = ?`;
-  const data = [is_deleted, descriptions, id];
+  const data = [is_deleted, description, id];
   connection.query(query, data, (err, result) => {
     if (err) {
       return res.status(500).json({
