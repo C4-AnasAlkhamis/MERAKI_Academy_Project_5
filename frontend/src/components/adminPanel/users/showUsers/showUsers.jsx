@@ -5,7 +5,7 @@ import Select from "react-select";
 import PaginateReact from "react-paginate";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
-import { setUsers,deleteUsers } from "../../../../reducer/users/index";
+import { setUsers, deleteUsers } from "../../../../reducer/users/index";
 import { useNavigate } from "react-router-dom";
 import { AiTwotoneDelete } from "react-icons/ai";
 
@@ -22,7 +22,7 @@ const ShowUsers = () => {
       users: state.usersReducer.users,
     };
   });
-  console.log(users);
+
   //===============================================================
 
   const getAllUsers = async () => {
@@ -54,6 +54,7 @@ const ShowUsers = () => {
       }
       setMessage("Error happened while deleting new data");
     }
+    console.log(message);
   };
   //===============================================================
   useEffect(() => {
@@ -61,8 +62,7 @@ const ShowUsers = () => {
   }, []);
   return (
     <div className="showUsers">
- 
- <table>
+      <table>
         <tbody>
           <tr>
             <th>id</th>
@@ -81,13 +81,12 @@ const ShowUsers = () => {
                     <AiTwotoneDelete
                       onClick={() => {
                         setId(user.id);
-
+                        deleteUserById();
                       }}
                       className="btn"
                     />
                   </i>
-                </td> 
-
+                </td>
               </tr>
             );
           })}
