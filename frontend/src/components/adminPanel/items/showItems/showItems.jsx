@@ -68,8 +68,8 @@ const ShowItem = () => {
     }
   };
   // ================================================  //
-
-  const inStock = async (id, is_deleted, description) => {
+  const inStock = async (id, is_deleted, description, item) => {
+    let stock = description;
     try {
       const res = await axios.put(
         `http://localhost:5000/item/stock/${id}`,
@@ -81,8 +81,17 @@ const ShowItem = () => {
         }
       );
       if (res.data.success) {
-        console.log(res);
-        setMessage("");
+        dispatch(
+          updateItem({
+            img: item.img,
+            title: item.title,
+            descriptions: stock,
+            category: item.category,
+            price: item.price,
+            id: item.id,
+          })
+        );
+        // setItem("");
       } else throw Error;
     } catch (error) {
       console.log(error);
@@ -105,21 +114,21 @@ const ShowItem = () => {
       })
       .then((result) => {
         setMessage("Item has been updating successfully");
-        console.log(result);
-        // dispatch(
-        //   updateItem({
-        //     image: image ? image : state.item.image,
-        //     title: title ? title : state.item.title,
-        //     description: description ? description : state.item.description,
-        //     category: category ? category : state.item.category,
-        //     price: price ? price : state.item.price,
-        //     id: state.item.id,
-        //   })
-        // );
+        console.log("done");
+        dispatch(
+          updateItem({
+            img: image ? image : item.img,
+            title: title ? title : item.title,
+            description: description ? description : item.description,
+            category: category ? category : item.category,
+            price: price ? price : item.price,
+            id: item.id,
+          })
+        );
       })
       .catch((err) => {
         console.log(err);
-        // setMessage("Error happened while updating the item");
+        setMessage("Error happened while updating the item");
       });
   };
   // ================================================  //
@@ -211,8 +220,7 @@ const ShowItem = () => {
                         let id = item.id;
                         let is_deleted = e.target.value;
                         let description = "OUT OF STOCK";
-
-                        inStock(id, is_deleted, description);
+                        inStock(id, is_deleted, description, item);
                       }}
                       type="radio"
                       name={item.id}
@@ -227,7 +235,7 @@ const ShowItem = () => {
                         let is_deleted = e.target.value;
                         let description = "IN STOCK";
 
-                        inStock(id, is_deleted, description);
+                        inStock(id, is_deleted, description, item);
                       }}
                       type="radio"
                       name={item.id}
