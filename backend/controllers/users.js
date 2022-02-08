@@ -95,7 +95,7 @@ const updateUserById = (req, res) => {
 const deleteUserById = (req, res) => {
   const id = req.params.id;
 
-  const query = `UPDATE users SET is_deleted=1 WHERE id=?;`;
+  const query = `DELETE from users WHERE id=?;`;
 
   const data = [id];
 
