@@ -58,6 +58,20 @@ const Profile = () => {
         console.log(err);
       });
   };
+  //===============================================================
+
+  const getWorkerById = async (id) => {
+    //get http://localhost:5000/setvice/id
+
+    await axios
+      .get(`http://localhost:5000/worker/${id}`)
+      .then((result) => {
+        // dispatch(setServiceInfo({ ...result.data.result }));
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   return <div> Profile</div>;
 };
 
