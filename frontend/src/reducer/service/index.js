@@ -1,46 +1,48 @@
-/** @format */
+// /** @format */
+
 
 const initialState = {
   services: [],
   serviceInfo: {},
 };
-// =======================  //
 
-const serviceReducer = (state = initialState, { type, payload }) => {
-  switch (type) {
-    case "SET_SERVICE":
-      return { ...state, services: payload };
 
-    case "SET_SERVICEINFO":
-      return { ...state, serviceInfo: payload };
+// const serviceReducer = (state = initialState, { type, payload }) => {
+//   switch (type) {
+//     case "SET_SERVICE":
+//       return { ...state, services: payload };
 
-    case "ADD_SERVICE":
-      return { ...state, services: [...state.services, payload] };
+//     case "SET_SERVICEINFO":
+//       return { ...state, serviceInfo: payload };
 
-    case "DELETE_SERVICE":
-      return {
-        ...state,
-        services: state.services.filter((service) => {
-          return service.id !== payload;
-        }),
-      };
-    case "UPDATE_SERVICE":
-      return {
-        ...state,
-        services: state.services.map((service) => {
-          if (service.id === payload.id) {
-            return payload;
-          }
-          return service;
-        }),
-      };
+//     case "ADD_SERVICE":
+//       return { ...state, services: [...state.services, payload] };
 
-    default:
-      return state;
-  }
-};
+//     case "DELETE_SERVICE":
+//       return {
+//         ...state,
+//         services: state.services.filter((service) => {
+//           return service.id !== payload;
+//         }),
+//       };
+//     case "UPDATE_SERVICE":
+//       return {
+//         ...state,
+//         services: state.services.map((service) => {
+//           if (service.id === payload.id) {
+//             return payload;
+//           }
+//           return service;
+//         }),
+//       };
 
-export default serviceReducer;
+//     default:
+//       return state;
+//   }
+// };
+
+// export default serviceReducer;
+
 
 export const setService = (services) => {
   return { type: "SET_SERVICE", payload: services };
@@ -54,11 +56,11 @@ export const addService = (newService) => {
 };
 // =======================  //
 
-export const updateService = (newService) => {
-  return { type: "UPDATE_SERVICE", payload: newService };
-};
-// =======================  //
+// export const updateService = (newService) => {
+//   return { type: "UPDATE_SERVICE", payload: newService };
+// };
+// // =======================  //
 
-export const deleteService = (id) => {
-  return { type: "DELETE_SERVICE", payload: id };
-};
+// export const deleteService = (id) => {
+//   return { type: "DELETE_SERVICE", payload: id };
+// };
