@@ -10,6 +10,11 @@ import {
 import { setWorker } from "../../reducer/worker/index";
 const Profile = () => {
   const [message, setMessage] = useState();
+  const [status, setStatus] = useState(false);
+  const [phone, setPhone] = useState();
+  const [address, setAddress] = useState();
+  const [service_id, setService_id] = useState();
+  const [imageUrl, setImageUrl] = useState("");
   const navigate = useNavigate();
 
   const { token, services } = useSelector((state) => {
@@ -90,20 +95,83 @@ const Profile = () => {
   //       console.log(err);
   //     });
   // };
+
+  // ================================================  //
+
+  const uploadImage = (e) => {
+    e.preventDefault();
+
+    const formData = new FormData();
+
+    formData.append("file", imageUrl);
+    formData.append("upload_preset", "rwnvwutb");
+    axios
+      .post(`https://api.cloudinary.com/v1_1/debtpixx1/image/upload/`, formData)
+      .then((res) => {
+        updateWorkerById(res.data.secure_url);
+      });
+  };
   //===============================================================
-  const updateWorkerById = async (id) => {
+  const updateWorkerById = (image) => {
     //put http://localhost:5000/worker/id
 
     await axios
-      .put(`http://localhost:5000/worker/${id}`)
+      .put(
+        `http://localhost:5000/worker/${id}`,
+        {
+          address,
+          phone,
+          image,
+          service_id,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
       .then((result) => {
-        // dispatch(setWorker({ ...result.data.result }));
+        dispatch(setService({ ...result.data.result }));
       })
       .catch((err) => {
         console.log(err);
       });
   };
-  return <div> Profile</div>;
+  return (
+    <>
+      <div>
+        <h1>Profile</h1>
+      </div>
+
+      <div>
+        <h1>Add Your Service</h1>
+        <form onSubmit={uploadImage}>
+          <input
+            type="text"
+            placeholder="address"
+            onChange={(e) => setAddress(e.target.value)}
+          />
+
+          <input
+            placeholder="Phone Number"
+            onChange={(e) => setPhone(e.target.value)}
+          />
+          <Select options={options} />
+          <input
+            type="file"
+            onChange={(e) => {
+              setImageUrl(e.target.files[0]);
+            }}
+          />
+          <button>Add Service</button>
+        </form>
+        <br />
+        {status
+          ? message && <div className="SuccessMessage">{message}</div>
+          : message && <div className="ErrorMessage">{message}</div>}
+      </div>
+    </>
+  );
 };
 
 export default ServicePage;
