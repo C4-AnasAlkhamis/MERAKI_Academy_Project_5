@@ -74,7 +74,32 @@ const getServiceById = (req, res) => {
 };
 
 // This function to update Service by id
-const updateServiceById = (req, res) => {};
+const updateServiceById = (req, res) => {
+  const id = req.params.id;
+  const { title, description, image } = req.body;
+  const query = `UPDATE services SET title =? , description = ? , image = ? WHERE id = ?;`;
+  const data = [title, description, image, id];
+  connection.query(query, data, (err, result) => {
+    if (err) {
+      return res.status(500).json({
+        success: false,
+        message: `Server Error`,
+      });
+    }
+
+    if (!result.id) {
+      return res.status(404).json({
+        success: false,
+        message: `No Service Match Entered ID`,
+      });
+    }
+    res.status(202).json({
+      success: true,
+      message: `Service with id ${id} updated successfully`,
+      result: result,
+    });
+  });
+};
 
 // This function to delete Service By Id
 const deleteServiceById = (req, res) => {};
