@@ -7,9 +7,10 @@ const ServicePage = () => {
   const [message, setMessage] = useState();
   const navigate = useNavigate();
 
-  const state = useSelector((state) => {
+  const { token, services } = useSelector((state) => {
     return {
       token: state.loginReducer.token,
+      services: state.serviceReducer.services,
     };
   });
   const dispatch = useDispatch();
@@ -43,7 +44,20 @@ const ServicePage = () => {
         console.log(err);
       });
   };
-  return <div> service</div>;
+  return (
+    <>
+      <h1> service</h1>;
+      <div>
+        {services.map((service) => {
+          <div>
+            <p>{service.title}</p>
+            <img src={service.image} alt={service.title} />
+            <small>{service.description}</small>
+          </div>;
+        })}
+      </div>
+    </>
+  );
 };
 
 export default ServicePage;

@@ -1,7 +1,17 @@
 /** @format */
 
 const initialState = {
-  services: [],
+  services: [
+    {
+      id,
+      title,
+      description,
+      image,
+    },
+    { id, title, description, image },
+    { id, title, description, image },
+    { id, title, description, image },
+  ],
   serviceInfo: {},
 };
 // =======================  //
