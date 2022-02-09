@@ -11,13 +11,14 @@ const {
   createNewCart,
   getCartById,
   deleteCartById,
+  deleteCartByUserId,
 } = require("../controllers/cart");
 
 //   ========================================== //
 cartRouter.post("/", authentication, createNewCart);
-
 cartRouter.get("/", authentication, getCartById);
 cartRouter.delete("/:id", deleteCartById);
+cartRouter.delete("/", authentication, deleteCartByUserId);
 
 //write your code here
 module.exports = cartRouter;

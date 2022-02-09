@@ -9,6 +9,8 @@
 -- CREAT DATABASE MERAKI_Academy_Project_5;
 -- USE DATABASE MERAKI_Academy_Project_5;
 USE MERAKI_Academy_Project_5;
+-- DROP TABLE workers;
+-- CREAT DATABASE MERAKI_Academy_Project_5;
 
 -- ============================ // done
 CREATE TABLE permissions (
@@ -87,6 +89,37 @@ CREATE TABLE wishlists (
     FOREIGN KEY (user_id) REFERENCES users (id)
 );
 
+CREATE TABLE services (
+    id INT AUTO_INCREMENT NOT NULL,
+    title VARCHAR(100) NOT NULL,
+        description VARCHAR(100) ,
+    image VARCHAR(100) ,
+
+    is_deleted TINYINT DEFAULT 0,
+
+    PRIMARY KEY (id)
+);
+
+
+
+
+
+
+INSERT INTO
+    services (title)
+VALUES
+    ('car wash');
+
+INSERT INTO
+    services (title)
+VALUES
+    ('car maintinance');
+
+INSERT INTO
+    roles (role)
+VALUES
+    ('Admin');
+
 INSERT INTO
     roles (role)
 VALUES
@@ -158,3 +191,26 @@ INSERT INTO
 
 INSERT INTO
     categories (category) VALUE ('Tool Storage');
+
+    CREATE TABLE worker (
+        id INT AUTO_INCREMENT NOT NULL,
+        user_id INT NOT NULL,
+        service_id INT NOT NULL,
+        address VARCHAR(100) NOT NULL,
+        phone INT NOT NULL,
+        image VARCHAR(100) ,
+        FOREIGN KEY (user_id) REFERENCES users (id),
+        FOREIGN KEY (service_id) REFERENCES services (id),
+        is_deleted TINYINT DEFAULT 0,
+        PRIMARY KEY (id)
+);
+
+
+INSERT INTO worker (
+        user_id,
+        service_id,
+        address,
+        phone,
+        image)
+VALUES
+        (1, 1,'zarqa',345435435,'5345435435');
