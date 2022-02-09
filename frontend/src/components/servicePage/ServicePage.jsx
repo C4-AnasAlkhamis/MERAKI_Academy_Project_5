@@ -1,20 +1,22 @@
 import axios from "axios";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useHref, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { setService, setServiceInfo } from "../../reducer/service/index";
+import { setWorker } from "../../reducer/worker/index";
+import WSInfo from "../serviceInfo/ServiceInfo";
 const ServicePage = () => {
   const [message, setMessage] = useState();
   const navigate = useNavigate();
-
-  const { token, services } = useSelector((state) => {
+  const [showWorker, setShowWorker] = useState(false);
+  const { token, services, workers } = useSelector((state) => {
     return {
       token: state.loginReducer.token,
       services: state.serviceReducer.services,
+      workers: state.workerReducer.workers,
     };
   });
   const dispatch = useDispatch();
-  console.log(services);
   //===============================================================
 
   const getAllService = async () => {
@@ -32,11 +34,11 @@ const ServicePage = () => {
   };
   //===============================================================
 
-  const getServiceById = async (id) => {
+  const getWorkerByServiceId = async (id) => {
     //get http://localhost:5000/setvice/id
 
     await axios
-      .get(`http://localhost:5000/service/${id}`)
+      .get(`http://localhost:5000/worker/${id}`)
       .then((result) => {
         dispatch(setServiceInfo({ ...result.data.result }));
         navigate("/service-info");
@@ -47,21 +49,31 @@ const ServicePage = () => {
   };
   return (
     <>
-      <h1> service</h1>;
-      <div>
-        {services.map((service) => {
-          return (
-            <div>
-              <p>{service.title}</p>
-              <img src={service.image} alt={service.title} />
-              <small>{service.description}</small>
-              <button onClick={(e)=> {
-                getServiceById(service.id)
-              }}>show service</button>
-            </div>
-          );
-        })}
-      </div>
+      {!showWorker ? (
+        <>
+          <h1> service</h1>
+          <div>
+            {services.map((service, index) => {
+              return (
+                <div key={index}>
+                  <p>{service.title}</p>
+                  <img src={service.image} alt={service.title} />
+                  <small>{service.description}</small>
+                  <button
+                    onClick={(e) => {
+                      getWorkerByServiceId(service.id);
+                    }}
+                  >
+                    show service
+                  </button>
+                </div>
+              );
+            })}
+          </div>
+        </>
+      ) : (
+        <WSInfo />
+      )}
     </>
   );
 };

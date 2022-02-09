@@ -1,12 +1,13 @@
 import { useSelector, useDispatch } from "react-redux";
 
-const ServiceInfo = () => {
-  const { token, service } = useSelector((state) => {
+const WSInfo = () => {
+  const { token, workers } = useSelector((state) => {
     return {
       token: state.loginReducer.token,
-      service: state.serviceReducer.serviceInfo,
+      workers: state.workerReducer.workers,
     };
   });
-
   return <div>ServiceInfo</div>;
 };
+
+export default WSInfo;
