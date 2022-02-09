@@ -70,9 +70,7 @@ const Worker = () => {
           },
         }
       )
-      .then((result) => {
-        dispatch(setService({ ...result.data.result }));
-      })
+      .then((result) => {})
       .catch((err) => {
         console.log(err);
       });
@@ -91,7 +89,12 @@ const Worker = () => {
           placeholder="Phone Number"
           onChange={(e) => setPhone(e.target.value)}
         />
-        <Select options={options} />
+        <Select
+          options={options}
+          onChange={(e) => {
+            setService_id(e.value);
+          }}
+        />
         <input
           type="file"
           onChange={(e) => {
