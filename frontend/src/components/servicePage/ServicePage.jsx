@@ -14,6 +14,7 @@ const ServicePage = () => {
     };
   });
   const dispatch = useDispatch();
+  console.log(services);
   //===============================================================
 
   const getAllService = async () => {
@@ -49,11 +50,16 @@ const ServicePage = () => {
       <h1> service</h1>;
       <div>
         {services.map((service) => {
-          <div>
-            <p>{service.title}</p>
-            <img src={service.image} alt={service.title} />
-            <small>{service.description}</small>
-          </div>;
+          return (
+            <div>
+              <p>{service.title}</p>
+              <img src={service.image} alt={service.title} />
+              <small>{service.description}</small>
+              <button onClick={(e)=> {
+                getServiceById(service.id)
+              }}>show service</button>
+            </div>
+          );
         })}
       </div>
     </>

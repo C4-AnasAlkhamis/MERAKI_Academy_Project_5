@@ -3,16 +3,41 @@
 const initialState = {
   services: [
     {
-      id,
-      title,
-      description,
-      image,
+      id: 1,
+      title: "Makita 6 Piece Slotted",
+      description:
+        "Makita 6 Piece Slotted, Pozi & Phillips Screwdriver Set (420898)",
+      image: "https://itslondon.s3.amazonaws.com/p/m/MAKE10528.jpg",
     },
-    { id, title, description, image },
-    { id, title, description, image },
-    { id, title, description, image },
+    {
+      id: 2,
+      title: "Makita 6 Piece Slotted",
+      description:
+        "Makita 6 Piece Slotted, Pozi & Phillips Screwdriver Set (420898)",
+      image: "https://itslondon.s3.amazonaws.com/p/m/MAKE10528.jpg",
+    },
+    {
+      id: 3,
+      title: "Makita 6 Piece Slotted",
+      description:
+        "Makita 6 Piece Slotted, Pozi & Phillips Screwdriver Set (420898)",
+      image: "https://itslondon.s3.amazonaws.com/p/m/MAKE10528.jpg",
+    },
+    {
+      id: 4,
+      title: "Makita 6 Piece Slotted",
+      description:
+        "Makita 6 Piece Slotted, Pozi & Phillips Screwdriver Set (420898)",
+      image: "https://itslondon.s3.amazonaws.com/p/m/MAKE10528.jpg",
+    },
   ],
-  serviceInfo: {},
+  serviceInfo: {
+    id: 4,
+    title: "Makita 6 Piece Slotted",
+    description:
+      "Makita 6 Piece Slotted, Pozi & Phillips Screwdriver Set (420898)",
+    image: "https://itslondon.s3.amazonaws.com/p/m/MAKE10528.jpg",
+  },
 };
 // =======================  //
 
