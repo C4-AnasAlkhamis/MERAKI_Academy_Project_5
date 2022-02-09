@@ -9,17 +9,31 @@ const AddService = () => {
   const [image, setImage] = useState("");
   const [message, setMessage] = useState();
   // ====================================== //
+  const dispatch = useDispatch();
   const { token, isLoggedIn } = useSelector((state) => {
     return {
       token: state.loginReducer.token,
       isLoggedIn: state.loginReducer.isLoggedIn,
     };
   });
-
-  const dispatch = useDispatch();
-  const createNewService = async (e) => {
+  // ====================================== //
+  const uploadImage = (e) => {
     e.preventDefault();
 
+    const formData = new FormData();
+
+    formData.append("file", image);
+    formData.append("upload_preset", "rwnvwutb");
+    axios
+      .post(`https://api.cloudinary.com/v1_1/debtpixx1/image/upload/`, formData)
+      .then((res) => {
+        setImage(res.data.secure_url);
+        // createNewService();
+      });
+  };
+  // ====================================== //
+
+  const createNewService = async (e) => {
     try {
       const result = await axios.post(
         `http://localhost:5000/srvice`,
@@ -30,13 +44,15 @@ const AddService = () => {
           },
         }
       );
+      console.log(result);
     } catch (error) {}
   };
+  // ====================================== //
 
   return (
     <>
       <h1>Add your Service</h1>
-      <form onSubmit={createNewService}>
+      <form onSubmit={uploadImage}>
         <input
           type="text"
           placeholder="service title"
@@ -51,7 +67,8 @@ const AddService = () => {
         <input
           type="file"
           onChange={(e) => {
-            setImage(e.target.value);
+            console.log(e.target.files[0]);
+            setImage(e.target.files[0]);
           }}
         />
         <button>Add Service</button>
