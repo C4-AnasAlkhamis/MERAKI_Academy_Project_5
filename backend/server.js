@@ -24,6 +24,7 @@ const wishListRouter = require("./routes/wishList");
 
 
 const serviceRouter = require("./routes/service");
+const workerRouter = require("./routes/worker");
 
 //middleware
 app.use("/cart", cartRouter);
@@ -37,6 +38,7 @@ app.use("/wishlist", wishListRouter);
 
 
 app.use("/service", serviceRouter);
+app.use("/worker", workerRouter);
 
 
 app.listen(PORT, () => {
