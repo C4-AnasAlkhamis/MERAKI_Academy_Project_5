@@ -19,6 +19,8 @@ const Profile = () => {
     };
   });
   const dispatch = useDispatch();
+  // service functions  ==========++++++++++==========
+
   //===============================================================
   const getServiceByUserId = async (id) => {
     //get http://localhost:5000/setvice/id
@@ -58,15 +60,31 @@ const Profile = () => {
         console.log(err);
       });
   };
+
+  // worker functions  ==========++++++++++==========
   //===============================================================
 
   const getWorkerById = async (id) => {
-    //get http://localhost:5000/setvice/id
+    //get http://localhost:5000/worker/id
 
     await axios
       .get(`http://localhost:5000/worker/${id}`)
       .then((result) => {
         // dispatch(setServiceInfo({ ...result.data.result }));
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  //===============================================================
+  const deleteWorkerById = async (id) => {
+    //get http://localhost:5000/setvice/id
+
+    await axios
+      .delete(`http://localhost:5000/worker/${id}`)
+      .then((result) => {
+        // dispatch(deleteService({ ...result.data.result }));
       })
       .catch((err) => {
         console.log(err);
