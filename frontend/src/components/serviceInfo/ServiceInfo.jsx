@@ -7,7 +7,21 @@ const WSInfo = () => {
       workers: state.workerReducer.workers,
     };
   });
-  return <div>ServiceInfo</div>;
+  console.log(workers);
+  return (
+    <>
+      <h1>ServiceInfo</h1>
+      {workers.map((worker, index) => {
+        return (
+          <div key={index}>
+            <img src={worker.image} alt={worker.name} />
+            <small>{worker.phone}</small>
+            <address>{worker.address}</address>
+          </div>
+        );
+      })}
+    </>
+  );
 };
 
 export default WSInfo;

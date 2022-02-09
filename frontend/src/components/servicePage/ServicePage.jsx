@@ -61,7 +61,8 @@ const ServicePage = () => {
                   <small>{service.description}</small>
                   <button
                     onClick={(e) => {
-                      getWorkerByServiceId(service.id);
+                      // getWorkerByServiceId(service.id);
+                      setShowWorker(true);
                     }}
                   >
                     show service
