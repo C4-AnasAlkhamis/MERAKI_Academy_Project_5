@@ -2,7 +2,6 @@
 
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
-import jwt from "jwt-decode";
 import { useSelector, useDispatch } from "react-redux";
 
 import Login from "./components/login/Login";
@@ -35,9 +34,10 @@ import ServicePage from "./components/servicePage/ServicePage";
 // import ShowWorkers  from "./components/adminPanel/users/showWorkers/showWorkers";
 
 function App() {
-  const { token } = useSelector((state) => {
+  const { token,isAdmin } = useSelector((state) => {
     return {
       token: state.loginReducer.token,
+      token: state.loginReducer.isAdmin,
     };
     // const [role, setRole] = useState(jwt(res.data.token).role);
     // console.log(role);

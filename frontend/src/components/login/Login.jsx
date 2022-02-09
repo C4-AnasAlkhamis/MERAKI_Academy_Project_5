@@ -5,6 +5,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./login.css";
 import { logIn } from "../../reducer/login/index";
+import jwt from "jwt-decode";
 
 import login from "../../image/login1.png";
 
@@ -16,6 +17,8 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
+  const [role, setRole] = useState("");
+
   const verifyUser = async (e) => {
     e.preventDefault();
     //   post -> http://localhost:5000/login/
@@ -28,8 +31,10 @@ const Login = () => {
         if (result) {
           navigate(`/homePage`);
           localStorage.setItem("token", result.data.token);
-          const [role, setRole] = useState(jwt(result.data.token).role);
-          console.log(role);
+          setRole(jwt(result.data.token).role);
+          if (jwt(result.data.token).role === 1) {
+            localStorage.setItem("isAdmin", true);
+          }
           dispatch(logIn(result.data.token));
           setMessage("");
           setEmail("");
