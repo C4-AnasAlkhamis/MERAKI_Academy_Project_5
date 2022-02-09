@@ -12,6 +12,7 @@ const loginReducer = (state = initialState, { type, payload }) => {
     case "LOG_IN":
       return { ...state, token: payload, isLoggedIn: true };
     case "LOG_OUT":
+      localStorage.clear();
       return { ...state, token: null, isLoggedIn: false, isAdmin: false };
     case "IS_ADMIN":
       return { ...state, isAdmin: true };

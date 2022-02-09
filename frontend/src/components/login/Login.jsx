@@ -4,7 +4,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./login.css";
-import { logIn } from "../../reducer/login/index";
+import { logIn, isAdmin } from "../../reducer/login/index";
 import jwt from "jwt-decode";
 
 import login from "../../image/login1.png";
@@ -31,8 +31,7 @@ const Login = () => {
         if (result) {
           navigate(`/homePage`);
           localStorage.setItem("token", result.data.token);
-          setRole(jwt(result.data.token).role);
-          if (jwt(result.data.token).role === 1) {
+          if (jwt(result.data.token).role == 1) {
             localStorage.setItem("isAdmin", true);
           }
           dispatch(logIn(result.data.token));
