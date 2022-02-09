@@ -87,6 +87,30 @@ CREATE TABLE wishlists (
     FOREIGN KEY (user_id) REFERENCES users (id)
 );
 
+CREATE TABLE services (
+    id INT AUTO_INCREMENT NOT NULL,
+    title VARCHAR(100) NOT NULL,
+        description VARCHAR(100) ,
+    image VARCHAR(100) ,
+
+    PRIMARY KEY (id)
+);
+
+INSERT INTO
+    services (title)
+VALUES
+    ('car wash');
+
+INSERT INTO
+    services (title)
+VALUES
+    ('car maintinance');
+
+INSERT INTO
+    roles (role)
+VALUES
+    ('Admin');
+
 INSERT INTO
     roles (role)
 VALUES
