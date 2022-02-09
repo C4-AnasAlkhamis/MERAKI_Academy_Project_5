@@ -26,7 +26,6 @@ const Profile = () => {
       .get(`http://localhost:5000/service/user/${id}`)
       .then((result) => {
         dispatch(setServiceInfo({ ...result.data.result }));
-        navigate("/service-info");
       })
       .catch((err) => {
         console.log(err);
@@ -40,12 +39,25 @@ const Profile = () => {
       .delete(`http://localhost:5000/service/${id}`)
       .then((result) => {
         dispatch(deleteService({ ...result.data.result }));
-        navigate("/service-info");
       })
       .catch((err) => {
         console.log(err);
       });
   };
+  //===============================================================
+  const updateServiceById = async (id) => {
+    //get http://localhost:5000/setvice/id
 
+    await axios
+      .put(`http://localhost:5000/service/${id}`)
+      .then((result) => {
+        dispatch(updateService({ ...result.data.result }));
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  return <div> Profile</div>;
+};
 
 export default ServicePage;
