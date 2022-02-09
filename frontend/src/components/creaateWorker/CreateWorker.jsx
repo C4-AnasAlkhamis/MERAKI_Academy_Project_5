@@ -2,6 +2,8 @@ import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
+import Select from "react-select";
+
 import {
   setService,
   updateService,
@@ -13,9 +15,11 @@ const Worker = () => {
   const [phone, setPhone] = useState();
   const [address, setAddress] = useState();
   const [service_id, setService_id] = useState();
-  const [image, setImage] = useState("");
+  const [imageUrl, setImageUrl] = useState("");
   const [message, setMessage] = useState();
   const navigate = useNavigate();
+  // ================================================  //
+  const dispatch = useDispatch();
 
   const { token, services } = useSelector((state) => {
     return {
@@ -23,8 +27,32 @@ const Worker = () => {
       services: state.serviceReducer.services,
     };
   });
-  const dispatch = useDispatch();
-  const createWorker = () => {
+  // ================================================  //
+
+  const options = services.map((element, index) => {
+    return {
+      value: element.id,
+      label: element.service,
+    };
+  });
+  // ================================================  //
+
+  const uploadImage = (e) => {
+    e.preventDefault();
+
+    const formData = new FormData();
+
+    formData.append("file", imageUrl);
+    formData.append("upload_preset", "rwnvwutb");
+    axios
+      .post(`https://api.cloudinary.com/v1_1/debtpixx1/image/upload/`, formData)
+      .then((res) => {
+        createWorker(res.data.secure_url);
+      });
+  };
+  // ================================================  //
+
+  const createWorker = (image) => {
     //post http://localhost:5000/worker
 
     await axios
@@ -63,11 +91,11 @@ const Worker = () => {
           placeholder="Phone Number"
           onChange={(e) => setPhone(e.target.value)}
         />
-        <Select />
+        <Select options={options} />
         <input
           type="file"
           onChange={(e) => {
-            setImage(e.target.files[0]);
+            setImageUrl(e.target.files[0]);
           }}
         />
         <button>Add Service</button>
