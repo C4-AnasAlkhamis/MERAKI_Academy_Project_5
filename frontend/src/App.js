@@ -23,6 +23,7 @@ import  ShowItems  from "./components/adminPanel/items/showItems/showItems";
 // import  AddService  from "./components/adminPanel/services/addService/addService";
 // import ShowServices  from "./components/adminPanel/services/showServices/showServices";
 import ShowUsers  from "./components/adminPanel/users/showUsers/showUsers";
+import AddService from "./components/addService/AddService";
 // import ShowWorkers  from "./components/adminPanel/users/showWorkers/showWorkers";
 
 
@@ -44,7 +45,7 @@ function App() {
 
         <Route path="/homePage" element={<HomePage />} />
         {/* <Route path="/paginate" element={<Pag />} /> */}
-        {/* <Route path="/paginate" element={<Pag />} /> */}
+        <Route path="/paginate" element={<AddService />} />
         <Route path="/adminPanel" element={<AdminPanel />} />
 
 
