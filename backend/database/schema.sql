@@ -2,16 +2,14 @@
 -- {SELECT permissions.permission FROM roles join role_permission ON roles.id = role_permission.role join permissions on role_permission.permission = permissions.id
 -- where roles.id =2}
 -- DROP DATABASE MERAKI_Academy_Project_5;
-
 -- DROP DATABASE MERAKI_Academy_Project_5;
 -- CREATE DATABASE MERAKI_Academy_Project_5;
-
 -- CREAT DATABASE MERAKI_Academy_Project_5;
 -- USE DATABASE MERAKI_Academy_Project_5;
 USE MERAKI_Academy_Project_5;
+
 -- DROP TABLE workers;
 -- CREAT DATABASE MERAKI_Academy_Project_5;
-
 -- ============================ // done
 CREATE TABLE permissions (
     id INT AUTO_INCREMENT NOT NULL,
@@ -92,18 +90,36 @@ CREATE TABLE wishlists (
 CREATE TABLE services (
     id INT AUTO_INCREMENT NOT NULL,
     title VARCHAR(100) NOT NULL,
-        description VARCHAR(100) ,
-    image VARCHAR(100) ,
-
+    description VARCHAR(100),
+    image VARCHAR(100),
     is_deleted TINYINT DEFAULT 0,
-
     PRIMARY KEY (id)
 );
 
+CREATE TABLE worker (
+    id INT AUTO_INCREMENT NOT NULL,
+    user_id INT NOT NULL,
+    service_id INT NOT NULL,
+    address VARCHAR(100) NOT NULL,
+    phone INT NOT NULL,
+    image VARCHAR(100),
+    FOREIGN KEY (user_id) REFERENCES users (id),
+    FOREIGN KEY (service_id) REFERENCES services (id),
+    is_deleted TINYINT DEFAULT 0,
+    PRIMARY KEY (id)
+);
 
-
-
-
+CREATE TABLE service_request (
+    id INT AUTO_INCREMENT NOT NULL,
+    name VARCHAR(100),
+    order_Detalis VARCHAR(255),
+    address VARCHAR(100) NOT NULL,
+    phone INT NOT NULL,
+    worker_id INT NOT NULL,
+    FOREIGN KEY (worker_id) REFERENCES worker (user_id),
+    is_deleted TINYINT DEFAULT 0,
+    PRIMARY KEY (id)
+);
 
 INSERT INTO
     services (title)
@@ -192,25 +208,13 @@ INSERT INTO
 INSERT INTO
     categories (category) VALUE ('Tool Storage');
 
-    CREATE TABLE worker (
-        id INT AUTO_INCREMENT NOT NULL,
-        user_id INT NOT NULL,
-        service_id INT NOT NULL,
-        address VARCHAR(100) NOT NULL,
-        phone INT NOT NULL,
-        image VARCHAR(100) ,
-        FOREIGN KEY (user_id) REFERENCES users (id),
-        FOREIGN KEY (service_id) REFERENCES services (id),
-        is_deleted TINYINT DEFAULT 0,
-        PRIMARY KEY (id)
-);
-
-
-INSERT INTO worker (
+INSERT INTO
+    worker (
         user_id,
         service_id,
         address,
         phone,
-        image)
+        image
+    )
 VALUES
-        (1, 1,'zarqa',345435435,'5345435435');
+    (1, 1, 'zarqa', 345435435, '5345435435');
