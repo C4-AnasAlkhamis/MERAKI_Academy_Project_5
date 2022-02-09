@@ -32,7 +32,20 @@ const Profile = () => {
         console.log(err);
       });
   };
-  return <div> Profile</div>;
-};
+  //===============================================================
+  const deleteServiceById = async (id) => {
+    //get http://localhost:5000/setvice/id
+
+    await axios
+      .delete(`http://localhost:5000/service/${id}`)
+      .then((result) => {
+        dispatch(deleteService({ ...result.data.result }));
+        navigate("/service-info");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
 
 export default ServicePage;
