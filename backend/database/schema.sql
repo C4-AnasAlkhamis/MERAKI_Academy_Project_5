@@ -9,6 +9,7 @@
 -- CREAT DATABASE MERAKI_Academy_Project_5;
 -- USE DATABASE MERAKI_Academy_Project_5;
 USE MERAKI_Academy_Project_5;
+-- DROP TABLE services;
 
 -- ============================ // done
 CREATE TABLE permissions (
@@ -92,6 +93,8 @@ CREATE TABLE services (
     title VARCHAR(100) NOT NULL,
         description VARCHAR(100) ,
     image VARCHAR(100) ,
+
+    is_deleted TINYINT DEFAULT 0,
 
     PRIMARY KEY (id)
 );
