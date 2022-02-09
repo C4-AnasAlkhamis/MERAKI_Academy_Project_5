@@ -7,7 +7,8 @@ import {
   updateService,
   deleteService,
 } from "../../reducer/service/index";
-
+setWorker;
+import { setWorker } from "../../reducer/worker/index";
 const Profile = () => {
   const [message, setMessage] = useState();
   const navigate = useNavigate();
@@ -28,7 +29,7 @@ const Profile = () => {
     await axios
       .get(`http://localhost:5000/service/user/${id}`)
       .then((result) => {
-        dispatch(setServiceInfo({ ...result.data.result }));
+        dispatch(setService({ ...result.data.result }));
       })
       .catch((err) => {
         console.log(err);
@@ -70,7 +71,7 @@ const Profile = () => {
     await axios
       .get(`http://localhost:5000/worker/${id}`)
       .then((result) => {
-        // dispatch(setServiceInfo({ ...result.data.result }));
+        dispatch(setWorker({ ...result.data.result }));
       })
       .catch((err) => {
         console.log(err);
@@ -84,7 +85,7 @@ const Profile = () => {
     await axios
       .delete(`http://localhost:5000/worker/${id}`)
       .then((result) => {
-        // dispatch(deleteService({ ...result.data.result }));
+        dispatch(setWorker({}));
       })
       .catch((err) => {
         console.log(err);
@@ -97,7 +98,7 @@ const Profile = () => {
     await axios
       .put(`http://localhost:5000/worker/${id}`)
       .then((result) => {
-        // dispatch(updateService({ ...result.data.result }));
+        // dispatch(setWorker({ ...result.data.result }));
       })
       .catch((err) => {
         console.log(err);

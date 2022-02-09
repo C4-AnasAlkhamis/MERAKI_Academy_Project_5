@@ -19,7 +19,7 @@ export default workerReducer;
 
 // =======================  //
 
-export const setUsers = (worker) => {
+export const setWorker = (worker) => {
   return { type: "SET_WORKER", payload: worker };
 };
 // =======================  //
