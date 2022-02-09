@@ -103,11 +103,34 @@ const updateServiceById = (req, res) => {
 
 // This function to delete Service By Id
 const deleteServiceById = (req, res) => {
+  const id = req.params.id;
 
+  const query = `DELETE FROM services WHERE id=?;`;
 
+  const data = [id];
 
+  connection.query(query, data, (err, result) => {
+    if (err) {
+      return res.status(500).json({
+        success: false,
+        massage: "Server Error",
+        err: err,
+      });
+    }
+    if (result.affectedRows == 0) {
+      return res.status(404).json({
+        success: false,
+        massage: `The service with: ${id} is not found`,
+        err: err,
+      });
+    }
 
-    
+    res.status(200).json({
+      success: true,
+      massage: `Succeeded to delete Service with id: ${id}`,
+      result: result,
+    });
+  });
 };
 module.exports = {
   createNewService,
