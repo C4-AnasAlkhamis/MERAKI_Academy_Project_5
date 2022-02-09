@@ -1,15 +1,40 @@
 import React, { useState } from "react";
-import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
+import jwt from "jwt-decode";
+import axios from "axios";
+import { PayPalButtons } from "@paypal/react-paypal-js";
+import { useSelector, useDispatch } from "react-redux";
+import { deleteUserCarts } from "../../reducer/cart/index";
 const Pay = ({ items, price }) => {
+  const dispatch = useDispatch();
   const [isDone, setIsDone] = useState(false);
   let description = "";
   items.map((item) => {
     return (description += `${item.title}, `);
   });
-
+  const { token } = useSelector((state) => {
+    return {
+      token: state.loginReducer.token,
+    };
+  });
   // yJ6N&FPp
   // sb-kgjsd13291652@personal.example.com
-
+  // ======================================= //
+  const deleteCartByUserId = async () => {
+    //delete http://localhost:5000/cart/user
+    await axios
+      .delete(`http://localhost:5000/cart`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((result) => {
+        dispatch(deleteUserCarts());
+      })
+      .catch((err) => {
+        console.log(err.response);
+      });
+    // ======================================= //
+  };
   return (
     <>
       {isDone ? (
@@ -37,6 +62,7 @@ const Pay = ({ items, price }) => {
             onApprove={async (data, actions) => {
               const order = await actions.order.capture();
               alert(`Transaction completed by ${order.payer.name.given_name} `);
+              deleteCartByUserId();
             }}
             onError={(err) => {
               alert(`paypal error ${err} `);

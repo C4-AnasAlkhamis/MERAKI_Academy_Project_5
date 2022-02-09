@@ -16,6 +16,8 @@ const cartReducer = (state = initialState, { type, payload }) => {
           return cart.cart_id !== payload;
         }),
       };
+    case "DELETE_USERCARTS":
+      return { carts: [] };
     default:
       return state;
   }
@@ -28,4 +30,7 @@ export const setCart = (carts) => {
 
 export const deleteCart = (id) => {
   return { type: "DELETE_CART", payload: id };
+};
+export const deleteUserCarts = () => {
+  return { type: "DELETE_USERCARTS" };
 };

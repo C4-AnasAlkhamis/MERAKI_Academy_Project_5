@@ -50,19 +50,6 @@ const Cart = () => {
   };
   // // ======================================= //
 
-  // const deleteCartByUserId = async (id) => {
-  //   //delete http://localhost:5000/cart/:id
-
-  //   await axios
-  //     .delete(`http://localhost:5000/cart/${id}`)
-  //     .then((result) => {
-  //       dispatch(deleteCart(id));
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // };
-  // ======================================= //
   useEffect(() => {
     getCartById();
   }, []);

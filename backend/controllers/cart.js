@@ -69,7 +69,7 @@ const deleteCartById = (req, res) => {
 
 // This function returns Cart By user_Id
 const deleteCartByUserId = (req, res) => {
-  const id = req.params.id;
+  const id = req.token.userId;
   const query = `DELETE FROM carts WHERE user_id = ?`;
   const data = [id];
   connection.query(query, data, (err, result) => {
@@ -81,7 +81,7 @@ const deleteCartByUserId = (req, res) => {
     }
     res.status(200).json({
       success: true,
-      message: `The cart with ${id} deleted`,
+      message: `The carts deleted successfully`,
       result: result,
     });
   });
@@ -90,4 +90,5 @@ module.exports = {
   createNewCart,
   getCartById,
   deleteCartById,
+  deleteCartByUserId,
 };
