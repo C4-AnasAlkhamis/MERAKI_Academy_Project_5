@@ -36,7 +36,7 @@ const Profile = () => {
   };
   //===============================================================
   const deleteServiceById = async (id) => {
-    //get http://localhost:5000/setvice/id
+    //delete http://localhost:5000/setvice/id
 
     await axios
       .delete(`http://localhost:5000/service/${id}`)
@@ -49,7 +49,7 @@ const Profile = () => {
   };
   //===============================================================
   const updateServiceById = async (id) => {
-    //get http://localhost:5000/setvice/id
+    //put http://localhost:5000/setvice/id
 
     await axios
       .put(`http://localhost:5000/service/${id}`)
@@ -79,12 +79,25 @@ const Profile = () => {
 
   //===============================================================
   const deleteWorkerById = async (id) => {
-    //get http://localhost:5000/setvice/id
+    //delete http://localhost:5000/worker/id
 
     await axios
       .delete(`http://localhost:5000/worker/${id}`)
       .then((result) => {
         // dispatch(deleteService({ ...result.data.result }));
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  //===============================================================
+  const updateWorkerById = async (id) => {
+    //put http://localhost:5000/worker/id
+
+    await axios
+      .put(`http://localhost:5000/worker/${id}`)
+      .then((result) => {
+        // dispatch(updateService({ ...result.data.result }));
       })
       .catch((err) => {
         console.log(err);
