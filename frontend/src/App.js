@@ -2,6 +2,9 @@
 
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
+import jwt from "jwt-decode";
+import { useSelector, useDispatch } from "react-redux";
+
 import Login from "./components/login/Login";
 import ItemInfo from "./components/ItemInfo/ItemInfo";
 import Register from "./components/register/Register";
@@ -23,17 +26,29 @@ import ShowItems from "./components/adminPanel/items/showItems/showItems";
 // import  AddService  from "./components/adminPanel/services/addService/addService";
 // import ShowServices  from "./components/adminPanel/services/showServices/showServices";
 import ShowUsers from "./components/adminPanel/users/showUsers/showUsers";
+
+import { useState } from "react";
+
 import AddService from "./components/addService/AddService";
 import ServicePage from "./components/servicePage/ServicePage";
+
 // import ShowWorkers  from "./components/adminPanel/users/showWorkers/showWorkers";
 
 function App() {
+  const { token } = useSelector((state) => {
+    return {
+      token: state.loginReducer.token,
+    };
+    // const [role, setRole] = useState(jwt(res.data.token).role);
+    // console.log(role);
+  });
   return (
     <div className="App">
       <div className="logo">
         <img src={logo} />
       </div>
       <NavBar />
+      <AdminPanel />
       <Routes>
         <Route path="/login" element={<Login />} />7
         <Route path="/register" element={<Register />} />
@@ -42,8 +57,10 @@ function App() {
         <Route path="/Wishlist" element={<Wishlist />} />
         <Route path="/homePage" element={<HomePage />} />
         {/* <Route path="/paginate" element={<Pag />} /> */}
-        <Route path="/paginate" element={<ServicePage />} />
-        <Route path="/adminPanel" element={<AdminPanel />} />
+
+        {/* <Route path="/paginate" element={<Pag />} /> */}
+        {/* <Route path="/adminPanel" element={<AdminPanel />} /> */}
+
         {/* <Route path="/dashboard" element={<Dashboard />} /> */}
         <Route path="/addCategory" element={<AddCategory />} />
         <Route path="/addItems" element={<AddItem />} />
