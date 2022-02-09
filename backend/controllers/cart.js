@@ -65,6 +65,27 @@ const deleteCartById = (req, res) => {
     });
   });
 };
+// =================================================== // done
+
+// This function returns Cart By user_Id
+const deleteCartByUserId = (req, res) => {
+  const id = req.params.id;
+  const query = `DELETE FROM carts WHERE user_id = ?`;
+  const data = [id];
+  connection.query(query, data, (err, result) => {
+    if (err) {
+      return res.status(500).json({
+        success: false,
+        message: `Server Error`,
+      });
+    }
+    res.status(200).json({
+      success: true,
+      message: `The cart with ${id} deleted`,
+      result: result,
+    });
+  });
+};
 module.exports = {
   createNewCart,
   getCartById,

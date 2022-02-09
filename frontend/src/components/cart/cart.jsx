@@ -19,6 +19,7 @@ const Cart = () => {
   });
   const [total, setTotal] = useState(0);
 
+  // ======================================= //
   const getCartById = async () => {
     await axios
       .get(`http://localhost:5000/cart/`, {
@@ -33,6 +34,7 @@ const Cart = () => {
         console.log(err);
       });
   };
+  // ======================================= //
 
   const deleteCartById = async (id) => {
     //delete http://localhost:5000/cart/:id
@@ -46,7 +48,21 @@ const Cart = () => {
         console.log(err);
       });
   };
+  // // ======================================= //
 
+  // const deleteCartByUserId = async (id) => {
+  //   //delete http://localhost:5000/cart/:id
+
+  //   await axios
+  //     .delete(`http://localhost:5000/cart/${id}`)
+  //     .then((result) => {
+  //       dispatch(deleteCart(id));
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // };
+  // ======================================= //
   useEffect(() => {
     getCartById();
   }, []);
@@ -55,6 +71,7 @@ const Cart = () => {
       setTotal(totalPrice);
     }
   });
+  // ======================================= //
 
   let totalPrice = 0;
   return (
@@ -117,9 +134,6 @@ const Cart = () => {
       {carts.length > 0 ? (
         carts.map((cart, index) => {
           totalPrice += cart.price;
-
-          // setTotal(totalPrice);
-
           return (
             <div key={index} className="cart_box">
               <div className="cart_img_box">
