@@ -29,15 +29,17 @@ const Login = () => {
       })
       .then((result) => {
         if (result) {
-          navigate(`/homePage`);
           localStorage.setItem("token", result.data.token);
-          if (jwt(result.data.token).role == 1) {
-            localStorage.setItem("isAdmin", true);
-          }
-          dispatch(logIn(result.data.token));
           setMessage("");
           setEmail("");
           setPassword("");
+          if (jwt(result.data.token).role == 1) {
+            localStorage.setItem("isAdmin", true);
+            navigate(`/admin`);
+          } else {
+            navigate(`/homePage`);
+          }
+          dispatch(logIn(result.data.token));
         }
       })
       .catch((err) => {

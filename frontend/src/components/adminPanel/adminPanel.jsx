@@ -5,6 +5,7 @@ import { Routes, Route } from "react-router-dom";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { logOut } from "../../reducer/login/index";
 
 //============================================================================
 //import
@@ -12,6 +13,7 @@ import { Link } from "react-router-dom";
 //============================================================================
 
 const AdminPanel = () => {
+  const dispatch = useDispatch();
   return (
     <div className="adminPanel">
       <div className="adminNavbar">
@@ -52,10 +54,15 @@ const AdminPanel = () => {
             </ul>
           </li>
         </ul>
+        <button
+          onClick={() => {
+            localStorage.clear();
+            dispatch(logOut());
+          }}>
+          LOGOUT
+        </button>
       </div>
-      <Routes>
-
-      </Routes>
+      <Routes></Routes>
     </div>
   );
 };
