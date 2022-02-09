@@ -1,5 +1,6 @@
 import axios from "axios";
-import { useState, useNavigate } from "react";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const ServicePage = () => {
   const [message, setMessage] = useState();
@@ -28,7 +29,7 @@ const ServicePage = () => {
     await axios
       .get(`http://localhost:5000/service/${id}`)
       .then((result) => {
-        dispatch(setItemInfo({ ...result.data.result }));
+        // dispatch(setItemInfo({ ...result.data.result }));
         navigate("/service-info");
       })
       .catch((err) => {
