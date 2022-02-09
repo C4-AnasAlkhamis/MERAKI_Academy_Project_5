@@ -8,26 +8,26 @@ const initialState = {
 const serviceReducer = (state = initialState, { type, payload }) => {
   switch (type) {
     case "SET_SERVICE":
-      return { ...state, items: payload };
+      return { ...state, services: payload };
 
     case "ADD_SERVICE":
-      return { ...state, items: [...state.items, payload] };
+      return { ...state, services: [...state.services, payload] };
 
     case "DELETE_SERVICE":
       return {
         ...state,
-        items: state.items.filter((item) => {
-          return item.id !== payload;
+        services: state.services.filter((service) => {
+          return service.id !== payload;
         }),
       };
     case "UPDATE_SERVICE":
       return {
         ...state,
-        items: state.items.map((item) => {
-          if (item.id === payload.id) {
+        services: state.services.map((service) => {
+          if (service.id === payload.id) {
             return payload;
           }
-          return item;
+          return service;
         }),
       };
 
@@ -37,3 +37,22 @@ const serviceReducer = (state = initialState, { type, payload }) => {
 };
 
 export default serviceReducer;
+
+export const setService = (services) => {
+  return { type: "SET_SERVICE", payload: services };
+};
+// =======================  //
+
+export const addService = (newService) => {
+  return { type: "ADD_SERVICE", payload: newService };
+};
+// =======================  //
+
+export const updateService = (newService) => {
+  return { type: "UPDATE_SERVICE", payload: newService };
+};
+// =======================  //
+
+export const deleteService = (id) => {
+  return { type: "DELETE_SERVICE", payload: id };
+};
