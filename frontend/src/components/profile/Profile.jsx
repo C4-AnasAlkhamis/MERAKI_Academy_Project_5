@@ -7,7 +7,6 @@ import {
   updateService,
   deleteService,
 } from "../../reducer/service/index";
-setWorker;
 import { setWorker } from "../../reducer/worker/index";
 const Profile = () => {
   const [message, setMessage] = useState();

@@ -7,9 +7,13 @@ import {
   updateService,
   deleteService,
 } from "../../reducer/service/index";
-setWorker;
 import { setWorker } from "../../reducer/worker/index";
-const CreateWorker = () => {
+const Worker = () => {
+  const [status, setStatus] = useState(false);
+  const [phone, setPhone] = useState();
+  const [address, setAddress] = useState();
+  const [service_id, setService_id] = useState();
+  const [image, setImage] = useState("");
   const [message, setMessage] = useState();
   const navigate = useNavigate();
 
@@ -20,8 +24,60 @@ const CreateWorker = () => {
     };
   });
   const dispatch = useDispatch();
+  const createWorker = () => {
+    //post http://localhost:5000/worker
 
-  return <div> Profile</div>;
+    await axios
+      .post(
+        `http://localhost:5000/worker`,
+        {
+          address,
+          phone,
+          image,
+          service_id,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
+      .then((result) => {
+        dispatch(setService({ ...result.data.result }));
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  return (
+    <div>
+      <h1>Add Your Service</h1>
+      <form onSubmit={uploadImage}>
+        <input
+          type="text"
+          placeholder="address"
+          onChange={(e) => setAddress(e.target.value)}
+        />
+
+        <input
+          placeholder="Phone Number"
+          onChange={(e) => setPhone(e.target.value)}
+        />
+        <Select />
+        <input
+          type="file"
+          onChange={(e) => {
+            setImage(e.target.files[0]);
+          }}
+        />
+        <button>Add Service</button>
+      </form>
+      <br />
+      {status
+        ? message && <div className="SuccessMessage">{message}</div>
+        : message && <div className="ErrorMessage">{message}</div>}
+    </div>
+  );
 };
 
-export default CreateWorker;
+export default Worker;
