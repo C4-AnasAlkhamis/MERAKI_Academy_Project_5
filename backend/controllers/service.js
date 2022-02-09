@@ -102,7 +102,13 @@ const updateServiceById = (req, res) => {
 };
 
 // This function to delete Service By Id
-const deleteServiceById = (req, res) => {};
+const deleteServiceById = (req, res) => {
+
+
+
+
+    
+};
 module.exports = {
   createNewService,
   getAllServices,
