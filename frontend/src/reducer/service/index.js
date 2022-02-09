@@ -1,10 +1,11 @@
 // /** @format */
 
-// const initialState = {
-//   services: [],
-//   serviceInfo ={}
-// };
-// // =======================  //
+
+const initialState = {
+  services: [],
+  serviceInfo: {},
+};
+
 
 // const serviceReducer = (state = initialState, { type, payload }) => {
 //   switch (type) {
@@ -42,18 +43,18 @@
 
 // export default serviceReducer;
 
-// export const setService = (services) => {
-//   return { type: "SET_SERVICE", payload: services };
-// };
-// // =======================  //
-// export const setServiceInfo = (servicesInfo) => {
-//   return { type: "SET_SERVICEINFO", payload: servicesInfo };
- 
-// };
-// export const addService = (newService) => {
-//   return { type: "ADD_SERVICE", payload: newService };
-// };
-// // =======================  //
+
+export const setService = (services) => {
+  return { type: "SET_SERVICE", payload: services };
+};
+// =======================  //
+export const setServiceInfo = (servicesInfo) => {
+  return { type: "SET_SERVICEINFO", payload: servicesInfo };
+};
+export const addService = (newService) => {
+  return { type: "ADD_SERVICE", payload: newService };
+};
+// =======================  //
 
 // export const updateService = (newService) => {
 //   return { type: "UPDATE_SERVICE", payload: newService };

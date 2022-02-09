@@ -28,12 +28,12 @@ const AddService = () => {
       .post(`https://api.cloudinary.com/v1_1/debtpixx1/image/upload/`, formData)
       .then((res) => {
         setImage(res.data.secure_url);
-        // createNewService();
+        // createNewService(res.data.secure_url);
       });
   };
   // ====================================== //
 
-  const createNewService = async (e) => {
+  const createNewService = async (image) => {
     try {
       const result = await axios.post(
         `http://localhost:5000/srvice`,
