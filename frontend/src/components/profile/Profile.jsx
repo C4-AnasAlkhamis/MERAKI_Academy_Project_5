@@ -12,9 +12,10 @@ const Profile = () => {
   const [message, setMessage] = useState();
   const navigate = useNavigate();
 
-  const state = useSelector((state) => {
+  const { token, services } = useSelector((state) => {
     return {
       token: state.loginReducer.token,
+      services: state.serviceReducer.services,
     };
   });
   const dispatch = useDispatch();

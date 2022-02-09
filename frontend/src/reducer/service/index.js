@@ -2,11 +2,14 @@
 
 const initialState = {
   services: [],
+  serviceInfo ={}
 };
 // =======================  //
 
 const serviceReducer = (state = initialState, { type, payload }) => {
   switch (type) {
+    case "SET_SERVICE":
+      return { ...state, services: payload };
     case "SET_SERVICE":
       return { ...state, services: payload };
 
