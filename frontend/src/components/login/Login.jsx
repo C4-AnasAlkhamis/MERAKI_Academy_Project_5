@@ -1,3 +1,5 @@
+/** @format */
+
 import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -26,6 +28,8 @@ const Login = () => {
         if (result) {
           navigate(`/homePage`);
           localStorage.setItem("token", result.data.token);
+          const [role, setRole] = useState(jwt(result.data.token).role);
+          console.log(role);
           dispatch(logIn(result.data.token));
           setMessage("");
           setEmail("");
@@ -41,30 +45,30 @@ const Login = () => {
     <>
       <div className="login_box">
         <div className="group1">
-      <div className="regImg1">
-          <img className="image" src={login} />
+          <div className="regImg1">
+            <img className="image" src={login} />
+          </div>
+          <form onSubmit={verifyUser}>
+            <input
+              onChange={(e) => {
+                setEmail(e.target.value);
+              }}
+              value={email}
+              type="email"
+              placeholder="Email"
+            />
+            <input
+              onChange={(e) => {
+                setPassword(e.target.value);
+              }}
+              value={password}
+              type="password"
+              placeholder="Password"
+            />
+            <button>Login</button>
+            <span>{message}</span>
+          </form>
         </div>
-        <form onSubmit={verifyUser}>
-          <input
-            onChange={(e) => {
-              setEmail(e.target.value);
-            }}
-            value={email}
-            type="email"
-            placeholder="Email"
-          />
-          <input
-            onChange={(e) => {
-              setPassword(e.target.value);
-            }}
-            value={password}
-            type="password"
-            placeholder="Password"
-          />
-          <button>Login</button>
-          <span>{message}</span>
-        </form>
-      </div>
       </div>
     </>
   );

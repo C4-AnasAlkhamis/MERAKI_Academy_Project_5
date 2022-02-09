@@ -1,6 +1,9 @@
+/** @format */
+
 const initialState = {
   token: localStorage.getItem("token") ? localStorage.getItem("token") : "",
   isLoggedIn: !localStorage.getItem("token") ? false : true,
+  isAdmin: false,
 };
 // =======================  //
 
@@ -10,6 +13,8 @@ const loginReducer = (state = initialState, { type, payload }) => {
       return { ...state, token: payload, isLoggedIn: true };
     case "LOG_OUT":
       return { ...state, token: null, isLoggedIn: false };
+    case "IS_ADMIN":
+      return { ...state, isAdmin: true };
     default:
       return state;
   }
@@ -24,4 +29,9 @@ export const logIn = (token) => {
 
 export const logOut = () => {
   return { type: "LOG_OUT" };
+};
+// =======================  //
+
+export const isAdmin = () => {
+  return { type: "IS_ADMIN" };
 };
