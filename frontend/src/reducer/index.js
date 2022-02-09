@@ -7,7 +7,7 @@ import loginReducer from "./login/index";
 import itemInfoReducer from "./itemInfo/index";
 import wishlistReducer from "./wishlist/index";
 import usersReducer from "./users/index";
-
+import serviceReducer from "./service/index";
 const reducers = combineReducers({
   itemsReducer,
   loginReducer,
@@ -15,6 +15,7 @@ const reducers = combineReducers({
   itemInfoReducer,
   wishlistReducer,
   usersReducer,
+  serviceReducer,
 });
 
 const store = createStore(reducers);
