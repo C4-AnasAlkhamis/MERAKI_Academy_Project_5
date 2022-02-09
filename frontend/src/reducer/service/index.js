@@ -2,7 +2,7 @@
 
 const initialState = {
   services: [],
-  serviceInfo ={}
+  serviceInfo: {},
 };
 // =======================  //
 
@@ -48,7 +48,6 @@ export const setService = (services) => {
 // =======================  //
 export const setServiceInfo = (servicesInfo) => {
   return { type: "SET_SERVICEINFO", payload: servicesInfo };
- 
 };
 export const addService = (newService) => {
   return { type: "ADD_SERVICE", payload: newService };
