@@ -2,6 +2,9 @@
 
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
+import jwt from "jwt-decode";
+import { useSelector, useDispatch } from "react-redux";
+
 import Login from "./components/login/Login";
 import ItemInfo from "./components/ItemInfo/ItemInfo";
 import Register from "./components/register/Register";
@@ -18,36 +21,39 @@ import logo from "./image/logo.png";
 import AddItem from "./components/adminPanel/items/addItem/addItem";
 
 // import  Dashboard  from "./components/adminPanel/dashboard/dashboard";
-import  AddCategory  from "./components/adminPanel/categories/Caregories";
-import  ShowItems  from "./components/adminPanel/items/showItems/showItems";
+import AddCategory from "./components/adminPanel/categories/Caregories";
+import ShowItems from "./components/adminPanel/items/showItems/showItems";
 // import  AddService  from "./components/adminPanel/services/addService/addService";
 // import ShowServices  from "./components/adminPanel/services/showServices/showServices";
-import ShowUsers  from "./components/adminPanel/users/showUsers/showUsers";
+import ShowUsers from "./components/adminPanel/users/showUsers/showUsers";
+import { useState } from "react";
 // import ShowWorkers  from "./components/adminPanel/users/showWorkers/showWorkers";
 
-
 function App() {
+  const { token } = useSelector((state) => {
+    return {
+      token: state.loginReducer.token,
+    };
+    // const [role, setRole] = useState(jwt(res.data.token).role);
+    // console.log(role);
+  });
   return (
     <div className="App">
       <div className="logo">
         <img src={logo} />
       </div>
       <NavBar />
+      <AdminPanel />
       <Routes>
-
         <Route path="/login" element={<Login />} />7
-
         <Route path="/register" element={<Register />} />
         <Route path="/more-info" element={<ItemInfo />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/Wishlist" element={<Wishlist />} />
-
         <Route path="/homePage" element={<HomePage />} />
         {/* <Route path="/paginate" element={<Pag />} /> */}
         {/* <Route path="/paginate" element={<Pag />} /> */}
-        <Route path="/adminPanel" element={<AdminPanel />} />
-
-
+        {/* <Route path="/adminPanel" element={<AdminPanel />} /> */}
         {/* <Route path="/dashboard" element={<Dashboard />} /> */}
         <Route path="/addCategory" element={<AddCategory />} />
         <Route path="/addItems" element={<AddItem />} />
@@ -56,9 +62,6 @@ function App() {
         {/* <Route path="/showServices" element={<ShowServices />} /> */}
         <Route path="/showUsers" element={<ShowUsers />} />
         {/* <Route path="/showWorkers" element={<ShowWorkers />} /> */}
-
-
-
       </Routes>
     </div>
   );
