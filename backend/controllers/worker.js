@@ -73,6 +73,52 @@ const getWorkerById = (req, res) => {
   });
 };
 
+
+
+// This function returns worker By Service Id
+const getWorkerByServiceId = (req, res) => {
+
+  const id = req.params.id;
+
+  const query = `SELECT * FROM worker WHERE (service_id) = (?) `;
+  const data = [id];
+  connection.query(query, data, (err, result) => {
+    if (err) {
+      return res.status(500).json({
+        success: false,
+        message: `Server Error`,
+      });
+    }
+
+    if (result.length == 0) {
+      return res.status(404).json({
+        success: false,
+        message: `No Worker Match Entered Service ID`,
+      });
+    }
+
+    res.status(200).json({
+      success: true,
+      message: `The Worker With Id >>> ${id}`,
+      result: result,
+    });
+  });
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // This function to update worker by id
 const updateWorkerById = (req, res) => {
   const id = req.params.id;
@@ -138,4 +184,5 @@ module.exports = {
   getWorkerById,
   updateWorkerById,
   deleteWorkerById,
+  getWorkerByServiceId,
 };

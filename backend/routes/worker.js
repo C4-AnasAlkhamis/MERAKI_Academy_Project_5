@@ -10,6 +10,7 @@ const {
     createNewWorker,
     getAllWorkers,
     getWorkerById,
+    getWorkerByServiceId,
     updateWorkerById,
     deleteWorkerById,
 } = require("../controllers/worker");
@@ -18,6 +19,8 @@ const {
 workerRouter.post("/", createNewWorker);
 workerRouter.get("/", getAllWorkers);
 workerRouter.get("/:id", getWorkerById);
+workerRouter.get("/srv_id/:id", getWorkerByServiceId);
+
 workerRouter.put("/:id", updateWorkerById);
 workerRouter.delete("/:id", deleteWorkerById);
 
