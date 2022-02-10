@@ -2,12 +2,12 @@
 
 .adminPanel {
   height: 100%;
-  width: 25%;
+  width: 20%;
   position: fixed;
   z-index: 1;
   top: 0;
   left: 0;
-  background-color: #232323;
+  background-color: rgb(4, 81, 140);
   transition: 0.5s ease;
   overflow-x: hidden;
   padding-top: 20px;
