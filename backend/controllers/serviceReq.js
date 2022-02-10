@@ -1,3 +1,7 @@
+const connection = require("../database/db");
+
+// =================================================== // done
+
 // This function create new item
 const createNewRequest = (req, res) => {
   const { name, order_Detalis, address, phone, worker_id } = req.body;
@@ -22,8 +26,9 @@ const createNewRequest = (req, res) => {
 // // =================================================== // done
 
 // This function get all items from items
-const getAllItems = (req, res) => {
-  const query = `SELECT * FROM items WHERE is_deleted = 0`;
+const getAllRequestByWorkerId = (req, res) => {
+  const id = req.params.id;
+  const query = `SELECT * FROM service_request WHERE worker_id = 0`;
   connection.query(query, (err, result) => {
     if (err) {
       return res.status(500).json({
@@ -39,9 +44,12 @@ const getAllItems = (req, res) => {
     }
     res.status(200).json({
       success: true,
-      message: `all the items`,
+      message: `all the Request with worker id ${id}`,
       items: result,
     });
   });
 };
-// // =================================================== // done
+module.exports = {
+  createNewRequest,
+  getAllRequestByWorkerId,
+};
