@@ -7,18 +7,19 @@ const workerRouter = express.Router();
 //write your code here
 
 const {
-    createNewWorker,
-    getAllWorkers,
-    getWorkerById,
-    getWorkerByServiceId,
-    updateWorkerById,
-    deleteWorkerById,
+  createNewWorker,
+  getAllWorkers,
+  getWorkerById,
+  getWorkerByServiceId,
+  updateWorkerById,
+  deleteWorkerById,
 } = require("../controllers/worker");
 // =========================================== //
+const { authentication } = require("../middleware/authentication");
 
 workerRouter.post("/", createNewWorker);
 workerRouter.get("/", getAllWorkers);
-workerRouter.get("/:id", getWorkerById);
+workerRouter.get("/profile", authentication, getWorkerById);
 workerRouter.get("/srv_id/:id", getWorkerByServiceId);
 
 workerRouter.put("/:id", updateWorkerById);

@@ -74,7 +74,11 @@ const Profile = () => {
     //get http://localhost:5000/worker/id
     const id = jsw(token).userId;
     await axios
-      .get(`http://localhost:5000/worker/${id}`)
+      .get(`http://localhost:5000/worker/profile`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
       .then((result) => {
         dispatch(setWorker({ ...result.data.result }));
       })
@@ -84,18 +88,18 @@ const Profile = () => {
   };
 
   //===============================================================
-  // const deleteWorkerById = async (id) => {
-  //   //delete http://localhost:5000/worker/id
+  const deleteWorkerById = async (id) => {
+    //delete http://localhost:5000/worker/id
 
-  //   await axios
-  //     .delete(`http://localhost:5000/worker/${id}`)
-  //     .then((result) => {
-  //       dispatch(setWorker({}));
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // };
+    await axios
+      .delete(`http://localhost:5000/worker/${id}`)
+      .then((result) => {
+        dispatch(setWorker({}));
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   // ================================================  //
 
@@ -137,6 +141,9 @@ const Profile = () => {
         console.log(err);
       });
   };
+  useEffect(() => {
+    getWorkerById();
+  }, []);
   return (
     <>
       <div>
@@ -179,4 +186,4 @@ const Profile = () => {
   );
 };
 
-export default ServicePage;
+export default Profile;

@@ -21,7 +21,7 @@ const WSInfo = () => {
 
     await axios
       .post(
-        `http://localhost:5000/worker`,
+        `http://localhost:5000/send_request`,
         {
           name,
           order_Detalis,

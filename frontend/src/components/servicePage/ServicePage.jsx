@@ -42,7 +42,7 @@ const ServicePage = () => {
       .then((result) => {
         dispatch(setWorkers([...result.data.result]));
         console.log(result);
-        // navigate("/service-infos");
+        navigate("/service-info");
       })
       .catch((err) => {
         console.log(err);
@@ -55,7 +55,7 @@ const ServicePage = () => {
     <>
       {!showWorker ? (
         <>
-          <h1> service</h1>
+          <h1>service</h1>
           <div>
             {services.map((service, index) => {
               return (
