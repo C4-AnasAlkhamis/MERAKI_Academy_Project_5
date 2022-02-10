@@ -8,7 +8,7 @@ import itemInfoReducer from "./itemInfo/index";
 import wishlistReducer from "./wishlist/index";
 import usersReducer from "./users/index";
 import serviceReducer from "./service/index";
-import workerReducer from "./worker";
+import workerReducer from "./worker/index";
 const reducers = combineReducers({
   itemsReducer,
   loginReducer,

@@ -47,8 +47,8 @@ const getAllWorkers = (req, res) => {
 
 // This function returns worker By Id
 const getWorkerById = (req, res) => {
-  const id = req.params.id;
-  const query = `SELECT * FROM worker WHERE (id) = (?) `;
+  const id = req.token.userId;
+  const query = `SELECT * FROM worker JOIN users ON worker.user_id = users.id  WHERE worker.user_id = ?  `;
   const data = [id];
   connection.query(query, data, (err, result) => {
     if (err) {
@@ -73,14 +73,11 @@ const getWorkerById = (req, res) => {
   });
 };
 
-
-
 // This function returns worker By Service Id
 const getWorkerByServiceId = (req, res) => {
-
   const id = req.params.id;
 
-  const query = `SELECT * FROM worker WHERE (service_id) = (?) `;
+  const query = `SELECT * FROM worker JOIN users ON worker.user_id = users.id WHERE worker.service_id = ? `;
   const data = [id];
   connection.query(query, data, (err, result) => {
     if (err) {
@@ -105,25 +102,11 @@ const getWorkerByServiceId = (req, res) => {
   });
 };
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // This function to update worker by id
 const updateWorkerById = (req, res) => {
   const id = req.params.id;
   const { address, phone, image } = req.body;
-  const query = `UPDATE worker SET address =? , phone = ? , image = ? WHERE id = ?;`;
+  const query = `UPDATE worker SET address =? , phone = ? , image = ? WHERE user_id = ?;`;
   const data = [address, phone, image, id];
   connection.query(query, data, (err, result) => {
     if (err) {
@@ -133,12 +116,12 @@ const updateWorkerById = (req, res) => {
       });
     }
 
-    if (!result.id) {
-      return res.status(404).json({
-        success: false,
-        message: `No Worker Match Entered ID`,
-      });
-    }
+    // if (!result.id) {
+    //   return res.status(404).json({
+    //     success: false,
+    //     message: `No Worker Match Entered ID`,
+    //   });
+    // }
     res.status(202).json({
       success: true,
       message: `Worker with id ${id} updated successfully`,

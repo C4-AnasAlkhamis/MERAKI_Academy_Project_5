@@ -1,22 +1,7 @@
 /** @format */
 
 const initialState = {
-  workers: [
-    {
-      id: 1,
-      address: "Set (420898)",
-      phone: 100000000,
-      image: "https://itslondon.s3.amazonaws.com/p/m/MAKE10528.jpg",
-      name: "anas",
-    },
-    {
-      id: 2,
-      address: "Set (420898)",
-      phone: 100000000,
-      image: "https://itslondon.s3.amazonaws.com/p/m/MAKE10528.jpg",
-      name: "anas",
-    },
-  ],
+  workers: [],
 };
 // =======================  //
 
@@ -34,7 +19,7 @@ export default workerReducer;
 
 // =======================  //
 
-export const setWorker = (worker) => {
-  return { type: "SET_WORKER", payload: worker };
+export const setWorkers = (workers) => {
+  return { type: "SET_WORKER", payload: workers };
 };
 // =======================  //
