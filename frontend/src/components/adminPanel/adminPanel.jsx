@@ -1,6 +1,7 @@
 /** @format */
 
 import React from "react";
+import "./adminPanel.css"
 import { Routes, Route } from "react-router-dom";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
@@ -59,7 +60,6 @@ const AdminPanel = () => {
         <Link to={"/homePage"} onClick={()=>{localStorage.clear();
             dispatch(logOut());}}>LOGOUT</Link>
       </div>
-      <Routes></Routes>
     </div>
   );
 };
