@@ -47,9 +47,8 @@ const NavBar = () => {
                   className="logout"
                   onClick={(e) => {
                     dispatch(logOut());
-                    localStorage.setItem("token", "");
-                  }}
-                >
+                    localStorage.clear();
+                  }}>
                   <BiLogOut /> LOGOUT
                 </Link>
               </>

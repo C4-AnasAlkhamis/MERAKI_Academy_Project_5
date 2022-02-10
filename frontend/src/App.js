@@ -2,7 +2,6 @@
 
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
-import jwt from "jwt-decode";
 import { useSelector, useDispatch } from "react-redux";
 
 import Login from "./components/login/Login";
@@ -39,17 +38,16 @@ function App() {
   const { token } = useSelector((state) => {
     return {
       token: state.loginReducer.token,
+      token: state.loginReducer.isAdmin,
     };
-    // const [role, setRole] = useState(jwt(res.data.token).role);
-    // console.log(role);
   });
+  let isAdmin=localStorage.getItem("isAdmin")?true:false
   return (
     <div className="App">
       <div className="logo">
         <img src={logo} />
       </div>
-      <NavBar />
-      <AdminPanel />
+      {isAdmin ? <AdminPanel /> : <NavBar />}
       <Routes>
         <Route path="/login" element={<Login />} />7
         <Route path="/register" element={<Register />} />
@@ -58,9 +56,11 @@ function App() {
         <Route path="/Wishlist" element={<Wishlist />} />
         <Route path="/homePage" element={<HomePage />} />
         {/* <Route path="/paginate" element={<Pag />} /> */}
+
         <Route path="/paginate" element={<ServicePage />} />
         {/* <Route path="/adminPanel" element={<AdminPanel />} /> */}
         <Route path="/dashboard" element={<Profile />} />
+          
         <Route path="/addCategory" element={<AddCategory />} />
         <Route path="/addItems" element={<AddItem />} />
         <Route path="/showItems" element={<ShowItems />} />

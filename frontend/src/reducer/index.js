@@ -16,7 +16,7 @@ const reducers = combineReducers({
   itemInfoReducer,
   wishlistReducer,
   usersReducer,
-  serviceReducer,
+  // serviceReducer,
   workerReducer,
 });
 
