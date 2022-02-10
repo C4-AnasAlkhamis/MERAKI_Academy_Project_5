@@ -8,7 +8,44 @@ import login from "../../image/login1.png";
 
 import { useDispatch } from "react-redux";
 // import LoginWG from "../LoginWG/LoginWG";
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+
+
+
+
 const Login = () => {
+
+
+  const rightLogin =()=>{
+
+    Swal.fire({
+      title: 'Welcome!',
+      text: 'Have a Nice Journey in our Website.',
+      imageUrl: 'https://englishlib.org/dictionary/img/wlibrary/w/605359b9ba5286.41705746.jpg',
+      imageWidth: 400,
+      imageHeight: 200,
+      imageAlt: 'Custom image',
+    })
+  }
+  
+  const wrongLogin =()=>{
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: 'Something went wrong! Fill The Right Data And Try Again',
+      color: 'red ',
+
+      footer: '<a href="">Why do I have this issue?</a>'
+    })
+  
+  }
+
+
+
+
+
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
@@ -24,6 +61,7 @@ const Login = () => {
       })
       .then((result) => {
         if (result) {
+          // rightLogin()
           navigate(`/homePage`);
           localStorage.setItem("token", result.data.token);
           dispatch(logIn(result.data.token));
@@ -33,6 +71,7 @@ const Login = () => {
         }
       })
       .catch((err) => {
+        wrongLogin()
         setMessage("Error happened while Login, please try again");
       });
   };
@@ -62,7 +101,7 @@ const Login = () => {
             placeholder="Password"
           />
           <button>Login</button>
-          <span>{message}</span>
+          {/* <span>{message}</span> */}
         </form>
       </div>
       </div>

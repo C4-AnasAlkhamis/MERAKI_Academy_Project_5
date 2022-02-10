@@ -5,12 +5,48 @@ import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import { setWishlist, deleteWishlist } from "../../reducer/wishlist/index";
 import { IoIosAddCircle, IoMdRemoveCircle } from "react-icons/io";
+
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+
 const Wishlist = () => {
+
   const [notes, setNotes] = useState([
     { myNote: "I have buy new wheel" },
     { myNote: "I have buy new paint brush" },
   ]);
   const [note, setNote] = useState("");
+
+
+  const popupWishlistDelete =()=>{
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          'Deleted!',
+          'Your file has been deleted.',
+          'success'
+        )
+      }
+    })
+ 
+  }
+
+
+
+
+
+
+
+
+
 
   console.log(notes);
 
@@ -218,6 +254,7 @@ const Wishlist = () => {
                     borderColor: "#f22626",
                   }}
                   onClick={(e) => {
+
                     deleteWishlistById(wishlist.wishlist_id);
                   }}
                 >
