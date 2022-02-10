@@ -174,13 +174,15 @@ const Profile = () => {
       </div>
       <div>
         {requests.map((req, index) => {
-          console.log(req);
           return (
             <section key={index}>
               <p>{req.name}</p>
               <address>{req.address}</address>
               <small>{req.phone}</small>
               <p>{req.order_Detalis}</p>
+              <button>approve</button>
+              <button>reject</button>
+
             </section>
           );
         })}

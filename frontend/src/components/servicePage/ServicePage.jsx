@@ -42,7 +42,7 @@ const ServicePage = () => {
       .then((result) => {
         dispatch(setWorkers([...result.data.result]));
         console.log(result);
-        navigate("/service-info");
+        // navigate("/service-info");
       })
       .catch((err) => {
         console.log(err);
@@ -51,6 +51,7 @@ const ServicePage = () => {
   useEffect(() => {
     getAllService();
   }, []);
+  console.log(workers);
   return (
     <>
       {!showWorker ? (
