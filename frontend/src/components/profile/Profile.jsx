@@ -11,7 +11,6 @@ const Profile = () => {
   const [status, setStatus] = useState(false);
   const [phone, setPhone] = useState();
   const [address, setAddress] = useState();
-  const [service_id, setService_id] = useState();
   const [imageUrl, setImageUrl] = useState("");
   const [show, setShow] = useState(false);
   const navigate = useNavigate();
@@ -85,7 +84,6 @@ const Profile = () => {
         console.log(err);
       });
   };
-  console.log(worker[0]);
 
   const getRequestByWorker = async () => {
     //get http://localhost:5000/worker/id
@@ -120,8 +118,6 @@ const Profile = () => {
   // ================================================  //
 
   const uploadImage = (e) => {
-    e.preventDefault();
-
     const formData = new FormData();
 
     formData.append("file", imageUrl);
@@ -129,30 +125,26 @@ const Profile = () => {
     axios
       .post(`https://api.cloudinary.com/v1_1/debtpixx1/image/upload/`, formData)
       .then((res) => {
+        console.log(res);
+
         updateWorkerById(res.data.secure_url);
       });
   };
   //===============================================================
   const updateWorkerById = async (image) => {
     //put http://localhost:5000/worker/id
-    const id = jsw(token).userId;
 
+    const id = jsw(token).userId;
     await axios
-      .put(
-        `http://localhost:5000/worker/${id}`,
-        {
-          address,
-          phone,
-          image,
-          service_id,
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      )
-      .then((result) => {})
+      .put(`http://localhost:5000/worker/${id}`, {
+        address,
+        phone,
+        image,
+      })
+      .then((result) => {
+        console.log(result);
+        getWorkerById();
+      })
       .catch((err) => {
         console.log(err);
       });
@@ -166,8 +158,6 @@ const Profile = () => {
       <div>
         <h1>Profile</h1>
         {worker.length ? (
-          // worker
-          // requests
           <div>
             <h3>{worker[0].user_name}</h3>
             <img src={worker[0].image} alt={worker[0].user_name} />
@@ -182,33 +172,46 @@ const Profile = () => {
           </div>
         ) : null}
       </div>
-
+      <div>
+        {requests.map((req, index) => {
+          console.log(req);
+          return (
+            <section key={index}>
+              <p>{req.name}</p>
+              <address>{req.address}</address>
+              <small>{req.phone}</small>
+              <p>{req.order_Detalis}</p>
+            </section>
+          );
+        })}
+      </div>
       {show ? (
         <div>
-          <form
-            onSubmit={() => {
+          <input
+            type="text"
+            placeholder="address"
+            onChange={(e) => setAddress(e.target.value)}
+          />
+
+          <input
+            placeholder="Phone Number"
+            onChange={(e) => setPhone(e.target.value)}
+          />
+          <input
+            type="file"
+            onChange={(e) => {
+              setImageUrl(e.target.files[0]);
+            }}
+          />
+          <button
+            onClick={() => {
               uploadImage();
               setShow(false);
             }}
           >
-            <input
-              type="text"
-              placeholder="address"
-              onChange={(e) => setAddress(e.target.value)}
-            />
+            Add Service
+          </button>
 
-            <input
-              placeholder="Phone Number"
-              onChange={(e) => setPhone(e.target.value)}
-            />
-            <input
-              type="file"
-              onChange={(e) => {
-                setImageUrl(e.target.files[0]);
-              }}
-            />
-            <button>Add Service</button>
-          </form>
           <br />
           {status
             ? message && <div className="SuccessMessage">{message}</div>
