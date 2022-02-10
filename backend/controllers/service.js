@@ -31,12 +31,12 @@ const getAllServices = (req, res) => {
         message: `Server Error`,
       });
     }
-    // if (!result) {
-    //   return res.status(200).json({
-    //     success: false,
-    //     message: `No Services Yet`,
-    //   });
-    // }
+    if (!result) {
+      return res.status(200).json({
+        success: false,
+        message: `No Services Yet`,
+      });
+    }
     res.status(200).json({
       success: true,
       message: `All the Services Available`,
