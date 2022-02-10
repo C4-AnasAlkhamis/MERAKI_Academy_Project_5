@@ -27,9 +27,10 @@ const createNewRequest = (req, res) => {
 
 // This function get all items from items
 const getAllRequestByWorkerId = (req, res) => {
-  const id = req.params.id;
-  const query = `SELECT * FROM service_request WHERE worker_id = 0`;
-  connection.query(query, (err, result) => {
+  const id = req.token.userId;
+  const query = `SELECT * FROM service_request WHERE worker_id = ?`;
+  const data = [id];
+  connection.query(query, data, (err, result) => {
     if (err) {
       return res.status(500).json({
         success: false,
@@ -39,13 +40,13 @@ const getAllRequestByWorkerId = (req, res) => {
     if (!result) {
       return res.status(200).json({
         success: false,
-        message: `No items Yet`,
+        message: `No Request Yet`,
       });
     }
     res.status(200).json({
       success: true,
       message: `all the Request with worker id ${id}`,
-      items: result,
+      result: result,
     });
   });
 };

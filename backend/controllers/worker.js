@@ -48,7 +48,7 @@ const getAllWorkers = (req, res) => {
 // This function returns worker By Id
 const getWorkerById = (req, res) => {
   const id = req.token.userId;
-  const query = `SELECT * FROM worker JOIN users ON worker.user_id = users.id JOIN service_request ON worker.user_id = service_request.worker_id  WHERE worker.user_id = ?  `;
+  const query = `SELECT * FROM worker JOIN users ON worker.user_id = users.id  WHERE worker.user_id = ?  `;
   const data = [id];
   connection.query(query, data, (err, result) => {
     if (err) {

@@ -3,11 +3,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import jsw from "jwt-decode";
 import { useSelector, useDispatch } from "react-redux";
-import {
-  setService,
-  updateService,
-  deleteService,
-} from "../../reducer/service/index";
+import { setRequests } from "../../reducer/service/index";
 
 import { setWorkers } from "../../reducer/worker/index";
 const Profile = () => {
@@ -17,13 +13,15 @@ const Profile = () => {
   const [address, setAddress] = useState();
   const [service_id, setService_id] = useState();
   const [imageUrl, setImageUrl] = useState("");
+  const [show, setShow] = useState(false);
   const navigate = useNavigate();
 
-  const { token, services, worker } = useSelector((state) => {
+  const { token, services, worker, requests } = useSelector((state) => {
     return {
       token: state.loginReducer.token,
       services: state.serviceReducer.services,
       worker: state.workerReducer.workers,
+      requests: state.serviceReducer.requests,
     };
   });
   const dispatch = useDispatch();
@@ -89,6 +87,22 @@ const Profile = () => {
   };
   console.log(worker[0]);
 
+  const getRequestByWorker = async () => {
+    //get http://localhost:5000/worker/id
+    await axios
+      .get(`http://localhost:5000/send_request`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((result) => {
+        dispatch(setRequests([...result.data.result]));
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   //===============================================================
   // const deleteWorkerById = async (id) => {
   //   //delete http://localhost:5000/worker/id
@@ -145,45 +159,62 @@ const Profile = () => {
   };
   useEffect(() => {
     getWorkerById();
+    getRequestByWorker();
   }, []);
   return (
     <>
       <div>
         <h1>Profile</h1>
+        {worker.length ? (
+          // worker
+          // requests
+          <div>
+            <h3>{worker[0].user_name}</h3>
+            <img src={worker[0].image} alt={worker[0].user_name} />
+            <address>{worker[0].address}</address>
+            <button
+              onClick={() => {
+                setShow(!show);
+              }}
+            >
+              edit profile
+            </button>
+          </div>
+        ) : null}
       </div>
 
-      <div>
-        <h1>Add Your Service</h1>
-        <form onSubmit={uploadImage}>
-          <input
-            type="text"
-            placeholder="address"
-            onChange={(e) => setAddress(e.target.value)}
-          />
+      {show ? (
+        <div>
+          <form
+            onSubmit={() => {
+              uploadImage();
+              setShow(false);
+            }}
+          >
+            <input
+              type="text"
+              placeholder="address"
+              onChange={(e) => setAddress(e.target.value)}
+            />
 
-          <input
-            placeholder="Phone Number"
-            onChange={(e) => setPhone(e.target.value)}
-          />
-          {/* <Select
-            options={options}
-            onChange={(e) => {
-              setService_id(e.value);
-            }}
-          /> */}
-          <input
-            type="file"
-            onChange={(e) => {
-              setImageUrl(e.target.files[0]);
-            }}
-          />
-          <button>Add Service</button>
-        </form>
-        <br />
-        {status
-          ? message && <div className="SuccessMessage">{message}</div>
-          : message && <div className="ErrorMessage">{message}</div>}
-      </div>
+            <input
+              placeholder="Phone Number"
+              onChange={(e) => setPhone(e.target.value)}
+            />
+            <input
+              type="file"
+              onChange={(e) => {
+                setImageUrl(e.target.files[0]);
+              }}
+            />
+            <button>Add Service</button>
+          </form>
+          <br />
+          {status
+            ? message && <div className="SuccessMessage">{message}</div>
+            : message && <div className="ErrorMessage">{message}</div>}
+        </div>
+      ) : null}
     </>
   );
 };
