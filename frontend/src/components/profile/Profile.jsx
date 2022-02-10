@@ -125,7 +125,6 @@ const Profile = () => {
     axios
       .post(`https://api.cloudinary.com/v1_1/debtpixx1/image/upload/`, formData)
       .then((res) => {
-        console.log(res);
 
         updateWorkerById(res.data.secure_url);
       });
@@ -149,6 +148,7 @@ const Profile = () => {
         console.log(err);
       });
   };
+  console.log(worker);
   useEffect(() => {
     getWorkerById();
     getRequestByWorker();
@@ -182,7 +182,6 @@ const Profile = () => {
               <p>{req.order_Detalis}</p>
               <button>approve</button>
               <button>reject</button>
-
             </section>
           );
         })}

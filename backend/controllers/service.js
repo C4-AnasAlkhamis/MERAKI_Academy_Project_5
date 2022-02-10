@@ -4,7 +4,7 @@ const connection = require("../database/db");
 const createNewService = (req, res) => {
   const { title, description, image } = req.body;
 
-  const query = `INSERT INTO services (title,description, image ) VALUE (?,?,?)`;
+  const query = `INSERT INTO services (title, description, image ) VALUE (?,?,?)`;
   const data = [title, description, image];
   connection.query(query, data, (err, result) => {
     if (err) {
@@ -77,20 +77,17 @@ const getServiceById = (req, res) => {
 const updateServiceById = (req, res) => {
   const id = req.params.id;
   const { title, description, image } = req.body;
-  const query = `UPDATE services SET title =? , description = ? , image = ? WHERE id = ?;`;
+  const query = `UPDATE services SET title =IF(${
+    title != ""
+  }, ?, title) , description=IF(${
+    description != ""
+  }, ?, description) , image = IF(${image != ""}, ?, image) WHERE id = ?;`;
   const data = [title, description, image, id];
   connection.query(query, data, (err, result) => {
     if (err) {
       return res.status(500).json({
         success: false,
         message: `Server Error`,
-      });
-    }
-
-    if (!result.id) {
-      return res.status(404).json({
-        success: false,
-        message: `No Service Match Entered ID`,
       });
     }
     res.status(202).json({
