@@ -57,10 +57,8 @@ function App() {
         <Route path="/Wishlist" element={<Wishlist />} />
         <Route path="/homePage" element={<HomePage />} />
         {/* <Route path="/paginate" element={<Pag />} /> */}
-
-        {/* <Route path="/paginate" element={<Pag />} /> */}
+        <Route path="/paginate" element={<ServicePage />} />
         {/* <Route path="/adminPanel" element={<AdminPanel />} /> */}
-
         {/* <Route path="/dashboard" element={<Dashboard />} /> */}
         <Route path="/addCategory" element={<AddCategory />} />
         <Route path="/addItems" element={<AddItem />} />

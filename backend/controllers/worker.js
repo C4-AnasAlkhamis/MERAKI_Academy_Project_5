@@ -73,14 +73,11 @@ const getWorkerById = (req, res) => {
   });
 };
 
-
-
 // This function returns worker By Service Id
 const getWorkerByServiceId = (req, res) => {
-
   const id = req.params.id;
 
-  const query = `SELECT * FROM worker WHERE (service_id) = (?) `;
+  const query = `SELECT * FROM worker JOIN users ON worker.user_id = users.id WHERE worker.service_id = ? `;
   const data = [id];
   connection.query(query, data, (err, result) => {
     if (err) {
@@ -104,20 +101,6 @@ const getWorkerByServiceId = (req, res) => {
     });
   });
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // This function to update worker by id
 const updateWorkerById = (req, res) => {
