@@ -77,7 +77,11 @@ const getServiceById = (req, res) => {
 const updateServiceById = (req, res) => {
   const id = req.params.id;
   const { title, description, image } = req.body;
-  const query = `UPDATE services SET title =? , description = ? , image = ? WHERE id = ?;`;
+  const query = `UPDATE services SET title =IF(${
+    title != ""
+  }, ?, title) , description=IF(${
+    description != ""
+  }, ?, description) , image = IF(${image != ""}, ?, image) WHERE id = ?;`;
   const data = [title, description, image, id];
   connection.query(query, data, (err, result) => {
     if (err) {
