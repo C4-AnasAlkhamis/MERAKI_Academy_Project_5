@@ -90,13 +90,6 @@ const updateServiceById = (req, res) => {
         message: `Server Error`,
       });
     }
-
-    if (!result.id) {
-      return res.status(404).json({
-        success: false,
-        message: `No Service Match Entered ID`,
-      });
-    }
     res.status(202).json({
       success: true,
       message: `Service with id ${id} updated successfully`,

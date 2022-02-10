@@ -13,8 +13,8 @@ const AddService = () => {
   const [image, setImage] = useState("");
   const [message, setMessage] = useState();
   const [show, setShow] = useState();
-  const [id, setId] = useState();
-  const [update, setUpdate] = useState(false);
+  const [iD, setID] = useState();
+  // const [update, setUpdate] = useState(false);
   // ====================================== //
   const dispatch = useDispatch();
   const { token, isLoggedIn, services } = useSelector((state) => {
@@ -26,7 +26,7 @@ const AddService = () => {
   });
 
   // ====================================== //
-  const uploadImage = (e) => {
+  const uploadImage = (update) => {
     const formData = new FormData();
 
     formData.append("file", image);
@@ -34,10 +34,9 @@ const AddService = () => {
     axios
       .post(`https://api.cloudinary.com/v1_1/debtpixx1/image/upload/`, formData)
       .then((res) => {
-        setImage(res.data.secure_url);
+        console.log(update);
         if (update) {
           updateServiceById(res.data.secure_url);
-          setUpdate(false);
         } else {
           createNewService(res.data.secure_url);
         }
@@ -77,9 +76,9 @@ const AddService = () => {
     }
   };
   //======================================
-  const deleteServiceById = async () => {
+  const deleteServiceById = async (id) => {
     try {
-      const res = await axios.delete(`http://localhost:5000/category/${id}`);
+      const res = await axios.delete(`http://localhost:5000/service/${id}`);
       if (res.data.success) {
         setMessage(res.data.success);
         // dispatch(deleteCategory(id));
@@ -94,23 +93,23 @@ const AddService = () => {
     }
   };
   // ====================================== //
-  const updateServiceById = async () => {
+  const updateServiceById = async (image) => {
     try {
-      const res = await axios.put(`http://localhost:5000/category/${id}`, {
+      const res = await axios.put(`http://localhost:5000/service/${iD}`, {
         title,
         description,
         image,
       });
       if (res.data.success) {
+        console.log(res);
         setMessage(res.data.success);
         // dispatch(updateCategory({ category: category, id: id }));
-      } else {
-        throw Error;
       }
     } catch (error) {
-      if (!error.response.data.success) {
-        return setMessage(error.response.data.message);
-      }
+      console.log(error.response);
+      // if (!error.response.data.success) {
+      //   return setMessage(error.response.data.message);
+      // }
       setMessage("Error happened while updating new data");
     }
   };
@@ -129,6 +128,7 @@ const AddService = () => {
             <th>id</th>
             <th>image</th>
             <th>title</th>
+            <th>description</th>
 
             <th className="icon">delete</th>
             <th className="icon">update</th>
@@ -158,12 +158,13 @@ const AddService = () => {
                   />
                 </td>
                 <td>{service.title}</td>
+                <td>{service.description}</td>
+
                 <td>
                   <i>
                     <FcDeleteRow
                       onClick={() => {
-                        setId(service.id);
-                        deleteServiceById();
+                        deleteServiceById(service.id);
                       }}
                       className="btn"
                     />
@@ -173,8 +174,8 @@ const AddService = () => {
                   <i>
                     <TiPencil
                       onClick={() => {
+                        setID(service.id);
                         setShow(!show);
-                        setId(service.id);
                       }}
                       className="btn"
                     />
@@ -223,10 +224,9 @@ const AddService = () => {
           <button
             onClick={() => {
               if (image) {
-                setUpdate(true);
-                uploadImage();
+                uploadImage(true);
               } else {
-                updateServiceById;
+                updateServiceById();
               }
               setShow(!show);
             }}
