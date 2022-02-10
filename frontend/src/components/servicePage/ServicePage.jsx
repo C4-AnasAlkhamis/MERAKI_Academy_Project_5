@@ -1,9 +1,9 @@
 import axios from "axios";
-import { useState } from "react";
-import { useHref, useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { setService, setServiceInfo } from "../../reducer/service/index";
-import { setWorker } from "../../reducer/worker/index";
+import { setService } from "../../reducer/service/index";
+import { setWorkers } from "../../reducer/worker/index";
 import WSInfo from "../serviceInfo/ServiceInfo";
 const ServicePage = () => {
   const [message, setMessage] = useState();
@@ -35,18 +35,22 @@ const ServicePage = () => {
   //===============================================================
 
   const getWorkerByServiceId = async (id) => {
-    //get http://localhost:5000/setvice/id
-
+    //get http://localhost:5000/worker/srv_id/id
+    console.log(id);
     await axios
-      .get(`http://localhost:5000/worker/${id}`)
+      .get(`http://localhost:5000/worker/srv_id/${id}`)
       .then((result) => {
-        dispatch(setServiceInfo({ ...result.data.result }));
-        navigate("/service-info");
+        dispatch(setWorkers([...result.data.result]));
+        console.log(result);
+        // navigate("/service-infos");
       })
       .catch((err) => {
         console.log(err);
       });
   };
+  useEffect(() => {
+    getAllService();
+  }, []);
   return (
     <>
       {!showWorker ? (
@@ -61,7 +65,7 @@ const ServicePage = () => {
                   <small>{service.description}</small>
                   <button
                     onClick={(e) => {
-                      // getWorkerByServiceId(service.id);
+                      getWorkerByServiceId(service.id);
                       setShowWorker(true);
                     }}
                   >
