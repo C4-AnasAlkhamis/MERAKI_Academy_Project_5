@@ -22,13 +22,13 @@ import AddItem from "./components/adminPanel/items/addItem/addItem";
 // import  Dashboard  from "./components/adminPanel/dashboard/dashboard";
 import AddCategory from "./components/adminPanel/categories/Caregories";
 import ShowItems from "./components/adminPanel/items/showItems/showItems";
-// import  AddService  from "./components/adminPanel/services/addService/addService";
+import AddService from "./components/adminPanel/services/AddService";
 // import ShowServices  from "./components/adminPanel/services/showServices/showServices";
 import ShowUsers from "./components/adminPanel/users/showUsers/showUsers";
 
 import { useState } from "react";
 
-import AddService from "./components/addService/AddService";
+// import AddService from "./components/addService/AddService";
 import ServicePage from "./components/servicePage/ServicePage";
 import Profile from "./components/profile/Profile";
 
@@ -41,7 +41,7 @@ function App() {
       token: state.loginReducer.isAdmin,
     };
   });
-  let isAdmin=localStorage.getItem("isAdmin")?true:false
+  let isAdmin = localStorage.getItem("isAdmin") ? true : false;
   return (
     <div className="App">
       <div className="logo">
@@ -56,15 +56,13 @@ function App() {
         <Route path="/Wishlist" element={<Wishlist />} />
         <Route path="/homePage" element={<HomePage />} />
         {/* <Route path="/paginate" element={<Pag />} /> */}
-
         <Route path="/paginate" element={<ServicePage />} />
         {/* <Route path="/adminPanel" element={<AdminPanel />} /> */}
         <Route path="/dashboard" element={<Profile />} />
-          
         <Route path="/addCategory" element={<AddCategory />} />
         <Route path="/addItems" element={<AddItem />} />
         <Route path="/showItems" element={<ShowItems />} />
-        {/* <Route path="/addService" element={<AddService />} /> */}
+        <Route path="/addService" element={<AddService />} />
         {/* <Route path="/showServices" element={<ShowServices />} /> */}
         <Route path="/showUsers" element={<ShowUsers />} />
         {/* <Route path="/showWorkers" element={<ShowWorkers />} /> */}

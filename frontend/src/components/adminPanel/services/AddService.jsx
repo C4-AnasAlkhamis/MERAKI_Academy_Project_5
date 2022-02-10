@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
-
+import { setService, addService } from "../../../reducer/service/index";
 const AddService = () => {
   const [status, setStatus] = useState(false);
   const [title, setTitle] = useState("");
@@ -10,12 +10,14 @@ const AddService = () => {
   const [message, setMessage] = useState();
   // ====================================== //
   const dispatch = useDispatch();
-  const { token, isLoggedIn } = useSelector((state) => {
+  const { token, isLoggedIn, services } = useSelector((state) => {
     return {
       token: state.loginReducer.token,
       isLoggedIn: state.loginReducer.isLoggedIn,
+      services: state.serviceReducer.services,
     };
   });
+
   // ====================================== //
   const uploadImage = (e) => {
     e.preventDefault();
@@ -28,7 +30,7 @@ const AddService = () => {
       .post(`https://api.cloudinary.com/v1_1/debtpixx1/image/upload/`, formData)
       .then((res) => {
         setImage(res.data.secure_url);
-        // createNewService(res.data.secure_url);
+        createNewService(res.data.secure_url);
       });
   };
   // ====================================== //
@@ -49,6 +51,24 @@ const AddService = () => {
   };
   // ====================================== //
 
+  const getAllServices = async () => {
+    try {
+      const res = await axios.get("http://localhost:5000/service");
+      if (res.data.success) {
+        dispatch(setService([...res.data.result]));
+      } else throw Error;
+    } catch (error) {
+      if (!error.response.data.success) {
+        return setMessage(error.response.data.message);
+      }
+      setMessage("Error happened while Get Data, please try again");
+    }
+  };
+  // ====================================== //
+  console.log(services);
+  useEffect(() => {
+    getAllServices();
+  }, []);
   return (
     <>
       <h1>Add your Service</h1>
