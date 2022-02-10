@@ -34,13 +34,13 @@ const login = (req, res) => {
         expiresIn: "60m",
       };
       const token = await jwt.sign(payload, process.env.SECRET, options);
-      res.status(200).json({
+      return res.status(200).json({
         success: true,
         message: `Valid login credentials`,
         token: token,
       });
     } catch (err) {
-      res.status(500).json({
+      return res.status(500).json({
         success: false,
         message: `Server Error`,
         err: err,

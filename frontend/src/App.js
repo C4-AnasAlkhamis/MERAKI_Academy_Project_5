@@ -30,6 +30,7 @@ import { useState } from "react";
 
 import AddService from "./components/addService/AddService";
 import ServicePage from "./components/servicePage/ServicePage";
+import Profile from "./components/profile/Profile";
 
 // import ShowWorkers  from "./components/adminPanel/users/showWorkers/showWorkers";
 
@@ -55,9 +56,11 @@ function App() {
         <Route path="/Wishlist" element={<Wishlist />} />
         <Route path="/homePage" element={<HomePage />} />
         {/* <Route path="/paginate" element={<Pag />} /> */}
-        {/* <Route path="/paginate" element={<Pag />} /> */}
+
+        <Route path="/paginate" element={<ServicePage />} />
         {/* <Route path="/adminPanel" element={<AdminPanel />} /> */}
-        {/* <Route path="/dashboard" element={<Dashboard />} /> */}
+        <Route path="/dashboard" element={<Profile />} />
+          
         <Route path="/addCategory" element={<AddCategory />} />
         <Route path="/addItems" element={<AddItem />} />
         <Route path="/showItems" element={<ShowItems />} />

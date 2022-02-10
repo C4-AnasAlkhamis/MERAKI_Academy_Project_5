@@ -1,14 +1,14 @@
 /** @format */
 
 const initialState = {
-  worker: {},
+  workers: [],
 };
 // =======================  //
 
 const workerReducer = (state = initialState, { type, payload }) => {
   switch (type) {
     case "SET_WORKER":
-      return { worker: payload };
+      return { ...state, workers: payload };
 
     default:
       return state;
@@ -19,8 +19,7 @@ export default workerReducer;
 
 // =======================  //
 
-export const setWorker = (worker) => {
-  return { type: "SET_WORKER", payload: worker };
+export const setWorkers = (workers) => {
+  return { type: "SET_WORKER", payload: workers };
 };
 // =======================  //
-
