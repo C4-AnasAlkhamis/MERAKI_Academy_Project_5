@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import jsw from "jwt-decode";
 import { useSelector, useDispatch } from "react-redux";
@@ -8,7 +8,8 @@ import {
   updateService,
   deleteService,
 } from "../../reducer/service/index";
-import { setWorker } from "../../reducer/worker/index";
+
+import { setWorkers } from "../../reducer/worker/index";
 const Profile = () => {
   const [message, setMessage] = useState();
   const [status, setStatus] = useState(false);
@@ -18,10 +19,11 @@ const Profile = () => {
   const [imageUrl, setImageUrl] = useState("");
   const navigate = useNavigate();
 
-  const { token, services } = useSelector((state) => {
+  const { token, services, worker } = useSelector((state) => {
     return {
       token: state.loginReducer.token,
       services: state.serviceReducer.services,
+      worker: state.workerReducer.workers,
     };
   });
   const dispatch = useDispatch();
@@ -72,7 +74,6 @@ const Profile = () => {
 
   const getWorkerById = async () => {
     //get http://localhost:5000/worker/id
-    const id = jsw(token).userId;
     await axios
       .get(`http://localhost:5000/worker/profile`, {
         headers: {
@@ -80,26 +81,27 @@ const Profile = () => {
         },
       })
       .then((result) => {
-        dispatch(setWorker({ ...result.data.result }));
+        dispatch(setWorkers([...result.data.result]));
       })
       .catch((err) => {
         console.log(err);
       });
   };
+  console.log(worker[0]);
 
   //===============================================================
-  const deleteWorkerById = async (id) => {
-    //delete http://localhost:5000/worker/id
+  // const deleteWorkerById = async (id) => {
+  //   //delete http://localhost:5000/worker/id
 
-    await axios
-      .delete(`http://localhost:5000/worker/${id}`)
-      .then((result) => {
-        dispatch(setWorker({}));
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
+  //   await axios
+  //     .delete(`http://localhost:5000/worker/${id}`)
+  //     .then((result) => {
+  //       dispatch(setWorker({}));
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // };
 
   // ================================================  //
 
@@ -117,7 +119,7 @@ const Profile = () => {
       });
   };
   //===============================================================
-  const updateWorkerById = (image) => {
+  const updateWorkerById = async (image) => {
     //put http://localhost:5000/worker/id
     const id = jsw(token).userId;
 
@@ -163,12 +165,12 @@ const Profile = () => {
             placeholder="Phone Number"
             onChange={(e) => setPhone(e.target.value)}
           />
-          <Select
+          {/* <Select
             options={options}
             onChange={(e) => {
               setService_id(e.value);
             }}
-          />
+          /> */}
           <input
             type="file"
             onChange={(e) => {
