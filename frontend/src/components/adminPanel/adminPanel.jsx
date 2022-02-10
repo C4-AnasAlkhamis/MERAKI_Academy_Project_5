@@ -5,6 +5,8 @@ import { Routes, Route } from "react-router-dom";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { logOut } from "../../reducer/login/index";
+import { useNavigate } from "react-router-dom";
 
 //============================================================================
 //import
@@ -12,6 +14,8 @@ import { Link } from "react-router-dom";
 //============================================================================
 
 const AdminPanel = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   return (
     <div className="adminPanel">
       <div className="adminNavbar">
@@ -52,10 +56,10 @@ const AdminPanel = () => {
             </ul>
           </li>
         </ul>
+        <Link to={"/homePage"} onClick={()=>{localStorage.clear();
+            dispatch(logOut());}}>LOGOUT</Link>
       </div>
-      <Routes>
-
-      </Routes>
+      <Routes></Routes>
     </div>
   );
 };

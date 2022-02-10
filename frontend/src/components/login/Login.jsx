@@ -1,8 +1,11 @@
+/** @format */
+
 import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./login.css";
-import { logIn } from "../../reducer/login/index";
+import { logIn, isAdmin } from "../../reducer/login/index";
+import jwt from "jwt-decode";
 
 import login from "../../image/login1.png";
 
@@ -51,6 +54,8 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
+  const [role, setRole] = useState("");
+
   const verifyUser = async (e) => {
     e.preventDefault();
     //   post -> http://localhost:5000/login/
@@ -61,13 +66,19 @@ const Login = () => {
       })
       .then((result) => {
         if (result) {
-          // rightLogin()
-          navigate(`/homePage`);
+          rightLogin()
+
           localStorage.setItem("token", result.data.token);
-          dispatch(logIn(result.data.token));
           setMessage("");
           setEmail("");
           setPassword("");
+          if (jwt(result.data.token).role == 1) {
+            localStorage.setItem("isAdmin", true);
+            navigate(`/admin`);
+          } else {
+            navigate(`/homePage`);
+          }
+          dispatch(logIn(result.data.token));
         }
       })
       .catch((err) => {
@@ -80,8 +91,29 @@ const Login = () => {
     <>
       <div className="login_box">
         <div className="group1">
-      <div className="regImg1">
-          <img className="image" src={login} />
+          <div className="regImg1">
+            <img className="image" src={login} />
+          </div>
+          <form onSubmit={verifyUser}>
+            <input
+              onChange={(e) => {
+                setEmail(e.target.value);
+              }}
+              value={email}
+              type="email"
+              placeholder="Email"
+            />
+            <input
+              onChange={(e) => {
+                setPassword(e.target.value);
+              }}
+              value={password}
+              type="password"
+              placeholder="Password"
+            />
+            <button>Login</button>
+            <span>{message}</span>
+          </form>
         </div>
         <form onSubmit={verifyUser}>
           <input
@@ -104,6 +136,7 @@ const Login = () => {
           {/* <span>{message}</span> */}
         </form>
       </div>
+
       </div>
     </>
   );
