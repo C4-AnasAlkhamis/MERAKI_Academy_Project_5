@@ -55,7 +55,6 @@ const AddService = () => {
           },
         }
       );
-      console.log(result);
     } catch (error) {
       console.log(error.response);
     }
@@ -101,7 +100,6 @@ const AddService = () => {
         image,
       });
       if (res.data.success) {
-        console.log(res);
         setMessage(res.data.success);
         // dispatch(updateCategory({ category: category, id: id }));
       }
@@ -115,7 +113,6 @@ const AddService = () => {
   };
   // ====================================== //
 
-  console.log(services);
   useEffect(() => {
     getAllServices();
   }, []);
