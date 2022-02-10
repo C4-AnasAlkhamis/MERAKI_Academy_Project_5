@@ -4,7 +4,7 @@ const connection = require("../database/db");
 const createNewService = (req, res) => {
   const { title, description, image } = req.body;
 
-  const query = `INSERT INTO services (title,description, image ) VALUE (?,?,?)`;
+  const query = `INSERT INTO services (title, description, image ) VALUE (?,?,?)`;
   const data = [title, description, image];
   connection.query(query, data, (err, result) => {
     if (err) {

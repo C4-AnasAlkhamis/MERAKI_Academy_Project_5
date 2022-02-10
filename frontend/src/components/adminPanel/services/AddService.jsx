@@ -14,6 +14,7 @@ const AddService = () => {
   const [message, setMessage] = useState();
   const [show, setShow] = useState();
   const [id, setId] = useState();
+  const [update, setUpdate] = useState(false);
   // ====================================== //
   const dispatch = useDispatch();
   const { token, isLoggedIn, services } = useSelector((state) => {
@@ -34,7 +35,12 @@ const AddService = () => {
       .post(`https://api.cloudinary.com/v1_1/debtpixx1/image/upload/`, formData)
       .then((res) => {
         setImage(res.data.secure_url);
-        createNewService(res.data.secure_url);
+        if (update) {
+          updateServiceById(res.data.secure_url);
+          setUpdate(false);
+        } else {
+          createNewService(res.data.secure_url);
+        }
       });
   };
   // ====================================== //
@@ -42,7 +48,7 @@ const AddService = () => {
   const createNewService = async (image) => {
     try {
       const result = await axios.post(
-        `http://localhost:5000/srvice`,
+        `http://localhost:5000/service`,
         { title, description, image },
         {
           headers: {
@@ -51,7 +57,9 @@ const AddService = () => {
         }
       );
       console.log(result);
-    } catch (error) {}
+    } catch (error) {
+      console.log(error.response);
+    }
   };
   // ====================================== //
 
@@ -139,7 +147,16 @@ const AddService = () => {
             return (
               <tr key={index}>
                 <td>{service.id}</td>
-                <td>{service.image}</td>
+                <td>
+                  <img
+                    style={{
+                      width: "100px",
+                      height: "100px",
+                    }}
+                    src={service.image}
+                    alt={service.title}
+                  />
+                </td>
                 <td>{service.title}</td>
                 <td>
                   <i>
@@ -205,7 +222,12 @@ const AddService = () => {
           </button>
           <button
             onClick={() => {
-              updateServiceById();
+              if (image) {
+                setUpdate(true);
+                uploadImage();
+              } else {
+                updateServiceById;
+              }
               setShow(!show);
             }}
           >
