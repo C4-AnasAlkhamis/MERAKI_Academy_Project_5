@@ -2,29 +2,32 @@ import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
 import axios from "axios";
 const WSInfo = () => {
-  const [phone, setPhone] = useState();
+  const [name, setName] = useState();
   const [address, setAddress] = useState();
-  const [service_id, setService_id] = useState();
-  const [imageUrl, setImageUrl] = useState("");
+  const [phone, setPhone] = useState();
+  const [order_Detalis, setOrder_Detalis] = useState();
   const [message, setMessage] = useState();
+  const [worker_id, setWorker_id] = useState();
+
   const { token, workers } = useSelector((state) => {
     return {
       token: state.loginReducer.token,
       workers: state.workerReducer.workers,
     };
   });
-  const sendRequest = async () => {
+  const sendRequest = async (e) => {
+    e.preventDefault();
     //post http://localhost:5000/worker
 
     await axios
       .post(
         `http://localhost:5000/worker`,
         {
-          // name,
-          // orderDetails,
-          // address,
-          // phoneNUmber,
-          // worker_id,
+          name,
+          order_Detalis,
+          address,
+          phone,
+          worker_id,
         },
         {
           headers: {
@@ -32,7 +35,9 @@ const WSInfo = () => {
           },
         }
       )
-      .then((result) => {})
+      .then((result) => {
+        console.log(result);
+      })
       .catch((err) => {
         console.log(err);
       });
@@ -44,19 +49,29 @@ const WSInfo = () => {
       {workers.map((worker, index) => {
         return (
           <div key={index}>
-            <img src={worker.image} alt={worker.name} />
+            <div>
+              <p>{worker.user_name}</p>
+              <img src={worker.image} alt={worker.name} />
+            </div>
+
             <small>{worker.phone}</small>
             <address>{worker.address}</address>
-            <button onClick={() => {}}>send request</button>
+            <button
+              onClick={() => {
+                setWorker_id(worker.user_id);
+              }}
+            >
+              send request
+            </button>
           </div>
         );
       })}
-      <div>
+      <div className="popup_form">
         <form onSubmit={""}>
           <input
             type="text"
             placeholder="Name"
-            onChange={(e) => setAddress(e.target.value)}
+            onChange={(e) => setName(e.target.value)}
           />
           <input
             type="text"
@@ -66,14 +81,21 @@ const WSInfo = () => {
           <input
             type="text"
             placeholder="Order Details"
-            onChange={(e) => setAddress(e.target.value)}
+            onChange={(e) => setOrder_Detalis(e.target.value)}
           />
           <input
+            type="number"
             placeholder="Phone Number"
             onChange={(e) => setPhone(e.target.value)}
           />
 
-          <button>send request</button>
+          <button
+            onClick={(e) => {
+              sendRequest(e);
+            }}
+          >
+            Send
+          </button>
         </form>
       </div>
     </>
