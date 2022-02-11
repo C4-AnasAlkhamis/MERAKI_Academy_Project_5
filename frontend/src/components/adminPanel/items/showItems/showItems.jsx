@@ -1,3 +1,5 @@
+/** @format */
+
 import axios from "axios";
 import "./showItem.css";
 import React, { useEffect, useState } from "react";
@@ -191,7 +193,7 @@ const ShowItem = () => {
             <th>id</th>
             <th>image</th>
             <th>title</th>
-            <th>description</th>
+            <th>State</th>
             <th>price</th>
             <th className="icon">delete</th>
             <th className="icon">update</th>
@@ -212,34 +214,24 @@ const ShowItem = () => {
                   />
                 </td>
                 <td>{item.title}</td>
-                <td>{item.descriptions}</td>
-                <td>{item.price}</td>
                 <td>
-                  <label>
-                    outOf stock
-                    <input
-                      onChange={(e) => {
-                        let id = item.id;
-                        let is_deleted = e.target.value;
-                        let description = "OUT OF STOCK";
-                        inStock(id, is_deleted, description, item);
-                      }}
-                      type="radio"
-                      name={item.id}
-                      value={1}
-                      // checked={item.is_deleted === 1}
-                    />
-                  </label>
                   <label>
                     in stock
                     <input
+                    checked={item.is_deleted === 0}
                       onChange={(e) => {
-                        console.log(e);
-                        let id = item.id;
-                        let is_deleted = e.target.value;
-                        let description = "IN STOCK";
+                        if (e.target.checked) {
+                          let id = item.id;
+                          let is_deleted = 0;
+                          let description = "IN STOCK";
 
-                        inStock(id, is_deleted, description, item);
+                          inStock(id, is_deleted, description, item);
+                        } else {
+                          let id = item.id;
+                          let is_deleted = 1;
+                          let description = "OUT OF STOCK";
+                          inStock(id, is_deleted, description, item);
+                        }
                       }}
                       type="checkbox"
                       name={item.id}
@@ -248,6 +240,7 @@ const ShowItem = () => {
                     />
                   </label>
                 </td>
+                <td>{item.price}</td>
                 <td>
                   <i>
                     <TiPencil
@@ -323,8 +316,7 @@ const ShowItem = () => {
             onClick={() => {
               updateItemById();
               setShow(!show);
-            }}
-          >
+            }}>
             update
           </button>
         </div>
