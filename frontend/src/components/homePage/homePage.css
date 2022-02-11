@@ -43,6 +43,7 @@
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   position: sticky;
   top: 63px;
+  z-index: 1;
   border-bottom: solid 3px rgb(57, 208, 177);
 }
 
@@ -129,8 +130,8 @@
 .filter_box {
   width: 80vw;
   padding: 5px;
-  position: sticky;
-  top: 133px;
+  /* position: sticky;
+  top: 133px; */
 }
 
 .filter_box div {
