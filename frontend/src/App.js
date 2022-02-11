@@ -31,6 +31,7 @@ import { useState } from "react";
 // import AddService from "./components/addService/AddService";
 import ServicePage from "./components/servicePage/ServicePage";
 import Profile from "./components/profile/Profile";
+import FeedBack from "./components/feedback/Feedback";
 
 // import ShowWorkers  from "./components/adminPanel/users/showWorkers/showWorkers";
 
@@ -49,6 +50,7 @@ function App() {
       </div>
       {isAdmin ? <AdminPanel /> : <NavBar />}
       <Routes>
+        
         <Route path="/login" element={<Login />} />7
         <Route path="/register" element={<Register />} />
         <Route path="/more-info" element={<ItemInfo />} />
@@ -66,8 +68,12 @@ function App() {
         {/* <Route path="/showServices" element={<ShowServices />} /> */}
         <Route path="/showUsers" element={<ShowUsers />} />
         {/* <Route path="/showWorkers" element={<ShowWorkers />} /> */}
+        <Route path="/feedBack" element={<FeedBack />} />
+
       </Routes>
+
     </div>
+
   );
 }
 

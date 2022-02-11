@@ -71,6 +71,8 @@ const NavBar = () => {
                 <Link to="/homePage" style={{ textDecoration: "none" }}>
                   <AiOutlineFundProjectionScreen /> HOME
                 </Link>
+                <Link to="/feedback" style={{ textDecoration: "none" }}>FEEDBACK
+                </Link>
                 <Link to="/cart" style={{ textDecoration: "none" }}>
                   <AiOutlineShoppingCart /> CART
                 </Link>
