@@ -181,6 +181,7 @@ const Category = () => {
             placeholder="Category Name"
             value={category}
           />
+          <div className="addUpdateBTN">
           <button
             onClick={() => {
               addNewCategory();
@@ -197,6 +198,7 @@ const Category = () => {
           >
             Update
           </button>
+          </div>
         </div>
       ) : null}
     </div>
