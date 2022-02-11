@@ -43,12 +43,16 @@
   background-color: rgb(40, 121, 236);
   color: white;
 }
+
 .showItemTable td {
   border: 1px solid #dddddd;
   text-align: center;
   padding: 0.5rem;
 }
-
+.showItemTable td input{
+  padding: 0px;
+  margin: 0px;
+}
 .showItemTable tr:nth-child(even) {
   background-color: #dddddd;
 }

@@ -214,9 +214,10 @@ const ShowItem = () => {
                 </td>
                 <td>{item.title}</td>
                 <td>
-                  <label>
-                    in stock
+                  
+                    <div>
                     <input
+                    style={{width:"20px"}}
                     checked={item.is_deleted === 0}
                       onChange={(e) => {
                         if (e.target.checked) {
@@ -236,8 +237,8 @@ const ShowItem = () => {
                       name={item.id}
                       value={0}
                       // checked={item.is_deleted === 0}
-                    />
-                  </label>
+                      />
+                      in stock</div>
                 </td>
                 <td>{item.price}</td>
                 <td>
