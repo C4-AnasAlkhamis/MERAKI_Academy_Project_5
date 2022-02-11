@@ -23,7 +23,7 @@ const createNewWorker = (req, res) => {
 
 // This function returns all workers
 const getAllWorkers = (req, res) => {
-  const query = `SELECT * FROM worker JOIN users ON worker.user_id = users.id JOIN services ON worker.service_id = services.id WHERE worker.is_deleted = 0`;
+  const query = `SELECT * ,worker.id AS w_id FROM worker JOIN users ON worker.user_id = users.id JOIN services ON worker.service_id = services.id WHERE worker.is_deleted = 0`;
   connection.query(query, (err, result) => {
     if (err) {
       return res.status(500).json({
@@ -134,7 +134,7 @@ const updateWorkerById = (req, res) => {
 const deleteWorkerById = (req, res) => {
   const id = req.params.id;
 
-  const query = `UPDATE worker SET is_deleted = 1 WHERE id=?;`;
+  const query = `UPDATE worker SET is_deleted = 1 WHERE id = ?;`;
 
   const data = [id];
 
@@ -146,13 +146,13 @@ const deleteWorkerById = (req, res) => {
         err: err,
       });
     }
-    if (result.affectedRows == 0) {
-      return res.status(404).json({
-        success: false,
-        massage: `The Worker with: ${id} is not found`,
-        err: err,
-      });
-    }
+    // if (result.affectedRows == 0) {
+    //   return res.status(404).json({
+    //     success: false,
+    //     massage: `The Worker with: ${id} is not found`,
+    //     err: err,
+    //   });
+    // }
 
     res.status(200).json({
       success: true,

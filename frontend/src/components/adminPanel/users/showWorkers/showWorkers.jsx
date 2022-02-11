@@ -13,7 +13,7 @@ import { AiTwotoneDelete } from "react-icons/ai";
 
 const ShowWorkers = () => {
   const [message, setMessage] = useState("");
-  const [id, setId] = useState();
+  //   const [id, setId] = useState();
 
   const dispatch = useDispatch();
 
@@ -40,18 +40,19 @@ const ShowWorkers = () => {
     console.log(message);
   };
   //===============================================================
-  console.log(workers);
   const deleteWorker = async (id) => {
     try {
-      const res = await axios.put(`http://localhost:5000/user/worker/${id}`);
+      const res = await axios.put(`http://localhost:5000/worker/delete/${id}`);
       console.log(res);
       if (res.data.success) {
+        console.log(res);
         setMessage(res.data.success);
         dispatch(deleteWorkers(id));
       } else {
         throw Error;
       }
     } catch (error) {
+      console.log(error.response);
       if (!error.response.data.success) {
         return setMessage(error.response.data.message);
       }
@@ -61,29 +62,46 @@ const ShowWorkers = () => {
   //===============================================================
   useEffect(() => {
     geAllWorker();
-  }, [id]);
+  }, []);
   return (
     <div className="showUsers">
       <table>
         <tbody>
           <tr>
-            <th>id</th>
+            <th>Id</th>
+            <th>Image</th>
             <th>Name</th>
             <th>Email</th>
+            <th>Phone</th>
+            <th>address</th>
+            <th>Service</th>
             <th className="icon">Delete</th>
           </tr>
-          {/* {workers.map((user, index) => {
+          {workers.map((worker, index) => {
             return (
               <tr key={index}>
-                <td>{user.id}</td>
-                <td>{user.user_name}</td>
-                <td>{user.email}</td>
+                <td>{worker.w_id}</td>
+                <td>
+                  <img
+                    style={{
+                      width: "100px",
+                      height: "100px",
+                    }}
+                    src={worker.image}
+                    alt={worker.user_name}
+                  />
+                </td>
+                <td>{worker.user_name}</td>
+                <td>{worker.email}</td>
+                <td>{worker.phone}</td>
+                <td>{worker.address}</td>
+                <td>{worker.title}</td>
+
                 <td>
                   <i>
                     <AiTwotoneDelete
                       onClick={() => {
-                        setId(user.id);
-                        deleteWorker(user.id);
+                        deleteWorker(worker.w_id);
                       }}
                       className="btn"
                     />
@@ -91,7 +109,7 @@ const ShowWorkers = () => {
                 </td>
               </tr>
             );
-          })} */}
+          })}
         </tbody>
       </table>
     </div>
