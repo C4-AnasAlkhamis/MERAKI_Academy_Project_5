@@ -12,13 +12,11 @@
   justify-content: center;
   gap: 10px;
   grid-template-columns: repeat(5, 250px);
-}
-
-.items {
   border: none;
   display: grid;
   margin: 20px;
 }
+
 .item {
   text-align: center;
   border: solid 1px #dddbdb;

@@ -1,6 +1,8 @@
 /** @format */
 .img_boxI {
    display: flex;
+   padding-left: 50px;
+   
 } 
 
 .info_box {

@@ -71,8 +71,8 @@ const NavBar = () => {
                 <Link to="/homePage" style={{ textDecoration: "none" }}>
                   <AiOutlineFundProjectionScreen /> HOME
                 </Link>
-                <Link to="/feedback" style={{ textDecoration: "none" }}>FEEDBACK
-                </Link>
+                {/* <Link to="/feedback" style={{ textDecoration: "none" }}>FEEDBACK
+                </Link> */}
                 <Link to="/cart" style={{ textDecoration: "none" }}>
                   <AiOutlineShoppingCart /> CART
                 </Link>
@@ -105,9 +105,9 @@ const NavBar = () => {
                 </Link>
               </>
             )}
-            <Link to="/adminPanel" style={{ textDecoration: "none" }}>
+            {/* <Link to="/adminPanel" style={{ textDecoration: "none" }}>
               ADMIN
-            </Link>
+            </Link> */}
           </h2>
         </div>
       </div>
