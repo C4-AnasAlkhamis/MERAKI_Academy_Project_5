@@ -175,7 +175,7 @@ const ShowItem = () => {
     getAllCategories();
   }, []);
   return (
-    <>
+    <div className="showItemAdmin">
       <div className="show_filter">
         <Select
           onChange={(e) => {
@@ -328,7 +328,7 @@ const ShowItem = () => {
           </button>
         </div>
       ) : null}
-    </>
+    </div>
   );
 };
 export default ShowItem;
