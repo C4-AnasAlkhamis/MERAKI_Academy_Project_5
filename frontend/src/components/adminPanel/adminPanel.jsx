@@ -8,7 +8,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { logOut } from "../../reducer/login/index";
 import { useNavigate } from "react-router-dom";
-import logo from "../../image/logo.png";
+import logo from "../../image/logoAdmin.png";
 import {
   BiLogOut,
   BiHome,
@@ -25,7 +25,7 @@ import {
 
 const AdminPanel = () => {
   const dispatch = useDispatch();
-  
+
   return (
     <>
       <div className="titleBar">
