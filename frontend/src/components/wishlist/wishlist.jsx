@@ -5,12 +5,53 @@ import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import { setWishlist, deleteWishlist } from "../../reducer/wishlist/index";
 import { IoIosAddCircle, IoMdRemoveCircle } from "react-icons/io";
+
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+
 const Wishlist = () => {
+
   const [notes, setNotes] = useState([
     { myNote: "I have buy new wheel" },
     { myNote: "I have buy new paint brush" },
   ]);
   const [note, setNote] = useState("");
+
+
+  const popupWishlistDelete = () => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Remove!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire("Removed!", "Your Item has been Removed.", "success");
+      }
+    });
+  };
+
+  const popupCart = () => {
+    Swal.fire({
+      title: "This Item Added To Your Cart Successfully",
+      showClass: {
+        popup: "animate__animated animate__fadeInDown",
+      },
+      hideClass: {
+        popup: "animate__animated animate__fadeOutUp",
+      },
+    });
+  };
+
+
+
+
+
+
+
 
   console.log(notes);
 
@@ -169,7 +210,7 @@ const Wishlist = () => {
               src="https://its-london.s3-eu-west-1.amazonaws.com/assets/USPTrustpilotIcon.png"
               alt="5 Star Rating on Trustpilot"
             />
-            <span>5 Star Rating on Trustpilot</span>
+            <span>5 Star Rating on Trust pilot</span>
           </li>
           <li>
             <img
@@ -190,7 +231,7 @@ const Wishlist = () => {
 
       <dir className="cart_header">
         <div>
-          <h1>YOUR WISHLISTS</h1>
+          <h1>Your Wishlist Items</h1>
         </div>
       </dir>
 
@@ -208,7 +249,7 @@ const Wishlist = () => {
                 </div>
               </div>
               <div className="info_center">
-                <h3>price</h3>
+                <h3>Price</h3>
                 <span>{wishlist.price} JOD</span>
               </div>
               <div className="info_box btn_box info_box_cart">
@@ -218,6 +259,8 @@ const Wishlist = () => {
                     borderColor: "#f22626",
                   }}
                   onClick={(e) => {
+                    popupWishlistDelete();
+
                     deleteWishlistById(wishlist.wishlist_id);
                   }}
                 >
@@ -229,6 +272,8 @@ const Wishlist = () => {
                     borderColor: "#43d63e",
                   }}
                   onClick={(e) => {
+                    popupCart();
+
                     createNewCart(wishlist.item_id);
                   }}
                 >
@@ -240,7 +285,7 @@ const Wishlist = () => {
           );
         })
       ) : (
-        <div>no Wishlist</div>
+        <div>No Wishlist Yet!</div>
       )}
     </div>
   );

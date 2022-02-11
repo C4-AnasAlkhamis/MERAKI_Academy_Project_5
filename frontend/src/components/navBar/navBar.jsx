@@ -16,6 +16,42 @@ import {
   AiOutlineUserAdd,
 } from "react-icons/ai";
 //
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+
+const popupLogout =()=>{
+
+  Swal.fire({
+    title: 'Are you sure?',
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Yes!',
+    // title: 'Custom width, padding, color, background.',
+    width: 600,
+    padding: '3em',
+    color: '#716add',
+    background: '#fff url(/images/trees.png)',
+    backdrop: `
+      rgba(0,0,123,0.4)
+      url("/images/nyan-cat.gif")
+      left top
+      no-repeat
+    `
+
+  }).then((result) => {
+    if (result.isConfirmed) {
+      Swal.fire(
+        'Logout!',
+        'You have been logged out !.',
+        'success'
+      )
+    }
+  })
+
+
+}
 const NavBar = () => {
   const dispatch = useDispatch();
   const { isLoggedIn } = useSelector((state) => {
@@ -35,6 +71,8 @@ const NavBar = () => {
                 <Link to="/homePage" style={{ textDecoration: "none" }}>
                   <AiOutlineFundProjectionScreen /> HOME
                 </Link>
+                <Link to="/feedback" style={{ textDecoration: "none" }}>FEEDBACK
+                </Link>
                 <Link to="/cart" style={{ textDecoration: "none" }}>
                   <AiOutlineShoppingCart /> CART
                 </Link>
@@ -46,6 +84,8 @@ const NavBar = () => {
                   to="/homePage"
                   className="logout"
                   onClick={(e) => {
+                    popupLogout()
+
                     dispatch(logOut());
                     localStorage.clear();
                   }}>

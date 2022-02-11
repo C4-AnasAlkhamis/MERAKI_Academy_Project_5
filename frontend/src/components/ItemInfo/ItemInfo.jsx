@@ -13,6 +13,35 @@ import { FaShippingFast } from "react-icons/fa";
 
 import tool from '../../image/crown.png'
 
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+
+const popupCart =()=>{
+
+  Swal.fire({
+    title: 'This Item Added To Your Cart Successfully!',
+    showClass: {
+      popup: 'animate__animated animate__fadeInDown'
+    },
+    hideClass: {
+      popup: 'animate__animated animate__fadeOutUp'
+    }
+  })
+}
+
+const popupWishlist =()=>{
+  Swal.fire({
+    title: 'This Item Added To Your Wishlist Successfully!',
+    showClass: {
+      popup: 'animate__animated animate__fadeInDown'
+    },
+    hideClass: {
+      popup: 'animate__animated animate__fadeOutUp'
+    }
+  })
+
+}
+
 
 const ItemInfo = () => {
   const dispatch = useDispatch();
@@ -111,14 +140,14 @@ const ItemInfo = () => {
           id="cart"
           onClick={(e) => {
             createNewCartOrWishlist(e.target.id);
-          }}>
+            popupCart () }}>
           Add to Cart
         </button>
         <button
           id="wishlist"
           onClick={(e) => {
             createNewCartOrWishlist(e.target.id);
-          }}>
+            popupWishlist()}}>
             
           Add to Wishlist
         </button>

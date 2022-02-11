@@ -4,8 +4,28 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 import logo from "../../image/cones.jpg";
-
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
 const Register = () => {
+
+  const rightRegister =()=>{
+
+    Swal.fire({
+      icon: 'success',
+      title: 'Your Account has been Created!',
+      showConfirmButton: false,
+      timer: 3500
+    })
+  }
+
+const wrongRegister =()=>{
+  Swal.fire({
+    icon: 'error',
+    title: 'Oops...',
+    text: ' Fill All Required Inputs ..Please!',
+  })
+
+}
   const navigate = useNavigate();
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
@@ -17,6 +37,8 @@ const Register = () => {
     e.preventDefault();
     //   POST -> http://localhost:5000/user
     if (!userName || !email || !password || !repeatPassword) {
+      wrongRegister()
+
       setMessage("please fill in all inputs");
     } else if (repeatPassword === password) {
       await axios
@@ -26,7 +48,9 @@ const Register = () => {
           password,
         })
         .then((result) => {
-          if (result) setMessage(result.data.message);
+          if (result) 
+          rightRegister()
+          setMessage(result.data.message);
           setUserName("");
           setRepeatPassword("");
           setEmail("");
@@ -88,7 +112,7 @@ const Register = () => {
             textShadow: `1px 0 1px  ${done ? "#24dc3a" : "#dc2424"}`,
           }}
         >
-          {message}
+          {/* {message} */}
         </span>
       </form>
       </div>

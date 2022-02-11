@@ -106,7 +106,7 @@
 //         <datalist id="data">
 //           <option id={1} value={"Hand Tools"} />
 //           <option id={2} value={"Power Tools"} />
-//           <option id={3} value={"Safety Work Waer"} />
+//           <option id={3} value={"Safety Work Wear"} />
 //         </datalist>
 //         <br />
 //         <input
