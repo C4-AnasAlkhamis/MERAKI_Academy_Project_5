@@ -234,13 +234,14 @@ const ShowItem = () => {
                     in stock
                     <input
                       onChange={(e) => {
+                        console.log(e);
                         let id = item.id;
                         let is_deleted = e.target.value;
                         let description = "IN STOCK";
 
                         inStock(id, is_deleted, description, item);
                       }}
-                      type="radio"
+                      type="checkbox"
                       name={item.id}
                       value={0}
                       // checked={item.is_deleted === 0}
