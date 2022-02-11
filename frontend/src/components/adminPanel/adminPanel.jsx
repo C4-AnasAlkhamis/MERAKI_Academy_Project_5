@@ -9,7 +9,14 @@ import { Link } from "react-router-dom";
 import { logOut } from "../../reducer/login/index";
 import { useNavigate } from "react-router-dom";
 import logo from "../../image/logo.png";
-import { BiLogOut,BiHome,BiListCheck,BiAddToQueue,BiUser } from "react-icons/bi";
+import {
+  BiLogOut,
+  BiHome,
+  BiListCheck,
+  BiAddToQueue,
+  BiUser,
+} from "react-icons/bi";
+import jwt from "jwt-decode";
 
 //============================================================================
 //import
@@ -18,13 +25,19 @@ import { BiLogOut,BiHome,BiListCheck,BiAddToQueue,BiUser } from "react-icons/bi"
 
 const AdminPanel = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  const { token } = useSelector((state) => {
+    return { isLoggedIn: state.loginReducer.token };
+  });
+
+  let userName = jwt(token).userName;
+  
   return (
     <>
       <div className="titleBar">
         <div className="logoAdmin">
           <img src={logo} />
         </div>
+        
         <Link
           id="adminLogout"
           to={"/homePage"}
@@ -38,31 +51,48 @@ const AdminPanel = () => {
       <div className="adminPanel">
         <div className="adminNavbar">
           <ul>
-            <Link id="titleA" to={"/dashboard"}><BiHome/> Dashboard</Link>
+            <Link id="titleA" to={"/dashboard"}>
+              <BiHome /> Dashboard
+            </Link>
             <li className="titleUl">CATEGORIES</li>
             <li>
-              <Link to={"/addCategory"}><BiListCheck/> Show Category</Link>
+              <Link to={"/addCategory"}>
+                <BiListCheck /> Show Category
+              </Link>
               <br />
             </li>
-             <li className="titleUl">ITEMS</li>
+            <li className="titleUl">ITEMS</li>
             <li>
-              <Link to={"/addItems"}><BiAddToQueue/> Add Item</Link>
+              <Link to={"/addItems"}>
+                <BiAddToQueue /> Add Item
+              </Link>
               <br />
-              <Link to={"/showItems"}><BiListCheck/> Show Items</Link>
+              <Link to={"/showItems"}>
+                <BiListCheck /> Show Items
+              </Link>
               <br />
             </li>
             <li className="titleUl">SERVICES</li>
             <li>
-              <Link to={"/addService"}><BiAddToQueue/> Add Service</Link>
+              <Link to={"/addService"}>
+                <BiAddToQueue /> Add Service
+              </Link>
               <br />
-              <Link to={"/showServices"}><BiListCheck/> Show Services</Link>
+              <Link to={"/showServices"}>
+                <BiListCheck /> Show Services
+              </Link>
               <br />
             </li>
             <li className="titleUl">USERS</li>
             <li>
-              <Link to={"/showUsers"}><BiUser/> Show Users</Link>
+              <Link to={"/showUsers"}>
+                <BiUser /> Show Users
+              </Link>
               <br />
-              <Link to={"/showWorkers"}><BiUser/>Show Workers</Link>
+              <Link to={"/showWorkers"}>
+                <BiUser />
+                Show Workers
+              </Link>
               <br />
             </li>
           </ul>

@@ -69,6 +69,7 @@
 .titleUl{
   padding-top: 30%;
   border-bottom: solid 1px white;
+  cursor: default;
 }
 
 #titleA{
@@ -79,5 +80,5 @@
 .adminPanel a:hover {
   color: black;
   background-color: white;
-  border-radius: 5px;
+  border-radius: 3px;
 }
