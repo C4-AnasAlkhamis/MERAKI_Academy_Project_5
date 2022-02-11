@@ -70,10 +70,6 @@ const AdminPanel = () => {
             <li className="titleUl">SERVICES</li>
             <li>
               <Link to={"/addService"}>
-                <BiAddToQueue /> Add Service
-              </Link>
-              <br />
-              <Link to={"/showServices"}>
                 <BiListCheck /> Show Services
               </Link>
               <br />

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import "./addservice.css"
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import {
@@ -131,7 +132,7 @@ const AddService = () => {
     getAllServices();
   }, []);
   return (
-    <>
+    <div className="showServiceAdmin">
       <h1 className="head_table">Add your Service</h1>
       <table>
         <tbody>
@@ -246,7 +247,7 @@ const AddService = () => {
           </button>
         </div>
       ) : null}
-    </>
+    </div>
   );
 };
 
