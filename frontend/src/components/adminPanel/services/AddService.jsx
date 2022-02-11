@@ -106,7 +106,14 @@ const AddService = () => {
       });
       if (res.data.success) {
         setMessage(res.data.success);
-        dispatch(updateService({ title, description, image:{if(update?image:imageUrl)}, id: iD }));
+        dispatch(
+          updateService({
+            title,
+            description,
+            image: image ? image : imageUrl,
+            id: iD,
+          })
+        );
       }
     } catch (error) {
       console.log(error.response);
