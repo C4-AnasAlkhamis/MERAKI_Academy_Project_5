@@ -18,26 +18,26 @@
   text-align: center;
   margin: 0.5rem 0;
 }
-.categoryAdmin table {
+table {
   font-family: arial, sans-serif;
   width: 90%;
   margin: 0 auto;
 }
 
-.categoryAdmin th {
+th {
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: center;
   background-color: rgb(40, 121, 236);
   color: white;
 }
-.categoryAdmin td {
+td {
   border: 1px solid #dddddd;
   text-align: center;
   padding: 0.5rem;
 }
 
-.categoryAdmin tr:nth-child(even) {
+tr:nth-child(even) {
   background-color: #dddddd;
 }
 /* tr:hover {

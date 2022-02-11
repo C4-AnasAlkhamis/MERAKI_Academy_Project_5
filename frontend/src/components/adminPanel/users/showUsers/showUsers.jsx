@@ -37,7 +37,7 @@ const ShowUsers = () => {
       }
       setMessage("Error happened while Get Data, please try again");
     }
-    console.log(message);
+    console.log(users);
 
   };
   //===============================================================
