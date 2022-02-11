@@ -116,8 +116,14 @@ const AddItem = () => {
         }}
       />
       <div className="addItemBTN">
-        <button onClick={uploadImage}> upload image</button>
-        <button onClick={createNewItem}>Create New item</button>
+        {/* <button onClick={uploadImage}> upload image</button> */}
+        <button
+          onClick={() => {
+            uploadImage();
+            createNewItem();
+          }}>
+          Create New item
+        </button>
         <br />
         {status
           ? message && <div className="SuccessMessage">{message}</div>
