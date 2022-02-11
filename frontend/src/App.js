@@ -33,7 +33,7 @@ import ServicePage from "./components/servicePage/ServicePage";
 import Profile from "./components/profile/Profile";
 import FeedBack from "./components/feedback/Feedback";
 
-// import ShowWorkers  from "./components/adminPanel/users/showWorkers/showWorkers";
+import ShowWorkers from "./components/adminPanel/users/showWorkers/showWorkers";
 
 function App() {
   const { token } = useSelector((state) => {
@@ -67,8 +67,12 @@ function App() {
         <Route path="/addService" element={<AddService />} />
         {/* <Route path="/showServices" element={<ShowServices />} /> */}
         <Route path="/showUsers" element={<ShowUsers />} />
+
+        <Route path="/showWorkers" element={<ShowWorkers />} />
+
         {/* <Route path="/showWorkers" element={<ShowWorkers />} /> */}
         <Route path="/feedBack" element={<FeedBack />} />
+
 
       </Routes>
 
