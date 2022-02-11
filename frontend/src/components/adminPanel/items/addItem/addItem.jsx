@@ -110,7 +110,6 @@ const AddItem = () => {
       <br />
 
       <input
-      id="UploadImgInput"
         type="file"
         onChange={(e) => {
           setImg(e.target.files[0]);
