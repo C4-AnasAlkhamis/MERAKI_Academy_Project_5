@@ -111,8 +111,8 @@ const Category = () => {
   //======================================
 
   return (
-    <>
-      <h1 className="head_table">Category panel</h1>
+    <div className="categoryAdmin">
+      <h2 className="head_table">Category panel</h2>
 
       <table>
         <tbody>
@@ -181,6 +181,7 @@ const Category = () => {
             placeholder="Category Name"
             value={category}
           />
+          <div className="addUpdateBTN">
           <button
             onClick={() => {
               addNewCategory();
@@ -197,9 +198,10 @@ const Category = () => {
           >
             Update
           </button>
+          </div>
         </div>
       ) : null}
-    </>
+    </div>
   );
 };
 export default Category;

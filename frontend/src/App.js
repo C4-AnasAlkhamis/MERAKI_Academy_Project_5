@@ -45,10 +45,10 @@ function App() {
   let isAdmin = localStorage.getItem("isAdmin") ? true : false;
   return (
     <div className="App">
-      <div className="logo">
+      
+      {isAdmin ? <AdminPanel /> :<> <div className="logo">
         <img src={logo} />
-      </div>
-      {isAdmin ? <AdminPanel /> : <NavBar />}
+      </div><NavBar /></>}
       <Routes>
         
         <Route path="/login" element={<Login />} />7

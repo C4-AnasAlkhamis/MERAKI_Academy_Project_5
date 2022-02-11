@@ -1,6 +1,7 @@
 /** @format */
 
 import React, { useEffect, useState } from "react";
+import "./showUsers.css";
 import Select from "react-select";
 import PaginateReact from "react-paginate";
 import axios from "axios";
@@ -37,7 +38,7 @@ const ShowUsers = () => {
       }
       setMessage("Error happened while Get Data, please try again");
     }
-    console.log(message);
+    console.log(users);
 
   };
   //===============================================================
@@ -64,6 +65,7 @@ const ShowUsers = () => {
   }, [id]);
   return (
     <div className="showUsers">
+      <h2>Show Users</h2>
       <table>
         <tbody>
           <tr>

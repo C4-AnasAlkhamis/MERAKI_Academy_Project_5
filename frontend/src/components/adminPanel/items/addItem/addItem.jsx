@@ -3,6 +3,7 @@
 // /** @format */
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import "./addItem.css";
 
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
@@ -82,28 +83,23 @@ const AddItem = () => {
 
   //===============================================================
   return (
-    <>
-      {/* <form onSubmit={createNewItem}> */}
+    <div className="addItemAdmin">
+      <h2>NEW ITEM</h2>
       <br />
       <input
         type="text"
-        placeholder="item title here"
+        placeholder="TITLE"
         onChange={(e) => setTitle(e.target.value)}
       />
       <br />
-      <textarea
-        placeholder="item description here"
-        onChange={(e) => setDescriptions(e.target.value)}
-      ></textarea>
-      <br />
       <input
         type="number"
-        placeholder="item price here"
+        placeholder="PRICE"
         onChange={(e) => setPrice(e.target.value)}
       />
       <br />
       <input
-        placeholder="1,2,3 or 4"
+        placeholder="CATEGORY"
         onChange={(e) => setCategory_id(e.target.value)}
       />
       <datalist id="data">
@@ -119,19 +115,21 @@ const AddItem = () => {
           setImg(e.target.files[0]);
         }}
       />
-
-      <button onClick={uploadImage}> upload image</button>
-
-      <button onClick={createNewItem}>Create New item</button>
-      {/* </form> */}
-
-      <br />
-      {status
-        ? message && <div className="SuccessMessage">{message}</div>
-        : message && <div className="ErrorMessage">{message}</div>}
-
-  
-    </>
+      <div className="addItemBTN">
+        {/* <button onClick={uploadImage}> upload image</button> */}
+        <button
+          onClick={() => {
+            uploadImage();
+            createNewItem();
+          }}>
+          Create New item
+        </button>
+        <br />
+        {status
+          ? message && <div className="SuccessMessage">{message}</div>
+          : message && <div className="ErrorMessage">{message}</div>}
+      </div>
+    </div>
   );
 };
 
