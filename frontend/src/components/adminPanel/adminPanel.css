@@ -43,10 +43,14 @@
   color: black;
   line-height: 1.8;
   font-size: .9rem;
+  text-align: start;
+
 }
 
 .adminPanel ul li {
-  color: white
+  color: white;
+  text-align: start;
+
 }
 
 .adminPanel a {
