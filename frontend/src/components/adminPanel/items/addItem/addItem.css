@@ -48,3 +48,8 @@
       rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
     border-left: solid 5px rgb(255, 211, 51);
   }
+
+  #file-upload-button{
+    background-color: rgb(4, 81, 140);
+    width: 1000px;
+  }
