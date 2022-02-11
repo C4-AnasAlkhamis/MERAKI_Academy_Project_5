@@ -8,22 +8,21 @@ import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
 const Register = () => {
 
-const rightRegister =()=>{
+  const rightRegister =()=>{
 
-  Swal.fire({
-    // position: 'top-end',
-    icon: 'success',
-    title: 'Your Account has been saved',
-    showConfirmButton: false,
-    timer: 4500
-  })
-}
+    Swal.fire({
+      icon: 'success',
+      title: 'Your Account has been Created!',
+      showConfirmButton: false,
+      timer: 3500
+    })
+  }
 
 const wrongRegister =()=>{
   Swal.fire({
     icon: 'error',
     title: 'Oops...',
-    text: ' Fill All Required Inputs',
+    text: ' Fill All Required Inputs ..Please!',
   })
 
 }
@@ -113,7 +112,7 @@ const wrongRegister =()=>{
             textShadow: `1px 0 1px  ${done ? "#24dc3a" : "#dc2424"}`,
           }}
         >
-          {message}
+          {/* {message} */}
         </span>
       </form>
       </div>

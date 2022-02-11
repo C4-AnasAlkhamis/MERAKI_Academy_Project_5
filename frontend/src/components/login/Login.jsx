@@ -20,29 +20,27 @@ import withReactContent from 'sweetalert2-react-content'
 const Login = () => {
 
 
-  const rightLogin =()=>{
-
+  const rightLogin = () => {
     Swal.fire({
-      title: 'Welcome!',
-      text: 'Have a Nice Journey in our Website.',
-      imageUrl: 'https://englishlib.org/dictionary/img/wlibrary/w/605359b9ba5286.41705746.jpg',
+      title: "Have a Nice Journey In Our Website.",
+      text: "Welcome!",
+      imageUrl:
+        "https://englishlib.org/dictionary/img/wlibrary/w/605359b9ba5286.41705746.jpg",
       imageWidth: 400,
       imageHeight: 200,
-      imageAlt: 'Custom image',
-    })
-  }
-  
-  const wrongLogin =()=>{
-    Swal.fire({
-      icon: 'error',
-      title: 'Oops...',
-      text: 'Something went wrong! Fill The Right Data And Try Again',
-      color: 'red ',
+      imageAlt: "Custom image",
+    });
+  };
 
-      footer: '<a href="">Why do I have this issue?</a>'
-    })
   
-  }
+  const wrongLogin = () => {
+    Swal.fire({
+      icon: "error",
+      title: "Oops...",
+      text: "Fill The Right Data And Try Again",
+      color: "red",
+    });
+  };
 
 
 
@@ -136,6 +134,7 @@ const Login = () => {
           {/* <span>{message}</span> */}
         </form>
       </div>
+
 
       {/* </div> */}
     </>

@@ -24,27 +24,22 @@ const Cart = () => {
   const [total, setTotal] = useState(0);
 
 
-  
-  const popupCartDelete =()=>{
+  const popupCartDelete = () => {
     Swal.fire({
-      title: 'Are you sure?',
-      text: "You won't be able to revert this!",
-      icon: 'warning',
+      title: "Are you sure?",
+      text: "You won't be able to revert this process!",
+      icon: "warning",
       showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, delete it!'
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, Remove it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire(
-          'Deleted!',
-          'Your file has been deleted.',
-          'success'
-        )
+        Swal.fire("Deleted!", "Your item has been removed!.", "success");
       }
-    })
+    });
+  };
  
-  }
   
   // const popupWishlist =()=>{
   //   Swal.fire({
@@ -128,7 +123,7 @@ const Cart = () => {
               src="https://its-london.s3-eu-west-1.amazonaws.com/assets/USPTrustpilotIcon.png"
               alt="5 Star Rating on Trustpilot"
             />
-            <span>5 Star Rating on Trustpilot</span>
+            <span>5 Star Rating on Trust pilot</span>
           </li>
           <li>
             <img
@@ -149,14 +144,14 @@ const Cart = () => {
 
       <dir className="cart_header">
         <div>
-          <h1>YOUR SHOPPING Cart</h1>
+          <h1>Your Shopping Cart</h1>
         </div>
         <div className="info_box buy_box ">
           <PayPalScriptProvider>
             <Pay items={carts} price={total} />
           </PayPalScriptProvider>
           <div>
-            <p>total price </p>
+            <p>Total Price </p>
             <span>{total} JOD</span>
           </div>
         </div>
@@ -177,7 +172,7 @@ const Cart = () => {
                 </div>
               </div>
               <div className="payment_box_info">
-                <h4>payment options</h4>
+                <h4>Payment Options</h4>
                 <div>
                   <RiPaypalLine />
                   <RiVisaFill />
@@ -191,7 +186,7 @@ const Cart = () => {
                   <span>{cart.description}</span>
                 </div> */}
                 <div className="info_center">
-                  <h3>price</h3>
+                  <h3>Price</h3>
                   <span>{cart.price} JOD</span>
                 </div>
                 {/* <div className="info_center">
@@ -208,14 +203,13 @@ const Cart = () => {
                     deleteCartById(cart.cart_id);
                     popupCartDelete()}}
                 >
-                  Remove from cart
-                </button>
+Remove it !                </button>
               </div>
             </div>
           );
         })
       ) : (
-        <div>no carts</div>
+        <div>No Cart Yet!</div>
       )}
     </div>
   );

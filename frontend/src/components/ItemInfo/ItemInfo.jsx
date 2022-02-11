@@ -19,7 +19,7 @@ import withReactContent from 'sweetalert2-react-content'
 const popupCart =()=>{
 
   Swal.fire({
-    title: 'This Item Added To Your Cart Successfully',
+    title: 'This Item Added To Your Cart Successfully!',
     showClass: {
       popup: 'animate__animated animate__fadeInDown'
     },
@@ -31,7 +31,7 @@ const popupCart =()=>{
 
 const popupWishlist =()=>{
   Swal.fire({
-    title: 'This Item Added To Your Wishlist Successfully',
+    title: 'This Item Added To Your Wishlist Successfully!',
     showClass: {
       popup: 'animate__animated animate__fadeInDown'
     },
@@ -41,6 +41,8 @@ const popupWishlist =()=>{
   })
 
 }
+
+
 const ItemInfo = () => {
   const dispatch = useDispatch();
   const [message, setMessage] = useState("");

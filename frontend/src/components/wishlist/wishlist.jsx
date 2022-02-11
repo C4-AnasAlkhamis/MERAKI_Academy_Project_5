@@ -18,28 +18,33 @@ const Wishlist = () => {
   const [note, setNote] = useState("");
 
 
-  const popupWishlistDelete =()=>{
+  const popupWishlistDelete = () => {
     Swal.fire({
-      title: 'Are you sure?',
+      title: "Are you sure?",
       text: "You won't be able to revert this!",
-      icon: 'warning',
+      icon: "warning",
       showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, delete it!'
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Remove!",
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire(
-          'Deleted!',
-          'Your file has been deleted.',
-          'success'
-        )
+        Swal.fire("Removed!", "Your Item has been Removed.", "success");
       }
-    })
- 
-  }
+    });
+  };
 
-
+  const popupCart = () => {
+    Swal.fire({
+      title: "This Item Added To Your Cart Successfully",
+      showClass: {
+        popup: "animate__animated animate__fadeInDown",
+      },
+      hideClass: {
+        popup: "animate__animated animate__fadeOutUp",
+      },
+    });
+  };
 
 
 
@@ -205,7 +210,7 @@ const Wishlist = () => {
               src="https://its-london.s3-eu-west-1.amazonaws.com/assets/USPTrustpilotIcon.png"
               alt="5 Star Rating on Trustpilot"
             />
-            <span>5 Star Rating on Trustpilot</span>
+            <span>5 Star Rating on Trust pilot</span>
           </li>
           <li>
             <img
@@ -226,7 +231,7 @@ const Wishlist = () => {
 
       <dir className="cart_header">
         <div>
-          <h1>YOUR WISHLISTS</h1>
+          <h1>Your Wishlist Items</h1>
         </div>
       </dir>
 
@@ -244,7 +249,7 @@ const Wishlist = () => {
                 </div>
               </div>
               <div className="info_center">
-                <h3>price</h3>
+                <h3>Price</h3>
                 <span>{wishlist.price} JOD</span>
               </div>
               <div className="info_box btn_box info_box_cart">
@@ -254,6 +259,7 @@ const Wishlist = () => {
                     borderColor: "#f22626",
                   }}
                   onClick={(e) => {
+                    popupWishlistDelete();
 
                     deleteWishlistById(wishlist.wishlist_id);
                   }}
@@ -266,6 +272,8 @@ const Wishlist = () => {
                     borderColor: "#43d63e",
                   }}
                   onClick={(e) => {
+                    popupCart();
+
                     createNewCart(wishlist.item_id);
                   }}
                 >
@@ -277,7 +285,7 @@ const Wishlist = () => {
           );
         })
       ) : (
-        <div>no Wishlist</div>
+        <div>No Wishlist Yet!</div>
       )}
     </div>
   );
