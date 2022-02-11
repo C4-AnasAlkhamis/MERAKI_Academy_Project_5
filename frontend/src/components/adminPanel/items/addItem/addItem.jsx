@@ -3,6 +3,7 @@
 // /** @format */
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import "./addItem.css";
 
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
@@ -82,7 +83,7 @@ const AddItem = () => {
 
   //===============================================================
   return (
-    <>
+    <div className="addItemAdmin">
       {/* <form onSubmit={createNewItem}> */}
       <br />
       <input
@@ -131,7 +132,7 @@ const AddItem = () => {
         : message && <div className="ErrorMessage">{message}</div>}
 
   
-    </>
+    </div>
   );
 };
 
