@@ -1,7 +1,7 @@
 /** @format */
 
 import React from "react";
-import "./adminPanel.css"
+import "./adminPanel.css";
 import { Routes, Route } from "react-router-dom";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import { logOut } from "../../reducer/login/index";
 import { useNavigate } from "react-router-dom";
 import logo from "../../image/logo.png";
+import { BiLogOut,BiHome } from "react-icons/bi";
 
 //============================================================================
 //import
@@ -18,55 +19,55 @@ import logo from "../../image/logo.png";
 const AdminPanel = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  return (<>
+  return (
+    <>
       <div className="titleBar">
-      <div className="logoAdmin">
-        <img src={logo} />
+        <div className="logoAdmin">
+          <img src={logo} />
+        </div>
+        <Link
+          id="adminLogout"
+          to={"/homePage"}
+          onClick={() => {
+            localStorage.clear();
+            dispatch(logOut());
+          }}>
+          <BiLogOut /> logout
+        </Link>
       </div>
-      <Link id="adminLogout" to={"/homePage"} onClick={()=>{localStorage.clear();
-            dispatch(logOut());}}>LOGOUT</Link>
-      </div>
-    <div className="adminPanel">
-      <div className="adminNavbar">
-        <ul>
-          <Link to={"/dashboard"}>Dashboard</Link>
-          <li>CATEGORIES</li>
-          <li>
-            <ul>
+      <div className="adminPanel">
+        <div className="adminNavbar">
+          <ul>
+            <Link id="titleA" to={"/dashboard"}><BiHome/> Dashboard</Link>
+            <li className="titleUl">CATEGORIES</li>
+            <li>
               <Link to={"/addCategory"}>Add Category</Link>
               <br />
-            </ul>
-          </li>
-          <li>ITEMS</li>
-          <li>
-            <ul>
+            </li>
+             <li className="titleUl">ITEMS</li>
+            <li>
               <Link to={"/addItems"}>Add Item</Link>
               <br />
               <Link to={"/showItems"}>Show Items</Link>
               <br />
-            </ul>
-          </li>
-          <li>SERVICES</li>
-          <li>
-            <ul>
+            </li>
+            <li className="titleUl">SERVICES</li>
+            <li>
               <Link to={"/addService"}>Add Service</Link>
               <br />
               <Link to={"/showServices"}>Show Services</Link>
               <br />
-            </ul>
-          </li>
-          <li>USERS</li>
-          <li>
-            <ul>
+            </li>
+            <li className="titleUl">USERS</li>
+            <li>
               <Link to={"/showUsers"}>Show Users</Link>
               <br />
               <Link to={"/showWorkers"}>Show Workers</Link>
               <br />
-            </ul>
-          </li>
-        </ul>
+            </li>
+          </ul>
+        </div>
       </div>
-    </div>
     </>
   );
 };
