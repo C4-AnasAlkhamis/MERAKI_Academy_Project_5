@@ -30,16 +30,16 @@
   text-align: center;
   margin: 0.5rem 0;
 }
-table {
+.showItemAdmin table {
   font-family: arial, sans-serif;
   width: 90%;
   margin: 0 auto;
 }
 
-th {
-  padding-top: 12px;
-  padding-bottom: 12px;
-  text-align: center;
+.showItemAdmin th {
+  /* padding-top: 12px; */
+  /* padding-bottom: 12px; */
+  /* text-align: center; */
   background-color: rgb(40, 121, 236);
   color: white;
 }

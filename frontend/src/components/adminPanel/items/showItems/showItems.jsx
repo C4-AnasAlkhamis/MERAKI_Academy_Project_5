@@ -195,7 +195,6 @@ const ShowItem = () => {
             <th>title</th>
             <th>State</th>
             <th>price</th>
-            <th className="icon">delete</th>
             <th className="icon">update</th>
             <th className="icon">delete</th>
           </tr>
