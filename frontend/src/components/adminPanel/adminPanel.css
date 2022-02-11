@@ -16,6 +16,11 @@
   /* border-bottom: solid 1px rgb(40,121,236); */
   box-shadow: rgba(40,121,236, 20%) 0px 2px 1px;
 }
+#adminName{
+  font-size: 17px;
+  position: fixed;
+  right: 130px;
+}
 .logoAdmin img{
   object-fit: cover;
   width: 150px;
@@ -43,10 +48,14 @@
   color: black;
   line-height: 1.8;
   font-size: .9rem;
+  text-align: start;
+
 }
 
 .adminPanel ul li {
-  color: white
+  color: white;
+  text-align: start;
+
 }
 
 .adminPanel a {

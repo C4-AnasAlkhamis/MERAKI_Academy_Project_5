@@ -113,7 +113,7 @@ const Login = () => {
             <span>{message}</span>
           </form>
         </div>
-        <form onSubmit={verifyUser}>
+        {/* <form onSubmit={verifyUser}>
           <input
             onChange={(e) => {
               setEmail(e.target.value);
@@ -132,7 +132,7 @@ const Login = () => {
           />
           <button>Login</button>
           {/* <span>{message}</span> */}
-        </form>
+          {/* </form> } */}
       </div>
 
 

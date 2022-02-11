@@ -65,7 +65,7 @@ const ShowUsers = () => {
   }, [id]);
   return (
     <div className="showUsers">
-      <h2>Show Users</h2>
+      <h2>Users</h2>
       <table>
         <tbody>
           <tr>

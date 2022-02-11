@@ -178,6 +178,7 @@ const ShowItem = () => {
   }, []);
   return (
     <div className="showItemAdmin">
+      <h2>Items</h2>
       <div className="show_filter">
         <Select
           onChange={(e) => {

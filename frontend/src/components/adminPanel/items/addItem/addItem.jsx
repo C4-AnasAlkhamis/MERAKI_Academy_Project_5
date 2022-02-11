@@ -58,7 +58,7 @@ const AddItem = () => {
     try {
       const item = {
         title: title,
-        descriptions: descriptions,
+        descriptions: "in stock",
         img: imageUrl,
         price: price,
         category_id: category_id,
