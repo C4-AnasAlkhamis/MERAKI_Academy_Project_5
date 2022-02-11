@@ -23,7 +23,7 @@ workerRouter.get("/profile", authentication, getWorkerById);
 workerRouter.get("/srv_id/:id", getWorkerByServiceId);
 
 workerRouter.put("/:id", updateWorkerById);
-workerRouter.delete("/:id", deleteWorkerById);
+workerRouter.put("/delete/:id", deleteWorkerById);
 
 //write your code here
 module.exports = workerRouter;

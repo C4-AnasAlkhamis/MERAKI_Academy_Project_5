@@ -49,6 +49,7 @@ const AddService = () => {
   // ====================================== //
 
   const createNewService = async (image) => {
+    console.log("555");
     try {
       const result = await axios.post(
         `http://localhost:5000/service`,
@@ -59,6 +60,7 @@ const AddService = () => {
           },
         }
       );
+      getAllServices();
     } catch (error) {
       console.log(error.response);
     }

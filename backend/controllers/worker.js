@@ -23,7 +23,7 @@ const createNewWorker = (req, res) => {
 
 // This function returns all workers
 const getAllWorkers = (req, res) => {
-  const query = `SELECT * FROM worker `;
+  const query = `SELECT * FROM worker JOIN users ON worker.user_id = users.id JOIN services ON worker.service_id = services.id WHERE worker.is_deleted = 0`;
   connection.query(query, (err, result) => {
     if (err) {
       return res.status(500).json({
@@ -134,7 +134,7 @@ const updateWorkerById = (req, res) => {
 const deleteWorkerById = (req, res) => {
   const id = req.params.id;
 
-  const query = `DELETE FROM worker WHERE id=?;`;
+  const query = `UPDATE worker SET is_deleted = 1 WHERE id=?;`;
 
   const data = [id];
 
