@@ -133,7 +133,7 @@ const AddService = () => {
   }, []);
   return (
     <div className="showServiceAdmin">
-      <h1 className="head_table">Add your Service</h1>
+      <h1 className="head_table">Services</h1>
       <table>
         <tbody>
           <tr>
