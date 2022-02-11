@@ -15,6 +15,7 @@ import {
   BiListCheck,
   BiAddToQueue,
   BiUser,
+  BiUserCircle
 } from "react-icons/bi";
 
 
@@ -32,7 +33,7 @@ const AdminPanel = () => {
         <div className="logoAdmin">
           <img src={logo} />
         </div>
-        
+        <h1 id="adminName"><BiUserCircle/> Omar</h1>
         <Link
           id="adminLogout"
           to={"/homePage"}
