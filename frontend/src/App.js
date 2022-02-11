@@ -32,6 +32,7 @@ import { useState } from "react";
 import ServicePage from "./components/servicePage/ServicePage";
 import Profile from "./components/profile/Profile";
 import FeedBack from "./components/feedback/Feedback";
+import Footer from "./components/footer/footer";
 
 import ShowWorkers from "./components/adminPanel/users/showWorkers/showWorkers";
 
@@ -75,7 +76,13 @@ function App() {
 
 
       </Routes>
+<div>
+<Footer/>
+<>
+{/* <FeedBack /> */}
 
+</>
+</div>
     </div>
 
   );
