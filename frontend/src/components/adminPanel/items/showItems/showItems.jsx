@@ -187,7 +187,7 @@ const ShowItem = () => {
           placeholder="Filter"
         />
       </div>
-      <table>
+      <table className="showItemTable">
         <tbody>
           <tr>
             <th>id</th>
