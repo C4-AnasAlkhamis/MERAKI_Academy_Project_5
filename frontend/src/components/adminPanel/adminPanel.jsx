@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 import { logOut } from "../../reducer/login/index";
 import { useNavigate } from "react-router-dom";
 import logo from "../../image/logo.png";
-import { BiLogOut,BiHome } from "react-icons/bi";
+import { BiLogOut,BiHome,BiListCheck,BiAddToQueue,BiUser } from "react-icons/bi";
 
 //============================================================================
 //import
@@ -41,28 +41,28 @@ const AdminPanel = () => {
             <Link id="titleA" to={"/dashboard"}><BiHome/> Dashboard</Link>
             <li className="titleUl">CATEGORIES</li>
             <li>
-              <Link to={"/addCategory"}>Add Category</Link>
+              <Link to={"/addCategory"}><BiListCheck/> Show Category</Link>
               <br />
             </li>
              <li className="titleUl">ITEMS</li>
             <li>
-              <Link to={"/addItems"}>Add Item</Link>
+              <Link to={"/addItems"}><BiAddToQueue/> Add Item</Link>
               <br />
               <Link to={"/showItems"}>Show Items</Link>
               <br />
             </li>
             <li className="titleUl">SERVICES</li>
             <li>
-              <Link to={"/addService"}>Add Service</Link>
+              <Link to={"/addService"}><BiAddToQueue/> Add Service</Link>
               <br />
-              <Link to={"/showServices"}>Show Services</Link>
+              <Link to={"/showServices"}><BiListCheck/> Show Services</Link>
               <br />
             </li>
             <li className="titleUl">USERS</li>
             <li>
-              <Link to={"/showUsers"}>Show Users</Link>
+              <Link to={"/showUsers"}><BiUser/> Show Users</Link>
               <br />
-              <Link to={"/showWorkers"}>Show Workers</Link>
+              <Link to={"/showWorkers"}><BiUser/>Show Workers</Link>
               <br />
             </li>
           </ul>
