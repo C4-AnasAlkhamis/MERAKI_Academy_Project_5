@@ -48,7 +48,7 @@ const AdminPanel = () => {
             <li>
               <Link to={"/addItems"}><BiAddToQueue/> Add Item</Link>
               <br />
-              <Link to={"/showItems"}>Show Items</Link>
+              <Link to={"/showItems"}><BiListCheck/> Show Items</Link>
               <br />
             </li>
             <li className="titleUl">SERVICES</li>

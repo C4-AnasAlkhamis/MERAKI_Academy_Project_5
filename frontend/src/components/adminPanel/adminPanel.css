@@ -31,7 +31,7 @@
   background-color: rgb(40,121,236);
   transition: 0.5s ease;
   overflow-x: hidden;
-  padding-top: 7%;
+  padding-top: 4%;
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
@@ -51,7 +51,9 @@
 
 .adminPanel a {
   color: white;
-  font-size: .8rem;
+  font-size: .9rem;
+  margin-top: 2%;
+  padding: 1%;
 }
 
 #adminLogout {
@@ -72,4 +74,10 @@
 #titleA{
   font-size: 17px;
 
+}
+
+.adminPanel a:hover {
+  color: black;
+  background-color: white;
+  border-radius: 5px;
 }
