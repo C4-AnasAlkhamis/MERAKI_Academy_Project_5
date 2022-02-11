@@ -29,8 +29,8 @@ const AdminPanel = () => {
     return { isLoggedIn: state.loginReducer.token };
   });
 
-  let userName = jwt(token).userName;
-  
+  let userName = jwt(localStorage.getItem("token"))
+  console.log(userName);
   return (
     <>
       <div className="titleBar">
