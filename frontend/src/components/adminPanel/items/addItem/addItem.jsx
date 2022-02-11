@@ -84,27 +84,22 @@ const AddItem = () => {
   //===============================================================
   return (
     <div className="addItemAdmin">
-      {/* <form onSubmit={createNewItem}> */}
+      <h3>Add Item</h3>
       <br />
       <input
         type="text"
-        placeholder="item title here"
+        placeholder="TITLE"
         onChange={(e) => setTitle(e.target.value)}
       />
       <br />
-      <textarea
-        placeholder="item description here"
-        onChange={(e) => setDescriptions(e.target.value)}
-      ></textarea>
-      <br />
       <input
         type="number"
-        placeholder="item price here"
+        placeholder="PRICE"
         onChange={(e) => setPrice(e.target.value)}
       />
       <br />
       <input
-        placeholder="1,2,3 or 4"
+        placeholder="CATEGORY"
         onChange={(e) => setCategory_id(e.target.value)}
       />
       <datalist id="data">
@@ -120,18 +115,14 @@ const AddItem = () => {
           setImg(e.target.files[0]);
         }}
       />
-
-      <button onClick={uploadImage}> upload image</button>
-
-      <button onClick={createNewItem}>Create New item</button>
-      {/* </form> */}
-
-      <br />
-      {status
-        ? message && <div className="SuccessMessage">{message}</div>
-        : message && <div className="ErrorMessage">{message}</div>}
-
-  
+      <div className="addItemBTN">
+        <button onClick={uploadImage}> upload image</button>
+        <button onClick={createNewItem}>Create New item</button>
+        <br />
+        {status
+          ? message && <div className="SuccessMessage">{message}</div>
+          : message && <div className="ErrorMessage">{message}</div>}
+      </div>
     </div>
   );
 };
