@@ -112,7 +112,7 @@ const Category = () => {
 
   return (
     <div className="categoryAdmin">
-      <h1 className="head_table">Category panel</h1>
+      <h2 className="head_table">Category panel</h2>
 
       <table>
         <tbody>
