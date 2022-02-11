@@ -8,6 +8,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { logOut } from "../../reducer/login/index";
 import { useNavigate } from "react-router-dom";
+import logo from "../../image/logo.png";
 
 //============================================================================
 //import
@@ -17,7 +18,14 @@ import { useNavigate } from "react-router-dom";
 const AdminPanel = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  return (
+  return (<>
+      <div className="titleBar">
+      <div className="logoAdmin">
+        <img src={logo} />
+      </div>
+      <Link id="adminLogout" to={"/homePage"} onClick={()=>{localStorage.clear();
+            dispatch(logOut());}}>LOGOUT</Link>
+      </div>
     <div className="adminPanel">
       <div className="adminNavbar">
         <ul>
@@ -57,10 +65,9 @@ const AdminPanel = () => {
             </ul>
           </li>
         </ul>
-        <Link to={"/homePage"} onClick={()=>{localStorage.clear();
-            dispatch(logOut());}}>LOGOUT</Link>
       </div>
     </div>
+    </>
   );
 };
 
