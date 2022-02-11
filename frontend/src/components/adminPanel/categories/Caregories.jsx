@@ -111,7 +111,7 @@ const Category = () => {
   //======================================
 
   return (
-    <>
+    <div className="categoryAdmin">
       <h1 className="head_table">Category panel</h1>
 
       <table>
@@ -199,7 +199,7 @@ const Category = () => {
           </button>
         </div>
       ) : null}
-    </>
+    </div>
   );
 };
 export default Category;
