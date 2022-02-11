@@ -84,7 +84,7 @@ const NavBar = () => {
                   to="/homePage"
                   className="logout"
                   onClick={(e) => {
-                    popupLogout()
+                    // popupLogout()
 
                     dispatch(logOut());
                     localStorage.clear();
