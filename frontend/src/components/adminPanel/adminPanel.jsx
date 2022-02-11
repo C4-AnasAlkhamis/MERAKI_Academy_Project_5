@@ -16,7 +16,7 @@ import {
   BiAddToQueue,
   BiUser,
 } from "react-icons/bi";
-import jwt from "jwt-decode";
+
 
 //============================================================================
 //import
@@ -25,12 +25,7 @@ import jwt from "jwt-decode";
 
 const AdminPanel = () => {
   const dispatch = useDispatch();
-  const { token } = useSelector((state) => {
-    return { isLoggedIn: state.loginReducer.token };
-  });
-
-  let userName = jwt(localStorage.getItem("token"))
-  console.log(userName);
+  
   return (
     <>
       <div className="titleBar">
