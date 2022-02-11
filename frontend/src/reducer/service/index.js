@@ -57,11 +57,11 @@ export const setRequests = (requests) => {
   return { type: "SET_REQUEST", payload: requests };
 };
 // =======================  //
-// export const updateService = (newService) => {
-//   return { type: "UPDATE_SERVICE", payload: newService };
-// };
-// // =======================  //
+export const updateService = (newService) => {
+  return { type: "UPDATE_SERVICE", payload: newService };
+};
+// =======================  //
 
-// export const deleteService = (id) => {
-//   return { type: "DELETE_SERVICE", payload: id };
-// };
+export const deleteService = (id) => {
+  return { type: "DELETE_SERVICE", payload: id };
+};

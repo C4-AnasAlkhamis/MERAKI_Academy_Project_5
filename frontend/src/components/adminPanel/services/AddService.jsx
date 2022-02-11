@@ -1,16 +1,21 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
-import { setService, addService } from "../../../reducer/service/index";
+import {
+  setService,
+  deleteService,
+  updateService,
+} from "../../../reducer/service/index";
 import { FcDeleteRow } from "react-icons/fc";
 import { FaTimesCircle } from "react-icons/fa";
 import { TiPencil } from "react-icons/ti";
 import { VscGitPullRequestCreate } from "react-icons/vsc";
 const AddService = () => {
+  const [imageUrl, setImageUrl] = useState();
   const [status, setStatus] = useState(false);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [image, setImage] = useState("");
+  const [imagePath, setImagePath] = useState("");
   const [message, setMessage] = useState();
   const [show, setShow] = useState();
   const [iD, setID] = useState();
@@ -29,12 +34,11 @@ const AddService = () => {
   const uploadImage = (update) => {
     const formData = new FormData();
 
-    formData.append("file", image);
+    formData.append("file", imagePath);
     formData.append("upload_preset", "rwnvwutb");
     axios
       .post(`https://api.cloudinary.com/v1_1/debtpixx1/image/upload/`, formData)
       .then((res) => {
-        console.log(update);
         if (update) {
           updateServiceById(res.data.secure_url);
         } else {
@@ -80,7 +84,7 @@ const AddService = () => {
       const res = await axios.delete(`http://localhost:5000/service/${id}`);
       if (res.data.success) {
         setMessage(res.data.success);
-        // dispatch(deleteCategory(id));
+        dispatch(deleteService(id));
       } else {
         throw Error;
       }
@@ -93,6 +97,7 @@ const AddService = () => {
   };
   // ====================================== //
   const updateServiceById = async (image) => {
+    console.log(image);
     try {
       const res = await axios.put(`http://localhost:5000/service/${iD}`, {
         title,
@@ -101,7 +106,7 @@ const AddService = () => {
       });
       if (res.data.success) {
         setMessage(res.data.success);
-        // dispatch(updateCategory({ category: category, id: id }));
+        dispatch(updateService({ title, description, image:{if(update?image:imageUrl)}, id: iD }));
       }
     } catch (error) {
       console.log(error.response);
@@ -172,6 +177,7 @@ const AddService = () => {
                     <TiPencil
                       onClick={() => {
                         setID(service.id);
+                        setImageUrl(service.image);
                         setShow(!show);
                       }}
                       className="btn"
@@ -206,8 +212,7 @@ const AddService = () => {
           <input
             type="file"
             onChange={(e) => {
-              console.log(e.target.files[0]);
-              setImage(e.target.files[0]);
+              setImagePath(e.target.files[0]);
             }}
           />
           <button
@@ -220,7 +225,7 @@ const AddService = () => {
           </button>
           <button
             onClick={() => {
-              if (image) {
+              if (imagePath) {
                 uploadImage(true);
               } else {
                 updateServiceById();

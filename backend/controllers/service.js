@@ -81,7 +81,9 @@ const updateServiceById = (req, res) => {
     title != ""
   }, ?, title) , description=IF(${
     description != ""
-  }, ?, description) , image = IF(${image != ""}, ?, image) WHERE id = ?;`;
+  }, ?, description) , image = IF(${
+    image != undefined
+  }, ?, image) WHERE id = ?;`;
   const data = [title, description, image, id];
   connection.query(query, data, (err, result) => {
     if (err) {
