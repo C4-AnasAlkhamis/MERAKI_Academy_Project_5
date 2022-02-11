@@ -84,7 +84,7 @@ const AddItem = () => {
   //===============================================================
   return (
     <div className="addItemAdmin">
-      <h1>NEW ITEM</h1>
+      <h2>NEW ITEM</h2>
       <br />
       <input
         type="text"

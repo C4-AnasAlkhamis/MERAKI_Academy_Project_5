@@ -1,6 +1,7 @@
 /** @format */
 
 import React, { useEffect, useState } from "react";
+import "./showUsers.css";
 import Select from "react-select";
 import PaginateReact from "react-paginate";
 import axios from "axios";
@@ -64,6 +65,7 @@ const ShowUsers = () => {
   }, [id]);
   return (
     <div className="showUsers">
+      <h2>Show Users</h2>
       <table>
         <tbody>
           <tr>
