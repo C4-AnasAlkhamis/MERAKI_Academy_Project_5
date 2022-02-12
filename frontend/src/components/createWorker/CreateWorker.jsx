@@ -1,14 +1,10 @@
 import axios from "axios";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import Select from "react-select";
 
-// import {
-//   setService,
-//   updateService,
-//   deleteService,
-// } from "../../reducer/service/index";
+import { setService } from "../../reducer/service/index";
 // import { setWorker } from "../../reducer/worker/index";
 const Worker = () => {
   const [status, setStatus] = useState(false);
@@ -28,15 +24,28 @@ const Worker = () => {
     };
   });
   // ================================================  //
-
   const options = services.map((element, index) => {
     return {
       value: element.id,
-      label: element.service,
+      label: element.title,
     };
   });
   // ================================================  //
+  //===============================================================
 
+  const getAllService = async () => {
+    try {
+      const res = await axios.get("http://localhost:5000/service");
+      if (res.data.success) {
+        dispatch(setService(res.data.result));
+      } else throw Error;
+    } catch (error) {
+      if (!error.response.data.success) {
+        return setMessage(error.response.data.message);
+      }
+      setMessage("Error happened while Get Data, please try again");
+    }
+  };
   const uploadImage = (e) => {
     e.preventDefault();
 
@@ -57,12 +66,12 @@ const Worker = () => {
 
     await axios
       .post(
-        `http://localhost:5000/worker`,
+        "http://localhost:5000/worker",
         {
+          service_id,
           address,
           phone,
           image,
-          service_id,
         },
         {
           headers: {
@@ -70,11 +79,16 @@ const Worker = () => {
           },
         }
       )
-      .then((result) => {})
+      .then((result) => {
+        console.log(result);
+      })
       .catch((err) => {
         console.log(err);
       });
   };
+  useEffect(() => {
+    getAllService();
+  }, []);
   return (
     <div>
       <h1>Add Your Service</h1>

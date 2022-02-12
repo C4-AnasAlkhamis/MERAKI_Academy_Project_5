@@ -17,7 +17,7 @@ const {
 // =========================================== //
 const { authentication } = require("../middleware/authentication");
 
-workerRouter.post("/", createNewWorker);
+workerRouter.post("/", authentication, createNewWorker);
 workerRouter.get("/", getAllWorkers);
 workerRouter.get("/profile", authentication, getWorkerById);
 workerRouter.get("/srv_id/:id", getWorkerByServiceId);

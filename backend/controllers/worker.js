@@ -2,9 +2,10 @@ const connection = require("../database/db");
 
 // This function creates new worker
 const createNewWorker = (req, res) => {
-  const { user_id, service_id, address, phone, image } = req.body;
-
-  const query = `INSERT INTO services (user_id, service_id, address,phone,image ) VALUE (?,?,?,?,?)`;
+  console.log("hi");
+  const user_id = req.token.userId;
+  const { service_id, address, phone, image } = req.body;
+  const query = `INSERT INTO worker (user_id, service_id, address, phone,image ) VALUE (?,?,?,?,?)`;
   const data = [user_id, service_id, address, phone, image];
   connection.query(query, data, (err, result) => {
     if (err) {
@@ -13,11 +14,23 @@ const createNewWorker = (req, res) => {
         message: `Server Error`,
       });
     }
-    res.status(201).json({
-      success: true,
-      message: `Success Worker Created`,
-      result: result,
-    });
+    if (result) {
+      const userId = [user_id];
+      const query = `UPDATE users SET role_id = 3 WHERE id =?;`;
+      connection.query(query, userId, (err, result1) => {
+        if (err) {
+          return res.status(500).json({
+            success: false,
+            message: `Server Error`,
+          });
+        }
+        res.status(201).json({
+          success: true,
+          message: `Success Worker Created`,
+          result: result,
+        });
+      });
+    }
   });
 };
 
