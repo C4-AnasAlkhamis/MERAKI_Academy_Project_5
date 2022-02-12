@@ -167,7 +167,7 @@ const Profile = () => {
             onClick={() => {
               setShow(!show);
             }}>
-            Edit Profile
+            {show?"Back":"Edit Profile"}
           </button>
         </div>
       ) : null}
@@ -228,7 +228,7 @@ const Profile = () => {
               uploadImage();
               setShow(false);
             }}>
-            Done Editing
+            Done
           </button>
 
           <br />
