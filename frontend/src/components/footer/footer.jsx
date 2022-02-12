@@ -16,6 +16,10 @@ import payCards from "../../image/cards.png";
 const Footer = () => {
   const nav = useNavigate();
 
+
+
+
+
   
   return (
     <>
