@@ -16,6 +16,11 @@ import payCards from "../../image/cards.png";
 const Footer = () => {
   const nav = useNavigate();
 
+
+
+
+
+  
   return (
     <>
       <div className="footer">
@@ -77,9 +82,9 @@ const Footer = () => {
           </div>
           <h2 className="duty">06-474747470 (Saturday - Thursday 8am - 5pm)</h2>
 
-          <img src={payCards} alt="pa" />
+          <img src={payCards} alt="pa" id="imgPay"/>
 
-          <h4 className="paym">
+          <h4 className="paymnt">
             Finance provided by PayPal Credit. Terms and conditions apply.
             Credit subject to status. UK residents only. Industrial Tool
             Supplies (London) Limited acts as a credit broker and offers finance
@@ -87,7 +92,13 @@ const Footer = () => {
             trading name of PayPal (Europe) S.a.r.l. et Cie, S.C.A., 22-24
             Boulevard Royal L-2449, Luxembourg.
           </h4>
+          <br>
+          </br>
+
+          <h4 className="rights">Developed By  ERRORS-TEAM   All Rights Reserved 	&#169; 2022</h4>
+
         </div>
+
       </div>
     </>
   );
