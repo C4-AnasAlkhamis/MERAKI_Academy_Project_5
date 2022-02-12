@@ -36,7 +36,7 @@ const createNewWorker = (req, res) => {
 
 // This function returns all workers
 const getAllWorkers = (req, res) => {
-  const query = `SELECT * ,worker.id AS w_id FROM worker JOIN users ON worker.user_id = users.id JOIN services ON worker.service_id = services.id WHERE worker.is_deleted = 0`;
+  const query = `SELECT * ,worker.id AS w_id,worker.image AS w_image FROM worker JOIN users ON worker.user_id = users.id JOIN services ON worker.service_id = services.id `;
   connection.query(query, (err, result) => {
     if (err) {
       return res.status(500).json({
@@ -61,7 +61,7 @@ const getAllWorkers = (req, res) => {
 // This function returns worker By Id
 const getWorkerById = (req, res) => {
   const id = req.token.userId;
-  const query = `SELECT * FROM worker JOIN users ON worker.user_id = users.id  WHERE worker.user_id = ?  `;
+  const query = `SELECT * FROM worker JOIN users ON worker.user_id = users.id  WHERE worker.user_id = ? AND worker.is_deleted = 0`;
   const data = [id];
   connection.query(query, data, (err, result) => {
     if (err) {
@@ -115,6 +115,13 @@ const getWorkerByServiceId = (req, res) => {
   });
 };
 
+
+
+
+
+
+
+
 // This function to update worker by id
 const updateWorkerById = (req, res) => {
   const id = req.params.id;
@@ -152,6 +159,37 @@ const deleteWorkerById = (req, res) => {
   const data = [id];
 
   connection.query(query, data, (err, result) => {
+    if (result) {
+      const query = `UPDATE service_request SET is_deleted = 1  WHERE worker_id = ? `;
+      const worker = [id];
+      connection.query(query, data, (err, result) => {
+        if (result) {
+          const userId = [id];
+          const query = `UPDATE users SET role_id = 2 WHERE id =?;`;
+          connection.query(query, userId, (err, result1) => {
+            if (err) {
+              return res.status(500).json({
+                success: false,
+                message: `Server Error`,
+              });
+            }
+            res.status(201).json({
+              success: true,
+              message: `Success Worker Created`,
+              result: result,
+            });
+          });
+        }
+        if (err) {
+          return res.status(500).json({
+            success: false,
+            massage: "Server Error",
+            err: err,
+          });
+        }
+      });
+    }
+
     if (err) {
       return res.status(500).json({
         success: false,
