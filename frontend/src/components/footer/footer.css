@@ -1,0 +1,86 @@
+
+
+.footer{
+/* height:auto; */
+width:auto;
+background-color:darkgrey ;
+margin-top: 30px;
+display: flex;
+flex-direction: row;
+}
+
+.secondContainer{
+display: flex; 
+ flex-direction: column;
+ padding-top: 30px; 
+
+/* gap: 50px; */
+}
+.socContainer{
+display: flex;  
+flex-direction: row; 
+justify-content: center;
+
+column-gap: 150px; 
+   /* display: inline-block; */
+    /* padding-left: 300px;*/
+    /* padding-left: 500px;  */
+    /* display: inline-flexbox; */
+/* align-items: right; */
+    
+}
+.social{
+list-style: none;
+font-size: larger;
+padding-top: 15px; 
+
+    /* display: inline-block; */
+    /* padding-top: 30px;  */
+}
+
+
+.duty{
+    padding-top: 30px; 
+
+
+}
+/* .paym{
+
+
+
+} */
+
+.imp {
+
+}
+
+
+.social {
+    /* list-style: none; */
+        /* display: inline-block; */
+        /* padding-top: 30px;  */
+        /* margin: 10px; */
+
+        font-size: larger;
+
+        list-style: none;
+        padding-top: 15px; 
+    }
+
+    .social li {
+        margin: 10px; 
+text-decoration: none;
+}
+.impLink {
+    /* padding-top: 30px;  */
+    font-size: larger;
+
+    list-style: none;
+    padding-top: 15px; 
+
+}
+.impLink li {
+    margin: 10px; 
+  
+
+}
