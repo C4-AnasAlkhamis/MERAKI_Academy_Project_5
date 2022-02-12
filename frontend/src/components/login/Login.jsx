@@ -64,9 +64,10 @@ const Login = () => {
       })
       .then((result) => {
         if (result) {
-          rightLogin()
-
+          // rightLogin()
           localStorage.setItem("token", result.data.token);
+          localStorage.setItem("userName", jwt(result.data.token).userName);
+          
           setMessage("");
           setEmail("");
           setPassword("");
