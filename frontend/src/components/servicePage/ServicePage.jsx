@@ -69,7 +69,7 @@ const ServicePage = () => {
                 <div key={index} className="service">
                   <img src={service.image} alt={service.title} />
                   <h2>{service.title}</h2>
-                  <small>{service.description}</small>
+                  <p>{service.description}</p>
                   <button
                     onClick={(e) => {
                       getWorkerByServiceId(service.id);
