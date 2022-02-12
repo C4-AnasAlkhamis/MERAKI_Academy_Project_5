@@ -156,12 +156,11 @@ const Profile = () => {
   }, []);
   return (
     <div className="profile">
-      <div className="profileInfoS">
-        <h1>Profile</h1>
         {worker.length ? (
-          <div>
-            <h3>{worker[0].user_name}</h3>
+      <div className="profileInfoS">
+     
             <img src={worker[0].image} alt={worker[0].user_name} />
+            <h1>{worker[0].user_name}</h1>
             <address>{worker[0].address}</address>
             <button
               onClick={() => {
@@ -170,9 +169,9 @@ const Profile = () => {
             >
               edit profile
             </button>
-          </div>
-        ) : null}
+         
       </div>
+        ) : null}
       <div className="reqGroup">
             <table>
               <tbody>

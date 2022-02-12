@@ -1,15 +1,35 @@
-.profile{
-    display: flex;
-    /* gap: 10%; */
+/** @format */
+
+.profile {
+  display: flex;
+  /* gap: 10%; */
 }
 
-.reqGroup{
-padding-top: 10%;
+.reqGroup {
+  padding-top: 10%;
 }
-.reqGroup th{
-text-align: center;
+.reqGroup th {
+  text-align: center;
 }
-.reqUser{
-    display: grid;
+.reqUser {
+  display: grid;
 }
 
+.editProfile {
+  position: fixed;
+  top: 20%;
+  left: 20%;
+}
+
+.profileInfoS {
+    padding: 2%;
+  display: flex;
+  flex-direction: column;
+ align-items: center;
+ 
+}
+
+.profileInfoS img {
+  width: 200px;
+  border-radius: 50%;
+}
