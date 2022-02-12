@@ -127,7 +127,7 @@ CREATE TABLE rates (
     id INT AUTO_INCREMENT NOT NULL,
     rate INT NOT NULL,
     item_id INT NOT NULL,
-    FOREIGN KEY (item_id) REFERENCES items (id),
+    FOREIGN KEY (item_id) REFERENCES items (user_id),
     PRIMARY KEY (id)
 );
 
