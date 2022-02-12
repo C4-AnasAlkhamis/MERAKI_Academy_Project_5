@@ -64,7 +64,15 @@ function App() {
         <Route path="/more-info" element={<ItemInfo />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/Wishlist" element={<Wishlist />} />
-        <Route path="/homePage" element={<HomePage />} />
+        <Route
+          path="/homePage"
+          element={
+            <>
+              <HomePage />
+              <Footer />
+            </>
+          }
+        />
         <Route path="/profile" element={<Profile />} />
         <Route path="/service" element={<ServicePage />} />
         <Route path="/add-your-service" element={<Worker />} />
@@ -72,7 +80,15 @@ function App() {
         <Route path="/addCategory" element={<AddCategory />} />
         <Route path="/addItems" element={<AddItem />} />
         <Route path="/showItems" element={<ShowItems />} />
-        <Route path="/addService" element={<AddService />} />
+        <Route
+          path="/addService"
+          element={
+            <>
+              <AddService />
+              <Footer />
+            </>
+          }
+        />
         {/* <Route path="/showServices" element={<ShowServices />} /> */}
         <Route path="/showUsers" element={<ShowUsers />} />
         <Route path="/showWorkers" element={<ShowWorkers />} />
@@ -80,13 +96,9 @@ function App() {
         <Route path="/feedBack" element={<FeedBack />} />
       </Routes>
 
-<div>
-<Footer/>
-<>
-{/* <FeedBack /> */}
-
-</>
-</div>
+      <div>
+        <>{/* <FeedBack /> */}</>
+      </div>
     </div>
   );
 }
