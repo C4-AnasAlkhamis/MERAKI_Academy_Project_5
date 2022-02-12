@@ -51,7 +51,6 @@ const WSInfo = ({ setShowWorker }) => {
             Workers<h6>What we Can Do</h6>
             </h1>
           </div>
-      <h1></h1>
       <button
         onClick={() => {
           setShowWorker(false);
