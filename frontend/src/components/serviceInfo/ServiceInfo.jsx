@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
 import axios from "axios";
-const WSInfo = () => {
+const WSInfo = ({ setShowWorker }) => {
   const [name, setName] = useState();
   const [address, setAddress] = useState();
   const [phone, setPhone] = useState();
@@ -46,6 +46,13 @@ const WSInfo = () => {
   return (
     <>
       <h1>ServiceInfo</h1>
+      <button
+        onClick={() => {
+          setShowWorker(false);
+        }}
+      >
+        Back
+      </button>
       {workers.map((worker, index) => {
         return (
           <div key={index}>

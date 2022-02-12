@@ -66,8 +66,8 @@ function App() {
         <Route path="/homePage" element={<HomePage />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/service" element={<ServicePage />} />
-        {/* <Route path="/adminPanel" element={<AdminPanel />} /> */}
-        <Route path="/profiles" element={<Worker />} />
+        <Route path="/add-your-service" element={<Worker />} />
+        <Route path="/profiles" element={<Profile />} />
         <Route path="/addCategory" element={<AddCategory />} />
         <Route path="/addItems" element={<AddItem />} />
         <Route path="/showItems" element={<ShowItems />} />

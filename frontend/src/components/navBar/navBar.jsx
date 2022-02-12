@@ -1,10 +1,9 @@
 /** @format */
-
+import jwt from "jwt-decode";
 import { Link } from "react-router-dom";
 import "./navbar.css";
 import { logOut } from "../../reducer/login/index";
 import { useSelector, useDispatch } from "react-redux";
-
 //
 import { GrUserWorker } from "react-icons/gr";
 import { BiLogOut, BiLogIn } from "react-icons/bi";
@@ -19,7 +18,6 @@ import { FcServices } from "react-icons/fc";
 //
 import Swal from "sweetalert2";
 // import withReactContent from "sweetalert2-react-content";
-
 const popupLogout = () => {
   Swal.fire({
     title: "Are you sure?",
@@ -47,8 +45,11 @@ const popupLogout = () => {
 };
 const NavBar = () => {
   const dispatch = useDispatch();
-  const { isLoggedIn } = useSelector((state) => {
-    return { isLoggedIn: state.loginReducer.isLoggedIn };
+  const { isLoggedIn, token } = useSelector((state) => {
+    return {
+      isLoggedIn: state.loginReducer.isLoggedIn,
+      token: state.loginReducer.token,
+    };
   });
 
   return (
@@ -76,12 +77,18 @@ const NavBar = () => {
                 <Link to="/service" style={{ textDecoration: "none" }}>
                   <FcServices /> SERVICES
                 </Link>
-                {/* <Link to="/profile" style={{ textDecoration: "none" }}>
-                  <GrUserWorker /> PROFILE
-                </Link> */}
-                  <Link to="/profiles" style={{ textDecoration: "none" }}>
-                  <GrUserWorker /> ADD YOUR SERVICE
-                </Link>
+                {token && jwt(token).role === 3 ? (
+                  <Link to="/profile" style={{ textDecoration: "none" }}>
+                    <GrUserWorker /> PROFILE
+                  </Link>
+                ) : (
+                  <Link
+                    to="/add-your-service"
+                    style={{ textDecoration: "none" }}
+                  >
+                    <GrUserWorker /> JOIN US
+                  </Link>
+                )}
                 <Link
                   to="/homePage"
                   className="logout"
@@ -108,9 +115,9 @@ const NavBar = () => {
                 </Link>
               </>
             )}
-            <Link to="/adminPanel" style={{ textDecoration: "none" }}>
+            {/* <Link to="/adminPanel" style={{ textDecoration: "none" }}>
               ADMIN
-            </Link>
+            </Link> */}
           </h2>
         </div>
       </div>
