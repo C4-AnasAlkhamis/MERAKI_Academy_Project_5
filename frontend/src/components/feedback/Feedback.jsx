@@ -115,8 +115,8 @@ const FeedBack = () => {
           <textarea
             id="sendBtn4"
             placeholder="Your Message Content"
-            cols="100"
-            rows="17"
+            cols="98"
+            rows="14"
             name="message"
           />
           <input id="sendBtn5" type="submit" value="Send Email " />
