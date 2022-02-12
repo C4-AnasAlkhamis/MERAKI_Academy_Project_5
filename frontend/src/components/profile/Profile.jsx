@@ -228,7 +228,7 @@ const Profile = () => {
               uploadImage();
               setShow(false);
             }}>
-            Add Service
+            Done Editing
           </button>
 
           <br />
