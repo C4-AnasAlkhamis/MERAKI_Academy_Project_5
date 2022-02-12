@@ -9,7 +9,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { setItems, setCategories } from "../../reducer/item/index";
 import { setItemInfo } from "../../reducer/itemInfo/index";
 import { useNavigate } from "react-router-dom";
-
 //===============================================================
 import handTool from "../../image/header.png";
 import powerTool from "../../image/header.jpg";
@@ -211,6 +210,7 @@ const HomePage = () => {
           <h1>{item.price} JOD</h1>
           <span>{item.rate}</span>
         </div>
+
         <div className="btn">
           <button
             id={item.id}

@@ -34,6 +34,7 @@ import Profile from "./components/profile/Profile";
 import FeedBack from "./components/feedback/Feedback";
 
 import ShowWorkers from "./components/adminPanel/users/showWorkers/showWorkers";
+import Rate from "./components/rate/Rate";
 
 function App() {
   const { token } = useSelector((state) => {
@@ -45,12 +46,18 @@ function App() {
   let isAdmin = localStorage.getItem("isAdmin") ? true : false;
   return (
     <div className="App">
-      
-      {isAdmin ? <AdminPanel /> :<> <div className="logo">
-        <img src={logo} />
-      </div><NavBar /></>}
+      {isAdmin ? (
+        <AdminPanel />
+      ) : (
+        <>
+          {" "}
+          <div className="logo">
+            <img src={logo} />
+          </div>
+          <NavBar />
+        </>
+      )}
       <Routes>
-        
         <Route path="/login" element={<Login />} />7
         <Route path="/register" element={<Register />} />
         <Route path="/more-info" element={<ItemInfo />} />
@@ -65,19 +72,13 @@ function App() {
         <Route path="/addItems" element={<AddItem />} />
         <Route path="/showItems" element={<ShowItems />} />
         <Route path="/addService" element={<AddService />} />
-        {/* <Route path="/showServices" element={<ShowServices />} /> */}
+        <Route path="/rate" element={<Rate />} />
         <Route path="/showUsers" element={<ShowUsers />} />
-
         <Route path="/showWorkers" element={<ShowWorkers />} />
-
         {/* <Route path="/showWorkers" element={<ShowWorkers />} /> */}
         <Route path="/feedBack" element={<FeedBack />} />
-
-
       </Routes>
-
     </div>
-
   );
 }
 
