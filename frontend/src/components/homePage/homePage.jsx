@@ -1,5 +1,5 @@
 /** @format */
-
+import ReactStars from "react-rating-stars-component";
 import React, { useEffect, useState } from "react";
 import Select from "react-select";
 import "./homePage.css";
@@ -13,6 +13,7 @@ import { useNavigate } from "react-router-dom";
 import handTool from "../../image/header.png";
 import powerTool from "../../image/header.jpg";
 import safetyTool from "../../image/landing-banner-d (1).jpg";
+import ItemInfo from "../ItemInfo/ItemInfo";
 
 //===============================================================
 
@@ -47,7 +48,8 @@ const HomePage = () => {
   const [categoryId, setCategoryId] = useState(1);
   const [isFilter, setIsFilter] = useState(false);
   const [pgNum, setPgNum] = useState(0);
-
+  const [show, setShow] = useState(true);
+  const [rates, setRates] = useState();
   //===============================================================
 
   const getAllItems = async () => {
@@ -116,7 +118,7 @@ const HomePage = () => {
       setMessage("Error happened while Get Data, please try again");
     }
   };
-  //===============================================================
+  //===========================================
 
   const getItemById = async (id) => {
     //get http://localhost:5000/item/
@@ -125,14 +127,26 @@ const HomePage = () => {
       .get(`http://localhost:5000/item/id?id=${id}`)
       .then((result) => {
         dispatch(setItemInfo({ ...result.data.result }));
-        navigate("/more-info");
+        // navigate("/more-info");
       })
       .catch((err) => {
         console.log(err);
       });
   };
-  //
-  //===============================================================
+
+  //=======================================
+  const getRate = async (rate) => {
+    await axios
+      .get("http://localhost:5000/rate")
+      .then((result) => {
+        setRates(result.data.result);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  //=======================================
+  // console.log(rates);
   const categoriesMap = categories.map((category, index) => {
     return (
       <li
@@ -184,14 +198,34 @@ const HomePage = () => {
         return;
     }
   };
+  const allRate = (id) => {
+    const newRate = [];
+
+    if (rates) {
+      rates.filter((rate) => {
+        if (rate.item_id === id) {
+          newRate.push(rate.rate);
+        }
+      });
+    }
+    const sum = newRate.reduce((partialSum, a) => partialSum + a, 0);
+
+    let stars = sum / newRate.length;
+    return {
+      size: 33,
+      value: stars ? stars : 2.5,
+      edit: false,
+    };
+  };
 
   useEffect(() => {
     getAllCategories();
     getAllItems();
+    getRate();
   }, []);
   //===============================================================
 
-  const itemsPerPg = 15;
+  const itemsPerPg = 12;
   const pgVS = pgNum * itemsPerPg;
   const pageCount = Math.ceil(itemsMap.length / itemsPerPg);
   const changePage = ({ selected }) => {
@@ -209,7 +243,9 @@ const HomePage = () => {
         <div className="info_box">
           <h3>{item.descriptions}</h3>
           <h2>{item.price} $</h2>
-          <span>{item.rate}</span>
+          <span>
+            <ReactStars {...allRate(item.id)} />
+          </span>
         </div>
 
         <div className="btn">
@@ -217,6 +253,7 @@ const HomePage = () => {
             id={item.id}
             onClick={(e) => {
               getItemById(e.target.id);
+              setShow(false);
             }}
           >
             ITEM DETAILS
@@ -228,32 +265,34 @@ const HomePage = () => {
 
   //===============================================================
   return (
-    <div className="homePage">
-      <div className="categories">
-        <ul>{categoriesMap}</ul>
-        <input
-          type="search"
-          placeholder="Search"
-          onChange={(e) => {
-            getFilteredItems(`%${e.target.value}%`);
-          }}
-        />
-      </div>
-      <div className="Hadar">{headerImg()}</div>
-      <div className="filter_box">
-        <Select
-          className="filter"
-          onChange={(e) => {
-            getFilteredItems(`%${e.value}%`);
-          }}
-          options={options}
-          placeholder="Filter"
-        />
-      </div>
-      <div className="items">
-        {display}
+    <>
+      {show ? (
+        <div className="homePage">
+          <div className="categories">
+            <ul>{categoriesMap}</ul>
+            <input
+              type="search"
+              placeholder="Search"
+              onChange={(e) => {
+                getFilteredItems(`%${e.target.value}%`);
+              }}
+            />
+          </div>
+          <div className="Hadar">{headerImg()}</div>
+          <div className="filter_box">
+            <Select
+              className="filter"
+              onChange={(e) => {
+                getFilteredItems(`%${e.value}%`);
+              }}
+              options={options}
+              placeholder="Filter"
+            />
+          </div>
+          <div className="items">
+            {display}
 
-        {/* {itemsMap.map((item, index) => {
+            {/* {itemsMap.map((item, index) => {
           return (
             <div key={index} className="item">
               <div className="title">
@@ -279,17 +318,21 @@ const HomePage = () => {
             </div>
           );
         })} */}
-      </div>
-      <PaginateReact
-        PreviousLabel={"Previous"}
-        NextLabel={"Next"}
-        pageCount={pageCount}
-        onPageChange={changePage}
-        containerClassName={"pagination_box"}
-        disabledClassName={" paginationDisabled "}
-        activeClassName={" paginationActive "}
-      />
-    </div>
+          </div>
+          <PaginateReact
+            PreviousLabel={"Previous"}
+            NextLabel={"Next"}
+            pageCount={pageCount}
+            onPageChange={changePage}
+            containerClassName={"pagination_box"}
+            disabledClassName={" paginationDisabled "}
+            activeClassName={" paginationActive "}
+          />
+        </div>
+      ) : (
+        <ItemInfo />
+      )}
+    </>
   );
 };
 

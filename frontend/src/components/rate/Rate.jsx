@@ -15,7 +15,16 @@ const Rate = ({ item_id }) => {
         console.log(err);
       });
   };
-
+  const getRate = async (rate) => {
+    await axios
+      .get("http://localhost:5000/rate")
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   const thirdExample = {
     size: 40,
     count: 5,

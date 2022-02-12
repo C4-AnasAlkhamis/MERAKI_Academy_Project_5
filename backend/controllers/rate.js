@@ -23,11 +23,9 @@ const createRate = (req, res) => {
 // =================================================== // done
 
 // This function get all items from items
-const getAllItemRate = (req, res) => {
-  const id = req.body.item_id;
-  const query = `SELECT * FROM rates WHERE item_id =? `;
-  const data = [id];
-  connection.query(query, data, (err, result) => {
+const getAllRate = (req, res) => {
+  const query = `SELECT * FROM rates `;
+  connection.query(query, (err, result) => {
     if (err) {
       return res.status(500).json({
         success: false,
@@ -42,12 +40,12 @@ const getAllItemRate = (req, res) => {
     }
     res.status(200).json({
       success: true,
-      message: `all the rate with item id = ${id}`,
-      items: result,
+      message: `all the rate`,
+      result: result,
     });
   });
 };
 module.exports = {
   createRate,
-  getAllItemRate,
+  getAllRate,
 };

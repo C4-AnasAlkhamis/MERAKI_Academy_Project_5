@@ -2,20 +2,17 @@
 
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-
-import { useNavigate, LINK } from "react-router-dom";
+import Rate from "../rate/Rate";
+import { useNavigate } from "react-router-dom";
 import "./itemInfo.css";
-import { setItemInfo, updateItemInfo } from "../../reducer/itemInfo/index";
+import { setItemInfo } from "../../reducer/itemInfo/index";
 import { useSelector, useDispatch } from "react-redux";
 import { RiMoneyDollarCircleLine, RiPaypalFill } from "react-icons/ri";
 import { BsFillCalendarCheckFill, BsHourglassSplit } from "react-icons/bs";
 import { FaShippingFast } from "react-icons/fa";
 
-import tool from "../../image/crown.png";
-
 import Swal from "sweetalert2";
-import withReactContent from "sweetalert2-react-content";
-import Rate from "../rate/Rate";
+// import withReactContent from "sweetalert2-react-content";
 
 const popupCart = () => {
   Swal.fire({
@@ -42,15 +39,10 @@ const popupWishlist = () => {
 };
 
 const ItemInfo = () => {
+  const history = useNavigate();
   const dispatch = useDispatch();
   const [message, setMessage] = useState("");
   const [isDeleted, setIsDeleted] = useState(false);
-  const [image, setImage] = useState("");
-  const [title, setTitle] = useState("");
-  const [price, setPrice] = useState(0);
-  const [description, setDescription] = useState("");
-  const [category, setCategory] = useState(0);
-
   const state = useSelector((state) => {
     return {
       item: state.itemInfoReducer.itemInfo,
@@ -60,8 +52,7 @@ const ItemInfo = () => {
   // ============================================= //
 
   const getItemById = async () => {
-    //get http://localhost:5000/item/
-
+    //get http://localhost:5000/item/id?id=$id
     await axios
       .get(`http://localhost:5000/item/id?id=${state.item.id}`)
       .then((result) => {
@@ -74,49 +65,6 @@ const ItemInfo = () => {
   };
 
   // ============================================= //
-
-  const deleteItemById = async () => {
-    await axios
-      .delete(`http://localhost:5000/item/${state.item.id}`)
-      .then((result) => {
-        setMessage("Item has been deleted successfully");
-        setIsDeleted(true);
-        dispatch(setItemInfo(""));
-      })
-      .catch((err) => {
-        console.log(err);
-        console.log(err);
-        setMessage("Error happened while deleting the item");
-      });
-  };
-  const updateItemById = async () => {
-    await axios
-      .put(`http://localhost:5000/item/2`, {
-        image: image ? image : state.item.image,
-        title: title ? title : state.item.title,
-        description: description ? description : state.item.description,
-        category: category ? category : state.item.category,
-        price: price ? price : state.item.price,
-      })
-      .then((result) => {
-        setMessage("Item has been updating successfully");
-        console.log(result);
-        dispatch(
-          updateItemInfo({
-            image: image ? image : state.item.image,
-            title: title ? title : state.item.title,
-            description: description ? description : state.item.description,
-            category: category ? category : state.item.category,
-            price: price ? price : state.item.price,
-            id: state.item.id,
-          })
-        );
-      })
-      .catch((err) => {
-        console.log(err);
-        setMessage("Error happened while updating the item");
-      });
-  };
 
   const Cart = () => {
     const createNewCartOrWishlist = async (endPoint) => {
@@ -155,10 +103,7 @@ const ItemInfo = () => {
       </div>
     );
   };
-  // image, title, description, category, price, id
-  // useEffect(() => {
-  //   getItemById();
-  // }, []);
+
   return (
     <div className="item_info_box">
       {isDeleted ? (
@@ -173,11 +118,11 @@ const ItemInfo = () => {
             </div>
             <div className="sub_titleI">
               <p> Order Reference: 977209</p>
+            
+              <div>
               <h3>
                 <p style={{ color: "green" }}>{state.item.descriptions}</p>
               </h3>
-              <div>
-                <h4>Rate</h4>
                 <Rate item_id={state.item.id} />
               </div>
             </div>
@@ -237,50 +182,6 @@ const ItemInfo = () => {
             {/* <img className="tool" src={tool} alt={"tool"} /> */}
           </div>
           <div className="btnI"></div>
-
-          <div>
-            {/* <div className="update_box">
-              <button onClick={deleteItemById}>delete</button> */}
-            {/* <div className="update_item">
-                <input
-                  type="text"
-                  onChange={(e) => {
-                    setImage(e.target.value);
-                  }}
-                  placeholder="Image URl"
-                />
-                <input
-                  type="text"
-                  onChange={(e) => {
-                    setTitle(e.target.value);
-                  }}
-                  placeholder="Title"
-                />
-                <input
-                  type="number"
-                  onChange={(e) => {
-                    setCategory(e.target.value);
-                  }}
-                  placeholder="Category"
-                />
-                <input
-                  type="number"
-                  onChange={(e) => {
-                    setPrice(e.target.value);
-                  }}
-                  placeholder="Price"
-                />
-                <input
-                  type="text"
-                  onChange={(e) => {
-                    setDescription(e.target.value);
-                  }}
-                  placeholder="Description"
-                />
-                <button onClick={updateItemById}>update</button> */}
-            {/* </div> */}
-            {/* </div> */}
-          </div>
         </>
       )}
     </div>
