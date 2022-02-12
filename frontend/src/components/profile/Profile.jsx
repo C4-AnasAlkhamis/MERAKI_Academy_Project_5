@@ -160,13 +160,14 @@ const Profile = () => {
       {worker.length ? (
         <div className="profileInfoS">
           <img src={worker[0].image} alt={worker[0].user_name} />
-          <h1>{worker[0].user_name}</h1>
-          <address>{worker[0].address}</address>
+          <h1 style={{paddingBottom:"10px"}}>{worker[0].user_name}</h1>
+          <p style={{paddingBottom:"10px"}}>{worker[0].address}</p>
           <button
+
             onClick={() => {
               setShow(!show);
             }}>
-            edit profile
+            Edit Profile
           </button>
         </div>
       ) : null}
@@ -174,7 +175,6 @@ const Profile = () => {
         <table>
           <tbody>
             <tr>
-              <th style={{ width: "100px", textAlign: "Center" }}>Num</th>
               <th style={{ width: "100px", textAlign: "Center" }}>Name</th>
               <th style={{ width: "200px", textAlign: "Center" }}>
                 Order Details
@@ -188,8 +188,7 @@ const Profile = () => {
             </tr>
             {requests.map((req, index) => {
               return (
-                <tr>
-                  <tb>{index}</tb>
+                <tr key={index}>
                   <tb>{req.name}</tb>
                   <td>{req.order_Detalis}</td>
                   <td>{req.address}</td>
