@@ -115,11 +115,11 @@ const FeedBack = () => {
           <textarea
             id="sendBtn4"
             placeholder="Your Message Content"
-            cols="98"
-            rows="14"
+            cols="80"
+            rows="10"
             name="message"
           />
-          <input id="sendBtn5" type="submit" value="Send Email " />
+          <input id="sendBtn5" type="submit" value="Send FeedBack " />
 
           {/* <button " onClick={sendEmail,handleFeedBack}>Send Email</button> */}
 
