@@ -1,5 +1,7 @@
+/** @format */
+
 import axios from "axios";
-import "./servicePage.css"
+import "./servicePage.css";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
@@ -55,13 +57,13 @@ const ServicePage = () => {
   console.log(workers);
   return (
     <div className="servicePage">
-            <div className="pageTitle">
-        <h1>
-          POPULAR SERVICES<h6>What we Can Do</h6>
-        </h1>
-      </div>
       {!showWorker ? (
         <>
+          <div className="pageTitle">
+            <h1>
+              POPULAR SERVICES<h6>What we Can Do</h6>
+            </h1>
+          </div>
           {/* <h1>service</h1> */}
           <div className="services">
             {services.map((service, index) => {
@@ -74,8 +76,7 @@ const ServicePage = () => {
                     onClick={(e) => {
                       getWorkerByServiceId(service.id);
                       setShowWorker(true);
-                    }}
-                  >
+                    }}>
                     show service
                   </button>
                 </div>

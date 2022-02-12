@@ -1,4 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
+import "./serviceInfo.css"
 import { useState } from "react";
 import axios from "axios";
 const WSInfo = ({ setShowWorker }) => {
@@ -45,7 +46,12 @@ const WSInfo = ({ setShowWorker }) => {
 
   return (
     <>
-      <h1>ServiceInfo</h1>
+     <div className="pageTitle">
+            <h1>
+            Workers<h6>What we Can Do</h6>
+            </h1>
+          </div>
+      <h1></h1>
       <button
         onClick={() => {
           setShowWorker(false);
@@ -55,7 +61,7 @@ const WSInfo = ({ setShowWorker }) => {
       </button>
       {workers.map((worker, index) => {
         return (
-          <div key={index}>
+          <div key={index} className="workerInfoInService">
             <div>
               <p>{worker.user_name}</p>
               <img src={worker.image} alt={worker.name} />
