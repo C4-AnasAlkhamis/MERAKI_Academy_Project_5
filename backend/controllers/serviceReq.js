@@ -23,12 +23,18 @@ const createNewRequest = (req, res) => {
   });
 };
 
+
+
+
+
+
+
 // // =================================================== // done
 
 // This function get all items from items
 const getAllRequestByWorkerId = (req, res) => {
   const id = req.token.userId;
-  const query = `SELECT * FROM service_request WHERE worker_id = ?`;
+  const query = `SELECT * FROM service_request WHERE worker_id = ? AND is_deleted = 0`;
   const data = [id];
   connection.query(query, data, (err, result) => {
     if (err) {

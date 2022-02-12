@@ -11,15 +11,10 @@ import login from "../../image/login1.png";
 
 import { useDispatch } from "react-redux";
 // import LoginWG from "../LoginWG/LoginWG";
-import Swal from 'sweetalert2'
-import withReactContent from 'sweetalert2-react-content'
-
-
-
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
 
 const Login = () => {
-
-
   const rightLogin = () => {
     Swal.fire({
       title: "Have a Nice Journey In Our Website.",
@@ -32,7 +27,6 @@ const Login = () => {
     });
   };
 
-  
   const wrongLogin = () => {
     Swal.fire({
       icon: "error",
@@ -41,11 +35,6 @@ const Login = () => {
       color: "red",
     });
   };
-
-
-
-
-
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -81,7 +70,7 @@ const Login = () => {
         }
       })
       .catch((err) => {
-        wrongLogin()
+        wrongLogin();
         setMessage("Error happened while Login, please try again");
       });
   };
@@ -111,7 +100,7 @@ const Login = () => {
               placeholder="Password"
             />
             <button>Login</button>
-            <span>{message}</span>
+            {/* <span>{message}</span> */}
           </form>
         </div>
         {/* <form onSubmit={verifyUser}>
@@ -133,9 +122,8 @@ const Login = () => {
           />
           <button>Login</button>
           {/* <span>{message}</span> */}
-          {/* </form> } */}
+        {/* </form> } */}
       </div>
-
 
       {/* </div> */}
     </>

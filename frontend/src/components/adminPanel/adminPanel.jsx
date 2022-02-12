@@ -26,7 +26,6 @@ import {
 
 const AdminPanel = () => {
   const dispatch = useDispatch();
-
   return (
     <>
       <div className="titleBar">
