@@ -55,6 +55,11 @@ const ServicePage = () => {
   console.log(workers);
   return (
     <div className="servicePage">
+            <div className="pageTitle">
+        <h1>
+          POPULAR SERVICES<h6>What we Can Do</h6>
+        </h1>
+      </div>
       {!showWorker ? (
         <>
           {/* <h1>service</h1> */}

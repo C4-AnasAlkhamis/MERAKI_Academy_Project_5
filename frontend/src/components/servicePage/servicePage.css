@@ -144,3 +144,19 @@
     font-size: 20px;
   }
   
+  .pageTitle {
+    text-align: center;
+    margin-left: 32%;
+    margin-right: 32%;
+    padding-bottom: 3%;
+  }
+  .pageTitle h1 {
+    border: solid 1px rgb(252, 194, 34);
+    padding-top: 3%;
+    padding-bottom: 3%;
+  }
+  
+  .pageTitle h6 {
+    color: rgb(218, 73, 29);
+    padding-top: 3%;
+  }
