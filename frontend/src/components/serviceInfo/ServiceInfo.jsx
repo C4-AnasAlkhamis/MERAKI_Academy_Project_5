@@ -59,6 +59,7 @@ const WSInfo = ({ setShowWorker }) => {
       >
         Back
       </button>
+      <div className="workerLst">
       {workers.map((worker, index) => {
         return (
           <div key={index} className="workerInfoInService">
@@ -79,6 +80,7 @@ const WSInfo = ({ setShowWorker }) => {
           </div>
         );
       })}
+      </div>
       <div className="popup_form">
         <form onSubmit={""}>
           <input
