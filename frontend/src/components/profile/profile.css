@@ -1,0 +1,78 @@
+/** @format */
+
+.profile {
+  display: flex;
+}
+
+.reqGroup {
+  position: relative;
+  top: 50px;
+  left: 100px;
+}
+
+.reqGroup th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background-color: rgb(4, 81, 140);
+  color: white;
+}
+
+.reqUser {
+  display: grid;
+}
+
+.editProfile {
+  position: fixed;
+  top: 200px;
+  left: 400px;
+  background-color: white;
+  padding: 5%;
+}
+
+.editProfile input {
+    font-family: FontAwesome;
+    font-size: 1.25em;
+    width: 80%;
+    border: none;
+    background-color: white;
+    color: black;
+    border-bottom: solid 1px rgb(163, 159, 159);
+    padding-bottom: 20px;
+  }
+
+.profileInfoS {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  padding-left: 8%;
+  padding-top: 3%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profileInfoS img {
+  width: 200px;
+  border-radius: 50%;
+}
+
+.profileInfoS button, .editProfile button  {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  color: white;
+  border: none;
+  font-size: 17px;
+  width: 50%;
+  background-color: rgb(4, 81, 140);
+  margin-bottom: 10px;
+  border-left: solid 5px rgb(255, 211, 51);
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.profileInfoS button:hover .editProfile button:hover{
+  color: white;
+  border: none;
+  background-color: #2790bd;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px,
+    rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+  border-left: solid 5px rgb(255, 211, 51);
+}

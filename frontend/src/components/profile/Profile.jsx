@@ -1,4 +1,7 @@
+/** @format */
+
 import axios from "axios";
+import "./profile.css";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import jsw from "jwt-decode";
@@ -125,7 +128,6 @@ const Profile = () => {
     axios
       .post(`https://api.cloudinary.com/v1_1/debtpixx1/image/upload/`, formData)
       .then((res) => {
-
         updateWorkerById(res.data.secure_url);
       });
   };
@@ -154,40 +156,57 @@ const Profile = () => {
     getRequestByWorker();
   }, []);
   return (
-    <>
-      <div>
-        <h1>Profile</h1>
-        {worker.length ? (
-          <div>
-            <h3>{worker[0].user_name}</h3>
-            <img src={worker[0].image} alt={worker[0].user_name} />
-            <address>{worker[0].address}</address>
-            <button
-              onClick={() => {
-                setShow(!show);
-              }}
-            >
-              edit profile
-            </button>
-          </div>
-        ) : null}
-      </div>
-      <div>
-        {requests.map((req, index) => {
-          return (
-            <section key={index}>
-              <p>{req.name}</p>
-              <address>{req.address}</address>
-              <small>{req.phone}</small>
-              <p>{req.order_Detalis}</p>
-              <button>approve</button>
-              <button>reject</button>
-            </section>
-          );
-        })}
+    <div className="profile">
+      {worker.length ? (
+        <div className="profileInfoS">
+          <img src={worker[0].image} alt={worker[0].user_name} />
+          <h1 style={{paddingBottom:"10px"}}>{worker[0].user_name}</h1>
+          <p style={{paddingBottom:"10px"}}>{worker[0].address}</p>
+          <button
+
+            onClick={() => {
+              setShow(!show);
+            }}>
+            {show?"Back":"Edit Profile"}
+          </button>
+        </div>
+      ) : null}
+      <div className="reqGroup">
+        <table>
+          <tbody>
+            <tr>
+              <th style={{ width: "100px", textAlign: "Center" }}>Name</th>
+              <th style={{ width: "200px", textAlign: "Center" }}>
+                Order Details
+              </th>
+              <th style={{ width: "100px", textAlign: "Center" }}>Address</th>
+              <th style={{ width: "100px", textAlign: "Center" }}>
+                Phone Number
+              </th>
+              <th style={{ width: "100px", textAlign: "Center" }}>Approve</th>
+              <th style={{ width: "100px", textAlign: "Center" }}>Reject</th>
+            </tr>
+            {requests.map((req, index) => {
+              return (
+                <tr key={index}>
+                  <tb>{req.name}</tb>
+                  <td>{req.order_Detalis}</td>
+                  <td>{req.address}</td>
+                  <td>{req.phone}</td>
+                  <td>
+                    <button>Approve</button>
+                  </td>
+                  <td>
+                    <button>Reject</button>
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
       </div>
       {show ? (
-        <div>
+        <div className="editProfile">
           <input
             type="text"
             placeholder="address"
@@ -208,9 +227,8 @@ const Profile = () => {
             onClick={() => {
               uploadImage();
               setShow(false);
-            }}
-          >
-            Add Service
+            }}>
+            Done
           </button>
 
           <br />
@@ -219,7 +237,7 @@ const Profile = () => {
             : message && <div className="ErrorMessage">{message}</div>}
         </div>
       ) : null}
-    </>
+    </div>
   );
 };
 
