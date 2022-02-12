@@ -1,5 +1,7 @@
+/** @format */
+
 import axios from "axios";
-import "./profile.css"
+import "./profile.css";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import jsw from "jwt-decode";
@@ -126,7 +128,6 @@ const Profile = () => {
     axios
       .post(`https://api.cloudinary.com/v1_1/debtpixx1/image/upload/`, formData)
       .then((res) => {
-
         updateWorkerById(res.data.secure_url);
       });
   };
@@ -156,47 +157,54 @@ const Profile = () => {
   }, []);
   return (
     <div className="profile">
-        {worker.length ? (
-      <div className="profileInfoS">
-     
-            <img src={worker[0].image} alt={worker[0].user_name} />
-            <h1>{worker[0].user_name}</h1>
-            <address>{worker[0].address}</address>
-            <button
-              onClick={() => {
-                setShow(!show);
-              }}
-            >
-              edit profile
-            </button>
-         
-      </div>
-        ) : null}
+      {worker.length ? (
+        <div className="profileInfoS">
+          <img src={worker[0].image} alt={worker[0].user_name} />
+          <h1>{worker[0].user_name}</h1>
+          <address>{worker[0].address}</address>
+          <button
+            onClick={() => {
+              setShow(!show);
+            }}>
+            edit profile
+          </button>
+        </div>
+      ) : null}
       <div className="reqGroup">
-            <table>
-              <tbody>
+        <table>
+          <tbody>
             <tr>
-            <th style={{width: "100px",textAlign:"Center"}}>Name</th>
-            <th style={{width: "700px",textAlign:"Center"}}>Order Details</th>
-            <th style={{width: "100px",textAlign:"Center"}}>Address</th>
-            <th style={{width: "100px",textAlign:"Center"}}>Phone Number</th>
-            <th style={{width: "100px",textAlign:"Center"}}>Approve</th>
-            <th style={{width: "100px",textAlign:"Center"}}>Reject</th>
+              <th style={{ width: "100px", textAlign: "Center" }}>Num</th>
+              <th style={{ width: "100px", textAlign: "Center" }}>Name</th>
+              <th style={{ width: "200px", textAlign: "Center" }}>
+                Order Details
+              </th>
+              <th style={{ width: "100px", textAlign: "Center" }}>Address</th>
+              <th style={{ width: "100px", textAlign: "Center" }}>
+                Phone Number
+              </th>
+              <th style={{ width: "100px", textAlign: "Center" }}>Approve</th>
+              <th style={{ width: "100px", textAlign: "Center" }}>Reject</th>
             </tr>
-        {requests.map((req, index) => {
-          return (
-                  <tr>
-              <tb>{req.name}</tb>
-              <td>{req.order_Detalis}</td>
-              <td>{req.address}</td>
-              <td>{req.phone}</td>
-              <td><button>Approve</button></td>
-              <td><button>Reject</button></td>
-              </tr>
-          );
-        })}
-        </tbody>
-                </table>
+            {requests.map((req, index) => {
+              return (
+                <tr>
+                  <tb>{index}</tb>
+                  <tb>{req.name}</tb>
+                  <td>{req.order_Detalis}</td>
+                  <td>{req.address}</td>
+                  <td>{req.phone}</td>
+                  <td>
+                    <button>Approve</button>
+                  </td>
+                  <td>
+                    <button>Reject</button>
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
       </div>
       {show ? (
         <div className="editProfile">
@@ -220,8 +228,7 @@ const Profile = () => {
             onClick={() => {
               uploadImage();
               setShow(false);
-            }}
-          >
+            }}>
             Add Service
           </button>
 

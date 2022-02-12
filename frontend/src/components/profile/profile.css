@@ -8,9 +8,15 @@
 .reqGroup {
   padding-top: 10%;
 }
+
 .reqGroup th {
-  text-align: center;
-}
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: rgb(4, 81, 140);
+    color: white;
+  }
+
 .reqUser {
   display: grid;
 }
