@@ -1,4 +1,5 @@
 import axios from "axios";
+import "./profile.css"
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import jsw from "jwt-decode";
@@ -154,8 +155,8 @@ const Profile = () => {
     getRequestByWorker();
   }, []);
   return (
-    <>
-      <div>
+    <div className="profile">
+      <div className="profileInfoS">
         <h1>Profile</h1>
         {worker.length ? (
           <div>
@@ -172,16 +173,24 @@ const Profile = () => {
           </div>
         ) : null}
       </div>
-      <div>
+      <div className="reqGroup">
         {requests.map((req, index) => {
           return (
-            <section key={index}>
-              <p>{req.name}</p>
+            <section key={index}  className="reqUser">
+              <div>
+                <table>
+                  <th>Name</th>
+                  <th>Order Details</th>
+                  <th>Address</th>
+                  <th>Phone Number</th>
+              <tb> {req.name}</tb>
               <address>{req.address}</address>
               <small>{req.phone}</small>
               <p>{req.order_Detalis}</p>
               <button>approve</button>
               <button>reject</button>
+                </table>
+              </div>
             </section>
           );
         })}
@@ -219,7 +228,7 @@ const Profile = () => {
             : message && <div className="ErrorMessage">{message}</div>}
         </div>
       ) : null}
-    </>
+    </div>
   );
 };
 

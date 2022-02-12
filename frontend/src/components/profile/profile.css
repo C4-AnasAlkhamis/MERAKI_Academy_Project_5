@@ -1,0 +1,15 @@
+.profile{
+    display: flex;
+    gap: 10%;
+}
+
+.reqGroup{
+    display: flex;
+    flex-direction: column;
+    gap: 10%;
+}
+
+.reqUser{
+    display: grid;
+    
+}
