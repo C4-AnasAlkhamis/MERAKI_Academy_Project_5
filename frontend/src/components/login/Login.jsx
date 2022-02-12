@@ -110,7 +110,7 @@ const Login = () => {
               placeholder="Password"
             />
             <button>Login</button>
-            <span>{message}</span>
+            {/* <span>{message}</span> */}
           </form>
         </div>
         {/* <form onSubmit={verifyUser}>

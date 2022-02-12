@@ -3,15 +3,19 @@
 import axios from "axios";
 import React, { useRef, useEffect, useState } from "react";
 
-// // import { useNavigate, LINK } from "react-router-dom";
+//  import { useNavigate, LINK } from "react-router-dom";
 import "./footer.css";
+import { useNavigate, Link } from "react-router-dom";
 
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 
 import FeedBack from "../feedback/Feedback";
-import payCards from '../../image/cards.png';
+import payCards from "../../image/cards.png";
+
 const Footer = () => {
+  const nav = useNavigate();
+
   return (
     <>
       <div className="footer">
@@ -22,37 +26,58 @@ const Footer = () => {
               <h2 className="follow">Follow Us On Social Media</h2>
               <ul className="social">
                 <li>
-                  {/* <a href="http://facebook.com/">Facebook</a> */}
-                  Facebook</li>
+                  <a href="https://web.facebook.com/TechniCorner-113936371207625/about/?ref=page_internal">
+                    Facebook
+                  </a>
+                  
+                </li>
                 <li>
-                  {/* <a href="http://twitter.com/">Twitter</a> */}
-                  Twitter</li>
+                  <a href="http://twitter.com/">Twitter</a>
+                  
+                </li>
                 <li>
-                  {/* <a href="http://Youtube.com/">Youtube</a> */}
-                  Youtube</li>
+                  <a href="https://www.youtube.com/channel/UCcO5lahWe1dFGemPIgJtK1w/">
+                    Youtube
+                  </a>
+                  
+                </li>
                 <li>
-                  {/* <a href="http://Instagram.com/">Instagram</a> */}
-                  Instagram</li>
+                  <a href="https://www.instagram.com/technicorner7/">
+                    Instagram
+                  </a>
+                  
+                </li>
               </ul>
             </div>
 
             <div className="2">
               <h2 className="imp">Important Links</h2>
               <ul className="impLink">
-                <li>Home</li>
-                <li>Tool Storage</li>
-                <li>Safty Work Waer</li>
-                <li>Power Tools</li>
-                <li>Hand Tools</li>
+                {/* <li onClick={nav("homePage")}>Home</li> */}
+                <li> <Link className="gg" to={"homePage"}>Home</Link></li>
+
+                {/* <li onClick={nav("/register")}>Register</li> */}
+                <li> <Link className="gg" to={"register"}>Register</Link></li>
+
+                {/* <li onClick={nav("/login)")}>Login</li> */}
+                <li> <Link className="gg" to={"login"}>Login</Link></li>
+                <li> <Link className="gg" to={"cart"}>Cart</Link></li>
+                <li> <Link className="gg" to={"wishlist"}>Wishlist</Link></li>
+                <li> <Link className="gg" to={"adminPanel"}>Admin Panel</Link></li>
+
+                {/* <li onClick={nav("/cart")}>Cart</li>
+
+                <li onClick={nav("/wishlist")}>Wish List</li>
+
+                <li onClick={nav("/adminPanel")}>Admin Panel</li> */}
+
 
               </ul>
             </div>
           </div>
-          <h2 className="duty">
-            06-474747470 (Saturday - Thursday 8am - 5pm)
-          </h2>
+          <h2 className="duty">06-474747470 (Saturday - Thursday 8am - 5pm)</h2>
 
-          <img src={payCards} alt="pa"/>
+          <img src={payCards} alt="pa" />
 
           <h4 className="paym">
             Finance provided by PayPal Credit. Terms and conditions apply.
