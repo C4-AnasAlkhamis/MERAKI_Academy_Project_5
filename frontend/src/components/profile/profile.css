@@ -1,15 +1,15 @@
 .profile{
     display: flex;
-    gap: 10%;
+    /* gap: 10%; */
 }
 
 .reqGroup{
-    display: flex;
-    flex-direction: column;
-    gap: 10%;
+padding-top: 10%;
 }
-
+.reqGroup th{
+text-align: center;
+}
 .reqUser{
     display: grid;
-    
 }
+

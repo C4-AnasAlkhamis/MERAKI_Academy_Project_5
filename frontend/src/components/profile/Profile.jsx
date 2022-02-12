@@ -174,29 +174,33 @@ const Profile = () => {
         ) : null}
       </div>
       <div className="reqGroup">
+            <table>
+              <tbody>
+            <tr>
+            <th style={{width: "100px",textAlign:"Center"}}>Name</th>
+            <th style={{width: "700px",textAlign:"Center"}}>Order Details</th>
+            <th style={{width: "100px",textAlign:"Center"}}>Address</th>
+            <th style={{width: "100px",textAlign:"Center"}}>Phone Number</th>
+            <th style={{width: "100px",textAlign:"Center"}}>Approve</th>
+            <th style={{width: "100px",textAlign:"Center"}}>Reject</th>
+            </tr>
         {requests.map((req, index) => {
           return (
-            <section key={index}  className="reqUser">
-              <div>
-                <table>
-                  <th>Name</th>
-                  <th>Order Details</th>
-                  <th>Address</th>
-                  <th>Phone Number</th>
-              <tb> {req.name}</tb>
-              <address>{req.address}</address>
-              <small>{req.phone}</small>
-              <p>{req.order_Detalis}</p>
-              <button>approve</button>
-              <button>reject</button>
-                </table>
-              </div>
-            </section>
+                  <tr>
+              <tb>{req.name}</tb>
+              <td>{req.order_Detalis}</td>
+              <td>{req.address}</td>
+              <td>{req.phone}</td>
+              <td><button>Approve</button></td>
+              <td><button>Reject</button></td>
+              </tr>
           );
         })}
+        </tbody>
+                </table>
       </div>
       {show ? (
-        <div>
+        <div className="editProfile">
           <input
             type="text"
             placeholder="address"
