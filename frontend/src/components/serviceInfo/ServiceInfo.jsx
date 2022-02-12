@@ -63,8 +63,8 @@ const WSInfo = ({ setShowWorker }) => {
         return (
           <div key={index} className="workerInfoInService">
             <div>
-              <p>{worker.user_name}</p>
               <img src={worker.image} alt={worker.name} />
+              <h1>{worker.user_name}</h1>
             </div>
 
             <small>{worker.phone}</small>
