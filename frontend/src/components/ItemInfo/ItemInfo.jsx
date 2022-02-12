@@ -170,18 +170,17 @@ const ItemInfo = () => {
             </div>
             <div className="sub_titleI">
               <p> Order Reference: 977209</p>
-              <h1><p style={{color:"green"}}>IN STOCK</p></h1>
+              <h3><p style={{color:"green"}}>{state.item.descriptions}</p></h3>
               </div>
             <div className="img_boxI">
-              <img className="tool" src={tool} alt={"tool"} />
               <img className="itemI" src={state.item.img} alt={state.item.title} />
           <div className="info_box">
-            <h3><span className="price" > {state.item.price}  JOD</span><br/></h3>
+            <h4><span className="price" > {state.item.price}  $</span><br/></h4>
+              <ul>
             <span className="list_title">
               Order within 6 Hours and 15 Minutes for earliest possible
               delivery.
             </span>
-              <ul>
                 <li>
                   <span>
                     <RiMoneyDollarCircleLine /> Free Delivery
@@ -219,6 +218,7 @@ const ItemInfo = () => {
             </div>
 
           </div>
+              {/* <img className="tool" src={tool} alt={"tool"} /> */}
             </div>
             <div className="btnI">
           </div>

@@ -12,13 +12,11 @@
   justify-content: center;
   gap: 10px;
   grid-template-columns: repeat(5, 250px);
-}
-
-.items {
   border: none;
   display: grid;
   margin: 20px;
 }
+
 .item {
   text-align: center;
   border: solid 1px #dddbdb;
@@ -45,6 +43,7 @@
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   position: sticky;
   top: 63px;
+  z-index: 1;
   border-bottom: solid 3px rgb(57, 208, 177);
 }
 
@@ -93,6 +92,7 @@
   padding-top: 10px;
   font-size: 0.8rem;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  padding-right: 50px;
 }
 
 .Hadar img {
@@ -130,8 +130,8 @@
 .filter_box {
   width: 80vw;
   padding: 5px;
-  position: sticky;
-  top: 133px;
+  /* position: sticky;
+  top: 133px; */
 }
 
 .filter_box div {

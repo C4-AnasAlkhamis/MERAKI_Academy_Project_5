@@ -191,11 +191,11 @@ const ShowItem = () => {
       <table className="showItemTable">
         <tbody>
           <tr>
-            <th>id</th>
-            <th>image</th>
-            <th>title</th>
+            <th>ID</th>
+            <th>Image</th>
+            <th>Title</th>
             <th>State</th>
-            <th>price</th>
+            <th>Price</th>
             <th className="icon">update</th>
             <th className="icon">delete</th>
           </tr>
@@ -216,7 +216,7 @@ const ShowItem = () => {
                 <td>{item.title}</td>
                 <td>
                   
-                    <div>
+                    <div style={{display:"flex"}}>
                     <input
                     style={{width:"20px"}}
                     checked={item.is_deleted === 0}
@@ -239,7 +239,10 @@ const ShowItem = () => {
                       value={0}
                       // checked={item.is_deleted === 0}
                       />
-                      in stock</div>
+                      <label style={{width:"80px",paddingTop:"13px"}}>
+                       In Stock
+                     </label>
+                      </div>
                 </td>
                 <td>{item.price}</td>
                 <td>

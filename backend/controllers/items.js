@@ -27,7 +27,7 @@ const createNewItem = (req, res) => {
 
 // This function get all items from items
 const getAllItems = (req, res) => {
-  const query = `SELECT * FROM items WHERE is_deleted = 0`;
+  const query = `SELECT * FROM items `;
   connection.query(query, (err, result) => {
     if (err) {
       return res.status(500).json({

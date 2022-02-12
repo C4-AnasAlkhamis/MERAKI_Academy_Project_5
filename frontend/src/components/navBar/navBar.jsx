@@ -66,10 +66,6 @@ const NavBar = () => {
                   <AiOutlineFundProjectionScreen /> HOME
                 </Link>
 
-                <Link to="/feedback" style={{ textDecoration: "none" }}>
-                  FEEDBACK
-                </Link>
-
                 {/* <Link to="/feedback" style={{ textDecoration: "none" }}>FEEDBACK
                 </Link> */}
 
@@ -98,7 +94,9 @@ const NavBar = () => {
                   to="/homePage"
                   className="logout"
                   onClick={(e) => {
-                    popupLogout();
+
+                    // popupLogout()
+
 
                     dispatch(logOut());
                     localStorage.clear();

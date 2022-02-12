@@ -208,7 +208,8 @@ const HomePage = () => {
           {item.img ? <img src={item.img} alt={item.title} /> : null}
         </div>
         <div className="info_box">
-          <h1>{item.price} JOD</h1>
+          <h3>{item.descriptions}</h3>
+          <h2>{item.price} $</h2>
           <span>{item.rate}</span>
         </div>
         <div className="btn">
