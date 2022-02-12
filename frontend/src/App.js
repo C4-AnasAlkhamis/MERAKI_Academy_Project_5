@@ -16,6 +16,7 @@ import HomePage from "./components/homePage/homePage";
 import AdminPanel from "./components/adminPanel/adminPanel";
 import logo from "./image/logo.png";
 // import Category from "./components/adminPanel/categories/Caregories";
+import Worker from "./components/createWorker/CreateWorker";
 
 import AddItem from "./components/adminPanel/items/addItem/addItem";
 
@@ -23,9 +24,9 @@ import AddItem from "./components/adminPanel/items/addItem/addItem";
 import AddCategory from "./components/adminPanel/categories/Caregories";
 import ShowItems from "./components/adminPanel/items/showItems/showItems";
 import AddService from "./components/adminPanel/services/AddService";
+
 // import ShowServices  from "./components/adminPanel/services/showServices/showServices";
 import ShowUsers from "./components/adminPanel/users/showUsers/showUsers";
-
 import { useState } from "react";
 
 // import AddService from "./components/addService/AddService";
@@ -45,39 +46,39 @@ function App() {
   let isAdmin = localStorage.getItem("isAdmin") ? true : false;
   return (
     <div className="App">
-      
-      {isAdmin ? <AdminPanel /> :<> <div className="logo">
-        <img src={logo} />
-      </div><NavBar /></>}
+      {isAdmin ? (
+        <AdminPanel />
+      ) : (
+        <>
+          {" "}
+          <div className="logo">
+            <img src={logo} />
+          </div>
+          <NavBar />
+        </>
+      )}
       <Routes>
-        
         <Route path="/login" element={<Login />} />7
         <Route path="/register" element={<Register />} />
         <Route path="/more-info" element={<ItemInfo />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/Wishlist" element={<Wishlist />} />
         <Route path="/homePage" element={<HomePage />} />
-        {/* <Route path="/paginate" element={<Pag />} /> */}
-        <Route path="/paginate" element={<ServicePage />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/service" element={<ServicePage />} />
         {/* <Route path="/adminPanel" element={<AdminPanel />} /> */}
-        <Route path="/dashboard" element={<Profile />} />
+        <Route path="/profiles" element={<Worker />} />
         <Route path="/addCategory" element={<AddCategory />} />
         <Route path="/addItems" element={<AddItem />} />
         <Route path="/showItems" element={<ShowItems />} />
         <Route path="/addService" element={<AddService />} />
         {/* <Route path="/showServices" element={<ShowServices />} /> */}
         <Route path="/showUsers" element={<ShowUsers />} />
-
         <Route path="/showWorkers" element={<ShowWorkers />} />
-
         {/* <Route path="/showWorkers" element={<ShowWorkers />} /> */}
         <Route path="/feedBack" element={<FeedBack />} />
-
-
       </Routes>
-
     </div>
-
   );
 }
 

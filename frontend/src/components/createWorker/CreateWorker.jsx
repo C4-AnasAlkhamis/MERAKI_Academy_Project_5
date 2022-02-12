@@ -4,12 +4,12 @@ import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import Select from "react-select";
 
-import {
-  setService,
-  updateService,
-  deleteService,
-} from "../../reducer/service/index";
-import { setWorker } from "../../reducer/worker/index";
+// import {
+//   setService,
+//   updateService,
+//   deleteService,
+// } from "../../reducer/service/index";
+// import { setWorker } from "../../reducer/worker/index";
 const Worker = () => {
   const [status, setStatus] = useState(false);
   const [phone, setPhone] = useState();
@@ -52,7 +52,7 @@ const Worker = () => {
   };
   // ================================================  //
 
-  const createWorker = (image) => {
+  const createWorker = async (image) => {
     //post http://localhost:5000/worker
 
     await axios

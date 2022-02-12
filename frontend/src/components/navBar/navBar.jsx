@@ -6,52 +6,45 @@ import { logOut } from "../../reducer/login/index";
 import { useSelector, useDispatch } from "react-redux";
 
 //
-import { GrUser } from "react-icons/gr";
-import { BiLogOut } from "react-icons/bi";
-import { BiLogIn } from "react-icons/bi";
+import { GrUserWorker } from "react-icons/gr";
+import { BiLogOut, BiLogIn } from "react-icons/bi";
+// import { BiLogIn } from "react-icons/bi";
 import {
   AiOutlineFundProjectionScreen,
   AiOutlineShoppingCart,
   AiOutlineOrderedList,
   AiOutlineUserAdd,
 } from "react-icons/ai";
+import { FcServices } from "react-icons/fc";
 //
-import Swal from 'sweetalert2'
-import withReactContent from 'sweetalert2-react-content'
+import Swal from "sweetalert2";
+// import withReactContent from "sweetalert2-react-content";
 
-const popupLogout =()=>{
-
+const popupLogout = () => {
   Swal.fire({
-    title: 'Are you sure?',
-    icon: 'warning',
+    title: "Are you sure?",
+    icon: "warning",
     showCancelButton: true,
-    confirmButtonColor: '#3085d6',
-    cancelButtonColor: '#d33',
-    confirmButtonText: 'Yes!',
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Yes!",
     // title: 'Custom width, padding, color, background.',
     width: 600,
-    padding: '3em',
-    color: '#716add',
-    background: '#fff url(/images/trees.png)',
+    padding: "3em",
+    color: "#716add",
+    background: "#fff url(/images/trees.png)",
     backdrop: `
       rgba(0,0,123,0.4)
       url("/images/nyan-cat.gif")
       left top
       no-repeat
-    `
-
+    `,
   }).then((result) => {
     if (result.isConfirmed) {
-      Swal.fire(
-        'Logout!',
-        'You have been logged out !.',
-        'success'
-      )
+      Swal.fire("Logout!", "You have been logged out !.", "success");
     }
-  })
-
-
-}
+  });
+};
 const NavBar = () => {
   const dispatch = useDispatch();
   const { isLoggedIn } = useSelector((state) => {
@@ -71,7 +64,8 @@ const NavBar = () => {
                 <Link to="/homePage" style={{ textDecoration: "none" }}>
                   <AiOutlineFundProjectionScreen /> HOME
                 </Link>
-                <Link to="/feedback" style={{ textDecoration: "none" }}>FEEDBACK
+                <Link to="/feedback" style={{ textDecoration: "none" }}>
+                  FEEDBACK
                 </Link>
                 <Link to="/cart" style={{ textDecoration: "none" }}>
                   <AiOutlineShoppingCart /> CART
@@ -79,16 +73,25 @@ const NavBar = () => {
                 <Link to="/wishlist" style={{ textDecoration: "none" }}>
                   <AiOutlineOrderedList /> WISHLIST
                 </Link>
-
+                <Link to="/service" style={{ textDecoration: "none" }}>
+                  <FcServices /> SERVICES
+                </Link>
+                {/* <Link to="/profile" style={{ textDecoration: "none" }}>
+                  <GrUserWorker /> PROFILE
+                </Link> */}
+                  <Link to="/profiles" style={{ textDecoration: "none" }}>
+                  <GrUserWorker /> ADD YOUR SERVICE
+                </Link>
                 <Link
                   to="/homePage"
                   className="logout"
                   onClick={(e) => {
-                    popupLogout()
+                    popupLogout();
 
                     dispatch(logOut());
                     localStorage.clear();
-                  }}>
+                  }}
+                >
                   <BiLogOut /> LOGOUT
                 </Link>
               </>
