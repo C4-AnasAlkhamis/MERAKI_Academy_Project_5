@@ -20,6 +20,7 @@ display: flex;
 display: flex;  
 flex-direction: row; 
 justify-content: center;
+color: black;
 
 column-gap: 150px; 
    /* display: inline-block; */
@@ -40,7 +41,8 @@ padding-top: 15px;
 
 
 .duty{
-    padding-top: 30px; 
+    padding-top: 15px; 
+    padding-left: 200px; 
 
 
 }
@@ -50,9 +52,6 @@ padding-top: 15px;
 
 } */
 
-.imp {
-
-}
 
 
 .social {
@@ -62,25 +61,70 @@ padding-top: 15px;
         /* margin: 10px; */
 
         font-size: larger;
+        color: black;
 
         list-style: none;
         padding-top: 15px; 
+        margin-left: 70px; 
+
     }
 
     .social li {
         margin: 10px; 
 text-decoration: none;
 }
+
+.social li a{
+    /* margin: 10px;  */
+text-decoration: none;
+color: black; 
+}
 .impLink {
     /* padding-top: 30px;  */
     font-size: larger;
+    color: black;
+
+    /* list-style: none; */
+    padding-top: 15px; 
+    list-style: none;
+    font-size: larger;
+    color: black;
 
     list-style: none;
     padding-top: 15px; 
 
 }
-.impLink li {
+.impLink li{
+    /* margin: 10px;  */
+    /* color: black; */
+    /* text-decoration: none; */
+    color: black; 
     margin: 10px; 
-  
+    text-decoration: none;
+
+}
+Link{
+    /* margin: 10px;  */
+    /* color: black; */
+    /* text-decoration: none; */
+    color: black; 
+    margin: 10px; 
+text-decoration: none;
+color: black; 
+
+}
+
+.impLink li Link{
+    /* margin: 10px;  */
+    /* color: black; */
+    /* text-decoration: none; */
+    color: black; 
+    margin: 10px; 
+    text-decoration: none;
+
+}
+.gg{
+    color: black; 
+
 
 }
