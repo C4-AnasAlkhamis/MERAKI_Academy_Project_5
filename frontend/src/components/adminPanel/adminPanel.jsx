@@ -26,14 +26,13 @@ import {
 
 const AdminPanel = () => {
   const dispatch = useDispatch();
-
   return (
     <>
       <div className="titleBar">
         <div className="logoAdmin">
           <img src={logo} />
         </div>
-        <h1 id="adminName"><BiUserCircle/> Omar</h1>
+        <h1 id="adminName"><BiUserCircle/> {localStorage.getItem("userName")}</h1>
         <Link
           id="adminLogout"
           to={"/homePage"}

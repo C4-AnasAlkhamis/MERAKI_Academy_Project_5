@@ -1,4 +1,5 @@
 import axios from "axios";
+import "./servicePage.css"
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
@@ -53,17 +54,22 @@ const ServicePage = () => {
   }, []);
   console.log(workers);
   return (
-    <>
+    <div className="servicePage">
+            <div className="pageTitle">
+        <h1>
+          POPULAR SERVICES<h6>What we Can Do</h6>
+        </h1>
+      </div>
       {!showWorker ? (
         <>
-          <h1>service</h1>
-          <div>
+          {/* <h1>service</h1> */}
+          <div className="services">
             {services.map((service, index) => {
               return (
-                <div key={index}>
-                  <p>{service.title}</p>
+                <div key={index} className="service">
                   <img src={service.image} alt={service.title} />
-                  <small>{service.description}</small>
+                  <h2>{service.title}</h2>
+                  <p>{service.description}</p>
                   <button
                     onClick={(e) => {
                       getWorkerByServiceId(service.id);
@@ -78,9 +84,9 @@ const ServicePage = () => {
           </div>
         </>
       ) : (
-        <WSInfo />
+        <WSInfo setShowWorker={setShowWorker} />
       )}
-    </>
+    </div>
   );
 };
 

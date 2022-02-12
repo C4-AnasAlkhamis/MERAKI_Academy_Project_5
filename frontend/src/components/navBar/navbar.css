@@ -5,6 +5,7 @@
   /* width: 100%; */
   background-color: white;
   display: grid;
+  z-index: 1;
   position: sticky;
   top: 0;
 }

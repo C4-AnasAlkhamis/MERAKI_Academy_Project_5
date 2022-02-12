@@ -173,65 +173,62 @@ const ItemInfo = () => {
             </div>
             <div className="sub_titleI">
               <p> Order Reference: 977209</p>
-              <h1>
-                <p style={{ color: "green" }}>IN STOCK</p>
-              </h1>
-            </div>
-            <div className="img_boxI">
-              <img className="tool" src={tool} alt={"tool"} />
-              <img
-                className="itemI"
-                src={state.item.img}
-                alt={state.item.title}
-              />
 
-              <div className="info_box">
-                <h3>
-                  <span className="price"> {state.item.price} JOD</span>
-                  <br />
-                </h3>
-                <span className="list_title">
-                  Order within 6 Hours and 15 Minutes for earliest possible
-                  delivery.
-                </span>
-                <ul>
-                  <li>
-                    <span>
-                      <RiMoneyDollarCircleLine /> Free Delivery
-                    </span>
-                  </li>
-                  <li>
-                    <span>
-                      <BsFillCalendarCheckFill /> Select Your Own Delivery Date
-                    </span>
-                  </li>
-                  <li>
-                    <span>
-                      <FaShippingFast /> Next Day Delivery Service
-                    </span>
-                  </li>
-                  <li>
-                    <span>
-                      <BsHourglassSplit /> 1 Hour Delivery Slot
-                    </span>
-                  </li>
-                  <li>
-                    <span>
-                      <RiPaypalFill /> Spread the cost over 4 months with 0%
-                      Interest from PayPal
-                    </span>
-                  </li>
-                </ul>
-                <div>
-                  <Cart />
-                  <span>{state.item.rate}</span>
-                </div>
+              <h3><p style={{color:"green"}}>{state.item.descriptions}</p></h3>
+              </div>
+            <div className="img_boxI">
+              <img className="itemI" src={state.item.img} alt={state.item.title} />
+          <div className="info_box">
+            <h4><span className="price" > {state.item.price}  $</span><br/></h4>
+              <ul>
+            <span className="list_title">
+              Order within 6 Hours and 15 Minutes for earliest possible
+              delivery.
+            </span>
+                <li>
+                  <span>
+                    <RiMoneyDollarCircleLine /> Free Delivery
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <BsFillCalendarCheckFill /> Select Your Own Delivery Date
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <FaShippingFast /> Next Day Delivery Service
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <BsHourglassSplit /> 1 Hour Delivery Slot
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <RiPaypalFill /> Spread the cost over 4 months with 0% Interest from PayPal
+                  </span>
+                </li>
+              </ul>
+              <div>
+              <Cart />
+            <span>{state.item.rate}</span>
+              </div>
+
                 {/* <img
                   src="https://its-london.s3-eu-west-1.amazonaws.com/CMS/Footer/cards.png"
                   alt=""
                 /> */}
               </div>
             </div>
+
+
+          </div>
+              {/* <img className="tool" src={tool} alt={"tool"} /> */}
+            </div>
+            <div className="btnI">
+
           </div>
           <div className="btnI"></div>
 

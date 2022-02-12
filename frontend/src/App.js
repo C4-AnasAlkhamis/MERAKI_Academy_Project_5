@@ -16,6 +16,7 @@ import HomePage from "./components/homePage/homePage";
 import AdminPanel from "./components/adminPanel/adminPanel";
 import logo from "./image/logo.png";
 // import Category from "./components/adminPanel/categories/Caregories";
+import Worker from "./components/createWorker/CreateWorker";
 
 import AddItem from "./components/adminPanel/items/addItem/addItem";
 
@@ -23,15 +24,16 @@ import AddItem from "./components/adminPanel/items/addItem/addItem";
 import AddCategory from "./components/adminPanel/categories/Caregories";
 import ShowItems from "./components/adminPanel/items/showItems/showItems";
 import AddService from "./components/adminPanel/services/AddService";
+
 // import ShowServices  from "./components/adminPanel/services/showServices/showServices";
 import ShowUsers from "./components/adminPanel/users/showUsers/showUsers";
-
 import { useState } from "react";
 
 // import AddService from "./components/addService/AddService";
 import ServicePage from "./components/servicePage/ServicePage";
 import Profile from "./components/profile/Profile";
 import FeedBack from "./components/feedback/Feedback";
+import Footer from "./components/footer/footer";
 
 import ShowWorkers from "./components/adminPanel/users/showWorkers/showWorkers";
 import Rate from "./components/rate/Rate";
@@ -63,11 +65,27 @@ function App() {
         <Route path="/more-info" element={<ItemInfo />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/Wishlist" element={<Wishlist />} />
-        <Route path="/homePage" element={<HomePage />} />
-        {/* <Route path="/paginate" element={<Pag />} /> */}
-        <Route path="/paginate" element={<ServicePage />} />
-        {/* <Route path="/adminPanel" element={<AdminPanel />} /> */}
-        <Route path="/dashboard" element={<Profile />} />
+        <Route
+          path="/homePage"
+          element={
+            <>
+              <HomePage />
+              <Footer />
+            </>
+          }
+        />
+        <Route path="/profile" element={<Profile />} />
+        <Route
+          path="/service"
+          element={
+            <>
+              <ServicePage />
+              <Footer />
+            </>
+          }
+        />
+        <Route path="/add-your-service" element={<Worker />} />
+        <Route path="/profiles" element={<Profile />} />
         <Route path="/addCategory" element={<AddCategory />} />
         <Route path="/addItems" element={<AddItem />} />
         <Route path="/showItems" element={<ShowItems />} />
@@ -78,6 +96,11 @@ function App() {
         {/* <Route path="/showWorkers" element={<ShowWorkers />} /> */}
         <Route path="/feedBack" element={<FeedBack />} />
       </Routes>
+
+      <div>
+        <>{/* <FeedBack /> */}</>
+      </div>
+
     </div>
   );
 }

@@ -6,36 +6,38 @@ import { useSelector, useDispatch } from "react-redux";
 import { setWishlist, deleteWishlist } from "../../reducer/wishlist/index";
 import { IoIosAddCircle, IoMdRemoveCircle } from "react-icons/io";
 
-import Swal from 'sweetalert2'
-import withReactContent from 'sweetalert2-react-content'
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
 
-const Wishlist = () => {
-
+const Wishlist = (id) => {
   const [notes, setNotes] = useState([
     { myNote: "I have buy new wheel" },
     { myNote: "I have buy new paint brush" },
   ]);
   const [note, setNote] = useState("");
 
-
-  const popupWishlistDelete = () => {
+  const popupWishlistDelete = (id) => {
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
       icon: "warning",
       showCancelButton: true,
-      confirmButtonColor: "#3085d6",
+      confirmButtonColor: "blue",
       cancelButtonColor: "#d33",
       confirmButtonText: "Remove!",
+      confirmButtonColor: "blue",
     }).then((result) => {
       if (result.isConfirmed) {
         Swal.fire("Removed!", "Your Item has been Removed.", "success");
+        deleteWishlistById(id);
       }
     });
   };
 
   const popupCart = () => {
     Swal.fire({
+      confirmButtonColor: "blue",
+
       title: "This Item Added To Your Cart Successfully",
       showClass: {
         popup: "animate__animated animate__fadeInDown",
@@ -45,15 +47,6 @@ const Wishlist = () => {
       },
     });
   };
-
-
-
-
-
-
-
-
-  console.log(notes);
 
   const dispatch = useDispatch();
   const { token, wishlists } = useSelector((state) => {
@@ -259,9 +252,7 @@ const Wishlist = () => {
                     borderColor: "#f22626",
                   }}
                   onClick={(e) => {
-                    popupWishlistDelete();
-
-                    deleteWishlistById(wishlist.wishlist_id);
+                    popupWishlistDelete(wishlist.wishlist_id);
                   }}
                 >
                   <IoMdRemoveCircle className="icon_style_remove" /> wishlist
