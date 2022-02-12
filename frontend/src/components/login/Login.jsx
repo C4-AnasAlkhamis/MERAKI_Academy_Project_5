@@ -54,10 +54,9 @@ const Login = () => {
       .then((result) => {
         if (result) {
           // rightLogin()
-
           localStorage.setItem("token", result.data.token);
-          localStorage.setItem("userName", jwt(result.data.token).userName)
-          console.log(localStorage.getItem("userName"));
+          localStorage.setItem("userName", jwt(result.data.token).userName);
+          
           setMessage("");
           setEmail("");
           setPassword("");
