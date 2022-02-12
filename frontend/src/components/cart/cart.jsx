@@ -9,11 +9,10 @@ import { RiPaypalLine, RiVisaFill } from "react-icons/ri";
 import { FaCcMastercard, FaBitcoin } from "react-icons/fa";
 import Pay from "../payment/Payment";
 
-import Swal from 'sweetalert2'
-import withReactContent from 'sweetalert2-react-content'
-
+import Swal from "sweetalert2";
 
 const Cart = () => {
+  // const [id, setId] = useState();
   const dispatch = useDispatch();
   const { token, carts } = useSelector((state) => {
     return {
@@ -23,8 +22,7 @@ const Cart = () => {
   });
   const [total, setTotal] = useState(0);
 
-
-  const popupCartDelete = () => {
+  const popupCartDelete = (id) => {
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this process!",
@@ -35,12 +33,12 @@ const Cart = () => {
       confirmButtonText: "Yes, Remove it!",
     }).then((result) => {
       if (result.isConfirmed) {
+        deleteCartById(id);
         Swal.fire("Deleted!", "Your item has been removed!.", "success");
       }
     });
   };
- 
-  
+
   // const popupWishlist =()=>{
   //   Swal.fire({
   //     title: 'This Item Added To Your Wishlist Successfully',
@@ -51,12 +49,8 @@ const Cart = () => {
   //       popup: 'animate__animated animate__fadeOutUp'
   //     }
   //   })
-  
+
   // }
-
-
-
-
 
   // ======================================= //
   const getCartById = async () => {
@@ -200,10 +194,12 @@ const Cart = () => {
                   }}
                   id={cart.id}
                   onClick={(e) => {
-                    deleteCartById(cart.cart_id);
-                    popupCartDelete()}}
+                    // setId(cart.cart_id);
+                    popupCartDelete(cart.cart_id);
+                  }}
                 >
-Remove it !                </button>
+                  Remove it !{" "}
+                </button>
               </div>
             </div>
           );
