@@ -1,4 +1,5 @@
 /** @format */
+import Rate from "../rate/Rate";
 
 import axios from "axios";
 import React, { useEffect, useState } from "react";
@@ -11,37 +12,34 @@ import { RiMoneyDollarCircleLine, RiPaypalFill } from "react-icons/ri";
 import { BsFillCalendarCheckFill, BsHourglassSplit } from "react-icons/bs";
 import { FaShippingFast } from "react-icons/fa";
 
-import tool from '../../image/crown.png'
+import tool from "../../image/crown.png";
 
-import Swal from 'sweetalert2'
-import withReactContent from 'sweetalert2-react-content'
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
 
-const popupCart =()=>{
-
+const popupCart = () => {
   Swal.fire({
-    title: 'This Item Added To Your Cart Successfully!',
+    title: "This Item Added To Your Cart Successfully!",
     showClass: {
-      popup: 'animate__animated animate__fadeInDown'
+      popup: "animate__animated animate__fadeInDown",
     },
     hideClass: {
-      popup: 'animate__animated animate__fadeOutUp'
-    }
-  })
-}
+      popup: "animate__animated animate__fadeOutUp",
+    },
+  });
+};
 
-const popupWishlist =()=>{
+const popupWishlist = () => {
   Swal.fire({
-    title: 'This Item Added To Your Wishlist Successfully!',
+    title: "This Item Added To Your Wishlist Successfully!",
     showClass: {
-      popup: 'animate__animated animate__fadeInDown'
+      popup: "animate__animated animate__fadeInDown",
     },
     hideClass: {
-      popup: 'animate__animated animate__fadeOutUp'
-    }
-  })
-
-}
-
+      popup: "animate__animated animate__fadeOutUp",
+    },
+  });
+};
 
 const ItemInfo = () => {
   const dispatch = useDispatch();
@@ -140,15 +138,18 @@ const ItemInfo = () => {
           id="cart"
           onClick={(e) => {
             createNewCartOrWishlist(e.target.id);
-            popupCart () }}>
+            popupCart();
+          }}
+        >
           Add to Cart
         </button>
         <button
           id="wishlist"
           onClick={(e) => {
             createNewCartOrWishlist(e.target.id);
-            popupWishlist()}}>
-            
+            popupWishlist();
+          }}
+        >
           Add to Wishlist
         </button>
       </div>
@@ -166,10 +167,13 @@ const ItemInfo = () => {
         <>
           <div className="box">
             <div className="titleI">
-              <h2><p>{state.item.title}</p></h2>
+              <h2>
+                <p>{state.item.title}</p>
+              </h2>
             </div>
             <div className="sub_titleI">
               <p> Order Reference: 977209</p>
+
               <h3><p style={{color:"green"}}>{state.item.descriptions}</p></h3>
               </div>
             <div className="img_boxI">
@@ -211,17 +215,22 @@ const ItemInfo = () => {
               <Cart />
             <span>{state.item.rate}</span>
               </div>
+
                 {/* <img
                   src="https://its-london.s3-eu-west-1.amazonaws.com/CMS/Footer/cards.png"
                   alt=""
                 /> */}
+              </div>
             </div>
+
 
           </div>
               {/* <img className="tool" src={tool} alt={"tool"} /> */}
             </div>
             <div className="btnI">
+
           </div>
+          <div className="btnI"></div>
 
           <div>
             {/* <div className="update_box">

@@ -36,6 +36,7 @@ import FeedBack from "./components/feedback/Feedback";
 import Footer from "./components/footer/footer";
 
 import ShowWorkers from "./components/adminPanel/users/showWorkers/showWorkers";
+import Rate from "./components/rate/Rate";
 
 function App() {
   const { token } = useSelector((state) => {
@@ -89,7 +90,7 @@ function App() {
         <Route path="/addItems" element={<AddItem />} />
         <Route path="/showItems" element={<ShowItems />} />
         <Route path="/addService" element={<AddService />} />
-        {/* <Route path="/showServices" element={<ShowServices />} /> */}
+        <Route path="/rate" element={<Rate />} />
         <Route path="/showUsers" element={<ShowUsers />} />
         <Route path="/showWorkers" element={<ShowWorkers />} />
         {/* <Route path="/showWorkers" element={<ShowWorkers />} /> */}
@@ -99,6 +100,7 @@ function App() {
       <div>
         <>{/* <FeedBack /> */}</>
       </div>
+
     </div>
   );
 }
