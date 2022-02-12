@@ -12,7 +12,6 @@ const url1 = [
 
 // this urls for category 2
 const url2 = [
-  "https://www.its.co.uk/Power-Tools/Disc-Cutters.htm",
   "https://www.its.co.uk/Power-Tools/Air-Tools.htm",
   "https://www.its.co.uk/Power-Tools/Mitre-Saws.htm",
   "https://www.its.co.uk/Power-Tools/Grinders.htm",
@@ -41,7 +40,7 @@ const url4 = [
 ];
 
 const pushItem = async (req, res) => {
-  url1.forEach(async (url, i) => {
+  url4.forEach(async (url, i) => {
     const arr = [];
 
     // open browser
@@ -70,14 +69,14 @@ const pushItem = async (req, res) => {
           img: x[i],
           title: y[i],
           price: z[i].substr(1, z[i].length - 1),
-          description: "this is a Tool storage",
-          category: 1,
+          description: "IN STOCK",
+          category: 4,
         }
       );
     }
 
     if (arr.length > 0) {
-      await arr.map((obj) => {
+      await arr.map((obj, i) => {
         const query = `INSERT INTO items (img, title, descriptions, category_id, price) VALUE (?,?,?,?,?)`;
         connection.query(
           query,
@@ -86,6 +85,7 @@ const pushItem = async (req, res) => {
             if (err) {
               throw err;
             }
+
           }
         );
       });

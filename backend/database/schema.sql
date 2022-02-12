@@ -1,7 +1,7 @@
 -- select the roles wthe all permissions 
 -- {SELECT permissions.permission FROM roles join role_permission ON roles.id = role_permission.role join permissions on role_permission.permission = permissions.id
 -- where roles.id =2}
--- DROP DATABASE MERAKI_Academy_Project_5;
+DROP DATABASE MERAKI_Academy_Project_5;
 -- DROP DATABASE MERAKI_Academy_Project_5;
 CREATE DATABASE MERAKI_Academy_Project_5;
 -- CREAT DATABASE MERAKI_Academy_Project_5;
@@ -208,13 +208,13 @@ INSERT INTO
 INSERT INTO
     categories (category) VALUE ('Tool Storage');
 
-INSERT INTO
-    worker (
-        user_id,
-        service_id,
-        address,
-        phone,
-        image
-    )
-VALUES
-    (1, 1, 'zarqa', 345435435, '5345435435');
+-- INSERT INTO
+--     worker (
+--         user_id,
+--         service_id,
+--         address,
+--         phone,
+--         image
+--     )
+-- VALUES
+--     (1, 1, 'zarqa', 345435435, '5345435435');
