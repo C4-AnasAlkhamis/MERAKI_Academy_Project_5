@@ -1,4 +1,5 @@
 import axios from "axios";
+import "./servicePage.css"
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
@@ -53,16 +54,16 @@ const ServicePage = () => {
   }, []);
   console.log(workers);
   return (
-    <>
+    <div className="servicePage">
       {!showWorker ? (
         <>
-          <h1>service</h1>
-          <div>
+          {/* <h1>service</h1> */}
+          <div className="services">
             {services.map((service, index) => {
               return (
-                <div key={index}>
-                  <p>{service.title}</p>
+                <div key={index} className="service">
                   <img src={service.image} alt={service.title} />
+                  <p>{service.title}</p>
                   <small>{service.description}</small>
                   <button
                     onClick={(e) => {
@@ -80,7 +81,7 @@ const ServicePage = () => {
       ) : (
         <WSInfo setShowWorker={setShowWorker} />
       )}
-    </>
+    </div>
   );
 };
 
