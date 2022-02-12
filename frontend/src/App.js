@@ -74,21 +74,21 @@ function App() {
           }
         />
         <Route path="/profile" element={<Profile />} />
-        <Route path="/service" element={<ServicePage />} />
+        <Route
+          path="/service"
+          element={
+            <>
+              <ServicePage />
+              <Footer />
+            </>
+          }
+        />
         <Route path="/add-your-service" element={<Worker />} />
         <Route path="/profiles" element={<Profile />} />
         <Route path="/addCategory" element={<AddCategory />} />
         <Route path="/addItems" element={<AddItem />} />
         <Route path="/showItems" element={<ShowItems />} />
-        <Route
-          path="/addService"
-          element={
-            <>
-              <AddService />
-              <Footer />
-            </>
-          }
-        />
+        <Route path="/addService" element={<AddService />} />
         {/* <Route path="/showServices" element={<ShowServices />} /> */}
         <Route path="/showUsers" element={<ShowUsers />} />
         <Route path="/showWorkers" element={<ShowWorkers />} />
