@@ -1,6 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
-import "./serviceInfo.css"
+import "./serviceInfo.css";
 import { useState } from "react";
+import { RiArrowGoBackLine } from "react-icons/ri";
 import axios from "axios";
 const WSInfo = ({ setShowWorker }) => {
   const [name, setName] = useState();
@@ -9,7 +10,7 @@ const WSInfo = ({ setShowWorker }) => {
   const [order_Detalis, setOrder_Detalis] = useState();
   const [message, setMessage] = useState();
   const [worker_id, setWorker_id] = useState();
-
+  const [show, setShow] = useState(false);
   const { token, workers } = useSelector((state) => {
     return {
       token: state.loginReducer.token,
@@ -36,52 +37,50 @@ const WSInfo = ({ setShowWorker }) => {
           },
         }
       )
-      .then((result) => {
-        console.log(result);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+      .then((result) => {})
+      .catch((err) => {});
   };
 
   return (
     <>
-     <div className="pageTitle">
-            <h1>
-            Workers<h6>What we Can Do</h6>
-            </h1>
-          </div>
-      <button
+      <i
         onClick={() => {
           setShowWorker(false);
         }}
       >
-        Back
-      </button>
-      <div className="workerLst">
-      {workers.map((worker, index) => {
-        return (
-          <div key={index} className="workerInfoInService">
-            <div>
-              <img src={worker.image} alt={worker.name} />
-              <h1>{worker.user_name}</h1>
-            </div>
-
-            <small>{worker.phone}</small>
-            <address>{worker.address}</address>
-            <button
-              onClick={() => {
-                setWorker_id(worker.user_id);
-              }}
-            >
-              send request
-            </button>
-          </div>
-        );
-      })}
+        <RiArrowGoBackLine className="back_icon" />
+      </i>
+      <div className="pageTitle">
+        <h1>
+          Workers<p>What we Can Do</p>
+        </h1>
       </div>
-      <div className="popup_form">
-        <form onSubmit={""}>
+
+      <div className="workerLst">
+        {workers.map((worker, index) => {
+          return (
+            <div key={index} className="workerInfoInService">
+              <div>
+                <img src={worker.image} alt={worker.name} />
+                <h1>{worker.user_name}</h1>
+              </div>
+
+              <small>{worker.phone}</small>
+              <address>{worker.address}</address>
+              <button
+                onClick={() => {
+                  setWorker_id(worker.user_id);
+                  setShow(true);
+                }}
+              >
+                send request
+              </button>
+            </div>
+          );
+        })}
+      </div>
+      {show ? (
+        <div className="popup_form">
           <input
             type="text"
             placeholder="Name"
@@ -110,8 +109,8 @@ const WSInfo = ({ setShowWorker }) => {
           >
             Send
           </button>
-        </form>
-      </div>
+        </div>
+      ) : null}
     </>
   );
 };

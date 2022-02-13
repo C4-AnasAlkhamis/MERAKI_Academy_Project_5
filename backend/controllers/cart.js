@@ -35,8 +35,7 @@ const getCartById = (req, res) => {
         message: `Server Error`,
       });
     }
-
-    res.status(200).json({
+    return res.status(200).json({
       success: true,
       message: `The carts with user ${id}`,
       result: result,

@@ -39,19 +39,6 @@ const Cart = () => {
     });
   };
 
-  // const popupWishlist =()=>{
-  //   Swal.fire({
-  //     title: 'This Item Added To Your Wishlist Successfully',
-  //     showClass: {
-  //       popup: 'animate__animated animate__fadeInDown'
-  //     },
-  //     hideClass: {
-  //       popup: 'animate__animated animate__fadeOutUp'
-  //     }
-  //   })
-
-  // }
-
   // ======================================= //
   const getCartById = async () => {
     await axios
@@ -165,29 +152,22 @@ const Cart = () => {
                   <span>{cart.title}</span>
                 </div>
               </div>
+
               <div className="payment_box_info">
-                <h4>Payment Options</h4>
                 <div>
                   <RiPaypalLine />
                   <RiVisaFill />
                   <FaCcMastercard />
                   <FaBitcoin />
                 </div>
+                <h3>{cart.descriptions}</h3>
               </div>
+
               <div className="info_box info_box_cart">
-                {/* <div className="info_center">
-                  <h3>description</h3>
-                  <span>{cart.description}</span>
-                </div> */}
                 <div className="info_center">
                   <h3>Price</h3>
                   <span>{cart.price} JOD</span>
                 </div>
-                {/* <div className="info_center">
-                  <h3>rate</h3>
-                  <span>{cart.rate}</span>
-                </div> */}
-
                 <button
                   style={{
                     borderColor: "red",

@@ -5,7 +5,7 @@
 }
 
 .reqGroup {
-  position: relative;
+  /* position: relative; */
   top: 50px;
   left: 100px;
 }
@@ -31,15 +31,15 @@
 }
 
 .editProfile input {
-    font-family: FontAwesome;
-    font-size: 1.25em;
-    width: 80%;
-    border: none;
-    background-color: white;
-    color: black;
-    border-bottom: solid 1px rgb(163, 159, 159);
-    padding-bottom: 20px;
-  }
+  font-family: FontAwesome;
+  font-size: 1.25em;
+  width: 80%;
+  border: none;
+  background-color: white;
+  color: black;
+  border-bottom: solid 1px rgb(163, 159, 159);
+  padding-bottom: 20px;
+}
 
 .profileInfoS {
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
@@ -55,7 +55,8 @@
   border-radius: 50%;
 }
 
-.profileInfoS button, .editProfile button  {
+.profileInfoS button,
+.editProfile button {
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   color: white;
   border: none;
@@ -68,7 +69,7 @@
   margin-top: 20px;
 }
 
-.profileInfoS button:hover .editProfile button:hover{
+.profileInfoS button:hover .editProfile button:hover {
   color: white;
   border: none;
   background-color: #2790bd;

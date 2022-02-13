@@ -4,17 +4,16 @@ const initialState = {
   workers: [],
 };
 // =======================  //
-
 const workerReducer = (state = initialState, { type, payload }) => {
   switch (type) {
     case "SET_WORKER":
       return { ...state, workers: payload };
-      
+
     case "DELETE_WORKER":
       return {
         ...state,
         workers: state.workers.filter((worker) => {
-          return worker.id !== payload;
+          return worker.w_id !== payload;
         }),
       };
 

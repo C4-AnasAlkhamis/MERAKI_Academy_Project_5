@@ -47,7 +47,7 @@ const getUserById = (req, res) => {
       });
     }
     if (results.length == 0) {
-      res.status(404).json({
+      return res.status(404).json({
         success: false,
         massage: "The user Not found",
       });
@@ -78,7 +78,7 @@ const updateUserById = (req, res) => {
       });
     }
     if (results.changedRows == 0) {
-      res.status(404).json({
+      return res.status(404).json({
         success: false,
         massage: `The user : ${id} is not found`,
         err: err,

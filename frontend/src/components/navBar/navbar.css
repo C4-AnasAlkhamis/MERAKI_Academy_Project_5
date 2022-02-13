@@ -14,7 +14,7 @@
   height: 60px;
   align-items: center;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  border-bottom: solid 3px rgb(255, 211, 51);
+  border-bottom: solid 3px #ffd333;
 }
 .NavBar h2 {
   display: grid;
@@ -35,6 +35,6 @@
 
 .NavBar a:hover {
   color: black;
-  background-color: rgb(255, 211, 51);
+  background-color: #ffd333;
   border-radius: 5px;
 }
