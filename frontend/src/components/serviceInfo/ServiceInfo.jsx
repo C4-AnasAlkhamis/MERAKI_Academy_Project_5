@@ -1,6 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import "./serviceInfo.css";
 import { useState } from "react";
+import { RiArrowGoBackLine } from "react-icons/ri";
 import axios from "axios";
 const WSInfo = ({ setShowWorker }) => {
   const [name, setName] = useState();
@@ -46,18 +47,19 @@ const WSInfo = ({ setShowWorker }) => {
 
   return (
     <>
+      <i
+        onClick={() => {
+          setShowWorker(false);
+        }}
+      >
+        <RiArrowGoBackLine className="back_icon" />
+      </i>
       <div className="pageTitle">
         <h1>
           Workers<h6>What we Can Do</h6>
         </h1>
       </div>
-      <button
-        onClick={() => {
-          setShowWorker(false);
-        }}
-      >
-        Back
-      </button>
+
       <div className="workerLst">
         {workers.map((worker, index) => {
           return (
