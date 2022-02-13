@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
-import "./serviceInfo.css"
+import "./serviceInfo.css";
 import { useState } from "react";
 import axios from "axios";
 const WSInfo = ({ setShowWorker }) => {
@@ -9,7 +9,7 @@ const WSInfo = ({ setShowWorker }) => {
   const [order_Detalis, setOrder_Detalis] = useState();
   const [message, setMessage] = useState();
   const [worker_id, setWorker_id] = useState();
-
+  const [show, setShow] = useState(false);
   const { token, workers } = useSelector((state) => {
     return {
       token: state.loginReducer.token,
@@ -46,11 +46,11 @@ const WSInfo = ({ setShowWorker }) => {
 
   return (
     <>
-     <div className="pageTitle">
-            <h1>
-            Workers<h6>What we Can Do</h6>
-            </h1>
-          </div>
+      <div className="pageTitle">
+        <h1>
+          Workers<h6>What we Can Do</h6>
+        </h1>
+      </div>
       <button
         onClick={() => {
           setShowWorker(false);
@@ -59,59 +59,62 @@ const WSInfo = ({ setShowWorker }) => {
         Back
       </button>
       <div className="workerLst">
-      {workers.map((worker, index) => {
-        return (
-          <div key={index} className="workerInfoInService">
-            <div>
-              <img src={worker.image} alt={worker.name} />
-              <h1>{worker.user_name}</h1>
-            </div>
+        {workers.map((worker, index) => {
+          return (
+            <div key={index} className="workerInfoInService">
+              <div>
+                <img src={worker.image} alt={worker.name} />
+                <h1>{worker.user_name}</h1>
+              </div>
 
-            <small>{worker.phone}</small>
-            <address>{worker.address}</address>
+              <small>{worker.phone}</small>
+              <address>{worker.address}</address>
+              <button
+                onClick={() => {
+                  setWorker_id(worker.user_id);
+                  setShow(true);
+                }}
+              >
+                send request
+              </button>
+            </div>
+          );
+        })}
+      </div>
+      {show ? (
+        <div className="popup_form">
+          <form onSubmit={""}>
+            <input
+              type="text"
+              placeholder="Name"
+              onChange={(e) => setName(e.target.value)}
+            />
+            <input
+              type="text"
+              placeholder="Address"
+              onChange={(e) => setAddress(e.target.value)}
+            />
+            <input
+              type="text"
+              placeholder="Order Details"
+              onChange={(e) => setOrder_Detalis(e.target.value)}
+            />
+            <input
+              type="number"
+              placeholder="Phone Number"
+              onChange={(e) => setPhone(e.target.value)}
+            />
+
             <button
-              onClick={() => {
-                setWorker_id(worker.user_id);
+              onClick={(e) => {
+                sendRequest(e);
               }}
             >
-              send request
+              Send
             </button>
-          </div>
-        );
-      })}
-      </div>
-      <div className="popup_form">
-        <form onSubmit={""}>
-          <input
-            type="text"
-            placeholder="Name"
-            onChange={(e) => setName(e.target.value)}
-          />
-          <input
-            type="text"
-            placeholder="Address"
-            onChange={(e) => setAddress(e.target.value)}
-          />
-          <input
-            type="text"
-            placeholder="Order Details"
-            onChange={(e) => setOrder_Detalis(e.target.value)}
-          />
-          <input
-            type="number"
-            placeholder="Phone Number"
-            onChange={(e) => setPhone(e.target.value)}
-          />
-
-          <button
-            onClick={(e) => {
-              sendRequest(e);
-            }}
-          >
-            Send
-          </button>
-        </form>
-      </div>
+          </form>
+        </div>
+      ) : null}
     </>
   );
 };

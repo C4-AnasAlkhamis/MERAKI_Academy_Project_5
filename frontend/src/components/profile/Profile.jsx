@@ -27,51 +27,7 @@ const Profile = () => {
     };
   });
   const dispatch = useDispatch();
-  // service functions  ==========++++++++++==========
-
-  //===============================================================
-  // const getServiceByUserId = async (id) => {
-  //   //get http://localhost:5000/setvice/id
-
-  //   await axios
-  //     .get(`http://localhost:5000/service/user/${id}`)
-  //     .then((result) => {
-  //       dispatch(setService({ ...result.data.result }));
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // };
-  //===============================================================
-  // const deleteServiceById = async (id) => {
-  //   //delete http://localhost:5000/setvice/id
-
-  //   await axios
-  //     .delete(`http://localhost:5000/service/${id}`)
-  //     .then((result) => {
-  //       dispatch(deleteService({ ...result.data.result }));
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // };
-  //===============================================================
-  // const updateServiceById = async (id) => {
-  //   //put http://localhost:5000/setvice/id
-
-  //   await axios
-  //     .put(`http://localhost:5000/service/${id}`)
-  //     .then((result) => {
-  //       dispatch(updateService({ ...result.data.result }));
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // };
-
   // worker functions  ==========++++++++++==========
-  //===============================================================
-
   const getWorkerById = async () => {
     //get http://localhost:5000/worker/id
     await axios
@@ -104,22 +60,6 @@ const Profile = () => {
       });
   };
 
-  //===============================================================
-  // const deleteWorkerById = async (id) => {
-  //   //delete http://localhost:5000/worker/id
-
-  //   await axios
-  //     .delete(`http://localhost:5000/worker/${id}`)
-  //     .then((result) => {
-  //       dispatch(setWorker({}));
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // };
-
-  // ================================================  //
-
   const uploadImage = (e) => {
     const formData = new FormData();
 
@@ -150,7 +90,6 @@ const Profile = () => {
         console.log(err);
       });
   };
-  console.log(worker);
   useEffect(() => {
     getWorkerById();
     getRequestByWorker();
@@ -160,52 +99,53 @@ const Profile = () => {
       {worker.length ? (
         <div className="profileInfoS">
           <img src={worker[0].image} alt={worker[0].user_name} />
-          <h1 style={{paddingBottom:"10px"}}>{worker[0].user_name}</h1>
-          <p style={{paddingBottom:"10px"}}>{worker[0].address}</p>
+          <h1 style={{ paddingBottom: "10px" }}>{worker[0].user_name}</h1>
+          <p style={{ paddingBottom: "10px" }}>{worker[0].address}</p>
           <button
-
             onClick={() => {
               setShow(!show);
-            }}>
-            {show?"Back":"Edit Profile"}
+            }}
+          >
+            {show ? "Back" : "Edit Profile"}
           </button>
         </div>
       ) : null}
-      <div className="reqGroup">
-        <table>
-          <tbody>
-            <tr>
-              <th style={{ width: "100px", textAlign: "Center" }}>Name</th>
-              <th style={{ width: "200px", textAlign: "Center" }}>
-                Order Details
-              </th>
-              <th style={{ width: "100px", textAlign: "Center" }}>Address</th>
-              <th style={{ width: "100px", textAlign: "Center" }}>
-                Phone Number
-              </th>
-              <th style={{ width: "100px", textAlign: "Center" }}>Approve</th>
-              <th style={{ width: "100px", textAlign: "Center" }}>Reject</th>
-            </tr>
-            {requests.map((req, index) => {
-              return (
-                <tr key={index}>
-                  <tb>{req.name}</tb>
-                  <td>{req.order_Detalis}</td>
-                  <td>{req.address}</td>
-                  <td>{req.phone}</td>
-                  <td>
-                    <button>Approve</button>
-                  </td>
-                  <td>
-                    <button>Reject</button>
-                  </td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
-      </div>
-      {show ? (
+      {!show ? (
+        <div className="reqGroup">
+          <table>
+            <tbody>
+              <tr>
+                <th style={{ width: "100px", textAlign: "Center" }}>Name</th>
+                <th style={{ width: "200px", textAlign: "Center" }}>
+                  Order Details
+                </th>
+                <th style={{ width: "100px", textAlign: "Center" }}>Address</th>
+                <th style={{ width: "100px", textAlign: "Center" }}>
+                  Phone Number
+                </th>
+                <th style={{ width: "100px", textAlign: "Center" }}>Approve</th>
+                <th style={{ width: "100px", textAlign: "Center" }}>Reject</th>
+              </tr>
+              {requests.map((req, index) => {
+                return (
+                  <tr key={index}>
+                    <tb>{req.name}</tb>
+                    <td>{req.order_Detalis}</td>
+                    <td>{req.address}</td>
+                    <td>{req.phone}</td>
+                    <td>
+                      <button>Approve</button>
+                    </td>
+                    <td>
+                      <button>Reject</button>
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+      ) : (
         <div className="editProfile">
           <input
             type="text"
@@ -227,7 +167,8 @@ const Profile = () => {
             onClick={() => {
               uploadImage();
               setShow(false);
-            }}>
+            }}
+          >
             Done
           </button>
 
@@ -236,7 +177,7 @@ const Profile = () => {
             ? message && <div className="SuccessMessage">{message}</div>
             : message && <div className="ErrorMessage">{message}</div>}
         </div>
-      ) : null}
+      )}
     </div>
   );
 };
