@@ -46,14 +46,14 @@ input:focus {
 
 .logo{
 background-color: white;
-  /* margin-bottom: 20px; */
-  /* border-bottom:solid 1px  rgb(0, 156, 215); */
-  text-align: center;
+text-align: center;
 }
 
 .logo img{
-background-color: white;
+  background-color: white;
   padding-top: 20px;
-  padding-bottom: 10px;
+ padding-bottom: 10px;
+ /* width: 18%; */
+ object-fit: cover;
 }
 
