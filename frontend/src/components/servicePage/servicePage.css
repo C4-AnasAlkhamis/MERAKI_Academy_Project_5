@@ -1,90 +1,89 @@
 /** @format */
 
 .servicePage {
-    /* background-color: white;
+  /* background-color: white;
     display: flex;
     flex-direction: column;
     align-items: center; */
-    margin: 5%;
-    padding-left: 3%;
-    padding-right: 3%;
-  }
-  
-  .services {
-      /* display: flex;
+  margin: 5%;
+  padding-left: 3%;
+  padding-right: 3%;
+}
+
+.services {
+  /* display: flex;
     justify-content: center;
     gap: 90px;
     border: none;
     display: grid;
     margin: 20px;
     grid-template-columns: repeat(3, 250px); */
-    display: grid;
-    grid-template-columns: repeat(3, 2fr);
-  }
-  
-  .service {
-    /* text-align: center;
+  display: grid;
+  grid-template-columns: repeat(3, 2fr);
+}
+
+.service {
+  /* text-align: center;
     border: solid 1px #dddbdb;
     display: grid;
     grid-template-rows: repeat(4, 1.5fr);
     background-color: white;
     height: 400px; */
-    /* border-bottom: solid 1px rgb(0, 156, 215);
+  /* border-bottom: solid 1px rgb(0, 156, 215);
       border-right: solid 1px rgb(0, 156, 215); */
-    /* border-radius: 2px;
+  /* border-radius: 2px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 1px 2px; */
-    border: none;
-    display: grid;
-    background-color: white;
-    margin: 1.25em;
-    height: 65vh;
-    border-radius: 3px;
-    border-bottom: solid 1px rgb(255, 211, 51);
-    border-right: solid 1px rgb(255, 211, 51);
-  }
+  border: none;
+  display: grid;
+  background-color: white;
+  margin: 1.25em;
+  height: 65vh;
+  border-radius: 3px;
+  border-bottom: solid 1px rgb(255, 211, 51);
+  border-right: solid 1px rgb(255, 211, 51);
+}
 
-  .service button{
-    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-    color: white;
-    border: none;
-    font-size: 17px;
-    width: 60%;
-    background-color: rgb(4, 81, 140);
-    margin-bottom: 10px;
-    border-left: solid 5px rgb(218, 73, 29);
-    cursor: pointer;
-  }
+.service button {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  color: white;
+  border: none;
+  font-size: 17px;
+  width: 60%;
+  background-color: rgb(4, 81, 140);
+  margin-bottom: 10px;
+  border-left: solid 5px rgb(218, 73, 29);
+  cursor: pointer;
+}
 
-  .service button:hover {
-    color: white;
-    border: none;
-    background-color: #2790bd;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px,
-      rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
-    border-left: solid 5px rgb(255, 211, 51);
-  }
-  
-  .service img{
-    width: 100%;
-    height: 200px;
-    border-radius: 3px 3px 0px 0px;
+.service button:hover {
+  color: white;
+  border: none;
+  background-color: #2790bd;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px,
+    rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+  border-left: solid 5px rgb(255, 211, 51);
+}
 
-  }
-  
-  .pageTitle {
-    text-align: center;
-    margin-left: 32%;
-    margin-right: 32%;
-    padding-bottom: 3%;
-  }
-  .pageTitle h1 {
-    border: solid 1px rgb(255, 211, 51);
-    padding-top: 3%;
-    padding-bottom: 3%;
-    border-radius: 3px;
-  }
-  
-  .pageTitle h6 {
-    color: rgb(218, 73, 29);
-    padding-top: 3%;
-  }
+.service img {
+  width: 100%;
+  height: 200px;
+  border-radius: 3px 3px 0px 0px;
+}
+
+.pageTitle {
+  text-align: center;
+  margin-left: 32%;
+  margin-right: 32%;
+  padding-bottom: 3%;
+}
+.pageTitle h1 {
+  border: solid 1px rgb(255, 211, 51);
+  padding-top: 3%;
+  padding-bottom: 3%;
+  border-radius: 3px;
+}
+
+.pageTitle p {
+  color: rgb(218, 73, 29);
+  padding-top: 3%;
+}

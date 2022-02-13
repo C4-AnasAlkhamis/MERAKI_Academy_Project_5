@@ -39,29 +39,23 @@ const ServicePage = () => {
 
   const getWorkerByServiceId = async (id) => {
     //get http://localhost:5000/worker/srv_id/id
-    console.log(id);
     await axios
       .get(`http://localhost:5000/worker/srv_id/${id}`)
       .then((result) => {
         dispatch(setWorkers([...result.data.result]));
-        console.log(result);
-        // navigate("/service-info");
       })
-      .catch((err) => {
-        console.log(err);
-      });
+      .catch((err) => {});
   };
   useEffect(() => {
     getAllService();
   }, []);
-  console.log(workers);
   return (
     <div className="servicePage">
       {!showWorker ? (
         <>
           <div className="pageTitle">
             <h1>
-              POPULAR SERVICES<h6>What we Can Do</h6>
+              POPULAR SERVICES<p>What we Can Do</p>
             </h1>
           </div>
           {/* <h1>service</h1> */}
@@ -76,7 +70,8 @@ const ServicePage = () => {
                     onClick={(e) => {
                       getWorkerByServiceId(service.id);
                       setShowWorker(true);
-                    }}>
+                    }}
+                  >
                     show service
                   </button>
                 </div>

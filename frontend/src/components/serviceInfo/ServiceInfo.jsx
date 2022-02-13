@@ -37,12 +37,8 @@ const WSInfo = ({ setShowWorker }) => {
           },
         }
       )
-      .then((result) => {
-        console.log(result);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+      .then((result) => {})
+      .catch((err) => {});
   };
 
   return (
@@ -56,7 +52,7 @@ const WSInfo = ({ setShowWorker }) => {
       </i>
       <div className="pageTitle">
         <h1>
-          Workers<h6>What we Can Do</h6>
+          Workers<p>What we Can Do</p>
         </h1>
       </div>
 
