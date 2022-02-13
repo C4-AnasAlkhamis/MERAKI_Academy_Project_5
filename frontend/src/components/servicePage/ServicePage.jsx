@@ -64,7 +64,7 @@ const ServicePage = () => {
               return (
                 <div key={index} className="service">
                   <img src={service.image} alt={service.title} />
-                  <h2>{service.title}</h2>
+                  <h3>{service.title}</h3>
                   <p>{service.description}</p>
                   <button
                     onClick={(e) => {

@@ -12,7 +12,7 @@ const url1 = [
 
 // this urls for category 2
 const url2 = [
-  "https://www.its.co.uk/Power-Tools/Air-Tools.htm",
+  // "https://www.its.co.uk/Power-Tools/Air-Tools.htm",
   "https://www.its.co.uk/Power-Tools/Mitre-Saws.htm",
   "https://www.its.co.uk/Power-Tools/Grinders.htm",
   "https://www.its.co.uk/Power-Tools/Multi-Tools.htm",
@@ -31,8 +31,8 @@ const url3 = [
 // this urls for category 4
 
 const url4 = [
-  "https://www.its.co.uk/Tool-Storage--Pouches/Tool-Boxes.htm",
-  "https://www.its.co.uk/Tool-Storage--Pouches/Tool-Bags.htm",
+  // "https://www.its.co.uk/Tool-Storage--Pouches/Tool-Boxes.htm",
+  // "https://www.its.co.uk/Tool-Storage--Pouches/Tool-Bags.htm",
   "https://www.its.co.uk/Tool-Storage--Pouches/Tool-Holders.htm",
   "https://www.its.co.uk/Tool-Storage--Pouches/Tool-Pouches--Belts.htm",
   "https://www.its.co.uk/Tool-Storage--Pouches/Tool-Boxes.htm#?pi=4",
@@ -40,7 +40,7 @@ const url4 = [
 ];
 
 const pushItem = async (req, res) => {
-  url4.forEach(async (url, i) => {
+  url2.forEach(async (url, i) => {
     const arr = [];
 
     // open browser
@@ -70,7 +70,7 @@ const pushItem = async (req, res) => {
           title: y[i],
           price: z[i].substr(1, z[i].length - 1),
           description: "IN STOCK",
-          category: 4,
+          category:2,
         }
       );
     }
