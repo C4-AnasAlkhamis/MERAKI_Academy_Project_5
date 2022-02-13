@@ -193,7 +193,7 @@ const deleteWorkerById = (req, res) => {
                 message: `Server Error`,
               });
             }
-            res.status(201).json({
+            return res.status(201).json({
               success: true,
               message: `Success Worker Created`,
               result: result,

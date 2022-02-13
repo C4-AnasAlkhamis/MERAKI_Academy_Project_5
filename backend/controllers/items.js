@@ -191,7 +191,7 @@ const updateItemById = (req, res) => {
       });
     }
     if (results.changedRows == 0) {
-      res.status(500).json({
+      return res.status(500).json({
         success: false,
         massage: `The item : ${id} is not found`,
         err: err,
