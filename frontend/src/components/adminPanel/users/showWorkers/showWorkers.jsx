@@ -1,7 +1,7 @@
 /** @format */
 
 import React, { useEffect, useState } from "react";
-import "./showWorkers.css"
+import "./showWorkers.css";
 import Select from "react-select";
 import PaginateReact from "react-paginate";
 import axios from "axios";

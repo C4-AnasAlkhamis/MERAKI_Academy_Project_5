@@ -190,46 +190,19 @@ const deleteWorkerById = (req, res) => {
             if (err) {
               return res.status(500).json({
                 success: false,
-                message: `Server Error`,
+                massage: "Server Error",
+                err: err,
               });
             }
-            return res.status(201).json({
+            res.status(200).json({
               success: true,
-              message: `Success Worker Created`,
+              massage: `Succeeded to delete Worker with id: ${id}`,
               result: result,
             });
           });
         }
-        if (err) {
-          return res.status(500).json({
-            success: false,
-            massage: "Server Error",
-            err: err,
-          });
-        }
       });
     }
-
-    if (err) {
-      return res.status(500).json({
-        success: false,
-        massage: "Server Error",
-        err: err,
-      });
-    }
-    if (result.affectedRows == 0) {
-      return res.status(404).json({
-        success: false,
-        massage: `The Worker with: ${id} is not found`,
-        err: err,
-      });
-    }
-
-    res.status(200).json({
-      success: true,
-      massage: `Succeeded to delete Worker with id: ${id}`,
-      result: result,
-    });
   });
 };
 module.exports = {

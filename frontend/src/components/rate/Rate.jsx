@@ -11,7 +11,6 @@ const Rate = ({ item_id }) => {
     await axios
       .post("http://localhost:5000/rate", { rate, item_id })
       .then((result) => {
-        console.log(result);
         dispatch(addRate({ rate: rate, item_id: item_id }));
       })
       .catch((err) => {
