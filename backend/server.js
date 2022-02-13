@@ -25,6 +25,7 @@ const serviceReqRouter = require("./routes/serviceReq");
 
 const serviceRouter = require("./routes/service");
 const workerRouter = require("./routes/worker");
+const rateRouter = require("./routes/rate");
 
 //middleware
 app.use("/cart", cartRouter);
@@ -39,6 +40,7 @@ app.use("/send_request", serviceReqRouter);
 
 app.use("/service", serviceRouter);
 app.use("/worker", workerRouter);
+app.use("/rate", rateRouter);
 
 app.listen(PORT, () => {
   console.log(`SERVER WORKING ON PORT: ${PORT}`);

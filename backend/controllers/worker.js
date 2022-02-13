@@ -1,8 +1,7 @@
 const connection = require("../database/db");
-
+const jwt = require("jsonwebtoken");
 // This function creates new worker
-const createNewWorker = (req, res) => {
-  console.log("hi");
+const createNewWorker = (req, res, next) => {
   const user_id = req.token.userId;
   const { service_id, address, phone, image } = req.body;
   const query = `INSERT INTO worker (user_id, service_id, address, phone,image ) VALUE (?,?,?,?,?)`;
@@ -24,16 +23,44 @@ const createNewWorker = (req, res) => {
             message: `Server Error`,
           });
         }
-        res.status(201).json({
-          success: true,
-          message: `Success Worker Created`,
-          result: result,
-        });
+
+        next();
       });
     }
   });
 };
+// ============================== //
+const changeToken = (req, res) => {
+  const user_id = req.token.userId;
 
+  const query = `SELECT * FROM users WHERE id = ?`;
+  const data = [user_id];
+  connection.query(query, data, async (err, result) => {
+    try {
+      const payload = {
+        userId: result[0].id,
+        role: result[0].role_id,
+        userName: result[0].user_name,
+      };
+
+      const options = {
+        expiresIn: "60m",
+      };
+      const token = await jwt.sign(payload, process.env.SECRET, options);
+      return res.status(200).json({
+        success: true,
+        message: `Valid login credentials`,
+        token: token,
+      });
+    } catch (err) {
+      return res.status(500).json({
+        success: false,
+        message: `Server Error`,
+        err: err,
+      });
+    }
+  });
+};
 // This function returns all workers
 const getAllWorkers = (req, res) => {
   const query = `SELECT * ,worker.id AS w_id,worker.image AS w_image FROM worker JOIN users ON worker.user_id = users.id JOIN services ON worker.service_id = services.id `;
@@ -115,13 +142,6 @@ const getWorkerByServiceId = (req, res) => {
   });
 };
 
-
-
-
-
-
-
-
 // This function to update worker by id
 const updateWorkerById = (req, res) => {
   const id = req.params.id;
@@ -136,12 +156,12 @@ const updateWorkerById = (req, res) => {
       });
     }
 
-    // if (!result.id) {
-    //   return res.status(404).json({
-    //     success: false,
-    //     message: `No Worker Match Entered ID`,
-    //   });
-    // }
+    if (!result.id) {
+      return res.status(404).json({
+        success: false,
+        message: `No Worker Match Entered ID`,
+      });
+    }
     res.status(202).json({
       success: true,
       message: `Worker with id ${id} updated successfully`,
@@ -197,13 +217,13 @@ const deleteWorkerById = (req, res) => {
         err: err,
       });
     }
-    // if (result.affectedRows == 0) {
-    //   return res.status(404).json({
-    //     success: false,
-    //     massage: `The Worker with: ${id} is not found`,
-    //     err: err,
-    //   });
-    // }
+    if (result.affectedRows == 0) {
+      return res.status(404).json({
+        success: false,
+        massage: `The Worker with: ${id} is not found`,
+        err: err,
+      });
+    }
 
     res.status(200).json({
       success: true,
@@ -219,4 +239,5 @@ module.exports = {
   updateWorkerById,
   deleteWorkerById,
   getWorkerByServiceId,
+  changeToken,
 };

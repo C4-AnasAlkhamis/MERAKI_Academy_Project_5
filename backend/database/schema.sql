@@ -2,8 +2,10 @@
 -- {SELECT permissions.permission FROM roles join role_permission ON roles.id = role_permission.role join permissions on role_permission.permission = permissions.id
 -- where roles.id =2}
 DROP DATABASE MERAKI_Academy_Project_5;
+
 -- DROP DATABASE MERAKI_Academy_Project_5;
 CREATE DATABASE MERAKI_Academy_Project_5;
+
 -- CREAT DATABASE MERAKI_Academy_Project_5;
 -- USE DATABASE MERAKI_Academy_Project_5;
 USE MERAKI_Academy_Project_5;
@@ -118,6 +120,14 @@ CREATE TABLE service_request (
     worker_id INT NOT NULL,
     FOREIGN KEY (worker_id) REFERENCES worker (user_id),
     is_deleted TINYINT DEFAULT 0,
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE rates (
+    id INT AUTO_INCREMENT NOT NULL,
+    rate INT NOT NULL,
+    item_id INT NOT NULL,
+    FOREIGN KEY (item_id) REFERENCES items (user_id),
     PRIMARY KEY (id)
 );
 
