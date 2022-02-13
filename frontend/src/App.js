@@ -80,7 +80,6 @@ function App() {
           element={
             <>
               <ServicePage />
-              <Footer />
             </>
           }
         />
@@ -100,7 +99,6 @@ function App() {
       <div>
         <>{/* <FeedBack /> */}</>
       </div>
-
     </div>
   );
 }
