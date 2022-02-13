@@ -38,15 +38,13 @@ const ShowWorkers = () => {
       }
       setMessage("Error happened while Get Data, please try again");
     }
-    console.log(message);
   };
   //===============================================================
+
   const deleteWorker = async (id) => {
     try {
       const res = await axios.put(`http://localhost:5000/worker/delete/${id}`);
-      console.log(res);
       if (res.data.success) {
-        console.log(res);
         setMessage(res.data.success);
         dispatch(deleteWorkers(id));
       } else {
