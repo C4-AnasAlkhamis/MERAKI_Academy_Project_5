@@ -97,7 +97,7 @@ const Profile = () => {
         dispatch(setRequests([...result.data.result]));
       })
       .catch((err) => {
-        console.log(err);
+        // console.log(err);
       });
   };
 

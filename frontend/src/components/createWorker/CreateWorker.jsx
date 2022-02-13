@@ -3,7 +3,8 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import Select from "react-select";
-
+import { logIn } from "../../reducer/login/index";
+import jwt from "jwt-decode";
 import { setService } from "../../reducer/service/index";
 // import { setWorker } from "../../reducer/worker/index";
 const Worker = () => {
@@ -81,9 +82,13 @@ const Worker = () => {
       )
       .then((result) => {
         console.log(result);
+        localStorage.setItem("token", result.data.token);
+        localStorage.setItem("userName", jwt(result.data.token).userName);
+        dispatch(logIn(result.data.token));
+        navigate(`/profile`);
       })
       .catch((err) => {
-        console.log(err);
+        console.log(err.response);
       });
   };
   useEffect(() => {

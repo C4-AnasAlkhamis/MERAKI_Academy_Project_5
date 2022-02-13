@@ -212,8 +212,10 @@ const HomePage = () => {
 
     let stars = sum / newRate.length;
     return {
-      size: 33,
-      value: stars ? stars : 2.5,
+      size: 27,
+      count: 6,
+      value: stars ? stars : 3,
+      isHalf: false,
       edit: false,
     };
   };
