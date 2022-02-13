@@ -332,7 +332,7 @@ const HomePage = () => {
           />
         </div>
       ) : (
-        <ItemInfo />
+        <ItemInfo setShow={setShow} />
       )}
     </>
   );

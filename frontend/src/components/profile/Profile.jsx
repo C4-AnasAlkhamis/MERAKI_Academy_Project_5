@@ -53,6 +53,7 @@ const Profile = () => {
         },
       })
       .then((result) => {
+        console.log(result);
         dispatch(setRequests([...result.data.result]));
       })
       .catch((err) => {
@@ -129,7 +130,7 @@ const Profile = () => {
               {requests.map((req, index) => {
                 return (
                   <tr key={index}>
-                    <tb>{req.name}</tb>
+                    <td>{req.name}</td>
                     <td>{req.order_Detalis}</td>
                     <td>{req.address}</td>
                     <td>{req.phone}</td>

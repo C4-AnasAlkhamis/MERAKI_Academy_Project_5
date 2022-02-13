@@ -83,36 +83,34 @@ const WSInfo = ({ setShowWorker }) => {
       </div>
       {show ? (
         <div className="popup_form">
-          <form onSubmit={""}>
-            <input
-              type="text"
-              placeholder="Name"
-              onChange={(e) => setName(e.target.value)}
-            />
-            <input
-              type="text"
-              placeholder="Address"
-              onChange={(e) => setAddress(e.target.value)}
-            />
-            <input
-              type="text"
-              placeholder="Order Details"
-              onChange={(e) => setOrder_Detalis(e.target.value)}
-            />
-            <input
-              type="number"
-              placeholder="Phone Number"
-              onChange={(e) => setPhone(e.target.value)}
-            />
+          <input
+            type="text"
+            placeholder="Name"
+            onChange={(e) => setName(e.target.value)}
+          />
+          <input
+            type="text"
+            placeholder="Address"
+            onChange={(e) => setAddress(e.target.value)}
+          />
+          <input
+            type="text"
+            placeholder="Order Details"
+            onChange={(e) => setOrder_Detalis(e.target.value)}
+          />
+          <input
+            type="number"
+            placeholder="Phone Number"
+            onChange={(e) => setPhone(e.target.value)}
+          />
 
-            <button
-              onClick={(e) => {
-                sendRequest(e);
-              }}
-            >
-              Send
-            </button>
-          </form>
+          <button
+            onClick={(e) => {
+              sendRequest(e);
+            }}
+          >
+            Send
+          </button>
         </div>
       ) : null}
     </>
