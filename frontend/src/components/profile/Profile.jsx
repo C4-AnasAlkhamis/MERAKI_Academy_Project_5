@@ -40,7 +40,6 @@ const Profile = () => {
         dispatch(setWorkers([...result.data.result]));
       })
       .catch((err) => {
-        console.log(err);
       });
   };
 
@@ -53,12 +52,9 @@ const Profile = () => {
         },
       })
       .then((result) => {
-        console.log(result);
         dispatch(setRequests([...result.data.result]));
       })
-      .catch((err) => {
-        // console.log(err);
-      });
+      .catch((err) => {});
   };
 
   const uploadImage = (e) => {
@@ -84,11 +80,9 @@ const Profile = () => {
         image,
       })
       .then((result) => {
-        console.log(result);
         getWorkerById();
       })
       .catch((err) => {
-        console.log(err);
       });
   };
   useEffect(() => {

@@ -13,7 +13,7 @@ const createRate = (req, res) => {
         message: `Server Error`,
       });
     }
-    res.status(201).json({
+    return res.status(201).json({
       success: true,
       message: `new rate created`,
       result: result,
@@ -38,7 +38,7 @@ const getAllRate = (req, res) => {
         message: `No rate Yet`,
       });
     }
-    res.status(200).json({
+    return res.status(200).json({
       success: true,
       message: `all the rate`,
       result: result,

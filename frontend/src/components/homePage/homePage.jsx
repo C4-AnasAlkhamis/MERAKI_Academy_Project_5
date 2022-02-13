@@ -9,6 +9,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { setItems, setCategories } from "../../reducer/item/index";
 import { setItemInfo } from "../../reducer/itemInfo/index";
 import { useNavigate } from "react-router-dom";
+import { setRates, addRate } from "../../reducer/rate/rate";
 //===============================================================
 import handTool from "../../image/header.png";
 import powerTool from "../../image/header.jpg";
@@ -36,6 +37,7 @@ const HomePage = () => {
       token: state.loginReducer.token,
       items: state.itemsReducer.items,
       categories: state.itemsReducer.categories,
+      rates: state.rateReducer.rates,
     };
   });
 
@@ -44,12 +46,10 @@ const HomePage = () => {
   const dispatch = useDispatch();
   // ---------------------------------------------
   const [message, setMessage] = useState("");
-  const [userId, setUserId] = useState("");
   const [categoryId, setCategoryId] = useState(1);
   const [isFilter, setIsFilter] = useState(false);
   const [pgNum, setPgNum] = useState(0);
   const [show, setShow] = useState(true);
-  const [rates, setRates] = useState();
   //===============================================================
 
   const getAllItems = async () => {
@@ -62,7 +62,6 @@ const HomePage = () => {
       if (res.data.success) {
         dispatch(setItems(res.data.items));
         setMessage("");
-        setUserId(res.data.userId);
       } else throw Error;
     } catch (error) {
       if (!error.response.data.success) {
@@ -88,10 +87,8 @@ const HomePage = () => {
         setIsFilter(true);
         dispatch(setItems(res.data.items));
         setMessage("");
-        setUserId(res.data.userId);
       } else throw Error;
     } catch (error) {
-      console.log(error);
       if (!error.response.data.success) {
         return setMessage(error.response.data.message);
       }
@@ -139,7 +136,8 @@ const HomePage = () => {
     await axios
       .get("http://localhost:5000/rate")
       .then((result) => {
-        setRates(result.data.result);
+        // setRates(result.data.result);
+        dispatch(setRates([...result.data.result]));
       })
       .catch((err) => {
         console.log(err);
@@ -200,9 +198,8 @@ const HomePage = () => {
   };
   const allRate = (id) => {
     const newRate = [];
-
-    if (rates) {
-      rates.filter((rate) => {
+    if (state.rates) {
+      state.rates.filter((rate) => {
         if (rate.item_id === id) {
           newRate.push(rate.rate);
         }
