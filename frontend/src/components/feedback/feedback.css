@@ -1,44 +1,60 @@
+/** @format */
 
-
-.feedbackShow{
+.feedbackShow {
   width: 50%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  border-radius: 5px;
 }
 
-.feedbackForm{
+.feedbackForm {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.feedbackForm input{
+.feedbackForm input {
   width: 400px;
   height: 30px;
-
+  font-family: FontAwesome;
+  font-size: 1.25em;
+  border: none;
+  background-color: white;
+  color: black;
+  margin-top: 20px;
+  border-bottom: solid 1px rgb(163, 159, 159);
 }
 
-.feedbackForm textarea{
+.feedbackForm textarea {
   width: 390px;
   height: 100px;
+  font-family: FontAwesome;
+  font-size: 1.25em;
+  border: none;
+  background-color: white;
+  color: black;
+  border-bottom: solid 1px rgb(163, 159, 159);
+  margin-top: 20px;
+
 }
 
-#sendBtn5, .feedbackForm button {
+#sendBtn5,
+.feedbackForm button {
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   color: white;
   border: none;
   font-size: 17px;
   width: 40%;
-  height: 20px;
-  padding-bottom: 30px;
   background-color: rgb(4, 81, 140);
   border-left: solid 5px rgb(255, 211, 51);
   cursor: pointer;
+  margin: 0%;
 }
 
-#sendBtn5:hover, .feedbackForm button:hover {
+#sendBtn5:hover,
+.feedbackForm button:hover {
   color: white;
   border: none;
   background-color: #2790bd;
@@ -47,6 +63,11 @@
   border-left: solid 5px rgb(255, 211, 51);
 }
 
-.buttons{
+.buttons {
+  display: flex;
+  justify-content: center;
+  padding-top: 10px;
+  gap: 10px;
   width: 100%;
+  height: 30px;
 }
