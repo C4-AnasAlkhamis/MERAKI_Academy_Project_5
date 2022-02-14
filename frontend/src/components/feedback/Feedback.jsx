@@ -95,22 +95,22 @@ const FeedBack = () => {
       <div className="feedback">
         <form className="feedbackForm" ref={form} onSubmit={sendEmail}>
           <input
-            id="sendBtn1"
-            type="text"
-            placeholder="Subject"
-            name="subject"
-          />
-          <input
-            id="sendBtn2"
-            type="text"
-            placeholder="Your Name"
-            name="name"
-          />
-          <input
             id="sendBtn3"
             type="email"
             placeholder="Your Email Address"
             name="email"
+          />
+            <input
+              id="sendBtn2"
+              type="text"
+              placeholder="Your Name"
+              name="name"
+            />
+          <input
+            id="sendBtn1"
+            type="text"
+            placeholder="Subject"
+            name="subject"
           />
           <textarea
             id="sendBtn4"

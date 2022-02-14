@@ -63,6 +63,14 @@
   cursor: pointer;
 }
 
+.feedbackShow{
+    background-color: white;
+    padding: 2%;
+    position: fixed;
+    z-index: 3;
+    top: 100px;
+}
+
 /*
 .secondContainer {
   display: flex;

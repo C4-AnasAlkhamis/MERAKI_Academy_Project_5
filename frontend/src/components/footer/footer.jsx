@@ -28,11 +28,11 @@ import payCards from "../../image/cards.png";
 
 const Footer = () => {
   const nav = useNavigate();
+  const [show, setShow] = useState(false);
 
   return (
     <>
       <div className="footer">
-        {/* <FeedBack /> */}
         <div className="groupFooter">
           <div className="SocialMedia">
             <h2 className="follow">Follow Us On Social Media</h2>
@@ -68,7 +68,13 @@ const Footer = () => {
           </div>
         </div>
         <div className="infoFooter">
-          <button>Send Feedback</button>
+          {show ? <div className="feedbackShow"><FeedBack /></div> : null}
+          <button
+            onClick={() => {
+              setShow(!show);
+            }}>
+            Feedback
+          </button>
           <h2 className="duty">06-474747470 (Saturday - Thursday 8am - 5pm)</h2>
 
           <img src={payCards} alt="pa" id="imgPay" />
