@@ -1,3 +1,5 @@
+/** @format */
+
 // /** @format */
 
 import axios from "axios";
@@ -16,73 +18,59 @@ import payCards from "../../image/cards.png";
 const Footer = () => {
   const nav = useNavigate();
 
-
-
-
-
-  
   return (
     <>
       <div className="footer">
-        <FeedBack />
-        <div className="secondContainer">
-          <div className="socContainer">
-            <div className="1">
+        {/* <FeedBack /> */}
+          
+            <div className="SocialMedia">
               <h2 className="follow">Follow Us On Social Media</h2>
-              <ul className="social">
-                <li>
-                  <a href="https://web.facebook.com/TechniCorner-113936371207625/about/?ref=page_internal">
-                    Facebook
-                  </a>
-                  
-                </li>
-                <li>
-                  <a href="http://twitter.com/">Twitter</a>
-                  
-                </li>
-                <li>
-                  <a href="https://www.youtube.com/channel/UCcO5lahWe1dFGemPIgJtK1w/">
-                    Youtube
-                  </a>
-                  
-                </li>
-                <li>
-                  <a href="https://www.instagram.com/technicorner7/">
-                    Instagram
-                  </a>
-                  
-                </li>
-              </ul>
+
+              <a href="https://web.facebook.com/TechniCorner-113936371207625/about/?ref=page_internal">
+                Facebook
+              </a>
+
+              <a href="http://twitter.com/">Twitter</a>
+
+              <a href="https://www.youtube.com/channel/UCcO5lahWe1dFGemPIgJtK1w/">
+                Youtube
+              </a>
+
+              <a href="https://www.instagram.com/technicorner7/">Instagram</a>
             </div>
 
-            <div className="2">
+            <div className="links">
               <h2 className="imp">Important Links</h2>
-              <ul className="impLink">
-                {/* <li onClick={nav("homePage")}>Home</li> */}
-                <li> <Link className="gg" to={"homePage"}>Home</Link></li>
 
-                {/* <li onClick={nav("/register")}>Register</li> */}
-                <li> <Link className="gg" to={"register"}>Register</Link></li>
+                  <Link className="gg" to={"homePage"}>
+                    Home
+                  </Link>
+    
+                  <Link className="gg" to={"register"}>
+                    Register
+                  </Link>
 
-                {/* <li onClick={nav("/login)")}>Login</li> */}
-                <li> <Link className="gg" to={"login"}>Login</Link></li>
-                <li> <Link className="gg" to={"cart"}>Cart</Link></li>
-                <li> <Link className="gg" to={"wishlist"}>Wishlist</Link></li>
-                <li> <Link className="gg" to={"adminPanel"}>Admin Panel</Link></li>
+                  {" "}
+                  <Link className="gg" to={"login"}>
+                    Login
+                  </Link>
 
-                {/* <li onClick={nav("/cart")}>Cart</li>
-
-                <li onClick={nav("/wishlist")}>Wish List</li>
-
-                <li onClick={nav("/adminPanel")}>Admin Panel</li> */}
-
-
-              </ul>
+                  <Link className="gg" to={"cart"}>
+                    Cart
+                  </Link>
+      
+                  <Link className="gg" to={"wishlist"}>
+                    Wishlist
+                  </Link>
+    
+                  <Link className="gg" to={"adminPanel"}>
+                    Admin Panel
+                  </Link>
             </div>
-          </div>
+            <div className="infoFooter">
           <h2 className="duty">06-474747470 (Saturday - Thursday 8am - 5pm)</h2>
 
-          <img src={payCards} alt="pa" id="imgPay"/>
+          <img src={payCards} alt="pa" id="imgPay" />
 
           <h4 className="paymnt">
             Finance provided by PayPal Credit. Terms and conditions apply.
@@ -92,13 +80,12 @@ const Footer = () => {
             trading name of PayPal (Europe) S.a.r.l. et Cie, S.C.A., 22-24
             Boulevard Royal L-2449, Luxembourg.
           </h4>
-          <br>
-          </br>
+          <br></br>
 
-          <h4 className="rights">Developed By  ERRORS-TEAM   All Rights Reserved 	&#169; 2022</h4>
-
-        </div>
-
+          <h4 className="rights">
+            Developed By ERRORS-TEAM All Rights Reserved &#169; 2022
+          </h4>
+          </div>
       </div>
     </>
   );
