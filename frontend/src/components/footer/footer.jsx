@@ -22,52 +22,46 @@ const Footer = () => {
     <>
       <div className="footer">
         {/* <FeedBack /> */}
-          
-            <div className="SocialMedia">
-              <h2 className="follow">Follow Us On Social Media</h2>
+        <div className="groupFooter">
+          <div className="SocialMedia">
+            <h2 className="follow">Follow Us On Social Media</h2>
 
-              <a href="https://web.facebook.com/TechniCorner-113936371207625/about/?ref=page_internal">
-                Facebook
-              </a>
+            <a href="https://web.facebook.com/TechniCorner-113936371207625/about/?ref=page_internal">
+              Facebook
+            </a>
 
-              <a href="http://twitter.com/">Twitter</a>
+            <a href="http://twitter.com/">Twitter</a>
 
-              <a href="https://www.youtube.com/channel/UCcO5lahWe1dFGemPIgJtK1w/">
-                Youtube
-              </a>
+            <a href="https://www.youtube.com/channel/UCcO5lahWe1dFGemPIgJtK1w/">
+              Youtube
+            </a>
 
-              <a href="https://www.instagram.com/technicorner7/">Instagram</a>
-            </div>
+            <a href="https://www.instagram.com/technicorner7/">Instagram</a>
+          </div>
 
-            <div className="links">
-              <h2 className="imp">Important Links</h2>
-
-                  <Link className="gg" to={"homePage"}>
-                    Home
-                  </Link>
-    
-                  <Link className="gg" to={"register"}>
-                    Register
-                  </Link>
-
-                  {" "}
-                  <Link className="gg" to={"login"}>
-                    Login
-                  </Link>
-
-                  <Link className="gg" to={"cart"}>
-                    Cart
-                  </Link>
-      
-                  <Link className="gg" to={"wishlist"}>
-                    Wishlist
-                  </Link>
-    
-                  <Link className="gg" to={"adminPanel"}>
-                    Admin Panel
-                  </Link>
-            </div>
-            <div className="infoFooter">
+          <div className="links">
+            <h2 className="imp">Important Links</h2>
+            <Link className="gg" to={"homePage"}>
+              Home
+            </Link>
+            <Link className="gg" to={"register"}>
+              Register
+            </Link>{" "}
+            <Link className="gg" to={"login"}>
+              Login
+            </Link>
+            <Link className="gg" to={"cart"}>
+              Cart
+            </Link>
+            <Link className="gg" to={"wishlist"}>
+              Wishlist
+            </Link>
+            <Link className="gg" to={"adminPanel"}>
+              Admin Panel
+            </Link>
+          </div>
+        </div>
+        <div className="infoFooter">
           <h2 className="duty">06-474747470 (Saturday - Thursday 8am - 5pm)</h2>
 
           <img src={payCards} alt="pa" id="imgPay" />
@@ -85,7 +79,7 @@ const Footer = () => {
           <h4 className="rights">
             Developed By ERRORS-TEAM All Rights Reserved &#169; 2022
           </h4>
-          </div>
+        </div>
       </div>
     </>
   );

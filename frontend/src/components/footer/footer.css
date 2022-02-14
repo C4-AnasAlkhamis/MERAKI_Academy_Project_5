@@ -4,9 +4,15 @@
   background-color: rgba(0, 0, 0, 0.89);
   color: white;
   display: grid;
-  grid-template-columns: repeat(2, 2fr);
+  grid-template-columns: repeat(1, 2fr);
+  margin-top: 40px;
+  padding: 40px;
 }
 
+.groupFooter{
+    display: flex;
+    justify-content: space-evenly ;
+}
 .SocialMedia {
   display: flex;
   flex-direction: column;
@@ -18,8 +24,21 @@
   text-align: center;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
+  font-size: 14px;
 }
+
+.infoFooter img{
+    width: 45%;
+
+}
+
+.links{
+    display: flex;
+    flex-direction: column;
+}
+
 
 /*
 .secondContainer {
