@@ -97,7 +97,7 @@ const Worker = () => {
   return (
     <div className="createWorker">
     <div className="worker">
-      <h1>Add Your Service</h1>
+      <h1>Join As a Worker</h1>
       <form onSubmit={uploadImage}>
         <input
           type="text"
@@ -110,6 +110,7 @@ const Worker = () => {
           onChange={(e) => setPhone(e.target.value)}
         />
         <Select
+        className="selectServiceForWorker"
           options={options}
           onChange={(e) => {
             setService_id(e.value);
