@@ -95,7 +95,8 @@ const Worker = () => {
     getAllService();
   }, []);
   return (
-    <div>
+    <div className="createWorker">
+    <div className="worker">
       <h1>Add Your Service</h1>
       <form onSubmit={uploadImage}>
         <input
@@ -120,12 +121,13 @@ const Worker = () => {
             setImageUrl(e.target.files[0]);
           }}
         />
-        <button>Add Service</button>
+        <button>Join</button>
       </form>
       <br />
       {status
         ? message && <div className="SuccessMessage">{message}</div>
         : message && <div className="ErrorMessage">{message}</div>}
+    </div>
     </div>
   );
 };
