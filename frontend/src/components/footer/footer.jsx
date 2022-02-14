@@ -56,9 +56,6 @@ const Footer = () => {
             <Link className="gg" to={"wishlist"}>
               Wishlist
             </Link>
-            <Link className="gg" to={"adminPanel"}>
-              Admin Panel
-            </Link>
           </div>
         </div>
         <div className="infoFooter">

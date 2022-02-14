@@ -1,13 +1,26 @@
 /** @format */
 
 .footer {
-  background-color: rgba(0, 0, 0, 0.89);
+  background-color: rgba(4, 81, 140, 0.884);
   color: white;
   display: grid;
   grid-template-columns: repeat(1, 2fr);
   margin-top: 40px;
   padding: 40px;
 }
+
+.footer a{
+    color: white;
+    cursor: pointer;
+    width: 100px;
+}
+
+.footer a:hover{
+    color: black;
+    background-color: #ffd333;
+    border-radius: 5px;
+}
+
 
 .groupFooter{
     display: flex;
