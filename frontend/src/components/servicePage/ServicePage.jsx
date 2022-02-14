@@ -8,6 +8,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { setService } from "../../reducer/service/index";
 import { setWorkers } from "../../reducer/worker/index";
 import WSInfo from "../serviceInfo/ServiceInfo";
+import headPic from "../../image/logo2.png"
 const ServicePage = () => {
   const [message, setMessage] = useState();
   const navigate = useNavigate();
@@ -55,6 +56,7 @@ const ServicePage = () => {
         <>
           <div className="pageTitle">
             <h1>
+            <img className="headPicLogo" src={headPic}/>
               POPULAR SERVICES<p>What we Can Do</p>
             </h1>
           </div>

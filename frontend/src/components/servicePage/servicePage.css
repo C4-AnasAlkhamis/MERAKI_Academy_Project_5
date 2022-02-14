@@ -64,13 +64,23 @@
   padding-bottom: 3%;
 }
 .pageTitle h1 {
-  border: solid 1px rgb(255, 211, 51);
-  padding-top: 3%;
-  padding-bottom: 3%;
-  border-radius: 3px;
+    border: solid 1px rgb(255, 211, 51);
+    padding-top: 3%;
+    padding-bottom: 3%;
+    border-radius: 3px;
 }
 
 .pageTitle p {
-  color: rgb(255, 211, 51);
-  padding-top: 3%;
+    color: rgb(255, 211, 51);
+    padding-top: 3%;
+}
+
+.headPicLogo{
+    position: relative;
+    top: -30px;
+    left: 170px;
+    width: 28px;
+    height: 28px;
+    z-index: 1;
+    /* background-color: white; */
 }
