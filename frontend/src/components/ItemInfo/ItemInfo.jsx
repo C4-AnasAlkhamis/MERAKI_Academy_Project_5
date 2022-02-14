@@ -76,7 +76,7 @@ const ItemInfo = ({ setShow }) => {
             createNewCartOrWishlist(e.target.id);
             popupCart();
           }}
-          // disabled
+      
           style={{ display: `${item.is_deleted ? "none" : null}` }}
         >
           Add to Cart
