@@ -267,6 +267,7 @@ const createNewFeedback = (req, res) => {
         message: `Server Error`,
       });
     }
+    console.log(data);
     res.status(201).json({
       success: true,
       message: `new feedback created`,
