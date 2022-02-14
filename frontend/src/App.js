@@ -37,6 +37,7 @@ import Footer from "./components/footer/footer";
 
 import ShowWorkers from "./components/adminPanel/users/showWorkers/showWorkers";
 import Rate from "./components/rate/Rate";
+import Chat from "./components/chat/Chat";
 
 function App() {
   const { token } = useSelector((state) => {
@@ -92,7 +93,7 @@ function App() {
         <Route path="/rate" element={<Rate />} />
         <Route path="/showUsers" element={<ShowUsers />} />
         <Route path="/showWorkers" element={<ShowWorkers />} />
-        {/* <Route path="/showWorkers" element={<ShowWorkers />} /> */}
+        <Route path="/chat" element={<Chat />} />
         <Route path="/feedBack" element={<FeedBack />} />
       </Routes>
 

@@ -47,7 +47,7 @@ const ItemInfo = ({ setShow }) => {
   const dispatch = useDispatch();
   const [message, setMessage] = useState("");
   const [isDeleted, setIsDeleted] = useState(false);
-  const state = useSelector((state) => {
+  const { item, token } = useSelector((state) => {
     return {
       item: state.itemInfoReducer.itemInfo,
       token: state.loginReducer.token,
@@ -59,10 +59,10 @@ const ItemInfo = ({ setShow }) => {
       try {
         const result = await axios.post(
           `http://localhost:5000/${endPoint}`,
-          { item_id: state.item.id },
+          { item_id: item.id },
           {
             headers: {
-              Authorization: `Bearer ${state.token}`,
+              Authorization: `Bearer ${token}`,
             },
           }
         );
@@ -76,6 +76,8 @@ const ItemInfo = ({ setShow }) => {
             createNewCartOrWishlist(e.target.id);
             popupCart();
           }}
+          // disabled
+          style={{ display: `${item.is_deleted ? "none" : null}` }}
         >
           Add to Cart
         </button>
@@ -105,7 +107,7 @@ const ItemInfo = ({ setShow }) => {
           </i>
           <div className="titleI">
             <h2>
-              <p>{state.item.title}</p>
+              <p>{item.title}</p>
             </h2>
           </div>
           <div className="sub_titleI">
@@ -113,20 +115,16 @@ const ItemInfo = ({ setShow }) => {
 
             <div>
               <h3>
-                <p style={{ color: "green" }}>{state.item.descriptions}</p>
+                <p style={{ color: "green" }}>{item.descriptions}</p>
               </h3>
-              <Rate item_id={state.item.id} />
+              <Rate item_id={item.id} />
             </div>
           </div>
           <div className="img_boxI">
-            <img
-              className="itemI"
-              src={state.item.img}
-              alt={state.item.title}
-            />
+            <img className="itemI" src={item.img} alt={item.title} />
             <div className="info_box">
               <h4>
-                <span className="price"> {state.item.price} $</span>
+                <span className="price"> {item.price} $</span>
                 <br />
               </h4>
               <ul>
@@ -163,7 +161,6 @@ const ItemInfo = ({ setShow }) => {
               </ul>
               <div>
                 <Cart />
-                <span>{state.item.rate}</span>
               </div>
               {/* <img
                   src="https://its-london.s3-eu-west-1.amazonaws.com/CMS/Footer/cards.png"
