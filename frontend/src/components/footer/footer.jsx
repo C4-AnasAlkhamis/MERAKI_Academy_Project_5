@@ -5,18 +5,14 @@
 import axios from "axios";
 import React, { useRef, useEffect, useState } from "react";
 /////////////////
-import { GrUserWorker } from "react-icons/gr";
-import { BiLogOut, BiLogIn } from "react-icons/bi";
-// import { BiLogIn } from "react-icons/bi";
+import { BiLogIn } from "react-icons/bi";
 import {
   AiOutlineFundProjectionScreen,
-  AiOutlineShoppingCart,
-  AiOutlineOrderedList,
   AiOutlineUserAdd,
   AiFillFacebook,
   AiFillTwitterCircle,
   AiFillYoutube,
-  AiFillInstagram
+  AiFillInstagram,
 } from "react-icons/ai";
 import { FcServices } from "react-icons/fc";
 ////////////////////////
@@ -42,32 +38,37 @@ const Footer = () => {
             <h2 className="follow">Follow Us On Social Media</h2>
 
             <a href="https://web.facebook.com/TechniCorner-113936371207625/about/?ref=page_internal">
-              <AiFillFacebook/> Facebook
+              <AiFillFacebook /> Facebook
             </a>
 
-            <a href="http://twitter.com/"><AiFillTwitterCircle/> Twitter</a>
+            <a href="http://twitter.com/">
+              <AiFillTwitterCircle /> Twitter
+            </a>
 
             <a href="https://www.youtube.com/channel/UCcO5lahWe1dFGemPIgJtK1w/">
-              <AiFillYoutube/> Youtube
+              <AiFillYoutube /> Youtube
             </a>
 
-            <a href="https://www.instagram.com/technicorner7/"><AiFillInstagram/> Instagram</a>
+            <a href="https://www.instagram.com/technicorner7/">
+              <AiFillInstagram /> Instagram
+            </a>
           </div>
 
           <div className="links">
             <h2 className="imp">Important Links</h2>
-            <Link className="gg" to={"homePage"}>
-              Home
+            <Link className="gg" to={"/homePage"}>
+              <AiOutlineFundProjectionScreen /> Home
             </Link>
-            <Link className="gg" to={"register"}>
-              Register
+            <Link className="gg" to={"/register"}>
+              <AiOutlineUserAdd /> Register
             </Link>{" "}
-            <Link className="gg" to={"login"}>
-              Login
+            <Link className="gg" to={"/login"}>
+              <BiLogIn /> Login
             </Link>
           </div>
         </div>
         <div className="infoFooter">
+          <button>Send Feedback</button>
           <h2 className="duty">06-474747470 (Saturday - Thursday 8am - 5pm)</h2>
 
           <img src={payCards} alt="pa" id="imgPay" />
