@@ -51,7 +51,7 @@
 .info_box_cart {
   display: flex;
   justify-content: space-evenly;
-  align-items: center;
+  align-items: e;
 }
 .cart_img_box {
   display: flex;

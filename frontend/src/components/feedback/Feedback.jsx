@@ -1,3 +1,5 @@
+/** @format */
+
 // /** @format */
 
 import axios from "axios";
@@ -12,8 +14,29 @@ import withReactContent from "sweetalert2-react-content";
 import emailjs from "emailjs-com";
 
 // export default function FeedBack(){
-const FeedBack = () => {
+const FeedBack = ({ setShow }) => {
   const form = useRef();
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [subject, setSubject] = useState("");
+  const [feedback, setFeedback] = useState("");
+  const [message, setMessage] = useState("");
+
+  const sendFeedBack = () => {
+    axios
+      .post("http://localhost:5000/item/feedback", {
+        name,
+        email,
+        subject,
+        feedback,
+      })
+      .then((result) => {
+        setMessage(result.data.message);
+      })
+      .catch((err) => {
+        setMessage(err.response.data.message);
+      });
+  };
 
   const sendEmail = (e) => {
     // e.preventDefault();
@@ -35,6 +58,7 @@ const FeedBack = () => {
     // e.target.reset();
 
     // const sendEmail = (e) => {
+    sendFeedBack();
     e.preventDefault();
 
     emailjs
@@ -47,7 +71,8 @@ const FeedBack = () => {
       .then(
         (result) => {
           handleFeedBack();
-          console.log(result.text);
+          // console.log(result.text);
+          setShow(false);
         },
         (error) => {
           console.log(error.text);
@@ -58,7 +83,7 @@ const FeedBack = () => {
 
   const handleFeedBack = () => {
     Swal.fire({
-      title: "We Appreciate Your Opinion !",
+      title: message,
       text: "Thank You!.",
       imageUrl:
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ17yFDa0Z570P-R8DmF8nbHu_emWyS5QkFfw&usqp=CAU",
@@ -95,22 +120,31 @@ const FeedBack = () => {
       <div className="feedback">
         <form className="feedbackForm" ref={form} onSubmit={sendEmail}>
           <input
-            id="sendBtn1"
-            type="text"
-            placeholder="Subject"
-            name="subject"
+            id="sendBtn3"
+            type="email"
+            placeholder="Your Email Address"
+            name="email"
+            onChange={(e) => {
+              setEmail(e.target.value);
+            }}
           />
           <input
             id="sendBtn2"
             type="text"
             placeholder="Your Name"
             name="name"
+            onChange={(e) => {
+              setName(e.target.value);
+            }}
           />
           <input
-            id="sendBtn3"
-            type="email"
-            placeholder="Your Email Address"
-            name="email"
+            id="sendBtn1"
+            type="text"
+            placeholder="Subject"
+            name="subject"
+            onChange={(e) => {
+              setSubject(e.target.value);
+            }}
           />
           <textarea
             id="sendBtn4"
@@ -118,8 +152,19 @@ const FeedBack = () => {
             cols="80"
             rows="10"
             name="message"
+            onChange={(e) => {
+              setFeedback(e.target.value);
+            }}
           />
-          <input id="sendBtn5" type="submit" value="Send FeedBack " />
+          <div className="buttons">
+            <input id="sendBtn5" type="submit" value="Send FeedBack " />
+            <button
+              onClick={() => {
+                setShow(false);
+              }}>
+              Cancel
+            </button>
+          </div>
 
           {/* <button " onClick={sendEmail,handleFeedBack}>Send Email</button> */}
 

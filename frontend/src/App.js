@@ -20,11 +20,11 @@ import Worker from "./components/createWorker/CreateWorker";
 
 import AddItem from "./components/adminPanel/items/addItem/addItem";
 
-// import  Dashboard  from "./components/adminPanel/dashboard/dashboard";
+import  Dashboard  from "./components/adminPanel/dashboard/dashboard";
 import AddCategory from "./components/adminPanel/categories/Caregories";
 import ShowItems from "./components/adminPanel/items/showItems/showItems";
 import AddService from "./components/adminPanel/services/AddService";
-
+import MainPage from "./components/mainPage/mainPage";
 // import ShowServices  from "./components/adminPanel/services/showServices/showServices";
 import ShowUsers from "./components/adminPanel/users/showUsers/showUsers";
 import { useState } from "react";
@@ -84,6 +84,7 @@ function App() {
             </>
           }
         />
+        <Route path="/" element={<MainPage />} />
         <Route path="/add-your-service" element={<Worker />} />
         <Route path="/profiles" element={<Profile />} />
         <Route path="/addCategory" element={<AddCategory />} />
@@ -95,6 +96,7 @@ function App() {
         <Route path="/showWorkers" element={<ShowWorkers />} />
         <Route path="/chat" element={<Chat />} />
         <Route path="/feedBack" element={<FeedBack />} />
+        <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
 
       <div>

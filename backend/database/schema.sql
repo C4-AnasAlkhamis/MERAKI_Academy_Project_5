@@ -131,6 +131,16 @@ CREATE TABLE rates (
     PRIMARY KEY (id)
 );
 
+CREATE TABLE feedback (
+    id INT AUTO_INCREMENT NOT NULL,
+    name VARCHAR(100),
+    email VARCHAR(255),
+    subject VARCHAR(255),
+    feedback VARCHAR(255),
+    is_deleted TINYINT DEFAULT 0,
+    PRIMARY KEY (id)
+);
+
 INSERT INTO
     services (title)
 VALUES

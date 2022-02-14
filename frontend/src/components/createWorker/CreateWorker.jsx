@@ -1,4 +1,5 @@
 import axios from "axios";
+import "./createworker.css"
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
@@ -94,8 +95,9 @@ const Worker = () => {
     getAllService();
   }, []);
   return (
-    <div>
-      <h1>Add Your Service</h1>
+    <div className="createWorker">
+    <div className="worker">
+      <h1>Join As a Worker</h1>
       <form onSubmit={uploadImage}>
         <input
           type="text"
@@ -108,6 +110,7 @@ const Worker = () => {
           onChange={(e) => setPhone(e.target.value)}
         />
         <Select
+        className="selectServiceForWorker"
           options={options}
           onChange={(e) => {
             setService_id(e.value);
@@ -119,12 +122,13 @@ const Worker = () => {
             setImageUrl(e.target.files[0]);
           }}
         />
-        <button>Add Service</button>
+        <button>Join</button>
       </form>
       <br />
       {status
         ? message && <div className="SuccessMessage">{message}</div>
         : message && <div className="ErrorMessage">{message}</div>}
+    </div>
     </div>
   );
 };

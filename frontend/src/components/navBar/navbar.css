@@ -2,7 +2,6 @@
 
 .NavBar {
   font-weight: bold;
-  /* width: 100%; */
   background-color: white;
   display: grid;
   z-index: 1;
@@ -17,20 +16,22 @@
   border-bottom: solid 3px #ffd333;
 }
 .NavBar h2 {
-  display: grid;
-  grid-template-columns: repeat(7, 150px);
+  display: flex;
+  justify-content: center;
+  gap: 5%;
+  /* grid-template-columns: repeat(7, 150px);
   text-align: right;
-  font-size: 18px;
+  font-size: 18px; */
 }
 
 .NavBar a {
     color: white;
-
-  padding: 5%;
-  margin-top: 9px;
-  margin-left: 130px;
-  width: 150px;
-  text-align: center;
+   padding: 1%;
+   font-size: 18px;
+  margin-top: 5px;
+  /* margin-left: 130px; */
+  /* width: 150px; */
+  text-align: center; 
 }
 
 .NavBar a:hover {

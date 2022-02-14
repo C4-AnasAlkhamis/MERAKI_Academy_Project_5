@@ -1,8 +1,21 @@
+/** @format */
+
 // /** @format */
 
 import axios from "axios";
 import React, { useRef, useEffect, useState } from "react";
-
+/////////////////
+import { BiLogIn } from "react-icons/bi";
+import {
+  AiOutlineFundProjectionScreen,
+  AiOutlineUserAdd,
+  AiFillFacebook,
+  AiFillTwitterCircle,
+  AiFillYoutube,
+  AiFillInstagram,
+} from "react-icons/ai";
+import { FcServices } from "react-icons/fc";
+////////////////////////
 //  import { useNavigate, LINK } from "react-router-dom";
 import "./footer.css";
 import { useNavigate, Link } from "react-router-dom";
@@ -15,74 +28,56 @@ import payCards from "../../image/cards.png";
 
 const Footer = () => {
   const nav = useNavigate();
+  const [show, setShow] = useState(false);
 
-
-
-
-
-  
   return (
     <>
       <div className="footer">
-        <FeedBack />
-        <div className="secondContainer">
-          <div className="socContainer">
-            <div className="1">
-              <h2 className="follow">Follow Us On Social Media</h2>
-              <ul className="social">
-                <li>
-                  <a href="https://web.facebook.com/TechniCorner-113936371207625/about/?ref=page_internal">
-                    Facebook
-                  </a>
-                  
-                </li>
-                <li>
-                  <a href="http://twitter.com/">Twitter</a>
-                  
-                </li>
-                <li>
-                  <a href="https://www.youtube.com/channel/UCcO5lahWe1dFGemPIgJtK1w/">
-                    Youtube
-                  </a>
-                  
-                </li>
-                <li>
-                  <a href="https://www.instagram.com/technicorner7/">
-                    Instagram
-                  </a>
-                  
-                </li>
-              </ul>
-            </div>
+        <div className="groupFooter">
+          <div className="SocialMedia">
+            <h2 className="follow">Follow Us On Social Media</h2>
 
-            <div className="2">
-              <h2 className="imp">Important Links</h2>
-              <ul className="impLink">
-                {/* <li onClick={nav("homePage")}>Home</li> */}
-                <li> <Link className="gg" to={"homePage"}>Home</Link></li>
+            <a href="https://web.facebook.com/TechniCorner-113936371207625/about/?ref=page_internal">
+              <AiFillFacebook /> Facebook
+            </a>
 
-                {/* <li onClick={nav("/register")}>Register</li> */}
-                <li> <Link className="gg" to={"register"}>Register</Link></li>
+            <a href="http://twitter.com/">
+              <AiFillTwitterCircle /> Twitter
+            </a>
 
-                {/* <li onClick={nav("/login)")}>Login</li> */}
-                <li> <Link className="gg" to={"login"}>Login</Link></li>
-                <li> <Link className="gg" to={"cart"}>Cart</Link></li>
-                <li> <Link className="gg" to={"wishlist"}>Wishlist</Link></li>
-                <li> <Link className="gg" to={"adminPanel"}>Admin Panel</Link></li>
+            <a href="https://www.youtube.com/channel/UCcO5lahWe1dFGemPIgJtK1w/">
+              <AiFillYoutube /> Youtube
+            </a>
 
-                {/* <li onClick={nav("/cart")}>Cart</li>
-
-                <li onClick={nav("/wishlist")}>Wish List</li>
-
-                <li onClick={nav("/adminPanel")}>Admin Panel</li> */}
-
-
-              </ul>
-            </div>
+            <a href="https://www.instagram.com/technicorner7/">
+              <AiFillInstagram /> Instagram
+            </a>
           </div>
+
+          <div className="links">
+            <h2 className="imp">Important Links</h2>
+            <Link className="gg" to={"/homePage"}>
+              <AiOutlineFundProjectionScreen /> Home
+            </Link>
+            <Link className="gg" to={"/register"}>
+              <AiOutlineUserAdd /> Register
+            </Link>{" "}
+            <Link className="gg" to={"/login"}>
+              <BiLogIn /> Login
+            </Link>
+          </div>
+        </div>
+        <div className="infoFooter">
+          {show ? <div className="feedbackShow"><FeedBack setShow={setShow}/></div> : null}
+          <button
+            onClick={() => {
+              setShow(!show);
+            }}>
+            Feedback
+          </button>
           <h2 className="duty">06-474747470 (Saturday - Thursday 8am - 5pm)</h2>
 
-          <img src={payCards} alt="pa" id="imgPay"/>
+          <img src={payCards} alt="pa" id="imgPay" />
 
           <h4 className="paymnt">
             Finance provided by PayPal Credit. Terms and conditions apply.
@@ -92,13 +87,12 @@ const Footer = () => {
             trading name of PayPal (Europe) S.a.r.l. et Cie, S.C.A., 22-24
             Boulevard Royal L-2449, Luxembourg.
           </h4>
-          <br>
-          </br>
+          <br></br>
 
-          <h4 className="rights">Developed By  ERRORS-TEAM   All Rights Reserved 	&#169; 2022</h4>
-
+          <h4 className="rights">
+            Developed By ERRORS-TEAM All Rights Reserved &#169; 2022
+          </h4>
         </div>
-
       </div>
     </>
   );
