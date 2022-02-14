@@ -5,7 +5,6 @@ import { Routes, Route } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
 import Login from "./components/login/Login";
-import ItemInfo from "./components/ItemInfo/ItemInfo";
 import Register from "./components/register/Register";
 import NavBar from "./components/navBar/navBar";
 import Cart from "./components/cart/cart";
@@ -40,10 +39,10 @@ import Rate from "./components/rate/Rate";
 import Chat from "./components/chat/Chat";
 
 function App() {
-  const { token } = useSelector((state) => {
+  const { token, isLoggedIn } = useSelector((state) => {
     return {
       token: state.loginReducer.token,
-      token: state.loginReducer.isAdmin,
+      isLoggedIn: state.loginReducer.isLoggedIn,
     };
   });
   let isAdmin = localStorage.getItem("isAdmin") ? true : false;
@@ -94,10 +93,10 @@ function App() {
         <Route path="/rate" element={<Rate />} />
         <Route path="/showUsers" element={<ShowUsers />} />
         <Route path="/showWorkers" element={<ShowWorkers />} />
-        <Route path="/chat" element={<Chat />} />
         <Route path="/feedBack" element={<FeedBack />} />
         <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
+      {isLoggedIn && <Chat />}
 
       <div>
         <>{/* <FeedBack /> */}</>

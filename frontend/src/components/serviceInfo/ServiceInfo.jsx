@@ -1,10 +1,15 @@
-import { useSelector, useDispatch } from "react-redux";
 import "./serviceInfo.css";
 import jwt from "jwt-decode";
 import { useState } from "react";
 import { RiArrowGoBackLine } from "react-icons/ri";
 import axios from "axios";
+import { useSelector, useDispatch } from "react-redux";
+import { setWorkerId } from "../../reducer/worker/index";
+
+import { useNavigate } from "react-router-dom";
 const WSInfo = ({ setShowWorker }) => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [name, setName] = useState();
   const [address, setAddress] = useState();
   const [phone, setPhone] = useState();
@@ -12,6 +17,7 @@ const WSInfo = ({ setShowWorker }) => {
   const [message, setMessage] = useState();
   const [worker_id, setWorker_id] = useState();
   const [show, setShow] = useState(false);
+  const [chat, setChat] = useState(false);
   const { token, workers } = useSelector((state) => {
     return {
       token: state.loginReducer.token,
@@ -71,6 +77,16 @@ const WSInfo = ({ setShowWorker }) => {
                 <address>{worker.address}</address>
                 <button
                   onClick={() => {
+                    setChat(true);
+                    navigate("/chat");
+                    dispatch(setWorkerId(worker.user_id));
+                  }}
+                >
+                  chat
+                </button>
+
+                <button
+                  onClick={() => {
                     setWorker_id(worker.user_id);
                     setShow(true);
                   }}
@@ -103,7 +119,6 @@ const WSInfo = ({ setShowWorker }) => {
             placeholder="Phone Number"
             onChange={(e) => setPhone(e.target.value)}
           />
-
           <button
             onClick={(e) => {
               sendRequest(e);
