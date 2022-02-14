@@ -102,85 +102,6 @@ const Wishlist = (id) => {
     getWishlistById();
   }, []);
   return (
-    //     <div className="Wishlist">
-    //       <h1 className="Wishlist_title"> My Wishlist Content ... </h1>
-
-    //       <div className="note">
-    //         <h1>Reminder </h1>
-    // <br></br>
-    //         {notes.map((note, i) => {
-    //           return (
-    //             <div key={i}>
-    //               <p>{note.myNote}</p>
-    //             </div>
-    //           );
-    //         })}
-
-    //         <input
-    //           onChange={(e) => {
-    //             setNote(e.target.value);
-    //           }}
-    //           type="text"
-    //           placeholder="note"
-    //         ></input>
-    //         <button
-    //         className="noteBttn"
-    //           onClick={(e) => {
-    //             setNotes([...notes, { myNote: note }]);
-    //           }}
-    //         >
-    //           Note!
-    //         </button>
-    //       </div>
-    //       {wishlists ? (
-    //         wishlists.map((wishlist, index) => {
-    //           return (
-    //             <div key={index} className="box">
-    //               <div className="wishlist_box">
-    //                 <div>
-    //                   <img src={wishlist.img} alt={wishlist.title} />
-    //                 </div>
-    //                 <div className="info_box_flex_column">
-    //                   <span>{wishlist.title}</span>
-    //                   <span>{wishlist.description}</span>
-    //                   <br></br>
-    //                   <br></br>
-
-    //                   <span>
-    //                     {wishlist.price}
-    //                     {"  JOD"}
-    //                   </span>
-    //                   <span>{wishlist.rate}</span>
-    //                   <br></br>
-    //                   <br></br>
-
-    //                   <button
-    //                     className="wishlist_delete"
-    //                     id={wishlist.id}
-    //                     onClick={(e) => {
-    //                       deleteWishlistById(wishlist.wishlist_id);
-    //                     }}
-    //                   >
-    //                     Remove Item
-    //                   </button>
-    //                   <button
-    //                     className="wishlist_add_cart"
-    //                     id={wishlist.id}
-    //                     onClick={(e) => {
-    //                       createNewCart(wishlist.item_id);
-    //                     }}
-    //                   >
-    //                     Add to Cart
-    //                   </button>
-    //                 </div>
-    //               </div>
-    //             </div>
-    //           );
-    //         })
-    //       ) : (
-    //         <div>No Wishlist Yet!</div>
-    //       )}
-    //     </div>
     <div className="cart">
       <div className="cart_nav_box">
         <ul>
@@ -267,6 +188,7 @@ const Wishlist = (id) => {
 
                     createNewCart(wishlist.item_id);
                   }}
+                  style={{ display: `${wishlist.is_deleted ? "none" : null}` }}
                 >
                   <IoIosAddCircle className="icon_style_add" />
                   To Cart

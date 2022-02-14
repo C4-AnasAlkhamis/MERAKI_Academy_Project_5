@@ -81,7 +81,6 @@ const Worker = () => {
         }
       )
       .then((result) => {
-        console.log(result);
         localStorage.setItem("token", result.data.token);
         localStorage.setItem("userName", jwt(result.data.token).userName);
         dispatch(logIn(result.data.token));

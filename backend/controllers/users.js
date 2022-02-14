@@ -12,7 +12,7 @@ const createNewUser = async (req, res) => {
 
   const hashingPass = await bcrypt.hash(password, 5);
 
-  const query = `INSERT INTO users (user_name, email, password, role_id) VALUES (?,?,?,2)`;
+  const query = `INSERT INTO users (user_name, email, password, role_id) VALUES (?,?,?,1)`;
   const data = [user_name, email, hashingPass];
 
   connection.query(query, data, (err, results) => {

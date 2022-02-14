@@ -1,5 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import "./serviceInfo.css";
+import jwt from "jwt-decode";
 import { useState } from "react";
 import { RiArrowGoBackLine } from "react-icons/ri";
 import axios from "axios";
@@ -58,25 +59,26 @@ const WSInfo = ({ setShowWorker }) => {
 
       <div className="workerLst">
         {workers.map((worker, index) => {
-          return (
-            <div key={index} className="workerInfoInService">
-              <div>
-                <img src={worker.image} alt={worker.name} />
-                <h1>{worker.user_name}</h1>
-              </div>
+          if (jwt(token).userId !== worker.user_id)
+            return (
+              <div key={index} className="workerInfoInService">
+                <div>
+                  <img src={worker.image} alt={worker.name} />
+                  <h1>{worker.user_name}</h1>
+                </div>
 
-              <small>{worker.phone}</small>
-              <address>{worker.address}</address>
-              <button
-                onClick={() => {
-                  setWorker_id(worker.user_id);
-                  setShow(true);
-                }}
-              >
-                send request
-              </button>
-            </div>
-          );
+                <small>{worker.phone}</small>
+                <address>{worker.address}</address>
+                <button
+                  onClick={() => {
+                    setWorker_id(worker.user_id);
+                    setShow(true);
+                  }}
+                >
+                  send request
+                </button>
+              </div>
+            );
         })}
       </div>
       {show ? (

@@ -2,6 +2,7 @@
 
 const express = require("express");
 const cors = require("cors");
+const socket = require("socket.io");
 require("dotenv").config();
 const app = express();
 const db = require("./database/db");
@@ -12,7 +13,6 @@ app.use(express.json());
 
 const PORT = 5000;
 
-//import router
 const cartRouter = require("./routes/cart");
 const categoriesRouter = require("./routes/categories");
 const itemsRouter = require("./routes/items");
@@ -41,7 +41,19 @@ app.use("/send_request", serviceReqRouter);
 app.use("/service", serviceRouter);
 app.use("/worker", workerRouter);
 app.use("/rate", rateRouter);
-
-app.listen(PORT, () => {
+const server = app.listen(PORT, () => {
   console.log(`SERVER WORKING ON PORT: ${PORT}`);
 });
+
+const io = socket(server, {
+  cors: {
+    origin: "http://localhost:3000",
+    method: ["GET", "POST"],
+  },
+});
+
+
+module.exports = { io };
+
+const chat = require("./controllers/chat");
+

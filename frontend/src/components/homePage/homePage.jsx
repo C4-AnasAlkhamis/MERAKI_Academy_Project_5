@@ -9,7 +9,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { setItems, setCategories } from "../../reducer/item/index";
 import { setItemInfo } from "../../reducer/itemInfo/index";
 import { useNavigate } from "react-router-dom";
-import { setRates, addRate } from "../../reducer/rate/rate";
+import { setRates } from "../../reducer/rate/rate";
 //===============================================================
 import handTool from "../../image/header.png";
 import powerTool from "../../image/header.jpg";

@@ -80,7 +80,8 @@ const ServicePage = () => {
           </div>
         </>
       ) : (
-        <WSInfo setShowWorker={setShowWorker} />
+       
+          <WSInfo setShowWorker={setShowWorker} />
       )}
     </div>
   );
