@@ -15,6 +15,8 @@ const {
   getFilteredItems,
   isDeleteItemById,
   getOutOfSItems,
+  getAllFeedback,
+  createNewFeedback,
 } = require("../controllers/items");
 const pushItem = require("../controllers/addItem");
 //Post http://localhost:5000/item/
@@ -24,6 +26,8 @@ const pushItem = require("../controllers/addItem");
 //put http://localhost:5000/item/4
 //put http://localhost:5000/item/stock/:id
 //put http://localhost:5000/item/stock
+//get http://localhost:5000/item/feedback
+//post http://localhost:5000/item/feedback
 
 itemsRouter.post("/", createNewItem);
 itemsRouter.post("/push", pushItem);
@@ -36,6 +40,9 @@ itemsRouter.put("/:id", updateItemById);
 itemsRouter.put("/stock/:id", isDeleteItemById);
 
 itemsRouter.get("/category/:id", getItemByCategory_id);
+
+itemsRouter.get("/feedback", getAllFeedback);
+itemsRouter.post("/feedback", createNewFeedback);
 
 //write your code here
 module.exports = itemsRouter;

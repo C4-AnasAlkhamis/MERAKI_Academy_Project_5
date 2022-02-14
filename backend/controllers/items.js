@@ -227,6 +227,53 @@ const getItemByCategory_id = (req, res) => {
     });
   });
 };
+// // =================================================== // done
+
+// This function get all feedback
+const getAllFeedback = (req, res) => {
+  const query = `SELECT * FROM feedback `;
+  connection.query(query, (err, result) => {
+    if (err) {
+      return res.status(500).json({
+        success: false,
+        message: `Server Error`,
+      });
+    }
+    if (!result) {
+      return res.status(200).json({
+        success: false,
+        message: `No feedback Yet`,
+      });
+    }
+    res.status(200).json({
+      success: true,
+      message: `all the feedback`,
+      result: result,
+    });
+  });
+};
+
+// // =================================================== // done
+// This function create new feedback
+const createNewFeedback = (req, res) => {
+  const { name, email, subject, feedback } = req.body;
+
+  const query = `INSERT INTO feedback (name, email, subject, feedback) VALUE (?,?,?,?)`;
+  const data = [name, email, subject, feedback];
+  connection.query(query, data, (err, result) => {
+    if (err) {
+      return res.status(500).json({
+        success: false,
+        message: `Server Error`,
+      });
+    }
+    res.status(201).json({
+      success: true,
+      message: `new feedback created`,
+      result: result,
+    });
+  });
+};
 
 module.exports = {
   createNewItem,
@@ -238,4 +285,6 @@ module.exports = {
   getFilteredItems,
   isDeleteItemById,
   getOutOfSItems,
+  getAllFeedback,
+  createNewFeedback
 };
