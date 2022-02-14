@@ -7,3 +7,46 @@
   justify-content: center;
   align-items: center;
 }
+
+.feedbackForm{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.feedbackForm input{
+  width: 400px;
+  height: 30px;
+
+}
+
+.feedbackForm textarea{
+  width: 390px;
+  height: 100px;
+}
+
+#sendBtn5, .feedbackForm button {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  color: white;
+  border: none;
+  font-size: 17px;
+  width: 40%;
+  height: 20px;
+  padding-bottom: 30px;
+  background-color: rgb(4, 81, 140);
+  border-left: solid 5px rgb(255, 211, 51);
+  cursor: pointer;
+}
+
+#sendBtn5:hover, .feedbackForm button:hover {
+  color: white;
+  border: none;
+  background-color: #2790bd;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px,
+    rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+  border-left: solid 5px rgb(255, 211, 51);
+}
+
+.buttons{
+  width: 100%;
+}

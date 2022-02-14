@@ -68,7 +68,7 @@ const Footer = () => {
           </div>
         </div>
         <div className="infoFooter">
-          {show ? <div className="feedbackShow"><FeedBack /></div> : null}
+          {show ? <div className="feedbackShow"><FeedBack setShow={setShow}/></div> : null}
           <button
             onClick={() => {
               setShow(!show);

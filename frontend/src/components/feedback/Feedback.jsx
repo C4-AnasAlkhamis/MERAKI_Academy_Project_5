@@ -1,3 +1,5 @@
+/** @format */
+
 // /** @format */
 
 import axios from "axios";
@@ -12,7 +14,7 @@ import withReactContent from "sweetalert2-react-content";
 import emailjs from "emailjs-com";
 
 // export default function FeedBack(){
-const FeedBack = () => {
+const FeedBack = ({ setShow }) => {
   const form = useRef();
 
   const sendEmail = (e) => {
@@ -100,12 +102,12 @@ const FeedBack = () => {
             placeholder="Your Email Address"
             name="email"
           />
-            <input
-              id="sendBtn2"
-              type="text"
-              placeholder="Your Name"
-              name="name"
-            />
+          <input
+            id="sendBtn2"
+            type="text"
+            placeholder="Your Name"
+            name="name"
+          />
           <input
             id="sendBtn1"
             type="text"
@@ -119,7 +121,15 @@ const FeedBack = () => {
             rows="10"
             name="message"
           />
-          <input id="sendBtn5" type="submit" value="Send FeedBack " />
+          <div className="buttons">
+            <input id="sendBtn5" type="submit" value="Send FeedBack " />
+            <button
+              onClick={() => {
+                setShow(false);
+              }}>
+              Cancel
+            </button>
+          </div>
 
           {/* <button " onClick={sendEmail,handleFeedBack}>Send Email</button> */}
 
