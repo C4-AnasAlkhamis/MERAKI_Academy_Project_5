@@ -53,7 +53,13 @@ const ItemInfo = ({ setShow }) => {
       token: state.loginReducer.token,
     };
   });
-
+  useEffect(() => {
+    window.scrollTo({
+      top: 100,
+      left: 100,
+      behavior: "smooth",
+    });
+  }, []);
   const Cart = () => {
     const createNewCartOrWishlist = async (endPoint) => {
       try {
@@ -76,7 +82,6 @@ const ItemInfo = ({ setShow }) => {
             createNewCartOrWishlist(e.target.id);
             popupCart();
           }}
-      
           style={{ display: `${item.is_deleted ? "none" : null}` }}
         >
           Add to Cart
