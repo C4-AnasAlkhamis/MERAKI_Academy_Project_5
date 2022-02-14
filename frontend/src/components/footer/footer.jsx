@@ -4,7 +4,22 @@
 
 import axios from "axios";
 import React, { useRef, useEffect, useState } from "react";
-
+/////////////////
+import { GrUserWorker } from "react-icons/gr";
+import { BiLogOut, BiLogIn } from "react-icons/bi";
+// import { BiLogIn } from "react-icons/bi";
+import {
+  AiOutlineFundProjectionScreen,
+  AiOutlineShoppingCart,
+  AiOutlineOrderedList,
+  AiOutlineUserAdd,
+  AiFillFacebook,
+  AiFillTwitterCircle,
+  AiFillYoutube,
+  AiFillInstagram
+} from "react-icons/ai";
+import { FcServices } from "react-icons/fc";
+////////////////////////
 //  import { useNavigate, LINK } from "react-router-dom";
 import "./footer.css";
 import { useNavigate, Link } from "react-router-dom";
@@ -27,16 +42,16 @@ const Footer = () => {
             <h2 className="follow">Follow Us On Social Media</h2>
 
             <a href="https://web.facebook.com/TechniCorner-113936371207625/about/?ref=page_internal">
-              Facebook
+              <AiFillFacebook/> Facebook
             </a>
 
-            <a href="http://twitter.com/">Twitter</a>
+            <a href="http://twitter.com/"><AiFillTwitterCircle/> Twitter</a>
 
             <a href="https://www.youtube.com/channel/UCcO5lahWe1dFGemPIgJtK1w/">
-              Youtube
+              <AiFillYoutube/> Youtube
             </a>
 
-            <a href="https://www.instagram.com/technicorner7/">Instagram</a>
+            <a href="https://www.instagram.com/technicorner7/"><AiFillInstagram/> Instagram</a>
           </div>
 
           <div className="links">
@@ -49,12 +64,6 @@ const Footer = () => {
             </Link>{" "}
             <Link className="gg" to={"login"}>
               Login
-            </Link>
-            <Link className="gg" to={"cart"}>
-              Cart
-            </Link>
-            <Link className="gg" to={"wishlist"}>
-              Wishlist
             </Link>
           </div>
         </div>
