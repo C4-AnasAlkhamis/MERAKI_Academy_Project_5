@@ -1,27 +1,40 @@
 /** @format */
 
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 const MainPage = () => {
+  const [feedbacks, setFeedbacks] = useState([]);
   const getAllFeedBack = async () => {
-    const [feedbacks, setFeedbacks] = useState([]);
     try {
       const res = await axios.get("http://localhost:5000/item/feedback");
       if (res.data.success) {
         setFeedbacks(res.data.result);
-        console.log(feedbacks);
       } else throw Error;
     } catch (error) {
       if (!error.response.data.success) {
-        return setMessage(error.response.data.message);
+        // return setMessage(error.response.data.message);
       }
-      setMessage("Error happened while Get Data, please try again");
+      console.log("Error happened while Get Data, please try again");
     }
   };
+
+  useEffect(() => {
+    getAllFeedBack();
+  }, []);
 
   return (
     <div className="mainPage">
       <h1>Main</h1>
+
+      
+      {/* {feedbacks.map((feedback,i) => {
+        return (
+          <>
+            <p key={i}>{feedback.name}</p>{" "}
+          </>
+        );
+      })} */}
     </div>
   );
 };
