@@ -16,7 +16,7 @@ const WSInfo = ({ setShowWorker }) => {
   const [address, setAddress] = useState();
   const [phone, setPhone] = useState();
   const [order_Detalis, setOrder_Detalis] = useState();
-  const [message, setMessage] = useState();
+  // const [message, setMessage] = useState();
   const [worker_id, setWorker_id] = useState();
   const [show, setShow] = useState(false);
   const { token, workers } = useSelector((state) => {
@@ -26,7 +26,7 @@ const WSInfo = ({ setShowWorker }) => {
     };
   });
 
-  const successRequest = () => {
+  const successRequest = (message) => {
     Swal.fire({
       icon: "success",
       title: message,
@@ -34,11 +34,13 @@ const WSInfo = ({ setShowWorker }) => {
       timer: 2500,
     });
   };
-  const wrongRegister = () => {
+  const wrongRegister = (message) => {
     Swal.fire({
       icon: "error",
       title: "Oops... " + message,
-      text: ' Fill All Required Inputs ..Please!',
+      text: " Fill All Required Inputs ..Please!",
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
     });
   };
   const sendRequest = async (e) => {
@@ -66,15 +68,14 @@ const WSInfo = ({ setShowWorker }) => {
         setAddress("");
         setPhone("");
         setOrder_Detalis("");
-        setMessage(
+
+        setShow(!show);
+        successRequest(
           "Your request has been successfully sent, you will receive an email to schedule an appointment"
         );
-        setShow(!show);
-        successRequest();
       })
       .catch((err) => {
-        setMessage("An issue occurred, please try again later.");
-        wrongRegister();
+        wrongRegister("An issue occurred, please try again later.");
       });
   };
 

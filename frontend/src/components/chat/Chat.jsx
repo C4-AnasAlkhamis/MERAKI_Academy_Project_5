@@ -20,9 +20,9 @@ const Chat = () => {
   const [user_id, setUser_id] = useState(jwt(token).userId);
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([]);
+  const [show, setShow] = useState(false);
   const socket = io.connect(process.env.REACT_APP_SOCKET_URL);
   const sendMessage = () => {
-    console.log(userId);
     socket.emit("MESSAGE", {
       user_id,
       worker_id: worker_id != 0 ? worker_id : userId,
@@ -38,23 +38,23 @@ const Chat = () => {
   }, [user_id]);
   useEffect(() => {
     socket.on("RECEIVE_MESSAGE", (data) => {
-      console.log(data);
+      setShow(true);
       setUserId(data.user_id);
       setMessages((messages) => [...messages, data]);
     });
   }, [refresh]);
-  console.log(worker_id);
   socket.on("disconnect", () => {});
+  console.log(messages.length);
   return (
     <>
-      {worker_id || messages.length ? (
+      {worker_id || show ? (
         <div className="chat_box">
           <div className="chat_header">
             <i
               className="btn"
               onClick={() => {
                 dispatch(setWorkerId(0));
-                setMessages([]);
+                setShow(false);
               }}
             >
               <AiOutlineCloseCircle />
@@ -65,7 +65,19 @@ const Chat = () => {
           <div className="message_box">
             {messages.length
               ? messages.map((message, index) => {
-                  return <p key={index}>{message.message}</p>;
+                  console.log(message);
+                  return (
+                    <p key={index}>
+                      <span>
+                        {message.user_id === user_id
+                          ? "you: "
+                          : message.user_id === worker_id
+                          ? "worker: "
+                          : "customer"}
+                      </span>
+                      {message.message}
+                    </p>
+                  );
                 })
               : null}
           </div>
