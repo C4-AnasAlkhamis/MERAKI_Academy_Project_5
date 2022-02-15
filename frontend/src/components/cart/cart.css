@@ -38,7 +38,7 @@
 }
 .cart_box {
   display: grid;
-  grid-template-columns: 3fr 1.5fr 1fr 1fr 1fr;
+  grid-template-columns: 4fr 1.5fr 1fr 1fr 1fr;
   width: 85%;
   margin: 0 auto;
   border-bottom: 1px solid rgba(94, 94, 94, 0.541);
@@ -48,6 +48,8 @@
 .info_center {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   gap: 1rem;
 }
 .info_center span {
