@@ -1,3 +1,12 @@
+.mainPage{
+    text-align: center;
+}
+
+.mainPage h1{
+font-size: 1ram 0;
+margin: 2%;
+}
+
 .brandImg ,.showImg{
     display: flex;
     flex-wrap: wrap;

@@ -70,7 +70,7 @@ function App() {
           element={
             <>
               <HomePage />
-              <Footer />
+              
             </>
           }
         />
@@ -100,6 +100,7 @@ function App() {
       <div>
         <>{/* <FeedBack /> */}</>
       </div>
+      <Footer />
     </div>
   );
 }

@@ -63,17 +63,19 @@ const MainPage = () => {
       <div className="Hadar">
         <img src={headMainImag} />
       </div>
-          <h1>Shop Now</h1>
+          <h1>MORE GREAT DEALS</h1>
       <div className="showImg">
         <img src={img_1} />
         <img src={img_2} />
         <img src={img_3} />
       </div>
+          <h1>Brands</h1>
       <div className="brandImg">
         {image.map((pic, i) => {
           return <img key={i} src={pic} />;
         })}
       </div>
+
       <div className="brandImg">
       {feedbacks.map((feedback,i) => {
         return (
