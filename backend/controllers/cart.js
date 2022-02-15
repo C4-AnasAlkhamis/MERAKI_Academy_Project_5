@@ -26,7 +26,7 @@ const createNewCart = (req, res) => {
 // This function returns Cart By Id
 const getCartById = (req, res) => {
   const id = req.token.userId;
-  const query = `SELECT *, carts.id as cart_id FROM carts join items ON carts.item_id = items.id where carts.user_id =?`;
+  const query = `SELECT *, carts.id as cart_id ,COUNT( carts.item_id) AS count,SUM( items.price) AS total_price FROM carts JOIN items ON carts.item_id = items.id where carts.user_id =? GROUP BY 2`;
   const data = [id];
   connection.query(query, data, (err, result) => {
     if (err) {

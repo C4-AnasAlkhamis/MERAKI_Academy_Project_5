@@ -28,13 +28,18 @@ const Cart = () => {
       text: "You won't be able to revert this process!",
       icon: "warning",
       showCancelButton: true,
-      confirmButtonColor: "#3085d6",
+      confirmButtonColor: "#04518c",
       cancelButtonColor: "#d33",
       confirmButtonText: "Yes, Remove it!",
     }).then((result) => {
       if (result.isConfirmed) {
         deleteCartById(id);
-        Swal.fire("Deleted!", "Your item has been removed!.", "success");
+        Swal.fire({
+          confirmButtonText: "Removed!",
+          title: "Your item has been removed!.",
+          icon: "success",
+          confirmButtonColor: "#04518c",
+        });
       }
     });
   };
@@ -62,7 +67,7 @@ const Cart = () => {
     await axios
       .delete(`http://localhost:5000/cart/${id}`)
       .then((result) => {
-        dispatch(deleteCart(id));
+        getCartById();
       })
       .catch((err) => {
         console.log(err);
@@ -118,7 +123,7 @@ const Cart = () => {
               src="https://its-london.s3-eu-west-1.amazonaws.com/assets/USPDrillIcon.png"
               alt="Finance Available over £99 inc VAT"
             />
-            <span>Finance Available over JD99 inc VAT</span>
+            <span>Finance Available over $99 inc VAT</span>
           </li>
         </ul>
       </div>
@@ -127,20 +132,20 @@ const Cart = () => {
         <div>
           <h1>Your Shopping Cart</h1>
         </div>
-        <div className="info_box buy_box ">
+        <div className="buy_box">
           <PayPalScriptProvider>
             <Pay items={carts} price={total} />
           </PayPalScriptProvider>
-          <div>
+          <div className="price_box">
             <p>Total Price </p>
-            <span>{total} JOD</span>
+            <span>{total} $</span>
           </div>
         </div>
       </dir>
 
       {carts.length > 0 ? (
         carts.map((cart, index) => {
-          totalPrice += cart.price;
+          totalPrice += parseInt(cart.total_price);
           return (
             <div key={index} className="cart_box">
               <div className="cart_img_box">
@@ -162,25 +167,30 @@ const Cart = () => {
                 </div>
                 <h3>{cart.descriptions}</h3>
               </div>
-
-              <div className="info_box info_box_cart">
-                <div className="info_center">
-                  <h3>Price</h3>
-                  <span>{cart.price} JOD</span>
-                </div>
-                <button
-                  style={{
-                    borderColor: "red",
-                  }}
-                  id={cart.id}
-                  onClick={(e) => {
-                    // setId(cart.cart_id);
-                    popupCartDelete(cart.cart_id);
-                  }}
-                >
-                  Remove it !{" "}
-                </button>
+              <div className="counter_price">
+                <span>{cart.count}</span>
+                <p>
+                  total price <span>{cart.total_price}</span> $
+                </p>
               </div>
+
+              <div className="info_center">
+                <h3>price</h3>
+                <span>{cart.price} $</span>
+              </div>
+
+              <button
+                className="cart_btn"
+                style={{
+                  borderColor: "red",
+                }}
+                id={cart.id}
+                onClick={(e) => {
+                  popupCartDelete(cart.cart_id);
+                }}
+              >
+                Remove it !
+              </button>
             </div>
           );
         })

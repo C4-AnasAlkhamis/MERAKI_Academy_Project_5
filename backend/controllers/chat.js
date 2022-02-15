@@ -28,5 +28,6 @@ io.on("connection", (socket) => {
   });
   socket.on("disconnect", () => {
     deleteUser(socket.id);
+    io.emit("allUsers", users);
   });
 });

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import "./wishlist.css";
 
 import axios from "axios";
@@ -7,28 +7,24 @@ import { setWishlist, deleteWishlist } from "../../reducer/wishlist/index";
 import { IoIosAddCircle, IoMdRemoveCircle } from "react-icons/io";
 
 import Swal from "sweetalert2";
-import withReactContent from "sweetalert2-react-content";
 
 const Wishlist = (id) => {
-  const [notes, setNotes] = useState([
-    { myNote: "I have buy new wheel" },
-    { myNote: "I have buy new paint brush" },
-  ]);
-  const [note, setNote] = useState("");
-
   const popupWishlistDelete = (id) => {
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
       icon: "warning",
       showCancelButton: true,
-      confirmButtonColor: "blue",
       cancelButtonColor: "#d33",
       confirmButtonText: "Remove!",
-      confirmButtonColor: "blue",
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire("Removed!", "Your Item has been Removed.", "success");
+        Swal.fire({
+          confirmButtonText: "Removed!",
+          title: "Your item has been removed!.",
+          icon: "success",
+          confirmButtonColor: "#04518c",
+        });
         deleteWishlistById(id);
       }
     });
@@ -36,15 +32,11 @@ const Wishlist = (id) => {
 
   const popupCart = () => {
     Swal.fire({
-      confirmButtonColor: "blue",
-
-      title: "This Item Added To Your Cart Successfully",
-      showClass: {
-        popup: "animate__animated animate__fadeInDown",
-      },
-      hideClass: {
-        popup: "animate__animated animate__fadeOutUp",
-      },
+      position: "top-end",
+      icon: "success",
+      title: "This Item Added To Your Cart Successfully!",
+      showConfirmButton: false,
+      timer: 1500,
     });
   };
 
@@ -86,7 +78,7 @@ const Wishlist = (id) => {
 
   const createNewCart = async (id) => {
     try {
-      const result = await axios.post(
+      await axios.post(
         `http://localhost:5000/cart`,
         { item_id: id },
         {
@@ -180,15 +172,14 @@ const Wishlist = (id) => {
                 </button>
                 <button
                   className="wishlist_btn"
-                  style={{
-                    borderColor: "#43d63e",
-                  }}
                   onClick={(e) => {
                     popupCart();
-
                     createNewCart(wishlist.item_id);
                   }}
-                  style={{ display: `${wishlist.is_deleted ? "none" : null}` }}
+                  style={{
+                    display: `${wishlist.is_deleted ? "none" : "unset"}`,
+                    borderColor: "#43d63e",
+                  }}
                 >
                   <IoIosAddCircle className="icon_style_add" />
                   To Cart

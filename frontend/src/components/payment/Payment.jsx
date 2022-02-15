@@ -1,11 +1,9 @@
 import React, { useState } from "react";
-import jwt from "jwt-decode";
 import axios from "axios";
 import { PayPalButtons } from "@paypal/react-paypal-js";
 import { useSelector, useDispatch } from "react-redux";
 import { deleteUserCarts } from "../../reducer/cart/index";
 import Swal from "sweetalert2";
-
 const Pay = ({ items, price }) => {
   const dispatch = useDispatch();
   const [isDone, setIsDone] = useState(false);
@@ -52,6 +50,17 @@ const Pay = ({ items, price }) => {
   };
   return (
     <>
+      {isDone ? null : (
+        <div className="payment_btn">
+          <button
+            onClick={() => {
+              setIsDone(!isDone);
+            }}
+          >
+            Order Now
+          </button>
+        </div>
+      )}
       {isDone ? (
         <div>
           <PayPalButtons
@@ -86,16 +95,6 @@ const Pay = ({ items, price }) => {
           />
         </div>
       ) : null}
-
-      {isDone ? null : (
-        <button
-          onClick={() => {
-            setIsDone(!isDone);
-          }}
-        >
-          showPay
-        </button>
-      )}
     </>
   );
 };
