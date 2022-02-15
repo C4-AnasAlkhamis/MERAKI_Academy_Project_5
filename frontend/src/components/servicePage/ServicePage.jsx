@@ -3,21 +3,16 @@
 import axios from "axios";
 import "./servicePage.css";
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { setService } from "../../reducer/service/index";
 import { setWorkers } from "../../reducer/worker/index";
 import WSInfo from "../serviceInfo/ServiceInfo";
-import headPic from "../../image/logo2.png"
+import headPic from "../../image/logo2.png";
 const ServicePage = () => {
-  const [message, setMessage] = useState();
-  const navigate = useNavigate();
   const [showWorker, setShowWorker] = useState(false);
-  const { token, services, workers } = useSelector((state) => {
+  const { services } = useSelector((state) => {
     return {
-      token: state.loginReducer.token,
       services: state.serviceReducer.services,
-      workers: state.workerReducer.workers,
     };
   });
   const dispatch = useDispatch();
@@ -31,9 +26,7 @@ const ServicePage = () => {
       } else throw Error;
     } catch (error) {
       if (!error.response.data.success) {
-        return setMessage(error.response.data.message);
       }
-      setMessage("Error happened while Get Data, please try again");
     }
   };
   //===============================================================
@@ -56,7 +49,7 @@ const ServicePage = () => {
         <>
           <div className="pageTitle">
             <h1>
-            <img className="headPicLogo" src={headPic}/>
+              <img className="headPicLogo" src={headPic} alt="icon" />
               POPULAR SERVICES<p>What we Can Do</p>
             </h1>
           </div>
@@ -82,8 +75,7 @@ const ServicePage = () => {
           </div>
         </>
       ) : (
-       
-          <WSInfo setShowWorker={setShowWorker} />
+        <WSInfo setShowWorker={setShowWorker} />
       )}
     </div>
   );

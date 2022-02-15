@@ -172,7 +172,6 @@ const Wishlist = (id) => {
                 </button>
                 <button
                   className="wishlist_btn"
-                
                   onClick={(e) => {
                     popupCart();
                     createNewCart(wishlist.item_id);

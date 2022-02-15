@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom";
 
 import logo from "../../image/cones.jpg";
 import Swal from "sweetalert2";
-import withReactContent from "sweetalert2-react-content";
 const Register = () => {
   const rightRegister = () => {
     Swal.fire({
@@ -64,7 +63,7 @@ const Register = () => {
     <div className="register">
       <div className="group">
         <div className="regImg">
-          <img src={logo} />
+          <img src={logo} alt="logo" />
         </div>
         <form onSubmit={createUser}>
           <input

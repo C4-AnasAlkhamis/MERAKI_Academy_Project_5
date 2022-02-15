@@ -8,15 +8,12 @@ import { setWorkerId } from "../../reducer/worker/index";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import Swal from "sweetalert2";
 
-import { useNavigate } from "react-router-dom";
 const WSInfo = ({ setShowWorker }) => {
-  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [yourName, setYourName] = useState();
   const [address, setAddress] = useState();
   const [phone, setPhone] = useState();
   const [order_Detalis, setOrder_Detalis] = useState();
-  // const [message, setMessage] = useState();
   const [worker_id, setWorker_id] = useState();
   const [show, setShow] = useState(false);
   const { token, workers, users } = useSelector((state) => {
@@ -97,7 +94,7 @@ const WSInfo = ({ setShowWorker }) => {
 
       <div className="workerLst">
         {workers.map((worker, index) => {
-          if (jwt(token).userId !== worker.user_id)
+          if (jwt(token).userId !== worker.user_id) {
             return (
               <div key={index} className="workerInfoInService">
                 <div>
@@ -129,6 +126,7 @@ const WSInfo = ({ setShowWorker }) => {
                 </div>
               </div>
             );
+          }
         })}
       </div>
       {show ? (
