@@ -170,9 +170,11 @@ const Cart = () => {
               </div>
               <div className="counter_price">
                 <span>{cart.count}</span>
-                <span>{cart.total_price} $</span>
+                <p>
+                  total price <span>{cart.total_price}</span> $
+                </p>
               </div>
-            
+
               <div className="info_center">
                 <h3>price</h3>
                 <span>{cart.price} $</span>

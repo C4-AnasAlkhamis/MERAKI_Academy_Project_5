@@ -114,3 +114,8 @@
   border-left: solid 5px rgb(255, 211, 51);
   cursor: pointer;
 }
+.counter_price {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
