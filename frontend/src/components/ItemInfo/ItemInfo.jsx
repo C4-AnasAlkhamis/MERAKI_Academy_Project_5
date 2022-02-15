@@ -125,7 +125,7 @@ const ItemInfo = ({ setShow }) => {
           </div>
           <div className="img_boxI">
             <img className="itemI" src={item.img} alt={item.title} />
-            <div className="info_box">
+            <div className="info_boxI">
               <h4>
                 <span className="price"> {item.price} $</span>
                 <br />

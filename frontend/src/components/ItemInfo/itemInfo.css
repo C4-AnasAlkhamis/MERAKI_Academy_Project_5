@@ -5,17 +5,17 @@
   margin-left: 150px;
 }
 
-.info_box {
-  padding-left: 50px;
+.info_boxI {
+  padding-left: 200px;
 }
 
-.info_box ul {
+.info_boxI ul {
   font-size: 16px;
   padding-top: 10px;
   list-style: none;
 }
 
-.info_box ul li {
+.info_boxI ul li {
   padding-top: 10px;
 }
 
@@ -39,7 +39,7 @@
 }
 
 .sub_titleI p {
-  margin-right: 330px;
+  margin-right: 480px;
 }
 
 .tool {
@@ -52,7 +52,7 @@
   font-size: 18px;
 }
 
-.info_box button {
+.info_boxI button {
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   color: white;
   border: none;
@@ -64,7 +64,7 @@
   cursor: pointer;
 }
 
-.info_box button:hover {
+.info_boxI button:hover {
   color: white;
   border: none;
   background-color: #2790bd;

@@ -63,6 +63,7 @@ const MainPage = () => {
       <div className="Hadar">
         <img src={headMainImag} />
       </div>
+          <h1>Shop Now</h1>
       <div className="showImg">
         <img src={img_1} />
         <img src={img_2} />
@@ -77,7 +78,7 @@ const MainPage = () => {
       {feedbacks.map((feedback,i) => {
         return (
           <div className="feedbackDetails">
-            <h3>{feedback.name}</h3>
+            <h5>{feedback.name}</h5>
             <h4>{feedback.subject}</h4>
             <p>{feedback.feedback}</p>
           </div>
