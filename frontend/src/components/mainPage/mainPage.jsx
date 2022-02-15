@@ -6,8 +6,8 @@ import "./mainPage.css";
 
 import headMainImag from "../../image/Main/slider-d (1).jpg";
 import img_1 from "../../image/Main/2pieceKits.png";
-import img_2 from "../../image/Main/Batteries.jpg";
-import img_3 from "../../image/Main/Chargers.jpg";
+import img_2 from "../../image/Main/Batteries.png";
+import img_3 from "../../image/Main/Chargers.png";
 
 import bosch from "../../image/Main/bosch.png";
 import dewalt from "../../image/Main/dewalt.png";
@@ -73,6 +73,7 @@ const MainPage = () => {
         {image.map((pic, i) => {
           return <img key={i} src={pic} />;
         })}
+      <h1>____________________________________________________</h1>
       </div>
 
       <h1>FEEDBACK</h1>
