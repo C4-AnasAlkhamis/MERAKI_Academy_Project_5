@@ -17,7 +17,6 @@ const WSInfo = ({ setShowWorker }) => {
   const [message, setMessage] = useState();
   const [worker_id, setWorker_id] = useState();
   const [show, setShow] = useState(false);
-  const [chat, setChat] = useState(false);
   const { token, workers } = useSelector((state) => {
     return {
       token: state.loginReducer.token,
@@ -77,8 +76,6 @@ const WSInfo = ({ setShowWorker }) => {
                 <address>{worker.address}</address>
                 <button
                   onClick={() => {
-                    setChat(true);
-                    navigate("/chat");
                     dispatch(setWorkerId(worker.user_id));
                   }}
                 >

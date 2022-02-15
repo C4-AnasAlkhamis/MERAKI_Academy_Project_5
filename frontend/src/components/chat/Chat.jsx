@@ -1,16 +1,20 @@
 import React, { useEffect, useState } from "react";
 import io from "socket.io-client";
 import jwt from "jwt-decode";
+import { AiOutlineCloseCircle } from "react-icons/ai";
 import { useSelector, useDispatch } from "react-redux";
+import { setWorkerId } from "../../reducer/worker/index";
 import "./chat.css";
 const Chat = () => {
+  const dispatch = useDispatch();
+
   const { token, worker_id } = useSelector((state) => {
     return {
       token: state.loginReducer.token,
       worker_id: state.workerReducer.worker_id,
     };
   });
-  console.log(worker_id);
+
   const [userId, setUserId] = useState();
   const [refresh, setRefresh] = useState(false);
   const [user_id, setUser_id] = useState(jwt(token).userId);
@@ -39,36 +43,50 @@ const Chat = () => {
       setMessages((messages) => [...messages, data]);
     });
   }, [refresh]);
-
+  console.log(worker_id);
   socket.on("disconnect", () => {});
   return (
     <>
-      <div className=" chat_box">
-        <div className="message_box">
-          {messages.length
-            ? messages.map((message, index) => {
-                return <p key={index}>{message.message}</p>;
-              })
-            : null}
+      {worker_id ? (
+        <div className="chat_box">
+          <div className="chat_header">
+            <i
+              className="btn"
+              onClick={() => {
+                dispatch(setWorkerId(0));
+              }}
+            >
+              <AiOutlineCloseCircle />
+            </i>
+            <h3>messenger</h3>
+          </div>
+
+          <div className="message_box">
+            {messages.length
+              ? messages.map((message, index) => {
+                  return <p key={index}>{message.message}</p>;
+                })
+              : null}
+          </div>
+          <div className="input_chat_box">
+            <input
+              onChange={(e) => {
+                setMessage(e.target.value);
+              }}
+              value={message}
+              type="text"
+              placeholder="Message"
+            />
+            <button
+              onClick={() => {
+                sendMessage();
+              }}
+            >
+              send
+            </button>
+          </div>
         </div>
-        <div className="input_chat_box">
-          <input
-            onChange={(e) => {
-              setMessage(e.target.value);
-            }}
-            value={message}
-            type="text"
-            placeholder="Message"
-          />
-          <button
-            onClick={() => {
-              sendMessage();
-            }}
-          >
-            send
-          </button>
-        </div>
-      </div>
+      ) : null}
     </>
   );
 };
