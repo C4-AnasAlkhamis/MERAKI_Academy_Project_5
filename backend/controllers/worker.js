@@ -146,7 +146,11 @@ const getWorkerByServiceId = (req, res) => {
 const updateWorkerById = (req, res) => {
   const id = req.params.id;
   const { address, phone, image } = req.body;
-  const query = `UPDATE worker SET address =? , phone = ? , image = ? WHERE user_id = ?;`;
+  const query = `UPDATE worker SET address =IF(${
+    address != ""
+  }, ?, address) , phone = IF(${phone != ""}, ?, phone) , image = IF(${
+    image != ""
+  }, ?, image) WHERE user_id = ?;`;
   const data = [address, phone, image, id];
   connection.query(query, data, (err, result) => {
     if (err) {
@@ -155,14 +159,7 @@ const updateWorkerById = (req, res) => {
         message: `Server Error`,
       });
     }
-
-    if (!result.id) {
-      return res.status(404).json({
-        success: false,
-        message: `No Worker Match Entered ID`,
-      });
-    }
-    res.status(202).json({
+    return res.status(202).json({
       success: true,
       message: `Worker with id ${id} updated successfully`,
       result: result,
