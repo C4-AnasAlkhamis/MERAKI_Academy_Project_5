@@ -2,17 +2,18 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  height: 40vh;
+  height: 60vh;
   position: fixed;
   bottom: 0;
   right: 10vw;
+  width: 25vw;
 }
-
 .message_box {
-  height: 100%;
-  background-color: #fac710cc;
+  height: 50vh;
+  background-color: whitesmoke;
   display: flex;
   flex-direction: column;
+  overflow-y: scroll;
 }
 .message_box p {
   color: #04518c;
@@ -49,7 +50,7 @@ input {
   align-self: flex-start;
 }
 .chat_header i {
-  color: rgba(255, 0, 0, 0.664);
+  color: #fff;
   font-size: 1.5rem;
   padding: 5px;
 }

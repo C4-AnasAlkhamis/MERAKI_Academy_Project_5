@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./wishlist.css";
 
 import axios from "axios";
@@ -64,19 +64,6 @@ const Wishlist = (id) => {
       });
   };
 
-  const deleteWishlistById = async (id) => {
-    //delete http://localhost:5000/wishlist/:id
-
-    await axios
-      .delete(`http://localhost:5000/wishlist/${id}`)
-      .then((result) => {
-        dispatch(deleteWishlist(id));
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-
   const createNewCart = async (id) => {
     try {
       await axios.post(
@@ -90,7 +77,18 @@ const Wishlist = (id) => {
       );
     } catch (error) {}
   };
+  const deleteWishlistById = async (id) => {
+    //delete http://localhost:5000/wishlist/:id
 
+    await axios
+      .delete(`http://localhost:5000/wishlist/${id}`)
+      .then((result) => {
+        dispatch(deleteWishlist(id));
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   useEffect(() => {
     getWishlistById();
   }, []);
@@ -173,9 +171,10 @@ const Wishlist = (id) => {
                 </button>
                 <button
                   className="cart_btn"
-                  onClick={(e) => {
+                  onClick={async (e) => {
                     popupCart();
-                    createNewCart(wishlist.item_id);
+                    await createNewCart(wishlist.item_id);
+                    deleteWishlistById(wishlist.wishlist_id);
                   }}
                   style={{
                     display: `${wishlist.is_deleted ? "none" : "unset"}`,
