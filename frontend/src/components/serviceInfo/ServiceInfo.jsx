@@ -5,6 +5,7 @@ import { RiArrowGoBackLine } from "react-icons/ri";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import { setWorkerId } from "../../reducer/worker/index";
+import { AiOutlineCloseCircle } from "react-icons/ai";
 
 import { useNavigate } from "react-router-dom";
 const WSInfo = ({ setShowWorker }) => {
@@ -51,10 +52,11 @@ const WSInfo = ({ setShowWorker }) => {
         setMessage(
           "Your request has been successfully sent, you will receive an email to schedule an appointment"
         );
+        setShow(!show);
       })
-      .catch((err) => {  setMessage(
-        "Your request has been successfully sent, you will receive an email to schedule an appointment"
-      );});
+      .catch((err) => {
+        setMessage("An issue occurred, please try again later.");
+      });
   };
 
   return (
@@ -108,6 +110,14 @@ const WSInfo = ({ setShowWorker }) => {
       </div>
       {show ? (
         <div className="popup_form">
+          <i
+            className="btn"
+            onClick={() => {
+              setShow(!show);
+            }}
+          >
+            <AiOutlineCloseCircle />
+          </i>
           <input
             type="text"
             placeholder="Name"
@@ -131,6 +141,7 @@ const WSInfo = ({ setShowWorker }) => {
             placeholder="Phone Number"
             onChange={(e) => setPhone(e.target.value)}
             value={phone}
+            maxLength="10"
           />
           <button
             onClick={(e) => {

@@ -47,3 +47,31 @@
     rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
   border-left: solid 5px rgb(255, 211, 51);
 }
+.popup_form {
+  display: flex;
+  flex-direction: column;
+  width: 50vw;
+  height: 40vh;
+  position: relative;
+  bottom: 50vh;
+  right: 0;
+  gap: 0.5rem;
+}
+.popup_form input {
+  background-color: #2790bd70;
+  color: #3b3b3b;
+  font-size: 1rem;
+  font-weight: bold;
+}
+.popup_form button {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  color: white;
+  border: none;
+  font-size: 1rem;
+  background-color: rgb(4, 81, 140);
+  border-left: solid 5px rgb(255, 211, 51);
+  cursor: pointer;
+}
+.popup_form i {
+  color: rgba(255, 0, 0, 0.747);
+}
