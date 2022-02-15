@@ -144,7 +144,6 @@ const HomePage = () => {
       });
   };
   //=======================================
-  // console.log(rates);
   const categoriesMap = categories.map((category, index) => {
     return (
       <li
@@ -240,7 +239,9 @@ const HomePage = () => {
           {item.img ? <img src={item.img} alt={item.title} /> : null}
         </div>
         <div className="info_box">
-          <h3>{item.descriptions}</h3>
+          <h3 style={{ color: `${item.is_deleted ? "red" : "green"}` }}>
+            {item.descriptions}
+          </h3>
           <h2>{item.price} $</h2>
           <span>
             <ReactStars {...allRate(item.id)} />

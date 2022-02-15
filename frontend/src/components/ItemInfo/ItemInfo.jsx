@@ -116,7 +116,9 @@ const ItemInfo = ({ setShow }) => {
 
             <div>
               <h3>
-                <p style={{ color: "green" }}>{item.descriptions}</p>
+                <p style={{ color: `${item.is_deleted ? "red" : "green"}` }}>
+                  {item.descriptions}
+                </p>
               </h3>
               <Rate item_id={item.id} />
             </div>

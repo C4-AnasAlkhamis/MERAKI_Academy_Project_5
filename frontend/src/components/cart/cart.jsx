@@ -67,7 +67,7 @@ const Cart = () => {
     await axios
       .delete(`http://localhost:5000/cart/${id}`)
       .then((result) => {
-        dispatch(deleteCart(id));
+        getCartById();
       })
       .catch((err) => {
         console.log(err);
@@ -145,7 +145,6 @@ const Cart = () => {
 
       {carts.length > 0 ? (
         carts.map((cart, index) => {
-          console.log(cart);
           totalPrice += parseInt(cart.total_price);
           return (
             <div key={index} className="cart_box">
