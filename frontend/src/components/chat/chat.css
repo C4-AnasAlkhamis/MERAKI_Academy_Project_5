@@ -32,6 +32,7 @@ input {
   border: none;
   background-color: #04518c;
   color: #fff;
+  border-radius: 0;
 }
 .chat_header {
   border-top-left-radius: 3px;

@@ -19,10 +19,11 @@ const WSInfo = ({ setShowWorker }) => {
   // const [message, setMessage] = useState();
   const [worker_id, setWorker_id] = useState();
   const [show, setShow] = useState(false);
-  const { token, workers } = useSelector((state) => {
+  const { token, workers, users } = useSelector((state) => {
     return {
       token: state.loginReducer.token,
       workers: state.workerReducer.workers,
+      users: state.usersReducer.users,
     };
   });
 
@@ -107,13 +108,15 @@ const WSInfo = ({ setShowWorker }) => {
                 <small>{worker.phone}</small>
                 <address>{worker.address}</address>
                 <div className="service_btn">
-                  <button
-                    onClick={() => {
-                      dispatch(setWorkerId(worker.user_id));
-                    }}
-                  >
-                    chat
-                  </button>
+                  {users.some((user) => user.user_id === worker.user_id) && (
+                    <button
+                      onClick={() => {
+                        dispatch(setWorkerId(worker.user_id));
+                      }}
+                    >
+                      Live chat
+                    </button>
+                  )}
 
                   <button
                     onClick={() => {

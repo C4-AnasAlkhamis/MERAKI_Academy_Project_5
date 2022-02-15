@@ -9,11 +9,10 @@ import "./chat.css";
 const Chat = () => {
   const dispatch = useDispatch();
 
-  const { token, worker_id, users } = useSelector((state) => {
+  const { token, worker_id } = useSelector((state) => {
     return {
       token: state.loginReducer.token,
       worker_id: state.workerReducer.worker_id,
-      users: state.usersReducer.users,
     };
   });
   const [userId, setUserId] = useState();
@@ -51,7 +50,6 @@ const Chat = () => {
       dispatch(setUsers(users));
     });
   });
-  console.log(users);
   return (
     <>
       {worker_id || show ? (
