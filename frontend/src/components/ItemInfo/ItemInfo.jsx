@@ -20,25 +20,21 @@ import Swal from "sweetalert2";
 
 const popupCart = () => {
   Swal.fire({
+    position: "top-end",
+    icon: "success",
     title: "This Item Added To Your Cart Successfully!",
-    showClass: {
-      popup: "animate__animated animate__fadeInDown",
-    },
-    hideClass: {
-      popup: "animate__animated animate__fadeOutUp",
-    },
+    showConfirmButton: false,
+    timer: 1500,
   });
 };
 
 const popupWishlist = () => {
   Swal.fire({
+    position: "top-end",
+    icon: "success",
     title: "This Item Added To Your Wishlist Successfully!",
-    showClass: {
-      popup: "animate__animated animate__fadeInDown",
-    },
-    hideClass: {
-      popup: "animate__animated animate__fadeOutUp",
-    },
+    showConfirmButton: false,
+    timer: 1500,
   });
 };
 
