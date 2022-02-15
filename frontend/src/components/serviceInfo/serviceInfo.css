@@ -45,7 +45,7 @@
   background-color: #2790bd;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px,
     rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
-  border-left: solid 5px rgb(255, 211, 51);
+  border-left: solid 5px #ffd333;
 }
 .popup_form {
   display: flex;
@@ -55,7 +55,10 @@
   position: relative;
   bottom: 50vh;
   right: 0;
-  gap: 0.5rem;
+  gap: 5px;
+  padding: 0.5rem;
+  background-color: #d4d4d49d;
+  border-radius: 4px;
 }
 .popup_form input {
   background-color: #2790bd70;
@@ -74,4 +77,5 @@
 }
 .popup_form i {
   color: rgba(255, 0, 0, 0.747);
+  font-size: 1.2rem;
 }

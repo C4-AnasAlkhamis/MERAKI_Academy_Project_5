@@ -11,7 +11,7 @@ import { useNavigate } from "react-router-dom";
 const WSInfo = ({ setShowWorker }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [name, setName] = useState();
+  const [yourName, setYourName] = useState();
   const [address, setAddress] = useState();
   const [phone, setPhone] = useState();
   const [order_Detalis, setOrder_Detalis] = useState();
@@ -32,7 +32,7 @@ const WSInfo = ({ setShowWorker }) => {
       .post(
         `http://localhost:5000/send_request`,
         {
-          name,
+          name: yourName,
           order_Detalis,
           address,
           phone,
@@ -45,7 +45,7 @@ const WSInfo = ({ setShowWorker }) => {
         }
       )
       .then((result) => {
-        setName("");
+        setYourName("");
         setAddress("");
         setPhone("");
         setOrder_Detalis("");
@@ -121,13 +121,17 @@ const WSInfo = ({ setShowWorker }) => {
           <input
             type="text"
             placeholder="Name"
-            onChange={(e) => setName(e.target.value)}
-            value={name}
+            onChange={(e) => {
+              setYourName(e.target.value);
+            }}
+            value={yourName}
           />
           <input
             type="text"
             placeholder="Address"
-            onChange={(e) => setAddress(e.target.value)}
+            onChange={(e) => {
+              setAddress(e.target.value);
+            }}
             value={address}
           />
           <input
@@ -139,9 +143,12 @@ const WSInfo = ({ setShowWorker }) => {
           <input
             type="number"
             placeholder="Phone Number"
-            onChange={(e) => setPhone(e.target.value)}
+            onChange={(e) => {
+              setPhone(e.target.value);
+            }}
             value={phone}
             maxLength="10"
+            onInput={(e) => (e.target.value = e.target.value.slice(0, 10))}
           />
           <button
             onClick={(e) => {
