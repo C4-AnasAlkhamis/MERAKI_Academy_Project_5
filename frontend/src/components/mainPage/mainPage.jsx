@@ -2,26 +2,43 @@
 
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import "./mainPage.css";
+
 import headMainImag from "../../image/Main/slider-d2.jpg";
 import img_1 from "../../image/Main/2pieceKits.png";
 import img_2 from "../../image/Main/Batteries.jpg";
 import img_3 from "../../image/Main/Chargers.jpg";
 
-import  bosch from "../../image/Main/bosch.png";
-import dewalt from "../../image/Main/dewalt";
-import einhell from "../../image/Main/einhell";
-import festool from "../../image/Main/festool";
-import jcb from "../../image/Main/jcb";
-import mafell from "../../image/Main/mafell";
-import makita from "../../image/Main/makita";
-import milwaukee from "../../image/Main/milwaukee";
-import panasonic from "../../image/Main/panasonic";
-import pasload from "../../image/Main/pasload";
-import ryobi from "../../image/Main/ryobi";
-import tjep from "../../image/Main/tjep";
-import worx from "../../image/Main/worx";
+import bosch from "../../image/Main/bosch.png";
+import dewalt from "../../image/Main/dewalt.png";
+import einhell from "../../image/Main/einhell.jpg";
+import festool from "../../image/Main/festool.png";
+import jcb from "../../image/Main/jcb.png";
+import mafell from "../../image/Main/mafell.png";
+import makita from "../../image/Main/makita.png";
+import milwaukee from "../../image/Main/milwaukee.png";
+import panasonic from "../../image/Main/panasonic.jpg";
+import pasload from "../../image/Main/pasload.jpg";
+import ryobi from "../../image/Main/ryobi.png";
+import tjep from "../../image/Main/tjep.jpg";
+import worx from "../../image/Main/worx.png";
 
 const MainPage = () => {
+  const [image, setImage] = useState([
+    bosch,
+    dewalt,
+    einhell,
+    festool,
+    jcb,
+    mafell,
+    makita,
+    milwaukee,
+    panasonic,
+    pasload,
+    ryobi,
+    tjep,
+    worx,
+  ]);
   const [feedbacks, setFeedbacks] = useState([]);
   const getAllFeedBack = async () => {
     try {
@@ -51,10 +68,10 @@ const MainPage = () => {
         <img src={img_2} />
         <img src={img_3} />
       </div>
-      <div className="showImg">
-        <img src={img_1} />
-        <img src={img_2} />
-        <img src={img_3} />
+      <div className="brandImg">
+        {image.map((pic, i) => {
+          return <img key={i} src={pic} />;
+        })}
       </div>
 
       {/* {feedbacks.map((feedback,i) => {
