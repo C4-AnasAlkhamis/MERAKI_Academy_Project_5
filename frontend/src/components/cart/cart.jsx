@@ -132,11 +132,11 @@ const Cart = () => {
         <div>
           <h1>Your Shopping Cart</h1>
         </div>
-        <div className="info_box buy_box ">
+        <div className="buy_box">
           <PayPalScriptProvider>
             <Pay items={carts} price={total} />
           </PayPalScriptProvider>
-          <div>
+          <div className="price_box">
             <p>Total Price </p>
             <span>{total} JOD</span>
           </div>

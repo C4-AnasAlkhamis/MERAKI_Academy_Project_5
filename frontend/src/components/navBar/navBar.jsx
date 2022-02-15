@@ -7,7 +7,6 @@ import { useSelector, useDispatch } from "react-redux";
 //
 import { GrUserWorker } from "react-icons/gr";
 import { BiLogOut, BiLogIn } from "react-icons/bi";
-// import { BiLogIn } from "react-icons/bi";
 import {
   AiOutlineFundProjectionScreen,
   AiOutlineShoppingCart,
@@ -92,11 +91,11 @@ const NavBar = () => {
                 )}
                 <a
                   href="/homePage"
-                  className="logout"
                   onClick={(e) => {
                     dispatch(logOut());
                     localStorage.clear();
                   }}
+                  className="logout"
                 >
                   <BiLogOut /> LOGOUT
                 </a>
