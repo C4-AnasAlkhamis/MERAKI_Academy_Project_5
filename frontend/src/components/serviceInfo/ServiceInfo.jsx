@@ -6,6 +6,7 @@ import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import { setWorkerId } from "../../reducer/worker/index";
 import { AiOutlineCloseCircle } from "react-icons/ai";
+import Swal from "sweetalert2";
 
 import { useNavigate } from "react-router-dom";
 const WSInfo = ({ setShowWorker }) => {
@@ -24,6 +25,22 @@ const WSInfo = ({ setShowWorker }) => {
       workers: state.workerReducer.workers,
     };
   });
+
+  const successRequest = () => {
+    Swal.fire({
+      icon: "success",
+      title: message,
+      showConfirmButton: false,
+      timer: 2500,
+    });
+  };
+  const wrongRegister = () => {
+    Swal.fire({
+      icon: "error",
+      title: "Oops... " + message,
+      text: ' Fill All Required Inputs ..Please!',
+    });
+  };
   const sendRequest = async (e) => {
     e.preventDefault();
     //post http://localhost:5000/worker
@@ -53,9 +70,11 @@ const WSInfo = ({ setShowWorker }) => {
           "Your request has been successfully sent, you will receive an email to schedule an appointment"
         );
         setShow(!show);
+        successRequest();
       })
       .catch((err) => {
         setMessage("An issue occurred, please try again later.");
+        wrongRegister();
       });
   };
 
