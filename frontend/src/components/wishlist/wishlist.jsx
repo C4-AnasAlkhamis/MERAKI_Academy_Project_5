@@ -28,7 +28,12 @@ const Wishlist = (id) => {
       confirmButtonColor: "blue",
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire("Removed!", "Your Item has been Removed.", "success");
+        Swal.fire({
+          confirmButtonText: "Removed!",
+          title: "Your item has been removed!.",
+          icon: "success",
+          confirmButtonColor: "#04518c",
+        });
         deleteWishlistById(id);
       }
     });
@@ -36,15 +41,11 @@ const Wishlist = (id) => {
 
   const popupCart = () => {
     Swal.fire({
-      confirmButtonColor: "blue",
-
-      title: "This Item Added To Your Cart Successfully",
-      showClass: {
-        popup: "animate__animated animate__fadeInDown",
-      },
-      hideClass: {
-        popup: "animate__animated animate__fadeOutUp",
-      },
+      position: "top-end",
+      icon: "success",
+      title: "This Item Added To Your Cart Successfully!",
+      showConfirmButton: false,
+      timer: 1500,
     });
   };
 
