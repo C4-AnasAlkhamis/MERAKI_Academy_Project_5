@@ -11,10 +11,17 @@
 .message_box {
   height: 100%;
   background-color: #fac710cc;
+  display: flex;
+  flex-direction: column;
 }
 .message_box p {
-  color: #fff;
+  color: #04518c;
   padding: 5px;
+  font-weight: bold;
+}
+.message_box p span {
+  color: rgba(95, 95, 95, 0.74);
+  font-weight: bold;
 }
 .input_chat_box {
   display: flex;

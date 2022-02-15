@@ -27,6 +27,8 @@ io.on("connection", (socket) => {
     io.to(worker.socket_id).emit("RECEIVE_MESSAGE", { user_id, message });
   });
   socket.on("disconnect", () => {
+    console.log("disconnect" + socket.id);
     deleteUser(socket.id);
+    io.emit("allUsers", users);
   });
 });

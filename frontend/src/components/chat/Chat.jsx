@@ -4,17 +4,18 @@ import jwt from "jwt-decode";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import { useSelector, useDispatch } from "react-redux";
 import { setWorkerId } from "../../reducer/worker/index";
+import { setUsers } from "../../reducer/users/index";
 import "./chat.css";
 const Chat = () => {
   const dispatch = useDispatch();
 
-  const { token, worker_id } = useSelector((state) => {
+  const { token, worker_id, users } = useSelector((state) => {
     return {
       token: state.loginReducer.token,
       worker_id: state.workerReducer.worker_id,
+      users: state.usersReducer.users,
     };
   });
-
   const [userId, setUserId] = useState();
   const [refresh, setRefresh] = useState(false);
   const [user_id, setUser_id] = useState(jwt(token).userId);
@@ -34,8 +35,10 @@ const Chat = () => {
   };
   useEffect(() => {
     socket.emit("USER", user_id);
-    socket.on("allUsers", (users) => {});
-  }, [user_id]);
+    socket.on("allUsers", (users) => {
+      dispatch(setUsers(users));
+    });
+  }, [token]);
   useEffect(() => {
     socket.on("RECEIVE_MESSAGE", (data) => {
       setShow(true);
@@ -43,8 +46,12 @@ const Chat = () => {
       setMessages((messages) => [...messages, data]);
     });
   }, [refresh]);
-  socket.on("disconnect", () => {});
-  console.log(messages.length);
+  socket.on("disconnect", () => {
+    socket.on("allUsers", (users) => {
+      dispatch(setUsers(users));
+    });
+  });
+  console.log(users);
   return (
     <>
       {worker_id || show ? (
@@ -65,15 +72,23 @@ const Chat = () => {
           <div className="message_box">
             {messages.length
               ? messages.map((message, index) => {
-                  console.log(message);
                   return (
-                    <p key={index}>
+                    <p
+                      style={{
+                        alignSelf: `${
+                          message.user_id === user_id
+                            ? "flex-end"
+                            : "flex-start"
+                        }`,
+                      }}
+                      key={index}
+                    >
                       <span>
                         {message.user_id === user_id
                           ? "you: "
                           : message.user_id === worker_id
                           ? "worker: "
-                          : "customer"}
+                          : "customer: "}
                       </span>
                       {message.message}
                     </p>

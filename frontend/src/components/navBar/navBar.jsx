@@ -90,20 +90,16 @@ const NavBar = () => {
                     <GrUserWorker /> JOIN US
                   </Link>
                 )}
-                <Link
-                  to="/homePage"
+                <a
+                  href="/homePage"
                   className="logout"
                   onClick={(e) => {
-
-                    // popupLogout()
-
-
                     dispatch(logOut());
                     localStorage.clear();
                   }}
                 >
                   <BiLogOut /> LOGOUT
-                </Link>
+                </a>
               </>
             ) : (
               <>
