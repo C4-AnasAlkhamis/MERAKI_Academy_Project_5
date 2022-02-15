@@ -37,7 +37,6 @@ const MainPage = () => {
     pasload,
     ryobi,
     tjep,
-    worx,
   ]);
   const [feedbacks, setFeedbacks] = useState([]);
   const getAllFeedBack = async () => {
@@ -69,15 +68,16 @@ const MainPage = () => {
         <img src={img_2} />
         <img src={img_3} />
       </div>
-          <h1>Brands</h1>
+          <h1>BRANDS</h1>
       <div className="brandImg">
         {image.map((pic, i) => {
           return <img key={i} src={pic} />;
         })}
       </div>
 
+      <h1>FEEDBACK</h1>
       <div className="brandImg">
-      {feedbacks.map((feedback,i) => {
+      {feedbacks.slice(feedbacks.length-4,feedbacks.length).map((feedback,i) => {
         return (
           <div className="feedbackDetails">
             <h5>{feedback.name}</h5>
