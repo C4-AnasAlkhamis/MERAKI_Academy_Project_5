@@ -17,6 +17,7 @@ const Wishlist = (id) => {
       showCancelButton: true,
       cancelButtonColor: "#d33",
       confirmButtonText: "Remove!",
+      confirmButtonColor: "#04518c",
     }).then((result) => {
       if (result.isConfirmed) {
         Swal.fire({
@@ -130,7 +131,7 @@ const Wishlist = (id) => {
               src="https://its-london.s3-eu-west-1.amazonaws.com/assets/USPDrillIcon.png"
               alt="Finance Available over £99 inc VAT"
             />
-            <span>Finance Available over JD99 inc VAT</span>
+            <span>Finance Available over $99 inc VAT</span>
           </li>
         </ul>
       </div>
@@ -156,11 +157,11 @@ const Wishlist = (id) => {
               </div>
               <div className="info_center">
                 <h3>Price</h3>
-                <span>{wishlist.price} JOD</span>
+                <span>{wishlist.price} $</span>
               </div>
-              <div className="info_box btn_box info_box_cart">
+              <div className=" btn_box ">
                 <button
-                  className="wishlist_btn"
+                  className="cart_btn"
                   style={{
                     borderColor: "#f22626",
                   }}
@@ -171,7 +172,7 @@ const Wishlist = (id) => {
                   <IoMdRemoveCircle className="icon_style_remove" /> wishlist
                 </button>
                 <button
-                  className="wishlist_btn"
+                  className="cart_btn"
                   onClick={(e) => {
                     popupCart();
                     createNewCart(wishlist.item_id);
