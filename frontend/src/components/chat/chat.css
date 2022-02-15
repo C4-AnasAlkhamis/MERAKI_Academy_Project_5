@@ -1,0 +1,28 @@
+.chat_box {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: 40vh;
+  position: fixed;
+  bottom: -100;
+  right: 10vw;
+  border-radius: 3px;
+  z-index: 0;
+}
+.message_box {
+  height: 100%;
+  background-color: #fac710cc;
+}
+.message_box p {
+  color: black;
+}
+.input_chat_box {
+  display: flex;
+}
+.input_chat_box button,
+input {
+  height: 3rem;
+  border: none;
+  background-color: #04518c;
+  color: white;
+}

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import io from "socket.io-client";
 import jwt from "jwt-decode";
 import { useSelector, useDispatch } from "react-redux";
-
+import "./chat.css";
 const Chat = () => {
   const { token, worker_id } = useSelector((state) => {
     return {
@@ -30,48 +30,44 @@ const Chat = () => {
   };
   useEffect(() => {
     socket.emit("USER", user_id);
-    socket.on("allUsers", (users) => {
-    });
+    socket.on("allUsers", (users) => {});
   }, [user_id]);
   useEffect(() => {
-
     socket.on("RECEIVE_MESSAGE", (data) => {
       console.log(data);
       setUserId(data.user_id);
       setMessages((messages) => [...messages, data]);
-
     });
   }, [refresh]);
 
-  socket.on("disconnect", () => {
-  });
+  socket.on("disconnect", () => {});
   return (
     <>
-      <div className="info_box">
-        {messages.length &&
-          messages.map((message, index) => {
-            return (
-              <div key={index}>
-                <p>{message.message}</p>
-              </div>
-            );
-          })}
-
-        <input
-          onChange={(e) => {
-            setMessage(e.target.value);
-          }}
-          value={message}
-          type="text"
-          placeholder="Message"
-        />
-        <button
-          onClick={() => {
-            sendMessage();
-          }}
-        >
-          send
-        </button>
+      <div className=" chat_box">
+        <div className="message_box">
+          {messages.length
+            ? messages.map((message, index) => {
+                return <p key={index}>{message.message}</p>;
+              })
+            : null}
+        </div>
+        <div className="input_chat_box">
+          <input
+            onChange={(e) => {
+              setMessage(e.target.value);
+            }}
+            value={message}
+            type="text"
+            placeholder="Message"
+          />
+          <button
+            onClick={() => {
+              sendMessage();
+            }}
+          >
+            send
+          </button>
+        </div>
       </div>
     </>
   );

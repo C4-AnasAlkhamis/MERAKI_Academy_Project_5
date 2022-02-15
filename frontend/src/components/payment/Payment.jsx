@@ -93,7 +93,7 @@ const Pay = ({ items, price }) => {
             setIsDone(!isDone);
           }}
         >
-          showPay
+          Pay
         </button>
       )}
     </>
