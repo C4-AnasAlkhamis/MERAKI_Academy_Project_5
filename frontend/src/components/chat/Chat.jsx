@@ -47,13 +47,14 @@ const Chat = () => {
   socket.on("disconnect", () => {});
   return (
     <>
-      {worker_id ? (
+      {worker_id || messages.length ? (
         <div className="chat_box">
           <div className="chat_header">
             <i
               className="btn"
               onClick={() => {
                 dispatch(setWorkerId(0));
+                setMessages([]);
               }}
             >
               <AiOutlineCloseCircle />

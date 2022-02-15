@@ -6,8 +6,6 @@
   position: fixed;
   bottom: 0;
   right: 10vw;
-  z-index: 9;
-  transition: all 2s ease-in;
 }
 
 .message_box {
@@ -15,7 +13,7 @@
   background-color: #fac710cc;
 }
 .message_box p {
-  color: black;
+  color: #fff;
 }
 .input_chat_box {
   display: flex;
@@ -25,7 +23,7 @@ input {
   height: 3rem;
   border: none;
   background-color: #04518c;
-  color: white;
+  color: #fff;
 }
 .chat_header {
   border-top-left-radius: 3px;
@@ -37,7 +35,7 @@ input {
   align-items: center;
 }
 .chat_header h3 {
-  color: white;
+  color: #fff;
   padding: 5px;
   align-self: flex-start;
 }

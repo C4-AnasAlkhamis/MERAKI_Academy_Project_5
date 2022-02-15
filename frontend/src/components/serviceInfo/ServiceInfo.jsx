@@ -43,8 +43,18 @@ const WSInfo = ({ setShowWorker }) => {
           },
         }
       )
-      .then((result) => {})
-      .catch((err) => {});
+      .then((result) => {
+        setName("");
+        setAddress("");
+        setPhone("");
+        setOrder_Detalis("");
+        setMessage(
+          "Your request has been successfully sent, you will receive an email to schedule an appointment"
+        );
+      })
+      .catch((err) => {  setMessage(
+        "Your request has been successfully sent, you will receive an email to schedule an appointment"
+      );});
   };
 
   return (
@@ -74,22 +84,24 @@ const WSInfo = ({ setShowWorker }) => {
 
                 <small>{worker.phone}</small>
                 <address>{worker.address}</address>
-                <button
-                  onClick={() => {
-                    dispatch(setWorkerId(worker.user_id));
-                  }}
-                >
-                  chat
-                </button>
+                <div className="service_btn">
+                  <button
+                    onClick={() => {
+                      dispatch(setWorkerId(worker.user_id));
+                    }}
+                  >
+                    chat
+                  </button>
 
-                <button
-                  onClick={() => {
-                    setWorker_id(worker.user_id);
-                    setShow(true);
-                  }}
-                >
-                  send request
-                </button>
+                  <button
+                    onClick={() => {
+                      setWorker_id(worker.user_id);
+                      setShow(true);
+                    }}
+                  >
+                    send for
+                  </button>
+                </div>
               </div>
             );
         })}
@@ -100,21 +112,25 @@ const WSInfo = ({ setShowWorker }) => {
             type="text"
             placeholder="Name"
             onChange={(e) => setName(e.target.value)}
+            value={name}
           />
           <input
             type="text"
             placeholder="Address"
             onChange={(e) => setAddress(e.target.value)}
+            value={address}
           />
           <input
             type="text"
             placeholder="Order Details"
             onChange={(e) => setOrder_Detalis(e.target.value)}
+            value={order_Detalis}
           />
           <input
             type="number"
             placeholder="Phone Number"
             onChange={(e) => setPhone(e.target.value)}
+            value={phone}
           />
           <button
             onClick={(e) => {
