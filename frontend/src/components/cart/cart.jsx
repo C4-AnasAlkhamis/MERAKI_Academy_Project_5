@@ -28,13 +28,18 @@ const Cart = () => {
       text: "You won't be able to revert this process!",
       icon: "warning",
       showCancelButton: true,
-      confirmButtonColor: "#3085d6",
+      confirmButtonColor: "#04518c",
       cancelButtonColor: "#d33",
       confirmButtonText: "Yes, Remove it!",
     }).then((result) => {
       if (result.isConfirmed) {
         deleteCartById(id);
-        Swal.fire("Deleted!", "Your item has been removed!.", "success");
+        Swal.fire({
+          confirmButtonText: "Removed!",
+          title: "Your item has been removed!.",
+          icon: "success",
+          confirmButtonColor: "#04518c",
+        });
       }
     });
   };
