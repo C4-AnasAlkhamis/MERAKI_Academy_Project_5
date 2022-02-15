@@ -1,0 +1,22 @@
+.brandImg ,.showImg{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  margin: 10px;
+}
+
+.brandImg img{
+  margin: 5px;
+    width: 200px;
+    height: 75px;
+}
+
+.feedbackDetails{
+    border: solid 1px;
+    border-radius: 5px;
+    margin: 5px;
+    padding: 2px;
+    width: 300px;
+    height: 150px;
+}

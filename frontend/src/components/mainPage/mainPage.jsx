@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./mainPage.css";
 
-import headMainImag from "../../image/Main/slider-d2.jpg";
+import headMainImag from "../../image/Main/slider-d (1).jpg";
 import img_1 from "../../image/Main/2pieceKits.png";
 import img_2 from "../../image/Main/Batteries.jpg";
 import img_3 from "../../image/Main/Chargers.jpg";
@@ -73,14 +73,17 @@ const MainPage = () => {
           return <img key={i} src={pic} />;
         })}
       </div>
-
-      {/* {feedbacks.map((feedback,i) => {
+      <div className="brandImg">
+      {feedbacks.map((feedback,i) => {
         return (
-          <>
-            <p key={i}>{feedback.name}</p>{" "}
-          </>
+          <div className="feedbackDetails">
+            <h3>{feedback.name}</h3>
+            <h4>{feedback.subject}</h4>
+            <p>{feedback.feedback}</p>
+          </div>
         );
-      })} */}
+      })}
+      </div>
     </div>
   );
 };
