@@ -41,6 +41,7 @@ const Register = () => {
           user_name: userName.toLowerCase(),
           email: email.toLowerCase(),
           password,
+          role_id: 2,
         })
         .then((result) => {
           console.log(result);
@@ -105,9 +106,7 @@ const Register = () => {
               color: `${done ? "#24dc3a" : "#dc2424"}`,
               textShadow: `1px 0 1px  ${done ? "#24dc3a" : "#dc2424"}`,
             }}
-          >
-            {/* {message} */}
-          </span>
+          ></span>
         </form>
       </div>
     </div>
