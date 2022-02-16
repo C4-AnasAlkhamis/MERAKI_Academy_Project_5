@@ -1,4 +1,4 @@
-const { io } = require("../server");
+const { io } = require("../index");
 
 let users = [];
 const pushId = (user_id, socket_id) => {
