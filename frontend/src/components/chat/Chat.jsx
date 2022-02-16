@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import io from "socket.io-client";
 import jwt from "jwt-decode";
 import { AiOutlineCloseCircle } from "react-icons/ai";
@@ -50,11 +50,14 @@ const Chat = () => {
       dispatch(setUsers(users));
     });
   });
+  const scroll = document.querySelector(".message_box");
+
   return (
     <>
       {worker_id || show ? (
         <div className="chat_box">
           <div className="chat_header">
+            <h3>Messenger</h3>
             <i
               className="btn"
               onClick={() => {
@@ -64,9 +67,7 @@ const Chat = () => {
             >
               <AiOutlineCloseCircle />
             </i>
-            <h3>messenger</h3>
           </div>
-
           <div className="message_box">
             {messages.length
               ? messages.map((message, index) => {
@@ -83,10 +84,10 @@ const Chat = () => {
                     >
                       <span>
                         {message.user_id === user_id
-                          ? "you: "
+                          ? "You: "
                           : message.user_id === worker_id
-                          ? "worker: "
-                          : "customer: "}
+                          ? "Worker: "
+                          : "Customer: "}
                       </span>
                       {message.message}
                     </p>
@@ -106,6 +107,8 @@ const Chat = () => {
             <button
               onClick={() => {
                 sendMessage();
+
+                scroll.scrollTop = scroll.scrollHeight;
               }}
             >
               send

@@ -39,8 +39,7 @@ const Profile = () => {
       .then((result) => {
         dispatch(setWorkers([...result.data.result]));
       })
-      .catch((err) => {
-      });
+      .catch((err) => {});
   };
 
   const getRequestByWorker = async () => {
@@ -82,8 +81,7 @@ const Profile = () => {
       .then((result) => {
         getWorkerById();
       })
-      .catch((err) => {
-      });
+      .catch((err) => {});
   };
   useEffect(() => {
     getWorkerById();

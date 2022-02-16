@@ -70,7 +70,7 @@ const pushItem = async (req, res) => {
           title: y[i],
           price: z[i].substr(1, z[i].length - 1),
           description: "IN STOCK",
-          category:2,
+          category: 2,
         }
       );
     }
@@ -85,7 +85,11 @@ const pushItem = async (req, res) => {
             if (err) {
               throw err;
             }
-
+            return res.status(200).json({
+              success: true,
+              message: `The carts with user `,
+             
+            });
           }
         );
       });
