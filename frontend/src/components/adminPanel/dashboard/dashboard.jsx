@@ -1,6 +1,7 @@
 /** @format */
 
-import React, { PureComponent } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import {
   BarChart,
   Bar,
@@ -11,17 +12,92 @@ import {
   Tooltip,
   Legend,
   ResponsiveContainer,
+  PieChart,
+  Pie,
 } from "recharts";
 import "./dashboard.css";
+
 const Dashboard = () => {
+  const [items, setItems] = useState("");
+
+  const getAllItems = async () => {
+    try {
+      const res = await axios.get("http://localhost:5000/item");
+      if (res.data.success) {
+        const itemsByCategoryInStock = {};
+        const itemsByCategoryOutOfStock = {};
+        for (let item = 0; item < res.data.items.length; item++) {
+          const element = res.data.items[item];
+          if (element.is_deleted === 0) {
+            if (!itemsByCategoryInStock[element.category_id]) {
+              itemsByCategoryInStock[element.category_id] = 1;
+            } else {
+              itemsByCategoryInStock[element.category_id] += 1;
+            }
+          } else {
+            if (!itemsByCategoryOutOfStock[element.category_id]) {
+              itemsByCategoryOutOfStock[element.category_id] = 1;
+            } else {
+              itemsByCategoryOutOfStock[element.category_id] += 1;
+            }
+          }
+        }
+        setItems({ itemsByCategoryInStock, itemsByCategoryOutOfStock });
+      } else throw Error;
+    } catch (error) {
+      if (!error.response.data.success) {
+      }
+    }
+  };
+
+  useEffect(() => {
+    getAllItems();
+  }, []);
+
+  let in_stock_1 = items ? items.itemsByCategoryInStock["1"] : 0;
+  let in_stock_2 = items ? items.itemsByCategoryInStock["2"] : 0;
+  let in_stock_3 = items ? items.itemsByCategoryInStock["3"] : 0;
+  let in_stock_4 = items ? items.itemsByCategoryInStock["4"] : 0;
+
+  let out_of_stock_1 = items ? items.itemsByCategoryOutOfStock["1"] : 0;
+  let out_of_stock_2 = items ? items.itemsByCategoryOutOfStock["2"] : 0;
+  let out_of_stock_3 = items ? items.itemsByCategoryOutOfStock["3"] : 0;
+  let out_of_stock_4 = items ? items.itemsByCategoryOutOfStock["4"] : 0;
+
   const data = [
-    { name: "Categories", in_stock: 400, out_of_stock: 2400, amt: 2400 },
-    { name: "Items", in_stock: 400, out_of_stock: 2400, amt: 2400 },
-    { name: "Services", in_stock: 11, out_of_stock: 2400, amt: 2400 },
-    { name: "Page A", in_stock: 22, out_of_stock: 2400, amt: 2400 },
-    { name: "Page A", in_stock: 167, out_of_stock: 2400, amt: 2400 },
-    { name: "Page A", in_stock: 400, out_of_stock: 2400, amt: 2400 },
+    {
+      name: "Hand Tool",
+      in_stock: in_stock_1,
+      out_of_stock: out_of_stock_1,
+      amt: 2400,
+    },
+    {
+      name: "Power Tool",
+      in_stock: in_stock_2,
+      out_of_stock: out_of_stock_2,
+      amt: 2400,
+    },
+    {
+      name: "Safety Wear",
+      in_stock: in_stock_3,
+      out_of_stock: out_of_stock_3,
+      amt: 2400,
+    },
+    {
+      name: "Tool Storage",
+      in_stock: in_stock_4,
+      out_of_stock: out_of_stock_4,
+      amt: 2400,
+    },
   ];
+
+  const data1 = [
+    { name: "Group A", value: 400 },
+    { name: "Group B", value: 300 },
+    { name: "Group C", value: 300 },
+    { name: "Group D", value: 200 },
+  ];
+
   return (
     <div className="dashboard">
       <div className="dashboardTitle">
@@ -33,6 +109,7 @@ const Dashboard = () => {
         <div className="numBox"></div>
         <div className="numBox"></div>
       </div>
+      {/* <div > */}
       <ResponsiveContainer width="50%" height="50%">
         <BarChart
           width={300}
@@ -53,7 +130,15 @@ const Dashboard = () => {
           <Bar dataKey="out_of_stock" fill="#8884d8" />
         </BarChart>
       </ResponsiveContainer>
+      <div style={{ width: "100%", height: 300 }}>
+        <ResponsiveContainer>
+          <PieChart>
+            <Pie dataKey="value" data={data1} fill="#8884d8" label />
+          </PieChart>
+        </ResponsiveContainer>
+      </div>
     </div>
+    // </div>
   );
 };
 
