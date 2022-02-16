@@ -99,11 +99,23 @@ const WSInfo = ({ setShowWorker }) => {
               <div key={index} className="workerInfoInService">
                 <div>
                   <img src={worker.image} alt={worker.name} />
-                  <h1>{worker.user_name}</h1>
                 </div>
 
-                <small>{worker.phone}</small>
-                <address>{worker.address}</address>
+                <div className="worker_info">
+                  <h3>
+                    <span>Name: </span>
+                    {worker.user_name}
+                  </h3>
+                  <p>
+                    <span>Phone: </span>
+                    {worker.phone}
+                  </p>
+                  <address>
+                    <span>Address: </span>
+                    {worker.address}
+                  </address>
+                </div>
+
                 <div className="service_btn">
                   {users.some((user) => user.user_id === worker.user_id) && (
                     <button
