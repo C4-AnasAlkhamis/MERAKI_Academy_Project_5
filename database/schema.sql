@@ -1,17 +1,7 @@
--- select the roles wthe all permissions 
--- {SELECT permissions.permission FROM roles join role_permission ON roles.id = role_permission.role join permissions on role_permission.permission = permissions.id
--- where roles.id =2}
--- DROP DATABASE MERAKI_Academy_Project_5;
+-- DROP DATABASE sql11473340;
+-- CREATE DATABASE sql11473340;
+USE sql11473340;
 
--- DROP DATABASE MERAKI_Academy_Project_5;
--- CREATE DATABASE MERAKI_Academy_Project_5;
-
--- CREAT DATABASE MERAKI_Academy_Project_5;
--- USE DATABASE MERAKI_Academy_Project_5;
-USE MERAKI_Academy_Project_5;
-
--- DROP TABLE workers;
--- CREAT DATABASE MERAKI_Academy_Project_5;
 -- ============================ // done
 CREATE TABLE permissions (
     id INT AUTO_INCREMENT NOT NULL,
@@ -143,16 +133,6 @@ CREATE TABLE feedback (
 );
 
 INSERT INTO
-    services (title)
-VALUES
-    ('car wash');
-
-INSERT INTO
-    services (title)
-VALUES
-    ('car maintinance');
-
-INSERT INTO
     roles (role)
 VALUES
     ('Admin');
@@ -229,13 +209,3 @@ INSERT INTO
 INSERT INTO
     categories (category) VALUE ('Tool Storage');
 
--- INSERT INTO
---     worker (
---         user_id,
---         service_id,
---         address,
---         phone,
---         image
---     )
--- VALUES
---     (1, 1, 'zarqa', 345435435, '5345435435');
