@@ -40,6 +40,7 @@ const url4 = [
 ];
 
 const pushItem = async (req, res) => {
+  const { url, category } = req.body;
   url2.forEach(async (url, i) => {
     const arr = [];
 
@@ -88,7 +89,6 @@ const pushItem = async (req, res) => {
             return res.status(200).json({
               success: true,
               message: `The carts with user `,
-             
             });
           }
         );

@@ -1,6 +1,4 @@
 import React, { useEffect, useState, useRef } from "react";
-import { animateScroll as scroll } from "react-scroll";
-
 import io from "socket.io-client";
 import jwt from "jwt-decode";
 import { AiOutlineCloseCircle } from "react-icons/ai";
@@ -24,9 +22,7 @@ const Chat = () => {
   const [messages, setMessages] = useState([]);
   const [show, setShow] = useState(false);
   const socket = io.connect(process.env.REACT_APP_SOCKET_URL);
-  const scrollToBottom = (e) => {
-    element.scrollTop = 1000;
-  };
+
   const sendMessage = () => {
     socket.emit("MESSAGE", {
       user_id,
@@ -49,14 +45,12 @@ const Chat = () => {
       setUserId(data.user_id);
       setMessages((messages) => [...messages, data]);
     });
-    scrollToBottom();
   }, [refresh]);
   socket.on("disconnect", () => {
     socket.on("allUsers", (users) => {
       dispatch(setUsers(users));
     });
   });
-  const element = document.querySelector(".message_box");
 
   return (
     <>
@@ -113,7 +107,6 @@ const Chat = () => {
             <button
               onClick={(e) => {
                 sendMessage();
-                scrollToBottom(e);
               }}
             >
               send
