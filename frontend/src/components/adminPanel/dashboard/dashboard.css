@@ -1,0 +1,33 @@
+/** @format */
+
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+  background-color: whitesmoke;
+  position: relative;
+  top: 57px;
+  left: 202px;
+  width: 85%;
+  height: 92vh;
+}
+.groupBox {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  margin: 1%;
+  margin-bottom: 2%;
+}
+
+.dashboardTitle {
+  margin: 1%;
+
+}
+
+.numBox {
+  width: 250px;
+  height: 120px;
+  border: solid 1px;
+  border-radius: 5px;
+}

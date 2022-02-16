@@ -70,7 +70,6 @@ function App() {
           element={
             <>
               <HomePage />
-              <Footer />
             </>
           }
         />
@@ -100,6 +99,7 @@ function App() {
       <div>
         <>{/* <FeedBack /> */}</>
       </div>
+      {!isAdmin ? <Footer /> : null}
     </div>
   );
 }

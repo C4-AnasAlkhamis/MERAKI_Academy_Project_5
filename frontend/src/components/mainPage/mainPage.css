@@ -1,0 +1,67 @@
+/** @format */
+
+.mainPage {
+  text-align: center;
+  background-color: whitesmoke;
+}
+
+.mainPage h1 {
+  font-size: 1ram 0;
+  margin: 2%;
+}
+
+.brandImg {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+  margin-bottom: 5%;
+}
+
+.showImg img {
+  border-radius: 10px;
+  transition: transform 0.5s;
+}
+
+.showImg img:hover {
+  transform: scale(1.01);
+  cursor: pointer;
+}
+
+.showImg {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+  margin-bottom: 5%;
+  gap: 2%;
+}
+
+.brandImg img {
+  margin: 5px;
+  width: 200px;
+  height: 75px;
+  margin-bottom: 5%;
+}
+
+.feedbackDetails {
+  background-color: #2790bd;
+  color: white;
+  text-align: start;
+  border: solid 1px;
+  border-radius: 5px;
+  margin: 5px;
+  padding: 1%;
+  width: 250px;
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  gap: 5%;
+}
+
+.feedbackDetails h5 {
+  color: bisque;
+  font-style: italic;
+}
