@@ -9,11 +9,12 @@
   width: 25vw;
 }
 .message_box {
-  height: 50vh;
+  height: 400px;
   background-color: whitesmoke;
   display: flex;
   flex-direction: column;
   overflow-y: scroll;
+  gap: 10px;
 }
 .message_box p {
   color: #04518c;

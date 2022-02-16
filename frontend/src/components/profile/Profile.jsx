@@ -1,5 +1,4 @@
 /** @format */
-
 import axios from "axios";
 import "./profile.css";
 import { useState, useEffect } from "react";
