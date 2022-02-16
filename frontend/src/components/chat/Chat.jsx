@@ -22,6 +22,7 @@ const Chat = () => {
   const [messages, setMessages] = useState([]);
   const [show, setShow] = useState(false);
   const socket = io.connect(process.env.REACT_APP_SOCKET_URL);
+
   const sendMessage = () => {
     socket.emit("MESSAGE", {
       user_id,
@@ -50,7 +51,6 @@ const Chat = () => {
       dispatch(setUsers(users));
     });
   });
-  const scroll = document.querySelector(".message_box");
 
   return (
     <>
@@ -105,10 +105,8 @@ const Chat = () => {
               placeholder="Message"
             />
             <button
-              onClick={() => {
+              onClick={(e) => {
                 sendMessage();
-
-                scroll.scrollTop = scroll.scrollHeight;
               }}
             >
               send
