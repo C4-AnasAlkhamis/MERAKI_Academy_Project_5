@@ -5,15 +5,12 @@ import axios from "axios";
 import {
   BarChart,
   Bar,
-  Cell,
   XAxis,
   YAxis,
   CartesianGrid,
   Tooltip,
   Legend,
   ResponsiveContainer,
-  PieChart,
-  Pie,
 } from "recharts";
 import "./dashboard.css";
 
@@ -130,13 +127,6 @@ const Dashboard = () => {
           <Bar dataKey="out_of_stock" fill="#8884d8" />
         </BarChart>
       </ResponsiveContainer>
-      <div style={{ width: "100%", height: 300 }}>
-        <ResponsiveContainer>
-          <PieChart>
-            <Pie dataKey="value" data={data1} fill="#8884d8" label />
-          </PieChart>
-        </ResponsiveContainer>
-      </div>
     </div>
     // </div>
   );
