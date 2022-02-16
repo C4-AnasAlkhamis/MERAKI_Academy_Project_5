@@ -6,21 +6,20 @@ const socket = require("socket.io");
 require("dotenv").config();
 const app = express();
 const db = require("./database/db");
-const path=require("path")
-
+const path = require("path");
 
 app.use(cors());
 
 app.use(express.json());
 
-if(process.env.NODE_ENV === 'production'){
-  app.use(express.static('client/build'));
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
 }
-app.get('*',(req, res) => {
-  res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
 });
 
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 
 const cartRouter = require("./routes/cart");
 const categoriesRouter = require("./routes/categories");
@@ -35,8 +34,6 @@ const serviceReqRouter = require("./routes/serviceReq");
 const serviceRouter = require("./routes/service");
 const workerRouter = require("./routes/worker");
 const rateRouter = require("./routes/rate");
-
-
 
 const mailRouter = require("./routes/mail");
 
@@ -68,8 +65,6 @@ const io = socket(server, {
   },
 });
 
-
 module.exports = { io };
 
 const chat = require("./controllers/chat");
-
