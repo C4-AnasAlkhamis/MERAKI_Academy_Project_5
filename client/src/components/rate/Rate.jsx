@@ -9,7 +9,7 @@ const Rate = ({ item_id }) => {
 
   const addNewRate = async (rate) => {
     await axios
-      .post("http://localhost:5000/rate", { rate, item_id })
+      .post("/rate", { rate, item_id })
       .then((result) => {
         dispatch(addRate({ rate: rate, item_id: item_id }));
       })

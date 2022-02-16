@@ -44,7 +44,7 @@
 //         price:3,
 //         category_id:1,
 //       };
-//       const result = await axios.post("http://localhost:5000/item", item, {
+//       const result = await axios.post("/item", item, {
 //         headers: {
 //           Authorization: `Bearer ${token}`,
 //         },

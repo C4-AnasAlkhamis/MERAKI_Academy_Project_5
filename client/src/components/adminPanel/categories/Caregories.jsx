@@ -31,7 +31,7 @@ const Category = () => {
   //=======================================
   const getAllCategories = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/category", {
+      const res = await axios.get("/category", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -50,7 +50,7 @@ const Category = () => {
   //======================================
   const addNewCategory = async () => {
     try {
-      const res = await axios.post("http://localhost:5000/category", {
+      const res = await axios.post("/category", {
         category,
       });
       if (res.data.success) {
@@ -71,7 +71,7 @@ const Category = () => {
   //======================================
   const deleteCategoryById = async () => {
     try {
-      const res = await axios.delete(`http://localhost:5000/category/${id}`);
+      const res = await axios.delete(`/category/${id}`);
       if (res.data.success) {
         setMessage(res.data.success);
         dispatch(deleteCategory(id));
@@ -88,7 +88,7 @@ const Category = () => {
   //======================================
   const updateCategoryById = async () => {
     try {
-      const res = await axios.put(`http://localhost:5000/category/${id}`, {
+      const res = await axios.put(`/category/${id}`, {
         category,
       });
       if (res.data.success) {

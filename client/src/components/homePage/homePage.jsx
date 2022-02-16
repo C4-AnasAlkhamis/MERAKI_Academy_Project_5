@@ -54,7 +54,7 @@ const HomePage = () => {
 
   const getAllItems = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/item", {
+      const res = await axios.get("/item", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -75,7 +75,7 @@ const HomePage = () => {
   const getFilteredItems = async (value) => {
     try {
       const res = await axios.post(
-        "http://localhost:5000/item/filter",
+        "/item/filter",
         { value },
         {
           headers: {
@@ -100,7 +100,7 @@ const HomePage = () => {
 
   const getAllCategories = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/category", {
+      const res = await axios.get("/category", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -118,10 +118,10 @@ const HomePage = () => {
   //===========================================
 
   const getItemById = async (id) => {
-    //get http://localhost:5000/item/
+    //get /item/
 
     await axios
-      .get(`http://localhost:5000/item/id?id=${id}`)
+      .get(`/item/id?id=${id}`)
       .then((result) => {
         dispatch(setItemInfo({ ...result.data.result }));
         // navigate("/more-info");
@@ -134,7 +134,7 @@ const HomePage = () => {
   //=======================================
   const getRate = async (rate) => {
     await axios
-      .get("http://localhost:5000/rate")
+      .get("/rate")
       .then((result) => {
         // setRates(result.data.result);
         dispatch(setRates([...result.data.result]));

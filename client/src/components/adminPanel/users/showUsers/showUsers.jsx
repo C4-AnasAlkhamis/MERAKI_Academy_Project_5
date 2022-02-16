@@ -28,7 +28,7 @@ const ShowUsers = () => {
 
   const getAllUsers = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/user/all");
+      const res = await axios.get("/user/all");
       if (res.data.success) {
         dispatch(setUsers(res.data.result));
       } else throw Error;
@@ -44,7 +44,7 @@ const ShowUsers = () => {
   //===============================================================
   const deleteUserById = async (id) => {
     try {
-      const res = await axios.delete(`http://localhost:5000/user/${id}`);
+      const res = await axios.delete(`/user/${id}`);
       console.log(res);
       if (res.data.success) {
         setMessage(res.data.success);

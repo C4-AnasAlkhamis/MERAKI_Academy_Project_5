@@ -37,7 +37,7 @@ const Worker = () => {
 
   const getAllService = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/service");
+      const res = await axios.get("/service");
       if (res.data.success) {
         dispatch(setService(res.data.result));
       } else throw Error;
@@ -64,11 +64,11 @@ const Worker = () => {
   // ================================================  //
 
   const createWorker = async (image) => {
-    //post http://localhost:5000/worker
+    //post /worker
 
     await axios
       .post(
-        "http://localhost:5000/worker",
+        "/worker",
         {
           service_id,
           address,

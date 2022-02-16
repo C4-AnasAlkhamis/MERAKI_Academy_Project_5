@@ -47,7 +47,7 @@ const Cart = () => {
   // ======================================= //
   const getCartById = async () => {
     await axios
-      .get(`http://localhost:5000/cart/`, {
+      .get(`/cart/`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -62,10 +62,10 @@ const Cart = () => {
   // ======================================= //
 
   const deleteCartById = async (id) => {
-    //delete http://localhost:5000/cart/:id
+    //delete /cart/:id
 
     await axios
-      .delete(`http://localhost:5000/cart/${id}`)
+      .delete(`/cart/${id}`)
       .then((result) => {
         getCartById();
       })

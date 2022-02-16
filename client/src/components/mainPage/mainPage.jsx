@@ -41,7 +41,7 @@ const MainPage = () => {
   const [feedbacks, setFeedbacks] = useState([]);
   const getAllFeedBack = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/item/feedback");
+      const res = await axios.get("/item/feedback");
       if (res.data.success) {
         setFeedbacks(res.data.result);
       } else throw Error;

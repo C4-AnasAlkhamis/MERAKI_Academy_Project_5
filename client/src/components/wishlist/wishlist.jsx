@@ -51,7 +51,7 @@ const Wishlist = (id) => {
 
   const getWishlistById = async () => {
     await axios
-      .get(`http://localhost:5000/wishlist/`, {
+      .get(`/wishlist/`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -67,7 +67,7 @@ const Wishlist = (id) => {
   const createNewCart = async (id) => {
     try {
       await axios.post(
-        `http://localhost:5000/cart`,
+        `/cart`,
         { item_id: id },
         {
           headers: {
@@ -78,10 +78,10 @@ const Wishlist = (id) => {
     } catch (error) {}
   };
   const deleteWishlistById = async (id) => {
-    //delete http://localhost:5000/wishlist/:id
+    //delete /wishlist/:id
 
     await axios
-      .delete(`http://localhost:5000/wishlist/${id}`)
+      .delete(`/wishlist/${id}`)
       .then((result) => {
         dispatch(deleteWishlist(id));
       })

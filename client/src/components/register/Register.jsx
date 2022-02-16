@@ -32,12 +32,12 @@ const Register = () => {
 
   const createUser = async (e) => {
     e.preventDefault();
-    //   POST -> http://localhost:5000/user
+    //   POST -> /user
     if (!userName || !email || !password || !repeatPassword) {
       wrongRegister("please fill in all inputs");
     } else if (repeatPassword === password) {
       await axios
-        .post("http://localhost:5000/user", {
+        .post("/user", {
           user_name: userName.toLowerCase(),
           email: email.toLowerCase(),
           password,
