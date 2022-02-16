@@ -4,10 +4,10 @@ const connection = require("../database/db");
 
 // This function create new item
 const createNewRequest = (req, res) => {
-  const { name, order_Detalis, address, phone, worker_id } = req.body;
+  const { name, order_Detalis, address, phone, worker_id, email } = req.body;
 
-  const query = `INSERT INTO service_request (name, order_Detalis, address, phone, worker_id) VALUE (?,?,?,?,?)`;
-  const data = [name, order_Detalis, address, phone, worker_id];
+  const query = `INSERT INTO service_request (name, order_Detalis, address, phone, worker_id,email) VALUE (?,?,?,?,?,?)`;
+  const data = [name, order_Detalis, address, phone, worker_id, email];
   connection.query(query, data, (err, result) => {
     if (err) {
       return res.status(500).json({

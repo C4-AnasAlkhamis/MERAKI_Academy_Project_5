@@ -28,6 +28,7 @@ const login = (req, res) => {
         userId: result[0].id,
         role: result[0].role_id,
         userName: result[0].user_name,
+        email: result[0].email,
       };
 
       const options = {

@@ -54,6 +54,8 @@ const WSInfo = ({ setShowWorker }) => {
           address,
           phone,
           worker_id,
+          email:jwt(token).email
+
         },
         {
           headers: {
