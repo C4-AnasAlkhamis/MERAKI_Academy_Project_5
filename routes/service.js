@@ -7,12 +7,12 @@ const serviceRouter = express.Router();
 //write your code here
 
 const {
-    createNewService,
-    getAllServices,
-    getServiceById,
-    updateServiceById,
-    deleteServiceById,
-} = require("../controllers/Service");
+  createNewService,
+  getAllServices,
+  getServiceById,
+  updateServiceById,
+  deleteServiceById,
+} = require("../controllers/service");
 // =========================================== //
 
 serviceRouter.post("/", createNewService);
