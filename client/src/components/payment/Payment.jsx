@@ -33,9 +33,9 @@ const Pay = ({ items, price }) => {
   // sb-kgjsd13291652@personal.example.com
   // ======================================= //
   const deleteCartByUserId = async () => {
-    //delete http://localhost:5000/cart/user
+    //delete /cart/user
     await axios
-      .delete(`http://localhost:5000/cart`, {
+      .delete(`/cart`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

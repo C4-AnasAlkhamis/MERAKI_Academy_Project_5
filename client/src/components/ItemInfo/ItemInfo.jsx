@@ -60,7 +60,7 @@ const ItemInfo = ({ setShow }) => {
     const createNewCartOrWishlist = async (endPoint) => {
       try {
         const result = await axios.post(
-          `http://localhost:5000/${endPoint}`,
+          `/${endPoint}`,
           { item_id: item.id },
           {
             headers: {

@@ -53,7 +53,7 @@ const AddService = () => {
     console.log("555");
     try {
       const result = await axios.post(
-        `http://localhost:5000/service`,
+        `/service`,
         { title, description, image },
         {
           headers: {
@@ -70,7 +70,7 @@ const AddService = () => {
 
   const getAllServices = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/service");
+      const res = await axios.get("/service");
       if (res.data.success) {
         dispatch(setService([...res.data.result]));
       } else throw Error;
@@ -84,7 +84,7 @@ const AddService = () => {
   //======================================
   const deleteServiceById = async (id) => {
     try {
-      const res = await axios.delete(`http://localhost:5000/service/${id}`);
+      const res = await axios.delete(`/service/${id}`);
       if (res.data.success) {
         setMessage(res.data.success);
         dispatch(deleteService(id));
@@ -102,7 +102,7 @@ const AddService = () => {
   const updateServiceById = async (image) => {
     console.log(image);
     try {
-      const res = await axios.put(`http://localhost:5000/service/${iD}`, {
+      const res = await axios.put(`/service/${iD}`, {
         title,
         description,
         image,

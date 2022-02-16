@@ -30,9 +30,9 @@ const Login = (message) => {
 
   const verifyUser = async (e) => {
     e.preventDefault();
-    //   post -> http://localhost:5000/login/
+    //   post -> /login/
     await axios
-      .post("http://localhost:5000/login", {
+      .post("/login", {
         email: email.toLowerCase(),
         password,
       })

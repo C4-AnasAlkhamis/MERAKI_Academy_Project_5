@@ -20,7 +20,7 @@ const ServicePage = () => {
 
   const getAllService = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/service");
+      const res = await axios.get("/service");
       if (res.data.success) {
         dispatch(setService(res.data.result));
       } else throw Error;
@@ -32,9 +32,9 @@ const ServicePage = () => {
   //===============================================================
 
   const getWorkerByServiceId = async (id) => {
-    //get http://localhost:5000/worker/srv_id/id
+    //get /worker/srv_id/id
     await axios
-      .get(`http://localhost:5000/worker/srv_id/${id}`)
+      .get(`/worker/srv_id/${id}`)
       .then((result) => {
         dispatch(setWorkers([...result.data.result]));
       })

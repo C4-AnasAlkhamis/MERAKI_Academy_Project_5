@@ -35,7 +35,7 @@ const Profile = () => {
     e.preventDefault();
 
     await axios
-      .post("http://localhost:5000/mail", { to, subject, description })
+      .post("/mail", { to, subject, description })
       .then((response) => setMsg(response.data.respMesg));
   };
 
@@ -50,9 +50,9 @@ const Profile = () => {
   const dispatch = useDispatch();
   // worker functions  ==========++++++++++==========
   const getWorkerById = async () => {
-    //get http://localhost:5000/worker/id
+    //get /worker/id
     await axios
-      .get(`http://localhost:5000/worker/profile`, {
+      .get(`/worker/profile`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -64,9 +64,9 @@ const Profile = () => {
   };
 
   const getRequestByWorker = async () => {
-    //get http://localhost:5000/worker/id
+    //get /worker/id
     await axios
-      .get(`http://localhost:5000/send_request`, {
+      .get(`/send_request`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -90,11 +90,11 @@ const Profile = () => {
   };
   //===============================================================
   const updateWorkerById = async (image) => {
-    //put http://localhost:5000/worker/id
+    //put /worker/id
 
     const id = jsw(token).userId;
     await axios
-      .put(`http://localhost:5000/worker/${id}`, {
+      .put(`/worker/${id}`, {
         address,
         phone,
         image,

@@ -43,11 +43,11 @@ const WSInfo = ({ setShowWorker }) => {
   };
   const sendRequest = async (e) => {
     e.preventDefault();
-    //post http://localhost:5000/worker
+    //post /worker
 
     await axios
       .post(
-        `http://localhost:5000/send_request`,
+        `/send_request`,
         {
           name: yourName,
           order_Detalis,

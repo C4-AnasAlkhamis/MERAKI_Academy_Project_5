@@ -28,7 +28,7 @@ const ShowWorkers = () => {
 
   const geAllWorker = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/worker");
+      const res = await axios.get("/worker");
       if (res.data.success) {
         dispatch(setWorkers(res.data.result));
       } else throw Error;
@@ -43,7 +43,7 @@ const ShowWorkers = () => {
 
   const deleteWorker = async (id) => {
     try {
-      const res = await axios.put(`http://localhost:5000/worker/delete/${id}`);
+      const res = await axios.put(`/worker/delete/${id}`);
       if (res.data.success) {
         setMessage(res.data.success);
         dispatch(deleteWorkers(id));

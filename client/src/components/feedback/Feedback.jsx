@@ -24,7 +24,7 @@ const FeedBack = ({ setShow }) => {
 
   const sendFeedBack = () => {
     axios
-      .post("http://localhost:5000/item/feedback", {
+      .post("/item/feedback", {
         name,
         email,
         subject,

@@ -50,7 +50,7 @@ const ShowItem = () => {
   const getAllItems = async (category_id) => {
     try {
       const res = await axios.get(
-        `http://localhost:5000/item/category/${category_id}`,
+        `/item/category/${category_id}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -74,7 +74,7 @@ const ShowItem = () => {
     let stock = description;
     try {
       const res = await axios.put(
-        `http://localhost:5000/item/stock/${id}`,
+        `/item/stock/${id}`,
         { is_deleted, description },
         {
           headers: {
@@ -108,7 +108,7 @@ const ShowItem = () => {
 
   const updateItemById = async () => {
     await axios
-      .put(`http://localhost:5000/item/${id}`, {
+      .put(`/item/${id}`, {
         image,
         title,
         description,
@@ -139,7 +139,7 @@ const ShowItem = () => {
 
   const getAllCategories = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/category", {
+      const res = await axios.get("/category", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -157,7 +157,7 @@ const ShowItem = () => {
   // ================================================  //
   const deleteItemById = async (item_id) => {
     try {
-      const res = await axios.delete(`http://localhost:5000/item/${item_id}`);
+      const res = await axios.delete(`/item/${item_id}`);
       if (res.data.success) {
         setMessage(res.data.success);
         dispatch(deleteItem(item_id));

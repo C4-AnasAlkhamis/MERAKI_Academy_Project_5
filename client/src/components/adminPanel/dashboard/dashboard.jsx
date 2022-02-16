@@ -19,7 +19,7 @@ const Dashboard = () => {
 
   const getAllItems = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/item");
+      const res = await axios.get("/item");
       if (res.data.success) {
         const itemsByCategoryInStock = {};
         const itemsByCategoryOutOfStock = {};
