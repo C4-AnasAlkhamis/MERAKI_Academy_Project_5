@@ -52,7 +52,7 @@ const Dashboard = () => {
         axios.get("/cart/dashboard"),
         axios.get("/user/dashboard"),
         axios.get("/worker/dashboard"),
-        axios.get("/item/dashboard"),
+        axios.get("/dashboard/count"),
       ]);
       console.log(res);
     } catch (error) {}

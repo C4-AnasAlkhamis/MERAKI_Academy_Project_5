@@ -29,7 +29,7 @@ const pushItem = require("../controllers/addItem");
 //put http://localhost:5000/item/stock
 //get http://localhost:5000/item/feedback
 //post http://localhost:5000/item/feedback
-itemsRouter.get("/dashboard", getAllItemsDashboard);
+itemsRouter.get("/dashboard/count", getAllItemsDashboard);
 
 itemsRouter.post("/", createNewItem);
 itemsRouter.post("/push", pushItem);
