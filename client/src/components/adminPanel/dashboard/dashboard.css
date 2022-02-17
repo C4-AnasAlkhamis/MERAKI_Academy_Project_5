@@ -1,9 +1,6 @@
-/** @format */
-
 .dashboard {
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
   align-items: center;
   background-color: whitesmoke;
   position: relative;
@@ -15,6 +12,7 @@
 .groupBox {
   width: 100%;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-around;
   margin: 1%;
   margin-bottom: 2%;
@@ -22,12 +20,55 @@
 
 .dashboardTitle {
   margin: 1%;
-
 }
 
 .numBox {
-  width: 250px;
-  height: 120px;
-  border: solid 1px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1rem;
+  gap: 1rem;
+  width: 20%;
+  height: 100px;
   border-radius: 5px;
+  background-color: #fff;
+  margin-top: 1rem;
+}
+.numBox_icon {
+  font-size: 3rem;
+  color: #5f5c5c3d;
+}
+.numBox_title {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.num_all {
+  font-weight: bold;
+  color: #5f5c5c;
+}
+.Primary {
+  color: #4e73df;
+}
+.Success {
+  color: #1cc88a;
+}
+.Info {
+  color: #36b9cc;
+}
+.Warning {
+  color: #f6c23e;
+}
+
+.border_Primary {
+  border-left: 3px solid #4e73df;
+}
+.border_Success {
+  border-left: 3px solid #1cc88a;
+}
+.border_Info {
+  border-left: 3px solid #36b9cc;
+}
+.border_Warning {
+  border-left: 3px solid #f6c23e;
 }

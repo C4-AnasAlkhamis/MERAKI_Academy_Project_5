@@ -13,10 +13,19 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import "./dashboard.css";
+import {
+  RiProductHuntLine,
+  RiShoppingCartLine,
+  RiUserLine,
+  RiUserSettingsLine,
+} from "react-icons/ri";
 
 const Dashboard = () => {
   const [items, setItems] = useState("");
-
+  const [carts, setCarts] = useState();
+  const [users, setUsers] = useState();
+  const [workers, setWorkers] = useState();
+  const [itemCount, setItemCount] = useState();
   const getAllItems = async () => {
     try {
       const res = await axios.get("/item");
@@ -52,16 +61,22 @@ const Dashboard = () => {
         axios.get("/cart/dashboard"),
         axios.get("/user/dashboard/all"),
         axios.get("/worker/dashboard/all/worker"),
-        axios.get("item/dashboard/count"),
+        axios.get("/item/dashboard/count"),
       ]);
-      console.log(res);
+
+      if (res) {
+        setCarts(...res[0].data.result);
+        setUsers(...res[1].data.result);
+        setWorkers(...res[2].data.result);
+        setItemCount(...res[3].data.result);
+      }
     } catch (error) {}
   };
   useEffect(() => {
     getAllItems();
     getQuantity();
   }, []);
-
+  console.log(carts, users, workers, itemCount);
   let in_stock_1 = items ? items.itemsByCategoryInStock["1"] : 0;
   let in_stock_2 = items ? items.itemsByCategoryInStock["2"] : 0;
   let in_stock_3 = items ? items.itemsByCategoryInStock["3"] : 0;
@@ -99,23 +114,60 @@ const Dashboard = () => {
     },
   ];
 
-  const data1 = [
-    { name: "Group A", value: 400 },
-    { name: "Group B", value: 300 },
-    { name: "Group C", value: 300 },
-    { name: "Group D", value: 200 },
-  ];
-
   return (
     <div className="dashboard">
       <div className="dashboardTitle">
         <h1>DASHBOARD</h1>
       </div>
       <div className="groupBox">
-        <div className="numBox"></div>
-        <div className="numBox"></div>
-        <div className="numBox"></div>
-        <div className="numBox"></div>
+        <div className="numBox border_Primary">
+          <div className="numBox_title">
+            <span className="Primary">Worker</span>
+            <span className="num_all">{workers && workers.worker_count}</span>
+          </div>
+          <div className="numBox_icon">
+            <i>
+              <RiUserSettingsLine />
+            </i>
+          </div>
+        </div>
+        <div className="numBox border_Success">
+          <div className="numBox_title">
+            <span className="Success">Users</span>
+            <span className="num_all">{users && users.users_count}</span>
+          </div>
+          <div className="numBox_icon">
+            <i>
+              <RiUserLine />
+            </i>
+          </div>
+        </div>
+        <div className="numBox border_Info">
+          <div className="numBox_title">
+            <span className="Info">Carts</span>
+            <span className="num_all">{carts && carts.cart_count}</span>
+          </div>
+
+          <div className="numBox_icon">
+            <i>
+              <RiShoppingCartLine />
+            </i>
+          </div>
+        </div>
+        <div className="numBox border_Warning">
+          <div className="numBox_title">
+            <span className="Warning">Items</span>
+            <span className="num_all">
+              {itemCount && itemCount.items_count}
+            </span>
+          </div>
+
+          <div className="numBox_icon">
+            <i>
+              <RiProductHuntLine />
+            </i>
+          </div>
+        </div>
       </div>
       {/* <div > */}
       <ResponsiveContainer width="50%" height="50%">
