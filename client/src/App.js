@@ -26,7 +26,6 @@ import AddService from "./components/adminPanel/services/AddService";
 import MainPage from "./components/mainPage/mainPage";
 // import ShowServices  from "./components/adminPanel/services/showServices/showServices";
 import ShowUsers from "./components/adminPanel/users/showUsers/showUsers";
-import { useState } from "react";
 
 // import AddService from "./components/addService/AddService";
 import ServicePage from "./components/servicePage/ServicePage";
@@ -62,7 +61,6 @@ function App() {
       <Routes>
         <Route path="/login" element={<Login />} />7
         <Route path="/register" element={<Register />} />
-        {/* <Route path="/more-info" element={<ItemInfo />} /> */}
         <Route path="/cart" element={<Cart />} />
         <Route path="/Wishlist" element={<Wishlist />} />
         <Route
@@ -97,7 +95,6 @@ function App() {
       </Routes>
       {isLoggedIn ? <Chat /> : null}
       <div>
-        <>{/* <FeedBack /> */}</>
       </div>
       {!isAdmin ? <Footer /> : null}
     </div>
