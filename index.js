@@ -61,7 +61,7 @@ const server = app.listen(PORT, () => {
 
 const io = socket(server, {
   cors: {
-    origin: "http://localhost:3000",
+    origin: "https://technicorner.herokuapp.com",
     method: ["GET", "POST"],
   },
 });
