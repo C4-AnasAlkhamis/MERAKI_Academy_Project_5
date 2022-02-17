@@ -23,7 +23,7 @@ const Chat = () => {
   const [messages, setMessages] = useState([]);
   const [show, setShow] = useState(false);
   const socket = io.connect(process.env.REACT_APP_SOCKET_URL);
-  // const scroll = document.querySelector(".message_box");
+
 
   const sendMessage = () => {
     socket.emit("MESSAGE", {

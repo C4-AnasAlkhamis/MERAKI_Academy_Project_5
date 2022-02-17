@@ -1,20 +1,14 @@
-/** @format */
-
 import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./login.css";
 import { logIn, isAdmin } from "../../reducer/login/index";
 import jwt from "jwt-decode";
-
 import login from "../../image/login1.png";
-
 import { useDispatch } from "react-redux";
-// import LoginWG from "../LoginWG/LoginWG";
 import Swal from "sweetalert2";
 
 const Login = () => {
-  
   const wrongLogin = (message) => {
     Swal.fire({
       icon: "error",
@@ -31,7 +25,6 @@ const Login = () => {
 
   const verifyUser = async (e) => {
     e.preventDefault();
-    //   post -> /login/
     await axios
       .post("/login", {
         email: email.toLowerCase(),
@@ -45,7 +38,7 @@ const Login = () => {
           setPassword("");
           if (jwt(result.data.token).role == 1) {
             localStorage.setItem("isAdmin", true);
-            navigate(`/admin`);
+            navigate(`/dashboard`);
           } else {
             navigate(`/homePage`);
           }
