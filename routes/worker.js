@@ -14,9 +14,11 @@ const {
   updateWorkerById,
   deleteWorkerById,
   changeToken,
+  getAllWorkersDashboard,
 } = require("../controllers/worker");
 // =========================================== //
 const { authentication } = require("../middleware/authentication");
+workerRouter.get("/dashboard", getAllWorkersDashboard);
 
 workerRouter.post("/", authentication, createNewWorker, changeToken);
 workerRouter.get("/", getAllWorkers);

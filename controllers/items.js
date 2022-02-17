@@ -275,7 +275,22 @@ const createNewFeedback = (req, res) => {
     });
   });
 };
-
+const getAllItemsDashboard = (req, res) => {
+  const query = `SELECT COUNT( items.id) AS items_count FROM items `;
+  connection.query(query, (err, result) => {
+    if (err) {
+      return res.status(500).json({
+        success: false,
+        message: `Server Error`,
+      });
+    }
+    return res.status(200).json({
+      success: true,
+      message: `The All items`,
+      result: result,
+    });
+  });
+};
 module.exports = {
   createNewItem,
   getAllItems,
@@ -287,5 +302,6 @@ module.exports = {
   isDeleteItemById,
   getOutOfSItems,
   getAllFeedback,
-  createNewFeedback
+  createNewFeedback,
+  getAllItemsDashboard,
 };

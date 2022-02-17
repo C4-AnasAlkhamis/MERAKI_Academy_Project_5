@@ -143,10 +143,28 @@ const getAllIUses = (req, res) => {
     });
   });
 };
+// =================================================== // done
+const getAllUsersDashboard = (req, res) => {
+  const query = `SELECT COUNT( users.id) AS users_count FROM users `;
+  connection.query(query, (err, result) => {
+    if (err) {
+      return res.status(500).json({
+        success: false,
+        message: `Server Error`,
+      });
+    }
+    return res.status(200).json({
+      success: true,
+      message: `The All users`,
+      result: result,
+    });
+  });
+};
 module.exports = {
   createNewUser,
   getUserById,
   updateUserById,
   deleteUserById,
   getAllIUses,
+  getAllUsersDashboard,
 };

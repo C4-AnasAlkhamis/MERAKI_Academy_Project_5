@@ -18,9 +18,9 @@ const Profile = () => {
   const navigate = useNavigate();
 
   const [msg, setMsg] = useState("");
-  const [to, setTo] = useState("");
-  const [subject, setSubject] = useState("");
-  const [description, setDescription] = useState("");
+  // const [to, setTo] = useState("");
+  // const [subject, setSubject] = useState("");
+  // const [description, setDescription] = useState("");
   const [showEmail, setShowEmail] = useState(false);
 
   const approvedSubject = "Approved Application";
@@ -31,7 +31,7 @@ const Profile = () => {
   const rejectedDescription =
     "We are so sorry to inform you that your application rejected!";
 
-  const onSubmit = async ({ to, subject, description }) => {
+  const onSubmit = async (to, subject, description) => {
     // e.preventDefault();
 
     await axios

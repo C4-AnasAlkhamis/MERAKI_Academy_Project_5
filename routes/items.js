@@ -17,6 +17,7 @@ const {
   getOutOfSItems,
   getAllFeedback,
   createNewFeedback,
+  getAllItemsDashboard,
 } = require("../controllers/items");
 const pushItem = require("../controllers/addItem");
 //Post http://localhost:5000/item/
@@ -28,6 +29,7 @@ const pushItem = require("../controllers/addItem");
 //put http://localhost:5000/item/stock
 //get http://localhost:5000/item/feedback
 //post http://localhost:5000/item/feedback
+itemsRouter.get("/dashboard", getAllItemsDashboard);
 
 itemsRouter.post("/", createNewItem);
 itemsRouter.post("/push", pushItem);

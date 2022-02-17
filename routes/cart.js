@@ -12,9 +12,12 @@ const {
   getCartById,
   deleteCartById,
   deleteCartByUserId,
+  getAllCartsDashboard,
 } = require("../controllers/cart");
 
 //   ========================================== //
+cartRouter.get("/dashboard", getAllCartsDashboard);
+
 cartRouter.post("/", authentication, createNewCart);
 cartRouter.get("/", authentication, getCartById);
 cartRouter.delete("/:id", deleteCartById);

@@ -85,9 +85,27 @@ const deleteCartByUserId = (req, res) => {
     });
   });
 };
+// =================================================== // done
+const getAllCartsDashboard = (req, res) => {
+  const query = `SELECT COUNT( carts.user_id) AS cart_count FROM carts `;
+  connection.query(query, (err, result) => {
+    if (err) {
+      return res.status(500).json({
+        success: false,
+        message: `Server Error`,
+      });
+    }
+    return res.status(200).json({
+      success: true,
+      message: `The All carts`,
+      result: result,
+    });
+  });
+};
 module.exports = {
   createNewCart,
   getCartById,
   deleteCartById,
   deleteCartByUserId,
+  getAllCartsDashboard,
 };

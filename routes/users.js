@@ -7,6 +7,7 @@ const {
   updateUserById,
   deleteUserById,
   getAllIUses,
+  getAllUsersDashboard,
 } = require("../controllers/users");
 const userRouter = express.Router();
 //dont press enter
@@ -15,7 +16,7 @@ const userRouter = express.Router();
 userRouter.post("/", createNewUser);
 userRouter.get("/", getUserById);
 userRouter.get("/all", getAllIUses);
-
+userRouter.get("/dashboard", getAllUsersDashboard);
 userRouter.put("/", updateUserById);
 userRouter.delete("/:id", deleteUserById);
 
