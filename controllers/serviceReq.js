@@ -50,7 +50,30 @@ const getAllRequestByWorkerId = (req, res) => {
     });
   });
 };
+
+// // =================================================== // done
+
+// This function delete serviceReq By Id
+const deleteServiceReqById = (req, res) => {
+  const { id } = req.params.id;
+  const query = `DELETE FROM service_request WHERE id = ?`;
+  const data = [id];
+  connection.query(query, data, (err, result) => {
+    if (err) {
+      return res.status(500).json({
+        success: false,
+        message: ` No service_request with id ${id}`,
+      });
+    }
+    res.status(200).json({
+      success: true,
+      message: `Succeeded to delete service_request with id ${id}`,
+      result: result,
+    });
+  });
+};
 module.exports = {
   createNewRequest,
   getAllRequestByWorkerId,
+  deleteServiceReqById,
 };
