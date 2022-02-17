@@ -22,6 +22,7 @@ const Chat = () => {
   const [messages, setMessages] = useState([]);
   const [show, setShow] = useState(false);
   const socket = io.connect(process.env.REACT_APP_SOCKET_URL);
+  const scroll = document.querySelector(".message_box");
 
   const sendMessage = () => {
     socket.emit("MESSAGE", {
@@ -45,6 +46,8 @@ const Chat = () => {
       setUserId(data.user_id);
       setMessages((messages) => [...messages, data]);
     });
+ 
+    scroll.scrollTop = scroll.scrollHeight;
   }, [refresh]);
   socket.on("disconnect", () => {
     socket.on("allUsers", (users) => {
@@ -109,6 +112,7 @@ const Chat = () => {
               className="chat_blue"
               onClick={(e) => {
                 sendMessage();
+                scroll.scrollTop = scroll.scrollHeight;
               }}
             >
               send
