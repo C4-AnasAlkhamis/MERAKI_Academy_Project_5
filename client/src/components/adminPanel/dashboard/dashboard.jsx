@@ -113,6 +113,10 @@ const Dashboard = () => {
       amt: 2400,
     },
   ];
+  /* worker 2 professional technicains
+user  100 active user 
+cart 5 have been sale
+item 100 high quality tool */
 
   return (
     <div className="dashboard">
@@ -123,7 +127,11 @@ const Dashboard = () => {
         <div className="numBox border_Primary">
           <div className="numBox_title">
             <span className="Primary">Worker</span>
-            <span className="num_all">{workers && workers.worker_count}</span>
+
+            <span className="num_all">
+              {workers && workers.worker_count}
+              <small> professional technicians</small>
+            </span>
           </div>
           <div className="numBox_icon">
             <i>
@@ -134,7 +142,11 @@ const Dashboard = () => {
         <div className="numBox border_Success">
           <div className="numBox_title">
             <span className="Success">Users</span>
-            <span className="num_all">{users && users.users_count}</span>
+
+            <span className="num_all">
+              {users && users.users_count}
+              <small> active user</small>
+            </span>
           </div>
           <div className="numBox_icon">
             <i>
@@ -145,7 +157,11 @@ const Dashboard = () => {
         <div className="numBox border_Info">
           <div className="numBox_title">
             <span className="Info">Carts</span>
-            <span className="num_all">{carts && carts.cart_count}</span>
+
+            <span className="num_all">
+              {carts && carts.cart_count}
+              <small> have been sale</small>
+            </span>
           </div>
 
           <div className="numBox_icon">
@@ -157,8 +173,10 @@ const Dashboard = () => {
         <div className="numBox border_Warning">
           <div className="numBox_title">
             <span className="Warning">Items</span>
+
             <span className="num_all">
               {itemCount && itemCount.items_count}
+              <small> high quality tool</small>
             </span>
           </div>
 
@@ -169,7 +187,6 @@ const Dashboard = () => {
           </div>
         </div>
       </div>
-      {/* <div > */}
       <ResponsiveContainer width="50%" height="50%">
         <BarChart
           width={300}
@@ -192,7 +209,6 @@ const Dashboard = () => {
         </BarChart>
       </ResponsiveContainer>
     </div>
-    // </div>
   );
 };
 
