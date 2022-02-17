@@ -18,9 +18,9 @@ const Profile = () => {
   const navigate = useNavigate();
 
   const [msg, setMsg] = useState("");
-  const [to, setTo] = useState("");
-  const [subject, setSubject] = useState("");
-  const [description, setDescription] = useState("");
+  // const [to, setTo] = useState("");
+  // const [subject, setSubject] = useState("");
+  // const [description, setDescription] = useState("");
   const [showEmail, setShowEmail] = useState(false);
 
   const approvedSubject = "Approved Application";
