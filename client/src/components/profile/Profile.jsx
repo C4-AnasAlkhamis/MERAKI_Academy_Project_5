@@ -152,6 +152,7 @@ const Profile = () => {
 
                     <td>
                       <button
+                        style={{ borderColor: "#43d63e" }}
                         className="approve"
                         onClick={() => {
                           onSubmit(
@@ -167,6 +168,7 @@ const Profile = () => {
                     <td>
                       <button
                         className="reject"
+                        style={{ borderColor: "#f22626" }}
                         onClick={() => {
                           onSubmit(
                             req.email,
