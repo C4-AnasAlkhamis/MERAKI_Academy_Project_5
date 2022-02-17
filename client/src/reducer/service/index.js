@@ -9,8 +9,17 @@ const serviceReducer = (state = initialState, { type, payload }) => {
   switch (type) {
     case "SET_SERVICE":
       return { ...state, services: payload };
+
     case "SET_REQUEST":
       return { ...state, requests: payload };
+
+    case "DELETE_REQUEST":
+      return {
+        ...state,
+        requests: state.requests.filter((request) => {
+          return request.id !== payload;
+        }),
+      };
 
     case "SET_SERVICEINFO":
       return { ...state, serviceInfo: payload };
@@ -25,6 +34,7 @@ const serviceReducer = (state = initialState, { type, payload }) => {
           return service.id !== payload;
         }),
       };
+
     case "UPDATE_SERVICE":
       return {
         ...state,
@@ -55,6 +65,11 @@ export const addService = (newService) => {
 // =======================  //
 export const setRequests = (requests) => {
   return { type: "SET_REQUEST", payload: requests };
+};
+// =======================  //
+
+export const deleteRequests = (id) => {
+  return { type: "DELETE_REQUEST", payload: id };
 };
 // =======================  //
 export const updateService = (newService) => {
