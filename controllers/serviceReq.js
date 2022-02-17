@@ -55,7 +55,7 @@ const getAllRequestByWorkerId = (req, res) => {
 
 // This function delete serviceReq By Id
 const deleteServiceReqById = (req, res) => {
-  const { id } = req.params.id;
+  const id = req.params.id;
   const query = `DELETE FROM service_request WHERE id = ?`;
   const data = [id];
   connection.query(query, data, (err, result) => {
