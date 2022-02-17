@@ -18,7 +18,7 @@ const {
 } = require("../controllers/worker");
 // =========================================== //
 const { authentication } = require("../middleware/authentication");
-workerRouter.get("/dashboard/all", getAllWorkersDashboard);
+workerRouter.get("/dashboard/all/worker", getAllWorkersDashboard);
 
 workerRouter.post("/", authentication, createNewWorker, changeToken);
 workerRouter.get("/", getAllWorkers);
