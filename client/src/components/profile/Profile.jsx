@@ -31,7 +31,7 @@ const Profile = () => {
   const rejectedDescription =
     "We are so sorry to inform you that your application rejected!";
 
-  const onSubmit = async ({ to, subject, description }) => {
+  const onSubmit = async (to, subject, description) => {
     // e.preventDefault();
 
     await axios

@@ -61,6 +61,8 @@ const changeToken = (req, res) => {
     }
   });
 };
+// ===================================
+
 // This function returns all workers
 const getAllWorkers = (req, res) => {
   const query = `SELECT * ,worker.id AS w_id,worker.image AS w_image FROM worker JOIN users ON worker.user_id = users.id JOIN services ON worker.service_id = services.id `;
@@ -84,6 +86,7 @@ const getAllWorkers = (req, res) => {
     });
   });
 };
+// ===================================
 
 // This function returns worker By Id
 const getWorkerById = (req, res) => {
@@ -112,6 +115,7 @@ const getWorkerById = (req, res) => {
     });
   });
 };
+// ===================================
 
 // This function returns worker By Service Id
 const getWorkerByServiceId = (req, res) => {
@@ -141,6 +145,7 @@ const getWorkerByServiceId = (req, res) => {
     });
   });
 };
+// ===================================
 
 // This function to update worker by id
 const updateWorkerById = (req, res) => {
@@ -166,6 +171,7 @@ const updateWorkerById = (req, res) => {
     });
   });
 };
+// ===================================
 
 // This function to delete worker By Id
 const deleteWorkerById = (req, res) => {
@@ -202,6 +208,29 @@ const deleteWorkerById = (req, res) => {
     }
   });
 };
+// ===================================
+const getAllWorkersDashboard = (req, res) => {
+  const query = `SELECT * ,COUNT( worker.id) AS worker_count FROM worker `;
+  connection.query(query, (err, result) => {
+    if (err) {
+      return res.status(500).json({
+        success: false,
+        message: `Server Error`,
+      });
+    }
+    if (!result) {
+      return res.status(200).json({
+        success: false,
+        message: `No Worker Yet`,
+      });
+    }
+    res.status(200).json({
+      success: true,
+      message: `All the Worker Available`,
+      result: result,
+    });
+  });
+};
 module.exports = {
   createNewWorker,
   getAllWorkers,
@@ -210,4 +239,5 @@ module.exports = {
   deleteWorkerById,
   getWorkerByServiceId,
   changeToken,
+  getAllWorkersDashboard,
 };

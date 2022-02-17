@@ -46,9 +46,20 @@ const Dashboard = () => {
       }
     }
   };
-
+  const getQuantity = async () => {
+    try {
+      const res = await axios.all([
+        axios.get("http://localhost:5000/cart/dashboard"),
+        axios.get("http://localhost:5000/user/dashboard"),
+        axios.get("http://localhost:5000/worker/dashboard"),
+        axios.get("http://localhost:5000/item/dashboard"),
+      ]);
+      console.log(res);
+    } catch (error) {}
+  };
   useEffect(() => {
     getAllItems();
+    getQuantity();
   }, []);
 
   let in_stock_1 = items ? items.itemsByCategoryInStock["1"] : 0;
@@ -117,7 +128,8 @@ const Dashboard = () => {
             right: 30,
             left: 20,
             bottom: 5,
-          }}>
+          }}
+        >
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="name" />
           <YAxis />
