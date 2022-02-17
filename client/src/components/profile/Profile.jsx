@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import jsw from "jwt-decode";
 import { useSelector, useDispatch } from "react-redux";
-import { setRequests } from "../../reducer/service/index";
+import { setRequests, deleteRequests } from "../../reducer/service/index";
 import Swal from "sweetalert2";
 
 import { setWorkers } from "../../reducer/worker/index";
@@ -34,6 +34,19 @@ const Profile = () => {
   const rejectedDescription =
     "We are so sorry to inform you that your application rejected!";
 
+  const deleteRequestById = async (id) => {
+    //get /worker/id
+    await axios
+      .delete(`/send_request/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((result) => {
+        dispatch(deleteRequests(id));
+      })
+      .catch((err) => {});
+  };
   const onSubmit = async (to, subject, description, id) => {
     await axios.post("/mail", { to, subject, description }).then((response) => {
       popupCart();
@@ -79,19 +92,6 @@ const Profile = () => {
       .catch((err) => {});
   };
 
-  const deleteRequestById = async (id) => {
-    //get /worker/id
-    await axios
-      .get(`/send_request/${id}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      .then((result) => {
-        dispatch(setRequests([...result.data.result]));
-      })
-      .catch((err) => {});
-  };
   const uploadImage = (e) => {
     const formData = new FormData();
 
