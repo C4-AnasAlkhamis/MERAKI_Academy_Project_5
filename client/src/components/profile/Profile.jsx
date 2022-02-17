@@ -31,8 +31,8 @@ const Profile = () => {
   const rejectedDescription =
     "We are so sorry to inform you that your application rejected!";
 
-  const onSubmit = async (e) => {
-    e.preventDefault();
+  const onSubmit = async ({ to, subject, description }) => {
+    // e.preventDefault();
 
     await axios
       .post("/mail", { to, subject, description })
@@ -154,13 +154,18 @@ const Profile = () => {
 
                     <td>
                       <button
-                        const
-                        approveToEmail={req.email}
-                        onClick={(approveToEmail) => {
-                          setTo(req.email);
-                          setSubject(approvedSubject);
-                          setDescription(approvedDescription);
-                          setShowEmail(true);
+                        // const
+                        // approveToEmail={req.email}
+                        onClick={() => {
+                          onSubmit(
+                            req.email,
+                            approvedSubject,
+                            approvedDescription
+                          );
+                          // setTo(req.email);
+                          // setSubject(approvedSubject);
+                          // setDescription(approvedDescription);
+                          // setShowEmail(true);
                         }}
                       >
                         Approve
@@ -169,54 +174,43 @@ const Profile = () => {
                     <td>
                       <button
                         const
-                        rejectToEmail={req.email}
-                        onClick={(rejectToEmail) => {
-                          setTo(req.email);
-                          setSubject(rejectedSubject);
-                          setDescription(rejectedDescription);
-                          setShowEmail(true);
+                        // rejectToEmail={req.email}
+                        onClick={() => {
+                          onSubmit(
+                            req.email,
+                            rejectedSubject,
+                            rejectedDescription
+                          );
+                          // setTo(req.email);
+                          // setSubject(rejectedSubject);
+                          // setDescription(rejectedDescription);
+                          // setShowEmail(true);
                         }}
                       >
                         Reject
                       </button>
                     </td>
                     <td>
-                    <div className="containerEmail">
-                      {showEmail ? (
-                        <div className="col-sm-4 mx-auto shadow p-5">
-                          <p
-                            class="mb-3 mt-2"
-                            // style={{ color: "green", marginLeft: "57px" }}
-                          >
-                            <b>{msg}</b>
-                          </p>
-                          <button
-                            onClick={onSubmit}
-                            className="btn btn-primary btn-block "
-                            // style={{ marginLeft: "100px" }}
-                          >
-                            Send Mail
-                          </button>
-                        </div>
-                      ) : null}
-
-                  
-                    </div>
-                  </td>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                      <div className="containerEmail">
+                        {showEmail ? (
+                          <div className="col-sm-4 mx-auto shadow p-5">
+                            <p
+                              class="mb-3 mt-2"
+                              // style={{ color: "green", marginLeft: "57px" }}
+                            >
+                              <b>{msg}</b>
+                            </p>
+                            <button
+                              onClick={onSubmit}
+                              className="btn btn-primary btn-block "
+                              // style={{ marginLeft: "100px" }}
+                            >
+                              Send Mail
+                            </button>
+                          </div>
+                        ) : null}
+                      </div>
+                    </td>
                   </tr>
                 );
               })}
