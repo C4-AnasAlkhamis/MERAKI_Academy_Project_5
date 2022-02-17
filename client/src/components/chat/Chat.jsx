@@ -5,6 +5,7 @@ import { AiOutlineCloseCircle } from "react-icons/ai";
 import { useSelector, useDispatch } from "react-redux";
 import { setWorkerId } from "../../reducer/worker/index";
 import { setUsers } from "../../reducer/users/index";
+
 import "./chat.css";
 const Chat = () => {
   const dispatch = useDispatch();
@@ -46,7 +47,7 @@ const Chat = () => {
       setUserId(data.user_id);
       setMessages((messages) => [...messages, data]);
     });
- 
+
     scroll.scrollTop = scroll.scrollHeight;
   }, [refresh]);
   socket.on("disconnect", () => {
