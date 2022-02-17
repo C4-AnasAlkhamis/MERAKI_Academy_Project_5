@@ -15,14 +15,16 @@ const Profile = () => {
   const [address, setAddress] = useState();
   const [imageUrl, setImageUrl] = useState("");
   const [show, setShow] = useState(false);
-  const navigate = useNavigate();
 
-  const [msg, setMsg] = useState("");
-  // const [to, setTo] = useState("");
-  // const [subject, setSubject] = useState("");
-  // const [description, setDescription] = useState("");
-  const [showEmail, setShowEmail] = useState(false);
-
+  const popupCart = () => {
+    Swal.fire({
+      position: "top-end",
+      icon: "success",
+      title: "The email has been sent successfully!",
+      showConfirmButton: false,
+      timer: 1500,
+    });
+  };
   const approvedSubject = "Approved Application";
   const rejectedSubject = "Rejected Application";
 
@@ -32,11 +34,9 @@ const Profile = () => {
     "We are so sorry to inform you that your application rejected!";
 
   const onSubmit = async (to, subject, description) => {
-    // e.preventDefault();
-
     await axios
       .post("/mail", { to, subject, description })
-      .then((response) => setMsg(response.data.respMesg));
+      .then((response) => popupCart());
   };
 
   const { token, services, worker, requests } = useSelector((state) => {
@@ -137,11 +137,9 @@ const Profile = () => {
                 <th style={{ width: "100px", textAlign: "Center" }}>
                   Phone Number
                 </th>
-                <th style={{ width: "100px", textAlign: "Center" }}>Approve</th>
+                <th style={{ width: "100px", textAlign: "Center" }}>Email</th>
                 <th style={{ width: "100px", textAlign: "Center" }}>Reject</th>
-                <th style={{ width: "100px", textAlign: "Center" }}>
-                  Response
-                </th>
+                <th style={{ width: "100px", textAlign: "Center" }}>Approve</th>
               </tr>
               {requests.map((req, index) => {
                 return (
@@ -154,18 +152,14 @@ const Profile = () => {
 
                     <td>
                       <button
-                        // const
-                        // approveToEmail={req.email}
+                        style={{ borderColor: "#43d63e" }}
+                        className="approve"
                         onClick={() => {
                           onSubmit(
                             req.email,
                             approvedSubject,
                             approvedDescription
                           );
-                          // setTo(req.email);
-                          // setSubject(approvedSubject);
-                          // setDescription(approvedDescription);
-                          // setShowEmail(true);
                         }}
                       >
                         Approve
@@ -173,43 +167,18 @@ const Profile = () => {
                     </td>
                     <td>
                       <button
-                        const
-                        // rejectToEmail={req.email}
+                        className="reject"
+                        style={{ borderColor: "#f22626" }}
                         onClick={() => {
                           onSubmit(
                             req.email,
                             rejectedSubject,
                             rejectedDescription
                           );
-                          // setTo(req.email);
-                          // setSubject(rejectedSubject);
-                          // setDescription(rejectedDescription);
-                          // setShowEmail(true);
                         }}
                       >
                         Reject
                       </button>
-                    </td>
-                    <td>
-                      <div className="containerEmail">
-                        {showEmail ? (
-                          <div className="col-sm-4 mx-auto shadow p-5">
-                            <p
-                              class="mb-3 mt-2"
-                              // style={{ color: "green", marginLeft: "57px" }}
-                            >
-                              <b>{msg}</b>
-                            </p>
-                            <button
-                              onClick={onSubmit}
-                              className="btn btn-primary btn-block "
-                              // style={{ marginLeft: "100px" }}
-                            >
-                              Send Mail
-                            </button>
-                          </div>
-                        ) : null}
-                      </div>
                     </td>
                   </tr>
                 );

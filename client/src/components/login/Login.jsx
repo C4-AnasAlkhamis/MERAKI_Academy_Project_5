@@ -13,8 +13,9 @@ import { useDispatch } from "react-redux";
 // import LoginWG from "../LoginWG/LoginWG";
 import Swal from "sweetalert2";
 
-const Login = (message) => {
-  const wrongLogin = () => {
+const Login = () => {
+  
+  const wrongLogin = (message) => {
     Swal.fire({
       icon: "error",
       title: "Oops...",

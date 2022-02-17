@@ -28,8 +28,7 @@
 .input_chat_box {
   display: flex;
 }
-.input_chat_box button,
-input {
+.chat_blue {
   height: 3rem;
   border: none;
   background-color: #04518c;
