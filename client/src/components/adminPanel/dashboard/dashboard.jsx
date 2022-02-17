@@ -51,8 +51,8 @@ const Dashboard = () => {
       const res = await axios.all([
         axios.get("/cart/dashboard"),
         axios.get("/user/dashboard"),
-        axios.get("/worker/dashboard"),
-        axios.get("/item/dashboard"),
+        axios.get("/worker/dashboard/all"),
+        axios.get("item/dashboard/count"),
       ]);
       console.log(res);
     } catch (error) {}
