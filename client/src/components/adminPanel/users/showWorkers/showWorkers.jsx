@@ -87,7 +87,7 @@ const ShowWorkers = () => {
                       width: "100px",
                       height: "100px",
                     }}
-                    src={worker.image}
+                    src={worker.w_image}
                     alt={worker.user_name}
                   />
                 </td>

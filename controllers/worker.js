@@ -65,7 +65,7 @@ const changeToken = (req, res) => {
 
 // This function returns all workers
 const getAllWorkers = (req, res) => {
-  const query = `SELECT * ,worker.id AS w_id,worker.image AS w_image FROM worker JOIN users ON worker.user_id = users.id JOIN services ON worker.service_id = services.id `;
+  const query = `SELECT * ,worker.id AS w_id,worker.image AS w_image FROM worker JOIN users ON worker.user_id = users.id JOIN services ON worker.service_id = services.id WHERE worker.is_deleted = 0`;
   connection.query(query, (err, result) => {
     if (err) {
       return res.status(500).json({
