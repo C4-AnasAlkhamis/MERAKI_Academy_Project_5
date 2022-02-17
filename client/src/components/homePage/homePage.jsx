@@ -41,7 +41,6 @@ const HomePage = () => {
     };
   });
 
-  const navigate = useNavigate();
   const { categories, token, items } = state;
   const dispatch = useDispatch();
   // ---------------------------------------------
@@ -118,13 +117,10 @@ const HomePage = () => {
   //===========================================
 
   const getItemById = async (id) => {
-    //get /item/
-
     await axios
       .get(`/item/id?id=${id}`)
       .then((result) => {
         dispatch(setItemInfo({ ...result.data.result }));
-        // navigate("/more-info");
       })
       .catch((err) => {
         console.log(err);
@@ -136,7 +132,6 @@ const HomePage = () => {
     await axios
       .get("/rate")
       .then((result) => {
-        // setRates(result.data.result);
         dispatch(setRates([...result.data.result]));
       })
       .catch((err) => {
@@ -153,6 +148,7 @@ const HomePage = () => {
           getAllItems();
           setCategoryId(parseInt(e.target.id));
           setIsFilter(false);
+          setPgNum(0);
         }}
       >
         {category.category}
