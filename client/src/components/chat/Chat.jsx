@@ -97,6 +97,7 @@ const Chat = () => {
           </div>
           <div className="input_chat_box">
             <input
+              className="chat_blue"
               onChange={(e) => {
                 setMessage(e.target.value);
               }}
@@ -105,6 +106,7 @@ const Chat = () => {
               placeholder="Message"
             />
             <button
+              className="chat_blue"
               onClick={(e) => {
                 sendMessage();
               }}
