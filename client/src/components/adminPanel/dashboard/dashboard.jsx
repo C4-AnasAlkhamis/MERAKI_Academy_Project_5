@@ -49,10 +49,10 @@ const Dashboard = () => {
   const getQuantity = async () => {
     try {
       const res = await axios.all([
-        axios.get("http://localhost:5000/cart/dashboard"),
-        axios.get("http://localhost:5000/user/dashboard"),
-        axios.get("http://localhost:5000/worker/dashboard"),
-        axios.get("http://localhost:5000/item/dashboard"),
+        axios.get("/cart/dashboard"),
+        axios.get("/user/dashboard"),
+        axios.get("/worker/dashboard"),
+        axios.get("/item/dashboard"),
       ]);
       console.log(res);
     } catch (error) {}
