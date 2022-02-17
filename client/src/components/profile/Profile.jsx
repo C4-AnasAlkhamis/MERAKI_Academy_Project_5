@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import jsw from "jwt-decode";
 import { useSelector, useDispatch } from "react-redux";
 import { setRequests } from "../../reducer/service/index";
+import Swal from "sweetalert2";
 
 import { setWorkers } from "../../reducer/worker/index";
 const Profile = () => {
