@@ -34,10 +34,11 @@ const Profile = () => {
   const rejectedDescription =
     "We are so sorry to inform you that your application rejected!";
 
-  const onSubmit = async (to, subject, description) => {
-    await axios
-      .post("/mail", { to, subject, description })
-      .then((response) => popupCart());
+  const onSubmit = async (to, subject, description, id) => {
+    await axios.post("/mail", { to, subject, description }).then((response) => {
+      popupCart();
+      deleteRequestById(id);
+    });
   };
 
   const { token, services, worker, requests } = useSelector((state) => {
@@ -78,6 +79,19 @@ const Profile = () => {
       .catch((err) => {});
   };
 
+  const deleteRequestById = async (id) => {
+    //get /worker/id
+    await axios
+      .get(`/send_request/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((result) => {
+        dispatch(setRequests([...result.data.result]));
+      })
+      .catch((err) => {});
+  };
   const uploadImage = (e) => {
     const formData = new FormData();
 
@@ -159,7 +173,8 @@ const Profile = () => {
                           onSubmit(
                             req.email,
                             approvedSubject,
-                            approvedDescription
+                            approvedDescription,
+                            req.id
                           );
                         }}
                       >
@@ -174,7 +189,8 @@ const Profile = () => {
                           onSubmit(
                             req.email,
                             rejectedSubject,
-                            rejectedDescription
+                            rejectedDescription,
+                            req.id
                           );
                         }}
                       >

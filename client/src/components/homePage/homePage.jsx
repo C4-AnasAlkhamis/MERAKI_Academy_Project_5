@@ -74,7 +74,7 @@ const HomePage = () => {
   const getFilteredItems = async (value) => {
     try {
       const res = await axios.post(
-        "/item/filter",
+        "/item/filter/like",
         { value },
         {
           headers: {
