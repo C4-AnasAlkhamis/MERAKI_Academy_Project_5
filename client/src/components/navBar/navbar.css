@@ -15,23 +15,32 @@
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   border-bottom: solid 3px #ffd333;
 }
-.NavBar h2 {
+.NavBar div {
   display: flex;
   justify-content: center;
   gap: 5%;
-  /* grid-template-columns: repeat(7, 150px);
-  text-align: right;
-  font-size: 18px; */
 }
-
+@media screen and (max-width: 600px) {
+  .Link {
+    height: 40px;
+    padding: 3px;
+  }
+  .NavBar div {
+    display: flex;
+    gap: 0;
+    padding: 0;
+    margin: 0;
+  }
+  .NavBar div a {
+    font-size: 0.7rem;
+  }
+}
 .NavBar a {
-    color: white;
-   padding: 1%;
-   font-size: 18px;
+  color: white;
+  padding: 1%;
+  font-size: 18px;
   margin-top: 5px;
-  /* margin-left: 130px; */
-  /* width: 150px; */
-  text-align: center; 
+  text-align: center;
 }
 
 .NavBar a:hover {

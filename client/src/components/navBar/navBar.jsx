@@ -25,7 +25,7 @@ const NavBar = () => {
     <>
       <div className="NavBar">
         <div className="Link">
-          <h2>
+          {/* <h2> */}
             {isLoggedIn ? (
               <>
                 <Link to="/homePage" style={{ textDecoration: "none" }}>
@@ -77,7 +77,7 @@ const NavBar = () => {
                 </Link>
               </>
             )}
-          </h2>
+          {/* </h2> */}
         </div>
       </div>
     </>
