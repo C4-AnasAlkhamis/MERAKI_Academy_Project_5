@@ -13,7 +13,6 @@ import { Image } from "cloudinary-react";
 //===============================================================
 
 const AddItem = () => {
-  const history = useNavigate();
 
   const state = useSelector((state) => {
     return {
@@ -33,7 +32,6 @@ const AddItem = () => {
   const [category_id, setCategory_id] = useState(0);
   const [message, setMessage] = useState("");
   const [status, setStatus] = useState(false);
-  const [imageUrl, setImageUrl] = useState("");
 
   //===============================================================
 
@@ -45,21 +43,18 @@ const AddItem = () => {
     axios
       .post(`https://api.cloudinary.com/v1_1/debtpixx1/image/upload/`, formData)
       .then((res) => {
-        setImageUrl(res.data.secure_url);
-        console.log(res.data.secure_url);
+        createNewItem(res.data.secure_url);
       });
   };
 
   //===============================================================
 
-  const createNewItem = async (e) => {
-    e.preventDefault();
-
+  const createNewItem = async (img) => {
     try {
       const item = {
         title: title,
         descriptions: "in stock",
-        img: imageUrl,
+        img,
         price: price,
         category_id: category_id,
       };
@@ -116,12 +111,11 @@ const AddItem = () => {
         }}
       />
       <div className="addItemBTN">
-        {/* <button onClick={uploadImage}> upload image</button> */}
         <button
           onClick={() => {
             uploadImage();
-            createNewItem();
-          }}>
+          }}
+        >
           Create New item
         </button>
         <br />
