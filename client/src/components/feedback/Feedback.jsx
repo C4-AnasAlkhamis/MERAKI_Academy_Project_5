@@ -9,7 +9,7 @@ import React, { useRef, useEffect, useState } from "react";
 import "./feedback.css";
 
 import Swal from "sweetalert2";
-import withReactContent from "sweetalert2-react-content";
+
 
 import emailjs from "emailjs-com";
 
@@ -39,25 +39,6 @@ const FeedBack = ({ setShow }) => {
   };
 
   const sendEmail = (e) => {
-    // e.preventDefault();
-    // emailjs
-    //   .sendForm(
-    //     "gmail",
-    //     "template_02ihw4s",
-    //     form.current,
-    //     "user_HpGxyEqePdddiz4DOkw1R"
-    //   )
-    //   .then(
-    //     (result) => {
-    //       console.log(result.text);
-    //     },
-    //     (error) => {
-    //       console.log(error.text);
-    //     }
-    //   );
-    // e.target.reset();
-
-    // const sendEmail = (e) => {
     sendFeedBack();
     e.preventDefault();
 
@@ -70,50 +51,17 @@ const FeedBack = ({ setShow }) => {
       )
       .then(
         (result) => {
-          handleFeedBack();
-          // console.log(result.text);
           setShow(false);
         },
         (error) => {
-          console.log(error.text);
+
         }
       );
     //   };
   };
 
-  const handleFeedBack = () => {
-    Swal.fire({
-      title: message,
-      text: "Thank You!.",
-      imageUrl:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ17yFDa0Z570P-R8DmF8nbHu_emWyS5QkFfw&usqp=CAU",
-      imageWidth: 400,
-      imageHeight: 200,
-      imageAlt: "Custom image",
-    });
-  };
-  //   // const sendEmail = (e) => {
-  //   //   e.preventDefault();
 
-  //   //   emailjs
-  //   //     .sendForm(
-  //   //       "gmail",
-  //   //       "template_02ihw4s",
-  //   //       e.target,
-  //   //       "user_HpGxyEqePdddiz4DOkw1R"
-  //   //     )
-  //   //     .then(
-  //   //       (result) => {
-  //   //         console.log(result.text);
-  //   //       };
 
-  //   //       (error) => {
-  //   //         console.log(error.text);
-  //   //       });
-
-  //   //     e.target.reset()
-  //   // };
-  /* <form onSubmit={}> */
 
   return (
     <>
@@ -165,14 +113,6 @@ const FeedBack = ({ setShow }) => {
               Cancel
             </button>
           </div>
-
-          {/* <button " onClick={sendEmail,handleFeedBack}>Send Email</button> */}
-
-          {/* <input type="text" placeholder="Your Name" />
-          <input type="email" placeholder="Your Email Address" />
-          <input type="text" placeholder="Subject" />
-          <textarea placeholder="Your Message Content" cols="100" rows="17" />
-          <input type="submit" value="Send Email" />  */}
         </form>
       </div>
     </>
