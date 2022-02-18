@@ -149,7 +149,7 @@ const getWorkerByServiceId = (req, res) => {
 
 // This function to update worker by id
 const updateWorkerById = (req, res) => {
-  const id = req.params.id;
+  const id = req.token.userId;
   const { address, phone, image } = req.body;
   const query = `UPDATE worker SET address =IF(${
     address != ""
@@ -177,7 +177,7 @@ const updateWorkerById = (req, res) => {
 const deleteWorkerById = (req, res) => {
   const id = req.params.id;
 
-  const query = `UPDATE worker SET is_deleted = 1 WHERE id = ?;`;
+  const query = `UPDATE worker SET is_deleted = 1 WHERE user_id = ?;`;
 
   const data = [id];
 
@@ -197,7 +197,7 @@ const deleteWorkerById = (req, res) => {
                 err: err,
               });
             }
-            res.status(200).json({
+            return res.status(200).json({
               success: true,
               massage: `Succeeded to delete Worker with id: ${id}`,
               result: result,
