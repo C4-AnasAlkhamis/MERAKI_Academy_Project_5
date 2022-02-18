@@ -101,7 +101,7 @@ const ShowWorkers = () => {
                   <i>
                     <AiTwotoneDelete
                       onClick={() => {
-                        deleteWorker(worker.w_id);
+                        deleteWorker(worker.user_id);
                       }}
                       className="btn"
                     />

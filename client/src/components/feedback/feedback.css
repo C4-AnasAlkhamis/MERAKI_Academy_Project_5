@@ -37,7 +37,6 @@
   color: black;
   border-bottom: solid 1px rgb(163, 159, 159);
   margin-top: 20px;
-
 }
 
 #sendBtn5,
@@ -70,4 +69,27 @@
   gap: 10px;
   width: 100%;
   height: 30px;
+}
+@media screen and (max-width: 600px) {
+  .feedbackShow > * {
+    width: 250px;
+  }
+  .feedbackShow {
+    width: 300px;
+  }
+  .feedbackForm input,
+  textarea {
+    width: 100%;
+    height: 30px;
+    font-size: 0.7rem;
+    margin-top: 5px;
+  }
+  .feedbackForm textarea {
+    width: 250px;
+  }
+  #sendBtn5,
+  .feedbackForm button {
+    font-size: 0.7rem;
+    width: 40%;
+  }
 }

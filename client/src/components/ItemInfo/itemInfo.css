@@ -89,3 +89,43 @@
   font-weight: 400;
   box-shadow: 0 0 8px #2790bd;
 }
+@media screen and (max-width: 600px) {
+  .img_boxI {
+    display: flex;
+    margin: 0;
+    padding: 0;
+  }
+  .box {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    gap: 0;
+    margin: 0;
+    padding: 0;
+  }
+
+  .img_boxI {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+  }
+
+  .sub_titleI {
+    flex-direction: column;
+    width: 100%;
+  }
+  .sub_titleI p {
+    width: 100%;
+  }
+  .itemI {
+    width: 200px;
+    margin-top: 10px;
+    height: 200px;
+  }
+  .info_boxI {
+    padding: 0;
+    margin: 0;
+  }
+}

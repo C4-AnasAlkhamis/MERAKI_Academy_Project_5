@@ -10,13 +10,11 @@ import Swal from "sweetalert2";
 
 import { setWorkers } from "../../reducer/worker/index";
 const Profile = () => {
-  const [message, setMessage] = useState();
-  const [status, setStatus] = useState(false);
   const [phone, setPhone] = useState();
   const [address, setAddress] = useState();
   const [imageUrl, setImageUrl] = useState("");
   const [show, setShow] = useState(false);
-
+  const [id, setId] = useState();
   const popupCart = () => {
     Swal.fire({
       position: "top-end",
@@ -54,7 +52,7 @@ const Profile = () => {
     });
   };
 
-  const { token, services, worker, requests } = useSelector((state) => {
+  const { token, worker, requests } = useSelector((state) => {
     return {
       token: state.loginReducer.token,
       services: state.serviceReducer.services,
@@ -63,9 +61,8 @@ const Profile = () => {
     };
   });
   const dispatch = useDispatch();
-  // worker functions  ==========++++++++++==========
+
   const getWorkerById = async () => {
-    //get /worker/id
     await axios
       .get(`/worker/profile`, {
         headers: {
@@ -106,14 +103,22 @@ const Profile = () => {
   //===============================================================
   const updateWorkerById = async (image) => {
     //put /worker/id
-
     const id = jsw(token).userId;
     await axios
-      .put(`/worker/${id}`, {
-        address,
-        phone,
-        image,
-      })
+      .put(
+        `/worker/${id}`,
+        {
+          address,
+          phone,
+          image,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
+
       .then((result) => {
         getWorkerById();
       })
@@ -231,9 +236,6 @@ const Profile = () => {
           </button>
 
           <br />
-          {status
-            ? message && <div className="SuccessMessage">{message}</div>
-            : message && <div className="ErrorMessage">{message}</div>}
         </div>
       )}
     </div>
