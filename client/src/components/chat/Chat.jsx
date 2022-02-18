@@ -5,6 +5,7 @@ import { AiOutlineCloseCircle } from "react-icons/ai";
 import { useSelector, useDispatch } from "react-redux";
 import { setWorkerId } from "../../reducer/worker/index";
 import { setUsers } from "../../reducer/users/index";
+import ScrollableFeed from "react-scrollable-feed";
 
 import "./chat.css";
 const Chat = () => {
@@ -23,7 +24,6 @@ const Chat = () => {
   const [messages, setMessages] = useState([]);
   const [show, setShow] = useState(false);
   const socket = io.connect(process.env.REACT_APP_SOCKET_URL);
-
 
   const sendMessage = () => {
     socket.emit("MESSAGE", {
@@ -47,8 +47,6 @@ const Chat = () => {
       setUserId(data.user_id);
       setMessages((messages) => [...messages, data]);
     });
-
-    // scroll.scrollTop = scroll.scrollHeight;
   }, [refresh]);
   socket.on("disconnect", () => {
     socket.on("allUsers", (users) => {
@@ -73,31 +71,33 @@ const Chat = () => {
             </i>
           </div>
           <div className="message_box">
-            {messages.length
-              ? messages.map((message, index) => {
-                  return (
-                    <p
-                      style={{
-                        alignSelf: `${
-                          message.user_id === user_id
-                            ? "flex-end"
-                            : "flex-start"
-                        }`,
-                      }}
-                      key={index}
-                    >
-                      <span>
-                        {message.user_id === user_id
-                          ? "You: "
-                          : message.user_id === worker_id
-                          ? "Worker: "
-                          : "Customer: "}
-                      </span>
-                      {message.message}
-                    </p>
-                  );
-                })
-              : null}
+            <ScrollableFeed>
+              {messages.length
+                ? messages.map((message, index) => {
+                    return (
+                      <p
+                        style={{
+                          alignSelf: `${
+                            message.user_id === user_id
+                              ? "flex-end"
+                              : "flex-start"
+                          }`,
+                        }}
+                        key={index}
+                      >
+                        <span>
+                          {message.user_id === user_id
+                            ? "You: "
+                            : message.user_id === worker_id
+                            ? "Worker: "
+                            : "Customer: "}
+                        </span>
+                        {message.message}
+                      </p>
+                    );
+                  })
+                : null}
+            </ScrollableFeed>
           </div>
           <div className="input_chat_box">
             <input
@@ -113,7 +113,6 @@ const Chat = () => {
               className="chat_blue"
               onClick={(e) => {
                 sendMessage();
-                // scroll.scrollTop = scroll.scrollHeight;
               }}
             >
               send
