@@ -14,7 +14,8 @@ const Profile = () => {
   const [address, setAddress] = useState();
   const [imageUrl, setImageUrl] = useState("");
   const [show, setShow] = useState(false);
-  const [id, setId] = useState(jsw(token).userId);
+  const dispatch = useDispatch();
+
   const popupCart = () => {
     Swal.fire({
       position: "top-end",
@@ -60,7 +61,6 @@ const Profile = () => {
       requests: state.serviceReducer.requests,
     };
   });
-  const dispatch = useDispatch();
 
   const getWorkerById = async () => {
     await axios
@@ -76,7 +76,6 @@ const Profile = () => {
   };
 
   const getRequestByWorker = async () => {
-    //get /worker/id
     await axios
       .get(`/send_request`, {
         headers: {
@@ -102,10 +101,9 @@ const Profile = () => {
   };
   //===============================================================
   const updateWorkerById = async (image) => {
-    //put /worker/id
     await axios
       .put(
-        `/worker/${id}`,
+        `/worker`,
         {
           address,
           phone,
