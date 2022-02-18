@@ -1,6 +1,6 @@
 import "./serviceInfo.css";
 import jwt from "jwt-decode";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { RiArrowGoBackLine } from "react-icons/ri";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
@@ -54,8 +54,7 @@ const WSInfo = ({ setShowWorker }) => {
           address,
           phone,
           worker_id,
-          email:jwt(token).email
-
+          email: jwt(token).email,
         },
         {
           headers: {
@@ -78,7 +77,13 @@ const WSInfo = ({ setShowWorker }) => {
         wrongRegister("An issue occurred, please try again later.");
       });
   };
-
+  useEffect(() => {
+    window.scrollTo({
+      top: 100,
+      left: 100,
+      behavior: "smooth",
+    });
+  }, []);
   return (
     <>
       <i

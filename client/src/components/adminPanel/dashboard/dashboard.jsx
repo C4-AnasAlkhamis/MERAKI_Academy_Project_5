@@ -130,7 +130,7 @@ item 100 high quality tool */
 
             <span className="num_all">
               {workers && workers.worker_count}
-              <small> professional technicians</small>
+              <small> technicians</small>
             </span>
           </div>
           <div className="numBox_icon">

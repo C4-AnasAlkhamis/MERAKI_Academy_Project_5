@@ -13,7 +13,6 @@
   background-color: whitesmoke;
   display: flex;
   flex-direction: column;
-  overflow-y: scroll;
   gap: 10px;
 }
 .message_box p {
