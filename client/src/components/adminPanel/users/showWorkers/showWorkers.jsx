@@ -2,19 +2,15 @@
 
 import React, { useEffect, useState } from "react";
 import "./showWorkers.css";
-import Select from "react-select";
-import PaginateReact from "react-paginate";
+
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import { setWorkers, deleteWorkers } from "../../../../reducer/worker/index";
-import { useNavigate } from "react-router-dom";
 import { AiTwotoneDelete } from "react-icons/ai";
 
 //===============================================================
 
 const ShowWorkers = () => {
-  const [message, setMessage] = useState("");
-  //   const [id, setId] = useState();
 
   const dispatch = useDispatch();
 
@@ -33,10 +29,6 @@ const ShowWorkers = () => {
         dispatch(setWorkers(res.data.result));
       } else throw Error;
     } catch (error) {
-      if (!error.response.data.success) {
-        return setMessage(error.response.data.message);
-      }
-      setMessage("Error happened while Get Data, please try again");
     }
   };
   //===============================================================
@@ -45,17 +37,12 @@ const ShowWorkers = () => {
     try {
       const res = await axios.put(`/worker/delete/${id}`);
       if (res.data.success) {
-        setMessage(res.data.success);
         dispatch(deleteWorkers(id));
       } else {
         throw Error;
       }
     } catch (error) {
       console.log(error.response);
-      if (!error.response.data.success) {
-        return setMessage(error.response.data.message);
-      }
-      setMessage("Error happened while deleting new data");
     }
   };
   //===============================================================

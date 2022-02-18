@@ -17,7 +17,7 @@ const workerReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         workers: state.workers.filter((worker) => {
-          return worker.w_id !== payload;
+          return worker.user_id !== payload;
         }),
       };
 
