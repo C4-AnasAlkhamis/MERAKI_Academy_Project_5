@@ -44,7 +44,6 @@ const Register = () => {
           role_id: 2,
         })
         .then((result) => {
-          console.log(result);
           if (result) rightRegister();
           setUserName("");
           setRepeatPassword("");

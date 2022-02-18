@@ -14,7 +14,7 @@ const Profile = () => {
   const [address, setAddress] = useState();
   const [imageUrl, setImageUrl] = useState("");
   const [show, setShow] = useState(false);
-  const [id, setId] = useState();
+  const [id, setId] = useState(jsw(token).userId);
   const popupCart = () => {
     Swal.fire({
       position: "top-end",
@@ -103,7 +103,6 @@ const Profile = () => {
   //===============================================================
   const updateWorkerById = async (image) => {
     //put /worker/id
-    const id = jsw(token).userId;
     await axios
       .put(
         `/worker/${id}`,
