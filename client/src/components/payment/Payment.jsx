@@ -18,6 +18,7 @@ const Pay = ({ items, price }) => {
   });
   const popupCart = () => {
     Swal.fire({
+      confirmButtonColor: "#04518c",
       title:
         "Your purchase has been successful, your items will be shipped within 24 hours.",
       showClass: {
