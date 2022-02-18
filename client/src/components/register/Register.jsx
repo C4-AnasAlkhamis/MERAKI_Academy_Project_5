@@ -6,15 +6,6 @@ import { useNavigate } from "react-router-dom";
 import logo from "../../image/cones.jpg";
 import Swal from "sweetalert2";
 const Register = () => {
-  const rightRegister = () => {
-    Swal.fire({
-      icon: "success",
-      title: "Your Account has been Created!",
-      showConfirmButton: false,
-      timer: 1500,
-    });
-  };
-
   const wrongRegister = (message) => {
     Swal.fire({
       icon: "error",
@@ -44,7 +35,6 @@ const Register = () => {
           role_id: 2,
         })
         .then((result) => {
-          if (result) rightRegister();
           setUserName("");
           setRepeatPassword("");
           setEmail("");

@@ -33,7 +33,7 @@ itemsRouter.get("/dashboard/count", getAllItemsDashboard);
 
 itemsRouter.post("/", createNewItem);
 itemsRouter.post("/push", pushItem);
-itemsRouter.get("/filter/like", getFilteredItems);
+itemsRouter.post("/filter/like", getFilteredItems);
 itemsRouter.get("/", getAllItems);
 itemsRouter.get("/stock", getOutOfSItems);
 itemsRouter.delete("/:id", deleteItemById);
