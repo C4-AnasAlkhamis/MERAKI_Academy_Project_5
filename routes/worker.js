@@ -25,7 +25,7 @@ workerRouter.get("/", getAllWorkers);
 workerRouter.get("/profile", authentication, getWorkerById);
 workerRouter.get("/srv_id/:id", getWorkerByServiceId);
 
-workerRouter.put("/:id", updateWorkerById);
+workerRouter.put("/:id", authentication, updateWorkerById);
 workerRouter.put("/delete/:id", deleteWorkerById);
 
 //write your code here
