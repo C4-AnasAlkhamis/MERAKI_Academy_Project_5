@@ -140,13 +140,15 @@
     width: 95%;
     margin: 0 auto;
   }
-  .cart_box {
+  .cart_box,
+  .cart_img_box {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
   }
+
   .cart_img_box div img {
-    width: 20vw;
+    width: 50vw;
     height: auto;
   }
 }
