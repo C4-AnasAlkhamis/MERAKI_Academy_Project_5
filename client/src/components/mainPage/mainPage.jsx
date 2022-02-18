@@ -47,7 +47,6 @@ const MainPage = () => {
       } else throw Error;
     } catch (error) {
       if (!error.response.data.success) {
-        // return setMessage(error.response.data.message);
       }
       console.log("Error happened while Get Data, please try again");
     }
@@ -60,33 +59,35 @@ const MainPage = () => {
   return (
     <div className="mainPage">
       <div className="Hadar">
-        <img src={headMainImag} />
+        <img src={headMainImag} alt={headMainImag} />
       </div>
-          <h1>MORE GREAT DEALS</h1>
+      <h1>MORE GREAT DEALS</h1>
       <div className="showImg">
-        <img src={img_1} />
-        <img src={img_2} />
-        <img src={img_3} />
+        <img src={img_1} alt={img_1} />
+        <img src={img_2} alt={img_2} />
+        <img src={img_3} alt={img_3} />
       </div>
-          <h1>BRANDS</h1>
+      <h1>BRANDS</h1>
       <div className="brandImg">
         {image.map((pic, i) => {
-          return <img key={i} src={pic} />;
+          return <img key={i} src={pic} alt={pic} />;
         })}
-      <h1>____________________________________________________</h1>
+        <h1>____________________________________________________</h1>
       </div>
 
       <h1>FEEDBACK</h1>
       <div className="brandImg">
-      {feedbacks.slice(feedbacks.length-4,feedbacks.length).map((feedback,i) => {
-        return (
-          <div className="feedbackDetails">
-            <h5>{feedback.name}</h5>
-            <h4>{feedback.subject}</h4>
-            <p>{feedback.feedback}</p>
-          </div>
-        );
-      })}
+        {feedbacks
+          .slice(feedbacks.length - 4, feedbacks.length)
+          .map((feedback, i) => {
+            return (
+              <div className="feedbackDetails">
+                <h5>{feedback.name}</h5>
+                <h4>{feedback.subject}</h4>
+                <p>{feedback.feedback}</p>
+              </div>
+            );
+          })}
       </div>
     </div>
   );
