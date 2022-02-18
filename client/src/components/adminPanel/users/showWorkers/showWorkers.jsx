@@ -42,7 +42,6 @@ const ShowWorkers = () => {
         throw Error;
       }
     } catch (error) {
-      console.log(error.response);
     }
   };
   //===============================================================

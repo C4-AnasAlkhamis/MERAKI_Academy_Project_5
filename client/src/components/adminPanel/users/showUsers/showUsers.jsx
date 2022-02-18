@@ -38,14 +38,12 @@ const ShowUsers = () => {
       }
       setMessage("Error happened while Get Data, please try again");
     }
-    console.log(users);
 
   };
   //===============================================================
   const deleteUserById = async (id) => {
     try {
       const res = await axios.delete(`/user/${id}`);
-      console.log(res);
       if (res.data.success) {
         setMessage(res.data.success);
         dispatch(deleteUsers(id));
