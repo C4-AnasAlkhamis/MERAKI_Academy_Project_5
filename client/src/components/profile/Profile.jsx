@@ -88,7 +88,7 @@ const Profile = () => {
       .catch((err) => {});
   };
 
-  const uploadImage = (e) => {
+  const uploadImage = () => {
     const formData = new FormData();
 
     formData.append("file", imageUrl);
@@ -226,6 +226,9 @@ const Profile = () => {
           <button
             onClick={() => {
               uploadImage();
+              if (imageUrl === "") {
+                updateWorkerById("");
+              }
               setShow(false);
             }}
           >
