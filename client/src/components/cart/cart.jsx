@@ -12,7 +12,6 @@ import Pay from "../payment/Payment";
 import Swal from "sweetalert2";
 
 const Cart = () => {
-  // const [id, setId] = useState();
   const dispatch = useDispatch();
   const { token, carts } = useSelector((state) => {
     return {
@@ -56,7 +55,6 @@ const Cart = () => {
         dispatch(setCart(result.data.result));
       })
       .catch((err) => {
-        console.log(err);
       });
   };
   // ======================================= //
@@ -70,7 +68,6 @@ const Cart = () => {
         getCartById();
       })
       .catch((err) => {
-        console.log(err);
       });
   };
   // // ======================================= //

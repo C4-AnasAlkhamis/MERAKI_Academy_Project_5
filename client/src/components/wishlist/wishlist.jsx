@@ -33,7 +33,6 @@ const Wishlist = (id) => {
 
   const popupCart = () => {
     Swal.fire({
-      position: "top-end",
       icon: "success",
       title: "This Item Added To Your Cart Successfully!",
       showConfirmButton: false,

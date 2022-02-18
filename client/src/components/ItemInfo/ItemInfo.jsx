@@ -20,7 +20,6 @@ import Swal from "sweetalert2";
 
 const popupCart = () => {
   Swal.fire({
-    position: "top-end",
     icon: "success",
     title: "This Item Added To Your Cart Successfully!",
     showConfirmButton: false,
@@ -30,7 +29,6 @@ const popupCart = () => {
 
 const popupWishlist = () => {
   Swal.fire({
-    position: "top-end",
     icon: "success",
     title: "This Item Added To Your Wishlist Successfully!",
     showConfirmButton: false,

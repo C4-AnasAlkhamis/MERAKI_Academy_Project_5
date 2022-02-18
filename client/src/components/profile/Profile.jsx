@@ -18,7 +18,6 @@ const Profile = () => {
 
   const popupCart = () => {
     Swal.fire({
-      position: "top-end",
       icon: "success",
       title: "The email has been sent successfully!",
       showConfirmButton: false,

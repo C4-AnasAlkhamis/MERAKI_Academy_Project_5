@@ -76,7 +76,6 @@ const Dashboard = () => {
     getAllItems();
     getQuantity();
   }, []);
-  console.log(carts, users, workers, itemCount);
   let in_stock_1 = items ? items.itemsByCategoryInStock["1"] : 0;
   let in_stock_2 = items ? items.itemsByCategoryInStock["2"] : 0;
   let in_stock_3 = items ? items.itemsByCategoryInStock["3"] : 0;
