@@ -97,7 +97,7 @@ const updateUserById = (req, res) => {
 const deleteUserById = (req, res) => {
   const id = req.params.id;
 
-  const query = `DELETE from users WHERE id=?;`;
+  const query = `UPDATE users SET is_deleted = 1 WHERE id = ?;`;
 
   const data = [id];
 
@@ -128,7 +128,7 @@ const deleteUserById = (req, res) => {
 
 // This function get all items from items
 const getAllIUses = (req, res) => {
-  const query = `SELECT * FROM users`;
+  const query = `SELECT * FROM users WHERE is_deleted = 0`;
   connection.query(query, (err, result) => {
     if (err) {
       return res.status(500).json({
@@ -145,7 +145,7 @@ const getAllIUses = (req, res) => {
 };
 // =================================================== // done
 const getAllUsersDashboard = (req, res) => {
-  const query = `SELECT COUNT( users.id) AS users_count FROM users `;
+  const query = `SELECT COUNT( users.id) AS users_count FROM users WHERE is_deleted = 0`;
   connection.query(query, (err, result) => {
     if (err) {
       return res.status(500).json({

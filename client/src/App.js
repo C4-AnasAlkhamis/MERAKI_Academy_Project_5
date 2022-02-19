@@ -1,20 +1,17 @@
 /** @format */
 
 import "./App.css";
-import { Routes, Route } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+import { Routes, Route, Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 import Login from "./components/login/Login";
 import Register from "./components/register/Register";
 import NavBar from "./components/navBar/navBar";
 import Cart from "./components/cart/cart";
 import Wishlist from "./components/wishlist/wishlist";
-// import AddItem from "./components/addItem/addItem";
 import HomePage from "./components/homePage/homePage";
-// import Pag from "./components/cart/test";
 import AdminPanel from "./components/adminPanel/adminPanel";
 import logo from "./image/logo.png";
-// import Category from "./components/adminPanel/categories/Caregories";
 import Worker from "./components/createWorker/CreateWorker";
 
 import AddItem from "./components/adminPanel/items/addItem/addItem";
@@ -24,10 +21,8 @@ import AddCategory from "./components/adminPanel/categories/Caregories";
 import ShowItems from "./components/adminPanel/items/showItems/showItems";
 import AddService from "./components/adminPanel/services/AddService";
 import MainPage from "./components/mainPage/mainPage";
-// import ShowServices  from "./components/adminPanel/services/showServices/showServices";
 import ShowUsers from "./components/adminPanel/users/showUsers/showUsers";
 
-// import AddService from "./components/addService/AddService";
 import ServicePage from "./components/servicePage/ServicePage";
 import Profile from "./components/profile/Profile";
 import FeedBack from "./components/feedback/Feedback";
@@ -51,9 +46,10 @@ function App() {
         <AdminPanel />
       ) : (
         <>
-          {" "}
           <div className="logo">
-            <img src={logo} />
+            <Link to="/">
+              <img src={logo} alt="TechniCorner" />
+            </Link>
           </div>
           <NavBar />
         </>
@@ -94,8 +90,7 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
       {isLoggedIn ? <Chat /> : null}
-      <div>
-      </div>
+      <div></div>
       {!isAdmin ? <Footer /> : null}
     </div>
   );
