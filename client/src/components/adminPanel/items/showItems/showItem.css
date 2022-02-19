@@ -3,7 +3,7 @@
 .showItemAdmin {
   height: 81%;
   width: 84%;
-  position: fixed;
+  position: relative;
   z-index: 1;
   top: 65px;
   left: 210px;
