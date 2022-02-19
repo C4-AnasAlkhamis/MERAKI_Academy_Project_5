@@ -51,12 +51,12 @@ const AddItem = () => {
 
   //====================================================
 
-  const createNewItem = async (img) => {
+  const createNewItem = async (image) => {
     try {
       const item = {
         title: title,
         descriptions: "in stock",
-        img,
+        img:image,
         price: price,
         category_id: category_id,
       };
