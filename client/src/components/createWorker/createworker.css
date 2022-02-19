@@ -56,3 +56,13 @@
     color: black;
     border-bottom: solid 1px rgb(163, 159, 159);
 } 
+@media screen and (max-width: 600px) {
+  .createWorker {
+    display: flex;
+    width: 95vw;
+    height: 90vh;
+  }
+  .worker {
+    width: 90%;
+  }
+}
