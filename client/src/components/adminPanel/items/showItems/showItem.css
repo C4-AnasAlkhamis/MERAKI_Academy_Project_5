@@ -11,7 +11,10 @@
   overflow-x: hidden;
   padding-bottom: 5%;
 }
-
+.showItemAdmin .show_filter,
+h2 {
+  margin-left: 2.8rem;
+}
 .head_table {
   padding: 0.5rem;
   border-bottom: 1px solid black;
@@ -25,9 +28,9 @@
 }
 
 .showItemTable th {
-  padding-top: 12px; 
+  padding-top: 12px;
   padding-bottom: 12px;
-  text-align: center; 
+  text-align: center;
   background-color: rgb(40, 121, 236);
   color: white;
 }
@@ -37,7 +40,7 @@
   text-align: center;
   padding: 0.5rem;
 }
-.showItemTable td input{
+.showItemTable td input {
   padding: 0px;
   margin: 0px;
 }
@@ -65,7 +68,7 @@
   padding: 20px;
   position: fixed;
   background: #ffffff;
-  width: 940px; 
+  width: 940px;
   top: 110px;
   left: 270px;
 }
@@ -84,7 +87,7 @@
 .add i svg {
   color: rgb(0, 148, 0);
 }
-.addUpdateBTN button{
+.addUpdateBTN button {
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   color: white;
   border: none;
@@ -95,7 +98,7 @@
   cursor: pointer;
 }
 
-.addUpdateBTN button:hover{
+.addUpdateBTN button:hover {
   color: white;
   border: none;
   background-color: #2790bd;
