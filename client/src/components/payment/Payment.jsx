@@ -30,8 +30,7 @@ const Pay = ({ items, price }) => {
     });
   };
 
-  // yJ6N&FPp
-  // sb-kgjsd13291652@personal.example.com
+
   // ======================================= //
   const deleteCartByUserId = async () => {
     //delete /cart/user

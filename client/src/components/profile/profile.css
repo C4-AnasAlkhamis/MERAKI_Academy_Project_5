@@ -48,11 +48,11 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* position: static; */
 }
 
 .profileInfoS img {
   width: 200px;
+  height: 200px;
   border-radius: 50%;
 }
 
@@ -77,4 +77,30 @@
   box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px,
     rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
   border-left: solid 5px rgb(255, 211, 51);
+}
+
+@media screen and (max-width: 600px) {
+  .profile {
+    flex-direction: column;
+    overflow: hidden;
+  }
+  .reqGroup {
+    width: 100vw;
+  }
+  .reqGroup table th {
+    padding: 5px 0;
+    font-size: 0.7rem;
+  }
+  .reqGroup table td {
+    padding: 0;
+  }
+  .reqGroup table > * {
+    width: 14%;
+    font-size: 0.7rem;
+    padding: 0;
+  }
+  .editProfile {
+    position: unset;
+    padding: 3%;
+  }
 }

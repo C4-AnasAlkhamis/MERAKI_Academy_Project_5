@@ -83,3 +83,19 @@
   width: 28px;
   height: 28px;
 }
+@media screen and (max-width: 600px) {
+  .services {
+    display: flex;
+    width: 100vw;
+    flex-wrap: wrap;
+    overflow-y: hidden;
+  }
+  .service {
+    width: 80vw;
+  }
+  .pageTitle {
+    width: 90vw;
+    margin: 10px 0 0 0;
+    padding: 0;
+  }
+}
