@@ -22,15 +22,11 @@ const HomePage = () => {
   // ---------------------------------------------
   const options = [
     { value: "Grinder", label: "Grinder" },
-    { value: "Inflator", label: "Inflator" },
-    { value: "Nailer", label: "Nailer" },
     { value: "Drill", label: "Drill" },
     { value: "Multi", label: "Multi Tool" },
     { value: "Boot", label: "Boot" },
-    { value: "Helmet", label: "Helmet" },
     { value: "Toolvest", label: "Toolvest" },
     { value: "Trousers", label: "Trousers" },
-    { value: "Shield", label: "Shield" },
   ];
   const state = useSelector((state) => {
     return {
@@ -122,8 +118,7 @@ const HomePage = () => {
       .then((result) => {
         dispatch(setItemInfo({ ...result.data.result }));
       })
-      .catch((err) => {
-      });
+      .catch((err) => {});
   };
 
   //=======================================
@@ -133,8 +128,7 @@ const HomePage = () => {
       .then((result) => {
         dispatch(setRates([...result.data.result]));
       })
-      .catch((err) => {
-      });
+      .catch((err) => {});
   };
   //=======================================
   const categoriesMap = categories.map((category, index) => {
@@ -283,9 +277,7 @@ const HomePage = () => {
               placeholder="Filter"
             />
           </div>
-          <div className="items">
-            {display}
-          </div>
+          <div className="items">{display}</div>
           <PaginateReact
             PreviousLabel={"Previous"}
             NextLabel={"Next"}
