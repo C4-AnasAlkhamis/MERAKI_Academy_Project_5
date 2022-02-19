@@ -9,23 +9,9 @@ import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import { addItem } from "../../../../reducer/item/index";
 import { Image } from "cloudinary-react";
-
-//===============================================================
 import Select from "react-select";
-const options = [
-  { value: 1, label: "Hand Tools" },
-  { value: 2, label: "Power Tools" },
-  { value: 3, label: "Safty Work Waer" },
-  { value: 4, label: "Tool Storage" },
-];
-<Select
-  onChange={(e) => {
-    setCategory_id(e.value);
-  }}
-  options={options}
-  placeholder="Categories"
-/>;
-//===============================================================
+
+//===============================================
 
 const AddItem = () => {
   const state = useSelector((state) => {
@@ -34,11 +20,8 @@ const AddItem = () => {
       isLoggedIn: state.loginReducer.isLoggedIn,
     };
   });
-
   const { token, isLoggedIn } = state;
-
   const dispatch = useDispatch();
-
   const [title, setTitle] = useState("");
   const [descriptions, setDescriptions] = useState("");
   const [img, setImg] = useState("");
@@ -52,7 +35,7 @@ const AddItem = () => {
     { value: 3, label: "Safty Work Waer" },
     { value: 4, label: "Tool Storage" },
   ];
-  //===============================================================
+  //===================================================
 
   const uploadImage = () => {
     const formData = new FormData();
@@ -66,7 +49,7 @@ const AddItem = () => {
       });
   };
 
-  //===============================================================
+  //====================================================
 
   const createNewItem = async (img) => {
     try {
@@ -95,7 +78,7 @@ const AddItem = () => {
     }
   };
 
-  //===============================================================
+  //=======================================================
   return (
     <div className="addItemAdmin">
       <h2>NEW ITEM</h2>
