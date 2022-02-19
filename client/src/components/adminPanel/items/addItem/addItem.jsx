@@ -23,9 +23,9 @@ const AddItem = () => {
   const { token, isLoggedIn } = state;
   const dispatch = useDispatch();
   const [title, setTitle] = useState("");
-  const [descriptions, setDescriptions] = useState("");
+  const [descriptions, setDescriptions] = useState("in stock");
   const [img, setImg] = useState("");
-  const [price, setPrice] = useState(0);
+  const [price, setPrice] = useState();
   const [category_id, setCategory_id] = useState(0);
   const [message, setMessage] = useState("");
   const [status, setStatus] = useState(false);
@@ -48,17 +48,16 @@ const AddItem = () => {
         createNewItem(res.data.secure_url);
       });
   };
-
   //====================================================
 
   const createNewItem = async (image) => {
     try {
       const item = {
-        title: title,
-        descriptions: "in stock",
-        img:image,
-        price: price,
-        category_id: category_id,
+        title,
+        descriptions,
+        img: image,
+        price,
+        category_id,
       };
       const result = await axios.post("/item/", item, {
         headers: {
@@ -113,7 +112,6 @@ const AddItem = () => {
         onChange={(e) => {
           setImg(e.target.files[0]);
         }}
-        value={img}
       />
       <div className="addItemBTN">
         <button
