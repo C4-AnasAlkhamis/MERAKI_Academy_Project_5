@@ -15,8 +15,6 @@ import {
   AiFillInstagram,
 } from "react-icons/ai";
 import { FcServices } from "react-icons/fc";
-////////////////////////
-//  import { useNavigate, LINK } from "react-router-dom";
 import "./footer.css";
 import { useNavigate, Link } from "react-router-dom";
 

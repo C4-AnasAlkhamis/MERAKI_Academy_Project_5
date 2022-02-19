@@ -44,7 +44,6 @@ const Pay = ({ items, price }) => {
         dispatch(deleteUserCarts());
       })
       .catch((err) => {
-        console.log(err.response);
       });
     // ======================================= //
   };

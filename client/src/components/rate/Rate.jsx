@@ -14,7 +14,6 @@ const Rate = ({ item_id }) => {
         dispatch(addRate({ rate: rate, item_id: item_id }));
       })
       .catch((err) => {
-        console.log(err);
       });
   };
 

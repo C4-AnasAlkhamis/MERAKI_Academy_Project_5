@@ -22,15 +22,11 @@ const HomePage = () => {
   // ---------------------------------------------
   const options = [
     { value: "Grinder", label: "Grinder" },
-    { value: "Inflator", label: "Inflator" },
-    { value: "Nailer", label: "Nailer" },
     { value: "Drill", label: "Drill" },
     { value: "Multi", label: "Multi Tool" },
     { value: "Boot", label: "Boot" },
-    { value: "Helmet", label: "Helmet" },
     { value: "Toolvest", label: "Toolvest" },
     { value: "Trousers", label: "Trousers" },
-    { value: "Shield", label: "Shield" },
   ];
   const state = useSelector((state) => {
     return {
@@ -122,9 +118,7 @@ const HomePage = () => {
       .then((result) => {
         dispatch(setItemInfo({ ...result.data.result }));
       })
-      .catch((err) => {
-        console.log(err);
-      });
+      .catch((err) => {});
   };
 
   //=======================================
@@ -134,9 +128,7 @@ const HomePage = () => {
       .then((result) => {
         dispatch(setRates([...result.data.result]));
       })
-      .catch((err) => {
-        console.log(err);
-      });
+      .catch((err) => {});
   };
   //=======================================
   const categoriesMap = categories.map((category, index) => {
@@ -285,36 +277,7 @@ const HomePage = () => {
               placeholder="Filter"
             />
           </div>
-          <div className="items">
-            {display}
-
-            {/* {itemsMap.map((item, index) => {
-          return (
-            <div key={index} className="item">
-              <div className="title">
-                <p>{item.title}</p>
-              </div>
-              <div className="img_box">
-                {item.img ? <img src={item.img} alt={item.title} /> : null}
-              </div>
-              <div className="info_box">
-                <h1>{item.price} JOD</h1>
-                <span>{item.rate}</span>
-              </div>
-              <div className="btn">
-                <button
-                  id={item.id}
-                  onClick={(e) => {
-                    getItemById(e.target.id);
-                  }}
-                >
-                  ITEM DETAILS
-                </button>
-              </div>
-            </div>
-          );
-        })} */}
-          </div>
+          <div className="items">{display}</div>
           <PaginateReact
             PreviousLabel={"Previous"}
             NextLabel={"Next"}

@@ -163,13 +163,9 @@ const ItemInfo = ({ setShow }) => {
               <div>
                 <Cart />
               </div>
-              {/* <img
-                  src="https://its-london.s3-eu-west-1.amazonaws.com/CMS/Footer/cards.png"
-                  alt=""
-                /> */}
+       
             </div>
           </div>
-          {/* <img className="tool" src={tool} alt={"tool"} /> */}
         </div>
         <div className="btnI"></div>
       </>

@@ -3,7 +3,6 @@
 import "./App.css";
 import { Routes, Route, Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-
 import Login from "./components/login/Login";
 import Register from "./components/register/Register";
 import NavBar from "./components/navBar/navBar";
@@ -13,25 +12,20 @@ import HomePage from "./components/homePage/homePage";
 import AdminPanel from "./components/adminPanel/adminPanel";
 import logo from "./image/logo.png";
 import Worker from "./components/createWorker/CreateWorker";
-
 import AddItem from "./components/adminPanel/items/addItem/addItem";
-
 import Dashboard from "./components/adminPanel/dashboard/dashboard";
 import AddCategory from "./components/adminPanel/categories/Caregories";
 import ShowItems from "./components/adminPanel/items/showItems/showItems";
 import AddService from "./components/adminPanel/services/AddService";
 import MainPage from "./components/mainPage/mainPage";
 import ShowUsers from "./components/adminPanel/users/showUsers/showUsers";
-
 import ServicePage from "./components/servicePage/ServicePage";
 import Profile from "./components/profile/Profile";
 import FeedBack from "./components/feedback/Feedback";
 import Footer from "./components/footer/footer";
-
 import ShowWorkers from "./components/adminPanel/users/showWorkers/showWorkers";
 import Rate from "./components/rate/Rate";
 import Chat from "./components/chat/Chat";
-
 function App() {
   const { token, isLoggedIn } = useSelector((state) => {
     return {

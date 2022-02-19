@@ -18,12 +18,6 @@ import {
   BiUserCircle
 } from "react-icons/bi";
 
-
-//============================================================================
-//import
-
-//============================================================================
-
 const AdminPanel = () => {
   const dispatch = useDispatch();
   return (

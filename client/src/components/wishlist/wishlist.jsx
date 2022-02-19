@@ -59,7 +59,6 @@ const Wishlist = (id) => {
         dispatch(setWishlist(result.data.results));
       })
       .catch((err) => {
-        console.log(err);
       });
   };
 
@@ -85,7 +84,6 @@ const Wishlist = (id) => {
         dispatch(deleteWishlist(id));
       })
       .catch((err) => {
-        console.log(err);
       });
   };
   useEffect(() => {

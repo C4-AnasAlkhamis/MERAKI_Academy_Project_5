@@ -50,7 +50,6 @@ const AddService = () => {
   // ====================================== //
 
   const createNewService = async (image) => {
-    console.log("555");
     try {
       const result = await axios.post(
         `/service`,
@@ -63,7 +62,6 @@ const AddService = () => {
       );
       getAllServices();
     } catch (error) {
-      console.log(error.response);
     }
   };
   // ====================================== //
@@ -100,7 +98,6 @@ const AddService = () => {
   };
   // ====================================== //
   const updateServiceById = async (image) => {
-    console.log(image);
     try {
       const res = await axios.put(`/service/${iD}`, {
         title,
@@ -119,10 +116,7 @@ const AddService = () => {
         );
       }
     } catch (error) {
-      console.log(error.response);
-      // if (!error.response.data.success) {
-      //   return setMessage(error.response.data.message);
-      // }
+     
       setMessage("Error happened while updating new data");
     }
   };
