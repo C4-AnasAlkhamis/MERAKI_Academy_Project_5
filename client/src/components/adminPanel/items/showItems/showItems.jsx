@@ -49,20 +49,16 @@ const ShowItem = () => {
 
   const getAllItems = async (category_id) => {
     try {
-      const res = await axios.get(
-        `/item/category/${category_id}`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      const res = await axios.get(`/item/category/${category_id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       if (res.data.success) {
         setMessage("");
         dispatch(setItems(res.data.item));
       } else throw Error;
     } catch (error) {
-      console.log(error);
       if (!error.response.data.success) {
         return setMessage(error.response.data.message);
       }
@@ -97,7 +93,6 @@ const ShowItem = () => {
         setItem("");
       } else throw Error;
     } catch (error) {
-      console.log(error);
       if (!error.response.data.success) {
         return setMessage(error.response.data.message);
       }
@@ -117,7 +112,6 @@ const ShowItem = () => {
       })
       .then((result) => {
         setMessage("Item has been updating successfully");
-        console.log(item);
         dispatch(
           updateItem({
             img: image ? image : item.img,
@@ -131,7 +125,6 @@ const ShowItem = () => {
         );
       })
       .catch((err) => {
-        console.log(err);
         setMessage("Error happened while updating the item");
       });
   };
@@ -215,11 +208,10 @@ const ShowItem = () => {
                 </td>
                 <td>{item.title}</td>
                 <td>
-                  
-                    <div style={{display:"flex"}}>
+                  <div style={{ display: "flex" }}>
                     <input
-                    style={{width:"20px"}}
-                    checked={item.is_deleted === 0}
+                      style={{ width: "20px" }}
+                      checked={item.is_deleted === 0}
                       onChange={(e) => {
                         if (e.target.checked) {
                           let id = item.id;
@@ -238,11 +230,11 @@ const ShowItem = () => {
                       name={item.id}
                       value={0}
                       // checked={item.is_deleted === 0}
-                      />
-                      <label style={{width:"80px",paddingTop:"13px"}}>
-                       In Stock
-                     </label>
-                      </div>
+                    />
+                    <label style={{ width: "80px", paddingTop: "13px" }}>
+                      In Stock
+                    </label>
+                  </div>
                 </td>
                 <td>{item.price}</td>
                 <td>
@@ -320,7 +312,8 @@ const ShowItem = () => {
             onClick={() => {
               updateItemById();
               setShow(!show);
-            }}>
+            }}
+          >
             update
           </button>
         </div>

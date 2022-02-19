@@ -88,7 +88,6 @@ const Worker = () => {
         navigate(`/profile`);
       })
       .catch((err) => {
-        console.log(err.response);
       });
   };
   useEffect(() => {

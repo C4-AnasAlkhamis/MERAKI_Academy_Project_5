@@ -123,7 +123,6 @@ const HomePage = () => {
         dispatch(setItemInfo({ ...result.data.result }));
       })
       .catch((err) => {
-        console.log(err);
       });
   };
 
@@ -135,7 +134,6 @@ const HomePage = () => {
         dispatch(setRates([...result.data.result]));
       })
       .catch((err) => {
-        console.log(err);
       });
   };
   //=======================================
@@ -287,33 +285,6 @@ const HomePage = () => {
           </div>
           <div className="items">
             {display}
-
-            {/* {itemsMap.map((item, index) => {
-          return (
-            <div key={index} className="item">
-              <div className="title">
-                <p>{item.title}</p>
-              </div>
-              <div className="img_box">
-                {item.img ? <img src={item.img} alt={item.title} /> : null}
-              </div>
-              <div className="info_box">
-                <h1>{item.price} JOD</h1>
-                <span>{item.rate}</span>
-              </div>
-              <div className="btn">
-                <button
-                  id={item.id}
-                  onClick={(e) => {
-                    getItemById(e.target.id);
-                  }}
-                >
-                  ITEM DETAILS
-                </button>
-              </div>
-            </div>
-          );
-        })} */}
           </div>
           <PaginateReact
             PreviousLabel={"Previous"}

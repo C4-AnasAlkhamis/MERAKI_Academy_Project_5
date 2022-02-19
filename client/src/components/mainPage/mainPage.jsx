@@ -48,7 +48,6 @@ const MainPage = () => {
     } catch (error) {
       if (!error.response.data.success) {
       }
-      console.log("Error happened while Get Data, please try again");
     }
   };
 
