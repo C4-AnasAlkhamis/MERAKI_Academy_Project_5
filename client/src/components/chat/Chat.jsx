@@ -53,7 +53,18 @@ const Chat = () => {
       dispatch(setUsers(users));
     });
   });
-
+  useEffect(() => {
+    const listenTo = (e) => {
+      if (e.code === "Enter" || e.code === "NumpadEnter") {
+        sendMessage();
+        e.preventDefault();
+      }
+    };
+    document.addEventListener("keydown", listenTo);
+    return () => {
+      document.removeEventListener("keydown", listenTo);
+    };
+  }, []);
   return (
     <>
       {worker_id || show ? (

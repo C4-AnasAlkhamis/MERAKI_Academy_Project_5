@@ -210,7 +210,7 @@ const deleteWorkerById = (req, res) => {
 };
 // ===================================
 const getAllWorkersDashboard = (req, res) => {
-  const query = `SELECT * ,COUNT( worker.id) AS worker_count FROM worker `;
+  const query = `SELECT * ,COUNT( worker.id) AS worker_count FROM worker WHERE is_deleted = 0`;
   connection.query(query, (err, result) => {
     if (err) {
       return res.status(500).json({

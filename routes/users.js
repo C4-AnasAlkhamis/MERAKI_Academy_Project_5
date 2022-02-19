@@ -18,7 +18,7 @@ userRouter.get("/", getUserById);
 userRouter.get("/all", getAllIUses);
 userRouter.get("/dashboard/all", getAllUsersDashboard);
 userRouter.put("/", updateUserById);
-userRouter.delete("/:id", deleteUserById);
+userRouter.put("/delete/:id", deleteUserById);
 
 //write your code here
 module.exports = userRouter;

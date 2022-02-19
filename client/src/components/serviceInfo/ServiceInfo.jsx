@@ -124,15 +124,23 @@ const WSInfo = ({ setShowWorker }) => {
                 </div>
 
                 <div className="service_btn">
-                  {users.some((user) => user.user_id === worker.user_id) && (
-                    <button
-                      onClick={() => {
-                        dispatch(setWorkerId(worker.user_id));
-                      }}
-                    >
-                      Live chat
-                    </button>
-                  )}
+                  <button
+                    onClick={() => {
+                      dispatch(setWorkerId(worker.user_id));
+                    }}
+                    className={
+                      users.some((user) => user.user_id === worker.user_id)
+                        ? ""
+                        : "disabled"
+                    }
+                    disabled={
+                      users.some((user) => user.user_id === worker.user_id)
+                        ? false
+                        : true
+                    }
+                  >
+                    Live chat
+                  </button>
 
                   <button
                     onClick={() => {

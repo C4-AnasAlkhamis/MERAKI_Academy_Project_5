@@ -11,9 +11,23 @@ import { addItem } from "../../../../reducer/item/index";
 import { Image } from "cloudinary-react";
 
 //===============================================================
+import Select from "react-select";
+const options = [
+  { value: 1, label: "Hand Tools" },
+  { value: 2, label: "Power Tools" },
+  { value: 3, label: "Safty Work Waer" },
+  { value: 4, label: "Tool Storage" },
+];
+<Select
+  onChange={(e) => {
+    setCategory_id(e.value);
+  }}
+  options={options}
+  placeholder="Categories"
+/>;
+//===============================================================
 
 const AddItem = () => {
-
   const state = useSelector((state) => {
     return {
       token: state.loginReducer.token,
@@ -32,7 +46,12 @@ const AddItem = () => {
   const [category_id, setCategory_id] = useState(0);
   const [message, setMessage] = useState("");
   const [status, setStatus] = useState(false);
-
+  const options = [
+    { value: 1, label: "Hand Tools" },
+    { value: 2, label: "Power Tools" },
+    { value: 3, label: "Safty Work Waer" },
+    { value: 4, label: "Tool Storage" },
+  ];
   //===============================================================
 
   const uploadImage = () => {
@@ -93,17 +112,15 @@ const AddItem = () => {
         onChange={(e) => setPrice(e.target.value)}
       />
       <br />
-      <input
-        placeholder="CATEGORY"
-        onChange={(e) => setCategory_id(e.target.value)}
+      <Select
+        onChange={(e) => {
+          setCategory_id(e.value);
+        }}
+        options={options}
+        placeholder="Categories"
       />
-      <datalist id="data">
-        <option id={1} value={"Hand Tools"} />
-        <option id={2} value={"Power Tools"} />
-        <option id={3} value={"Safety Work wear"} />
-      </datalist>
+      ;
       <br />
-
       <input
         type="file"
         onChange={(e) => {
