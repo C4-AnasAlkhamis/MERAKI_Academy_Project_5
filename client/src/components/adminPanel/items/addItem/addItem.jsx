@@ -69,6 +69,9 @@ const AddItem = () => {
         setStatus(true);
         dispatch(addItem({ title, descriptions, img, price, category_id }));
         setMessage("The item has been created successfully");
+        setTitle("");
+        setPrice("");
+        setImg("");
       }
     } catch (error) {
       if (!error.response.data.success) {
@@ -87,12 +90,14 @@ const AddItem = () => {
         type="text"
         placeholder="TITLE"
         onChange={(e) => setTitle(e.target.value)}
+        value={title}
       />
       <br />
       <input
         type="number"
         placeholder="PRICE"
         onChange={(e) => setPrice(e.target.value)}
+        value={price}
       />
       <br />
       <Select
@@ -102,13 +107,13 @@ const AddItem = () => {
         options={options}
         placeholder="Categories"
       />
-      ;
       <br />
       <input
         type="file"
         onChange={(e) => {
           setImg(e.target.files[0]);
         }}
+        value={img}
       />
       <div className="addItemBTN">
         <button
