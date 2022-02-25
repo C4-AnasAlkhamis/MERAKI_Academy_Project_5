@@ -14,18 +14,18 @@ import {
   AiFillYoutube,
   AiFillInstagram,
 } from "react-icons/ai";
-import { FcServices } from "react-icons/fc";
 import "./footer.css";
-import { useNavigate, Link } from "react-router-dom";
-
-import Swal from "sweetalert2";
-import withReactContent from "sweetalert2-react-content";
-
+import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 import FeedBack from "../feedback/Feedback";
 import payCards from "../../image/cards.png";
 
 const Footer = () => {
-  const nav = useNavigate();
+  const { isLoggedIn } = useSelector((state) => {
+    return {
+      isLoggedIn: state.loginReducer.isLoggedIn,
+    };
+  });
   const [show, setShow] = useState(false);
 
   return (
@@ -57,20 +57,30 @@ const Footer = () => {
             <Link className="gg" to={"/homePage"}>
               <AiOutlineFundProjectionScreen /> Home
             </Link>
-            <Link className="gg" to={"/register"}>
-              <AiOutlineUserAdd /> Register
-            </Link>{" "}
-            <Link className="gg" to={"/login"}>
-              <BiLogIn /> Login
-            </Link>
+
+            {isLoggedIn ? null : (
+              <>
+                <Link className="gg" to={"/register"}>
+                  <AiOutlineUserAdd /> Register
+                </Link>
+                <Link className="gg" to={"/login"}>
+                  <BiLogIn /> Login
+                </Link>
+              </>
+            )}
           </div>
         </div>
         <div className="infoFooter">
-          {show ? <div className="feedbackShow"><FeedBack setShow={setShow}/></div> : null}
+          {show ? (
+            <div className="feedbackShow">
+              <FeedBack setShow={setShow} />
+            </div>
+          ) : null}
           <button
             onClick={() => {
               setShow(!show);
-            }}>
+            }}
+          >
             Feedback
           </button>
           <h2 className="duty">06-474747470 (Saturday - Thursday 8am - 5pm)</h2>
