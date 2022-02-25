@@ -154,8 +154,8 @@ const Profile = () => {
                   Phone Number
                 </th>
                 <th style={{ width: "100px", textAlign: "Center" }}>Email</th>
-                <th style={{ width: "100px", textAlign: "Center" }}>Reject</th>
                 <th style={{ width: "100px", textAlign: "Center" }}>Approve</th>
+                <th style={{ width: "100px", textAlign: "Center" }}>Reject</th>
               </tr>
               {requests.map((req, index) => {
                 return (
